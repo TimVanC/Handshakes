@@ -98,12 +98,21 @@ export default function ResultModal({
     return { sport: s, href, label: dateLabel };
   });
 
+  /** Deep-link to a specific day only when this really was an archive
+   *  replay. A live-day share stays day-less so it survives being opened
+   *  tomorrow morning; a test slot (day 9000+) has no shareable day at all
+   *  — `?d=9003` would sail past resolveGame's `d < today` guard and serve
+   *  a garbage puzzle. */
+  const shareLinkDay = !isTestSlot && state.day < SPORT.storage.currentDayNumber() ? state.day : null;
+
   const share = async () => {
     trackShare({ sport: SPORT.sport, day: state.day, won, score });
     const text = buildShareText({
       shareTag: SPORT.shareTag,
       jerseyEmoji: SPORT.shareEmoji,
+      sport: SPORT.sport,
       day: state.day,
+      linkDay: shareLinkDay,
       grade: grade.label,
       score,
       revealed: state.revealed,
