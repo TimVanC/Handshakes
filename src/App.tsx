@@ -19,7 +19,7 @@ import type { AccountCtaSource } from "./lib/analytics";
 import { computeScore } from "./game/score";
 import { computeGrade } from "./game/grade";
 import { SPORT } from "./sports/active";
-import { SPORTS, SPORT_ORDER, sportHref } from "./sports";
+import { SPORTS, SPORT_ORDER, sportFromPath, sportHref } from "./sports";
 import type { Sport } from "./sports/types";
 import { rosterKey } from "./data/roster";
 import { warnPuzzleData, warnRosterGaps } from "./data/validatePuzzles";
@@ -141,8 +141,12 @@ function resetTestSlots() {
 }
 
 /** `?play=1` (from a home sport-card or a result-card "Play NFL" link)
- *  drops you straight onto the board, skipping this sport's start screen. */
-const AUTO_PLAY = new URLSearchParams(location.search).has("play");
+ *  drops you straight onto the board, skipping this sport's start screen.
+ *  A `/nfl` share path means the same thing — someone arriving on a league's
+ *  own URL asked for that league, not for the hub — which is what keeps the
+ *  shared link bare instead of trailing a `?play=1`. */
+const AUTO_PLAY =
+  new URLSearchParams(location.search).has("play") || sportFromPath() !== null;
 
 export default function App() {
   const { day, puzzle, testIndex, archiveDay } = resolveGame();
