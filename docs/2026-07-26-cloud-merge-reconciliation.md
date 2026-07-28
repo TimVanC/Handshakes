@@ -51,30 +51,86 @@ Once `results` is dropped, this check becomes impossible to repeat. Anyone
 planning the drop session should re-run the anti-join immediately beforehand
 and keep the output.
 
-## 2. `plays` was copied into `plays_v2` out of band
+## 2. The repo file never matched the migration that ran
 
-**Not recorded in any migration file.** `supabase/multisport-migration.sql`
-contains no `plays` → `plays_v2` statement, and no other SQL exists in the
-repo. The database says otherwise.
+> ## ⚠ The applied migration is NOT idempotent. Do not re-run it.
+>
+> Migration `20260722033745` ends with an **unguarded** copy:
+>
+> ```sql
+> insert into public.plays_v2 (sport, day, won, revealed, score, hard, is_archive, created_at)
+> select 'nba', day, won, revealed, score, hard, is_archive, created_at
+> from public.plays;
+> ```
+>
+> No `on conflict`, no `where`, no guard. Running it again copies all of
+> `plays` into `plays_v2` a second time, **doubling the anonymous play pool
+> and corrupting every NBA percentile** `day_score_stats_v2` serves. There is
+> no natural key on `plays_v2` to detect the duplication with, and no way to
+> tell an original row from its copy afterwards.
+>
+> **The specific trap:** the repo file's header used to say *"It is idempotent,
+> so re-running it is safe."* That claim was false — it described a file that
+> was missing this statement, not the migration that ran. The claim has been
+> removed and the file replaced with the applied text. Any older copy still
+> carrying that header is dangerous; discard it.
 
-Evidence:
+### What was found
 
-- `plays_v2` holds **41 NBA rows with `created_at` earlier than 2026-07-22**,
-  the date the table was created. A `now()` default cannot produce those; they
-  were inserted with explicit timestamps.
-- **41 of the 44 rows in `plays` have an exact twin in `plays_v2`**, matching
-  on `created_at` at microsecond precision plus `day`, `won`, `revealed`,
-  `score`, `hard`, `is_archive`.
-- Per-day counts for NBA days 2–6 are identical across both tables, with the
-  same score ranges and dates.
+`plays_v2` holds **41 NBA rows with `created_at` earlier than 2026-07-22**, the
+date the table was created. A `now()` default cannot produce those. **41 of the
+44 rows in `plays` have an exact twin in `plays_v2`**, matched on `created_at`
+at microsecond precision plus `day`, `won`, `revealed`, `score`, `hard`,
+`is_archive`. Neither client dual-writes — the pre-merge `logPlay` targeted
+`plays`, the current one targets `plays_v2`.
 
-Neither client dual-writes — the pre-merge `logPlay` targeted `plays`, the
-current one targets `plays_v2` — so this was a manual copy, direction
-`plays` → `plays_v2`.
+The explanation is not a rogue operation. **The migration recorded in
+`supabase_migrations.schema_migrations` contains the copy; the repo file did
+not.** They were two different documents. Diffing them, ignoring comments, the
+*only* SQL difference in the entire file is those three lines.
 
-> **Provenance: OPEN.** Whether this was run by hand by the owner on merge day
-> is unconfirmed at time of writing. Fill this in — if it was not, the
-> provenance of other tables needs review too.
+### Provenance — probable, not confirmed
+
+The owner confirms they ran no SQL by hand, and that the migration was authored
+in an AI-assisted session with the Supabase MCP connected.
+
+**Most probable mechanism: MCP `apply_migration`.** The reasoning, so it can be
+re-examined rather than taken on faith:
+
+- Running SQL in the Supabase **dashboard SQL editor does not write a ledger
+  entry at all**. A ledger entry exists, so this came through migration
+  tooling, not the dashboard.
+- It was **not the CLI**: there is no `supabase/config.toml`, no
+  `supabase/migrations/` directory, and neither has ever existed in git
+  history. `supabase db push` had no project to push from.
+- That leaves `apply_migration`, which matches the observed shape: SQL authored
+  inline in an agent session and applied straight to production, with a
+  hand-maintained repo copy that was never reconciled to it.
+
+The ledger records the *mechanism*, not the operator. This is well-supported,
+not proven.
+
+### The ledger's timestamps are not an execution audit trail
+
+The copy is unconditional, so whatever existed when it ran got copied. That
+pins execution to a window that **contradicts the ledger's own version stamp**:
+
+| | |
+|---|---|
+| Latest **copied** play | 2026-07-21 19:18:59 UTC |
+| Earliest **uncopied** play | 2026-07-22 01:50:51 UTC |
+| Ledger version stamp | 2026-07-22 **03:37:45** |
+
+Rows 61 and 62 existed at 01:50 and 01:55 UTC. An unconditional copy running at
+03:37 would have taken them; it didn't. **The SQL executed at least two hours
+before its own version stamp.** Most likely the version is generated when the
+record is written rather than when the SQL runs. Unconfirmed — the Postgres and
+API logs that would settle it are past their 24-hour retention.
+
+Do not use ledger version numbers to reconstruct a sequence of events.
+
+It ran exactly once: no duplicate `(created_at, day, score)` groups exist among
+the copied rows, and an unguarded insert running twice would have doubled all 44.
 
 ### Consequence: do not UNION the two tables
 
@@ -225,3 +281,38 @@ Affected-user count is an **upper bound of 5, with 2 confirmed unaffected, and
 is structurally underivable** — `results_v2`'s PK cannot represent the
 overlapping pair, so the evidence only ever existed on the device. Full
 reasoning is preserved in that PR's description.
+
+## 7. `supabase/` is not a schema record
+
+The drift found in §2 is not an isolated slip. Checking every applied migration
+against the repo:
+
+| Ledger version | Name | In repo? |
+|---|---|---|
+| 20260716062117 | `init_profiles_and_results` | **no** |
+| 20260716062159 | `lock_down_handle_new_user` | **no** |
+| 20260716160718 | `plays_log_and_percentile` | **no** |
+| 20260716160754 | `tighten_plays_insert_policy` | **no** |
+| 20260716172505 | `score_scale_1000` | **no** |
+| 20260716173302 | `results_score_column` | **no** |
+| 20260717043630 | `raise_revealed_cap_for_mega_journeymen` | **no** |
+| 20260722033745 | `multisport_results_v2` | yes — and it did not match until now |
+
+**Seven of the eight applied migrations have no counterpart in the repo at
+all**, and the eighth was wrong. Everything that defines the base schema exists
+only in the database:
+
+- the `profiles` table and its RLS policies
+- the `results` and `plays` tables, their constraints and policies
+- the `handle_new_user` signup trigger and the `revoke` that locks it down
+- the original `day_score_stats` RPC
+- the 0–110 → 0–1000 score rescale, and the `revealed` cap raised to 20 for
+  deep careers (Ish Smith, 16 stints)
+
+**Treat the database as the source of truth for schema, not `supabase/`.**
+Before any session reasons about schema — Session 6's scheduler especially —
+read `supabase_migrations.schema_migrations` directly rather than the repo.
+
+As of 2026-07-26 only `multisport-migration.sql` has been reconciled, and only
+because this session needed it. The other seven remain unrecorded; capturing
+them is a small, safe, documentation-only task that nobody has done yet.
