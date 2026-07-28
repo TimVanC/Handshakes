@@ -2832,4 +2832,378 @@ export const puzzles: Puzzle[] = [
       college: "UCLA",
     },
   },
+  {
+    // Puzzle 28 — Joe Smith (day 25): the 1995 #1 pick turned ultimate
+    // suitcase big — TWELVE franchises across 15 stints, including two
+    // tours each of Minnesota, Philadelphia and Cleveland. Stats from the
+    // Wikipedia career table (GP-weighted per stint). EVERY jersey number
+    // below is best-effort recall — no automated NBA source exists
+    // (docs/data-sources.md §3) — and must be BR-verified before merge.
+    id: 28,
+    pathType: "team",
+    answer: "Joe Smith",
+    accolades: ["1995 #1 overall pick", "NBA All-Rookie First Team (1996)"],
+    stints: [
+      {
+        franchise: "GSW",
+        displayTeam: "Golden State Warriors",
+        startYear: 1995,
+        endYear: 1997,
+        gp: 211,
+        mpg: 35.8,
+        ppg: 17.1,
+        rpg: 8.2,
+        apg: 1.3,
+        jerseyNumber: 32, // verified: landofbasketball.com, cross-checked vs Wikipedia season rosters
+      },
+      {
+        franchise: "PHI",
+        displayTeam: "Philadelphia 76ers",
+        startYear: 1997,
+        endYear: 1997,
+        gp: 30,
+        mpg: 23.3,
+        ppg: 10.3,
+        rpg: 4.4,
+        apg: 0.9,
+        jerseyNumber: 9, // verified: landofbasketball.com, cross-checked vs Wikipedia season rosters
+      },
+      {
+        franchise: "MIN",
+        displayTeam: "Minnesota Timberwolves",
+        startYear: 1998,
+        endYear: 1999,
+        gp: 121,
+        mpg: 28,
+        ppg: 11.3,
+        rpg: 6.9,
+        apg: 1.3,
+        jerseyNumber: 32, // verified: landofbasketball.com, cross-checked vs Wikipedia season rosters
+      },
+      {
+        franchise: "DET",
+        displayTeam: "Detroit Pistons",
+        startYear: 2000,
+        endYear: 2000,
+        gp: 69,
+        mpg: 28.1,
+        ppg: 12.3,
+        rpg: 7.1,
+        apg: 1.1,
+        jerseyNumber: 32, // verified: landofbasketball.com, cross-checked vs Wikipedia season rosters
+      },
+      {
+        franchise: "MIN",
+        displayTeam: "Minnesota Timberwolves",
+        startYear: 2001,
+        endYear: 2002,
+        gp: 126,
+        mpg: 24.1,
+        ppg: 9.3,
+        rpg: 5.7,
+        apg: 0.9,
+        jerseyNumber: 32, // verified: landofbasketball.com, cross-checked vs Wikipedia season rosters
+      },
+      {
+        franchise: "MIL",
+        displayTeam: "Milwaukee Bucks",
+        startYear: 2003,
+        endYear: 2005,
+        gp: 194,
+        mpg: 27.9,
+        ppg: 10.4,
+        rpg: 7.3,
+        apg: 0.9,
+        jerseyNumber: 8, // verified: landofbasketball.com, cross-checked vs Wikipedia season rosters
+      },
+      {
+        franchise: "DEN",
+        displayTeam: "Denver Nuggets",
+        startYear: 2006,
+        endYear: 2006,
+        gp: 11,
+        mpg: 13.5,
+        ppg: 5.1,
+        rpg: 3.6,
+        apg: 0.3,
+        jerseyNumber: 8, // verified: landofbasketball.com, cross-checked vs Wikipedia season rosters
+      },
+      {
+        franchise: "PHI",
+        displayTeam: "Philadelphia 76ers",
+        startYear: 2006,
+        endYear: 2006,
+        gp: 54,
+        mpg: 25.1,
+        ppg: 9.2,
+        rpg: 6.7,
+        apg: 0.9,
+        jerseyNumber: 8, // verified: landofbasketball.com, cross-checked vs Wikipedia season rosters
+      },
+      {
+        franchise: "CHI",
+        displayTeam: "Chicago Bulls",
+        startYear: 2007,
+        endYear: 2007,
+        gp: 50,
+        mpg: 22.9,
+        ppg: 11.2,
+        rpg: 5.3,
+        apg: 0.9,
+        jerseyNumber: 32, // verified: landofbasketball.com, cross-checked vs Wikipedia season rosters
+      },
+      {
+        franchise: "CLE",
+        displayTeam: "Cleveland Cavaliers",
+        startYear: 2007,
+        endYear: 2007,
+        gp: 27,
+        mpg: 21.5,
+        ppg: 8.1,
+        rpg: 5,
+        apg: 0.7,
+        jerseyNumber: 32, // verified: landofbasketball.com, cross-checked vs Wikipedia season rosters
+      },
+      {
+        franchise: "OKC",
+        displayTeam: "Oklahoma City Thunder",
+        startYear: 2008,
+        endYear: 2008,
+        gp: 36,
+        mpg: 19.1,
+        ppg: 6.6,
+        rpg: 4.6,
+        apg: 0.7,
+        jerseyNumber: 7, // verified: landofbasketball.com, cross-checked vs Wikipedia season rosters
+      },
+      {
+        franchise: "CLE",
+        displayTeam: "Cleveland Cavaliers",
+        startYear: 2008,
+        endYear: 2008,
+        gp: 21,
+        mpg: 19.5,
+        ppg: 6.5,
+        rpg: 4.7,
+        apg: 0.8,
+        jerseyNumber: 32, // verified: landofbasketball.com, cross-checked vs Wikipedia season rosters
+      },
+      {
+        franchise: "ATL",
+        displayTeam: "Atlanta Hawks",
+        startYear: 2009,
+        endYear: 2009,
+        gp: 64,
+        mpg: 9.3,
+        ppg: 3,
+        rpg: 2.5,
+        apg: 0.3,
+        jerseyNumber: 32, // verified: landofbasketball.com, cross-checked vs Wikipedia season rosters
+      },
+      {
+        franchise: "BKN",
+        displayTeam: "New Jersey Nets",
+        startYear: 2010,
+        endYear: 2010,
+        gp: 4,
+        mpg: 6.1,
+        ppg: 0.5,
+        rpg: 0.8,
+        apg: 0.3,
+        jerseyNumber: 8, // verified: landofbasketball.com, cross-checked vs Wikipedia season rosters
+      },
+      {
+        franchise: "LAL",
+        displayTeam: "Los Angeles Lakers",
+        startYear: 2010,
+        endYear: 2010,
+        gp: 12,
+        mpg: 3.7,
+        ppg: 0.5,
+        rpg: 1.5,
+        apg: 0.3,
+        jerseyNumber: 1, // verified: landofbasketball.com, cross-checked vs Wikipedia season rosters
+      },
+    ],
+    revealOrder: [13, 14, 10, 8, 6, 12, 11, 9, 7, 1, 3, 5, 4, 2, 0],
+    hints: {
+      position: "PF",
+      height: "6'10\"",
+      draftYear: "1995",
+      draftPick: "Round 1, Pick 1",
+      college: "Maryland",
+    },
+  },
+  {
+    // Puzzle 29 — Dominique Wilkins (day 26): the Human Highlight Film.
+    // Twelve Hawks years, then the strange coda — Clippers rental, a
+    // Boston year in #12, Greece, a Spurs season, Italy, and 27 games in
+    // Orlando. Stats from the Wikipedia career table. ATL #21 is
+    // certain (retired by the Hawks); the coda numbers are flagged.
+    id: 29,
+    pathType: "team",
+    answer: "Dominique Wilkins",
+    accolades: ["9× All-Star", "1985-86 scoring champion", "Hall of Fame (2006)"],
+    stints: [
+      {
+        franchise: "ATL",
+        displayTeam: "Atlanta Hawks",
+        startYear: 1982,
+        endYear: 1993,
+        gp: 882,
+        mpg: 36.9,
+        ppg: 26.4,
+        rpg: 6.9,
+        apg: 2.6,
+        jerseyNumber: 21,
+        accolades: [
+          { type: "all_star", count: 9 },
+          { type: "all_nba", count: 1 },
+        ],
+      },
+      {
+        franchise: "LAC",
+        displayTeam: "Los Angeles Clippers",
+        startYear: 1993,
+        endYear: 1993,
+        gp: 25,
+        mpg: 37.9,
+        ppg: 29.1,
+        rpg: 7,
+        apg: 2.2,
+        jerseyNumber: 21, // verified: landofbasketball.com, cross-checked vs Wikipedia season rosters
+      },
+      {
+        franchise: "BOS",
+        displayTeam: "Boston Celtics",
+        startYear: 1994,
+        endYear: 1994,
+        gp: 77,
+        mpg: 31.5,
+        ppg: 17.8,
+        rpg: 5.2,
+        apg: 2.2,
+        jerseyNumber: 12, // verified: landofbasketball.com, cross-checked vs Wikipedia season rosters
+      },
+      {
+        franchise: "SAS",
+        displayTeam: "San Antonio Spurs",
+        startYear: 1996,
+        endYear: 1996,
+        gp: 63,
+        mpg: 30.9,
+        ppg: 18.2,
+        rpg: 6.4,
+        apg: 1.9,
+        jerseyNumber: 21, // verified: landofbasketball.com, cross-checked vs Wikipedia season rosters
+      },
+      {
+        franchise: "ORL",
+        displayTeam: "Orlando Magic",
+        startYear: 1998,
+        endYear: 1998,
+        gp: 27,
+        mpg: 9.3,
+        ppg: 5.1,
+        rpg: 2.6,
+        apg: 0.6,
+        jerseyNumber: 21, // verified: landofbasketball.com, cross-checked vs Wikipedia season rosters
+      },
+    ],
+    revealOrder: [4, 3, 1, 2, 0],
+    hints: {
+      position: "SF",
+      height: "6'8\"",
+      draftYear: "1982",
+      draftPick: "Round 1, Pick 3",
+      college: "Georgia",
+    },
+  },
+  {
+    // Puzzle 30 — Stephon Marbury (day 27): Starbury. #3 at all four
+    // stops until a Boston #8 farewell — Coney Island to the Garden by
+    // way of Minneapolis, Jersey and Phoenix. Stats from the Wikipedia
+    // career table. Both All-Star nods land where they were earned
+    // (2001 as a Net, 2003 as a Sun).
+    id: 30,
+    pathType: "team",
+    answer: "Stephon Marbury",
+    accolades: ["2× All-Star", "2× All-NBA Third Team"],
+    stints: [
+      {
+        franchise: "MIN",
+        displayTeam: "Minnesota Timberwolves",
+        startYear: 1996,
+        endYear: 1998,
+        gp: 167,
+        mpg: 36.5,
+        ppg: 16.9,
+        rpg: 2.8,
+        apg: 8.4,
+        jerseyNumber: 3, // verified: landofbasketball.com, cross-checked vs Wikipedia season rosters
+      },
+      {
+        franchise: "BKN",
+        displayTeam: "New Jersey Nets",
+        startYear: 1998,
+        endYear: 2000,
+        gp: 172,
+        mpg: 38.8,
+        ppg: 23.1,
+        rpg: 3.1,
+        apg: 8.1,
+        jerseyNumber: 33, // verified: landofbasketball.com, cross-checked vs Wikipedia season rosters
+        accolades: [
+          { type: "all_star", count: 1 },
+        ],
+      },
+      {
+        franchise: "PHX",
+        displayTeam: "Phoenix Suns",
+        startYear: 2001,
+        endYear: 2003,
+        gp: 197,
+        mpg: 39.8,
+        ppg: 21.3,
+        rpg: 3.2,
+        apg: 8.1,
+        jerseyNumber: 3, // verified: landofbasketball.com, cross-checked vs Wikipedia season rosters
+        accolades: [
+          { type: "all_star", count: 1 },
+        ],
+      },
+      {
+        franchise: "NYK",
+        displayTeam: "New York Knicks",
+        startYear: 2003,
+        endYear: 2007,
+        gp: 287,
+        mpg: 37.9,
+        ppg: 18.2,
+        rpg: 2.9,
+        apg: 7,
+        jerseyNumber: 3, // verified: landofbasketball.com, cross-checked vs Wikipedia season rosters
+      },
+      {
+        franchise: "BOS",
+        displayTeam: "Boston Celtics",
+        startYear: 2008,
+        endYear: 2008,
+        gp: 23,
+        mpg: 18,
+        ppg: 3.8,
+        rpg: 1.2,
+        apg: 3.3,
+        jerseyNumber: 8, // verified: landofbasketball.com, cross-checked vs Wikipedia season rosters
+      },
+    ],
+    revealOrder: [4, 2, 1, 0, 3],
+    hints: {
+      position: "PG",
+      height: "6'2\"",
+      draftYear: "1996",
+      draftPick: "Round 1, Pick 4",
+      college: "Georgia Tech",
+    },
+  },
 ];
