@@ -102,3 +102,12 @@
 | Case Keenum | CLE 2020-2021 | #5 | match | 2020:[5] 2021:[5] |
 | Case Keenum | BUF 2022-2022 | #18 | match | 2022:[18] |
 | Case Keenum | HOU 2023-2024 | #18 | match | 2023:[18] 2024:[18] |
+
+## Disposition (2026-07-28)
+
+All 3 conflicts are artifacts of the season-roster source, not data errors:
+full-season rosters attribute a split season to one team only. AP's NO 2017
+(#28), AP's TEN 2021 (#8) and Flacco's CLE 2025 (#15) were sourced from
+WEEKLY rosters during authoring (see PR #8/#9 method). Resolution: teach the
+reporter to consult weekly rosters for stints the season file can't see —
+until then these three stay listed here as accepted, human-reviewed.
