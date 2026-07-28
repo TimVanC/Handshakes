@@ -27,6 +27,7 @@ import { eggFor } from "./game/easterEggs";
 import { getPhase, initialState, reducer, HINT_COUNT } from "./game/state";
 import type { Stint } from "./game/types";
 import { loadMode, saveMode, hasSeenHelp, markSeenHelp, type GameMode } from "./game/storage";
+import { getDbPuzzle } from "./lib/puzzleService";
 
 const storage = SPORT.storage;
 const puzzles = SPORT.puzzles;
@@ -67,6 +68,11 @@ function docRect(el: HTMLElement): CardRect {
  *  verified pool, so a daily never 404s — authoring a puzzle with a
  *  matching `answer` flips its day live, no other wiring needed. */
 function puzzleForDay(day: number): (typeof puzzles)[number] {
+  // Session 6: a DB-served puzzle (prefetched in main.tsx behind
+  // VITE_SERVE_FROM_DB) wins for its exact day; everything else — flag off,
+  // RPC miss, timeout, day mismatch — falls through to the bundled arrays.
+  const db = getDbPuzzle(day);
+  if (db) return db as (typeof puzzles)[number];
   if (SPORT.scheduling === "release") {
     return puzzles[(day - 1) % puzzles.length];
   }
