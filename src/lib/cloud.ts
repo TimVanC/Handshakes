@@ -61,14 +61,21 @@ export async function syncUp(
   const userId = data.session?.user.id;
   if (!userId) return;
 
-  const rows: Array<Record<string, unknown>> = [];
+  /* Keyed by `sport:day`, because one day can appear in BOTH ledgers: an
+     archive replay of a day already played live is allowed, which writes the
+     day to the archive ledger while the daily history still holds it. Two
+     rows sharing a conflict target in one upsert makes Postgres reject the
+     ENTIRE statement ("ON CONFLICT DO UPDATE command cannot affect row a
+     second time"), so a single overlapping day used to block the whole
+     sign-in sync. The daily row is the authoritative one and wins. */
+  const byKey = new Map<string, Record<string, unknown>>();
   for (const { sport, storage } of ledgers) {
     const profile = storage.loadProfile();
     const scores = storage.loadLocalScores();
     for (const [dayStr, res] of Object.entries(profile.history)) {
       const day = Number(dayStr);
       if (day >= 9000) continue; // test slots stay local
-      rows.push({
+      byKey.set(`${sport}:${day}`, {
         user_id: userId,
         sport,
         day,
@@ -80,22 +87,35 @@ export async function syncUp(
     }
     const archive = storage.loadArchiveResults();
     for (const [dayStr, res] of Object.entries(archive)) {
-      rows.push({
+      const day = Number(dayStr);
+      if (byKey.has(`${sport}:${day}`)) continue; // daily history wins
+      byKey.set(`${sport}:${day}`, {
         user_id: userId,
         sport,
-        day: Number(dayStr),
+        day,
         won: res !== "DNF",
         revealed: res === "DNF" ? null : res,
-        score: scores[Number(dayStr)] ?? null,
+        score: scores[day] ?? null,
         is_archive: true,
       });
     }
   }
+  const rows = [...byKey.values()];
   if (rows.length > 0) {
     // plain upsert (NOT ignoreDuplicates): the local ledger is itself
     // recorded exactly once per day, so re-syncing can only backfill —
     // e.g. add a score to a row that first synced scoreless
-    await supabase.from("results_v2").upsert(rows, { onConflict: "user_id,sport,day" });
+    const { error } = await supabase
+      .from("results_v2")
+      .upsert(rows, { onConflict: "user_id,sport,day" });
+    // a swallowed error here means a returning player's history silently
+    // never reaches the cloud — the one failure mode worth being loud about
+    if (error) {
+      console.error(
+        `[journeyman] syncUp failed: ${rows.length} local result(s) did not upload`,
+        error
+      );
+    }
   }
 }
 
