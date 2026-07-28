@@ -26,7 +26,9 @@
     "trim": "#3EC7B1",
     "eraStyle": "buttoned",
     "pattern": "pinstripe",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    },
    {
     "key": "ARI_2007",
@@ -39,7 +41,9 @@
     "secondary": "#A71930",
     "trim": "#000000",
     "eraStyle": "modern",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    },
    {
     "key": "ARI_2016",
@@ -52,7 +56,9 @@
     "secondary": "#A71930",
     "trim": "#30CED8",
     "eraStyle": "modern",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    }
   ],
   "ATL": [
@@ -68,7 +74,9 @@
     "secondary": "#13274F",
     "trim": "#CE1141",
     "eraStyle": "flannel",
-    "confidence": "medium"
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
    },
    {
     "key": "ATL_1969",
@@ -81,7 +89,9 @@
     "secondary": "#13274F",
     "trim": "#CE1141",
     "eraStyle": "flannel",
-    "confidence": "medium"
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
    },
    {
     "key": "ATL_1972",
@@ -94,7 +104,9 @@
     "secondary": "#0057B8",
     "trim": "#CE1141",
     "eraStyle": "pullover",
-    "confidence": "medium"
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
    },
    {
     "key": "ATL_1987",
@@ -107,7 +119,9 @@
     "secondary": "#13274F",
     "trim": "#CE1141",
     "eraStyle": "buttoned",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    },
    {
     "key": "ATL_2006",
@@ -120,7 +134,9 @@
     "secondary": "#13274F",
     "trim": "#CE1141",
     "eraStyle": "modern",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    }
   ],
   "BAL": [
@@ -135,7 +151,9 @@
     "secondary": "#DF4601",
     "trim": "#000000",
     "eraStyle": "flannel",
-    "confidence": "medium"
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
    },
    {
     "key": "BAL_1972",
@@ -148,7 +166,9 @@
     "secondary": "#000000",
     "trim": "#FFFFFF",
     "eraStyle": "pullover",
-    "confidence": "medium"
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
    },
    {
     "key": "BAL_1989",
@@ -161,7 +181,9 @@
     "secondary": "#000000",
     "trim": "#DF4601",
     "eraStyle": "buttoned",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    },
    {
     "key": "BAL_2009",
@@ -174,7 +196,9 @@
     "secondary": "#DF4601",
     "trim": "#000000",
     "eraStyle": "modern",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    }
   ],
   "BOS": [
@@ -189,7 +213,9 @@
     "secondary": "#BD3039",
     "trim": "#0C2340",
     "eraStyle": "flannel",
-    "confidence": "medium"
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
    },
    {
     "key": "BOS_1969",
@@ -202,7 +228,9 @@
     "secondary": "#BD3039",
     "trim": "#0C2340",
     "eraStyle": "flannel",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    },
    {
     "key": "BOS_1972",
@@ -215,7 +243,9 @@
     "secondary": "#BD3039",
     "trim": "#0C2340",
     "eraStyle": "pullover",
-    "confidence": "medium"
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
    },
    {
     "key": "BOS_1987",
@@ -228,7 +258,9 @@
     "secondary": "#BD3039",
     "trim": "#0C2340",
     "eraStyle": "buttoned",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    },
    {
     "key": "BOS_2006",
@@ -241,7 +273,9 @@
     "secondary": "#BD3039",
     "trim": "#0C2340",
     "eraStyle": "modern",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    }
   ],
   "CHC": [
@@ -257,7 +291,9 @@
     "trim": "#CC3433",
     "eraStyle": "flannel",
     "pattern": "pinstripe",
-    "confidence": "medium"
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
    },
    {
     "key": "CHC_1969",
@@ -271,7 +307,9 @@
     "trim": "#CC3433",
     "eraStyle": "flannel",
     "pattern": "pinstripe",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    },
    {
     "key": "CHC_1972",
@@ -285,7 +323,9 @@
     "trim": "#CC3433",
     "eraStyle": "pullover",
     "pattern": "pinstripe",
-    "confidence": "medium"
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
    },
    {
     "key": "CHC_1990",
@@ -299,7 +339,9 @@
     "trim": "#CC3433",
     "eraStyle": "buttoned",
     "pattern": "pinstripe",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    },
    {
     "key": "CHC_2006",
@@ -313,7 +355,9 @@
     "trim": "#CC3433",
     "eraStyle": "modern",
     "pattern": "pinstripe",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    }
   ],
   "CHW": [
@@ -328,7 +372,9 @@
     "secondary": "#0C2340",
     "trim": "#C8102E",
     "eraStyle": "flannel",
-    "confidence": "medium"
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
    },
    {
     "key": "CHW_1971",
@@ -342,7 +388,9 @@
     "trim": "#0C2340",
     "eraStyle": "flannel",
     "pattern": "pinstripe",
-    "confidence": "medium"
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
    },
    {
     "key": "CHW_1976",
@@ -355,7 +403,9 @@
     "secondary": "#0C2340",
     "trim": "#0C2340",
     "eraStyle": "pullover",
-    "confidence": "medium"
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
    },
    {
     "key": "CHW_1987",
@@ -368,7 +418,9 @@
     "secondary": "#0C2340",
     "trim": "#C8102E",
     "eraStyle": "buttoned",
-    "confidence": "medium"
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
    },
    {
     "key": "CHW_1991",
@@ -382,7 +434,9 @@
     "trim": "#C4CED4",
     "eraStyle": "buttoned",
     "pattern": "pinstripe",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    },
    {
     "key": "CHW_2006",
@@ -396,7 +450,9 @@
     "trim": "#C4CED4",
     "eraStyle": "modern",
     "pattern": "pinstripe",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    }
   ],
   "CIN": [
@@ -411,7 +467,9 @@
     "secondary": "#C6011F",
     "trim": "#000000",
     "eraStyle": "flannel",
-    "confidence": "medium"
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
    },
    {
     "key": "CIN_1972",
@@ -424,7 +482,9 @@
     "secondary": "#C6011F",
     "trim": "#FFFFFF",
     "eraStyle": "pullover",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    },
    {
     "key": "CIN_1993",
@@ -438,7 +498,9 @@
     "trim": "#000000",
     "eraStyle": "buttoned",
     "pattern": "pinstripe",
-    "confidence": "medium"
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
    },
    {
     "key": "CIN_2006",
@@ -451,7 +513,9 @@
     "secondary": "#C6011F",
     "trim": "#000000",
     "eraStyle": "modern",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    }
   ],
   "CLE": [
@@ -466,7 +530,9 @@
     "secondary": "#0C2340",
     "trim": "#E31937",
     "eraStyle": "flannel",
-    "confidence": "medium"
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
    },
    {
     "key": "CLE_1975",
@@ -479,7 +545,9 @@
     "secondary": "#0C2340",
     "trim": "#FFFFFF",
     "eraStyle": "pullover",
-    "confidence": "medium"
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
    },
    {
     "key": "CLE_1978",
@@ -492,7 +560,9 @@
     "secondary": "#E31937",
     "trim": "#0C2340",
     "eraStyle": "pullover",
-    "confidence": "low"
+    "confidence": "low",
+    "status": "unverified",
+    "source_note": ""
    },
    {
     "key": "CLE_1994",
@@ -505,7 +575,9 @@
     "secondary": "#0C2340",
     "trim": "#E31937",
     "eraStyle": "buttoned",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    },
    {
     "key": "CLE_2012",
@@ -518,7 +590,9 @@
     "secondary": "#0C2340",
     "trim": "#E31937",
     "eraStyle": "modern",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    },
    {
     "key": "CLE_2022",
@@ -531,7 +605,9 @@
     "secondary": "#0C2340",
     "trim": "#E50022",
     "eraStyle": "modern",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    }
   ],
   "COL": [
@@ -547,7 +623,9 @@
     "trim": "#000000",
     "eraStyle": "buttoned",
     "pattern": "pinstripe",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    },
    {
     "key": "COL_2017",
@@ -561,7 +639,9 @@
     "trim": "#C4CED4",
     "eraStyle": "modern",
     "pattern": "pinstripe",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    }
   ],
   "DET": [
@@ -576,7 +656,9 @@
     "secondary": "#0C2340",
     "trim": "#FA4616",
     "eraStyle": "flannel",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    },
    {
     "key": "DET_1972",
@@ -589,7 +671,9 @@
     "secondary": "#0C2340",
     "trim": "#FA4616",
     "eraStyle": "pullover",
-    "confidence": "medium"
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
    },
    {
     "key": "DET_1984",
@@ -602,7 +686,9 @@
     "secondary": "#0C2340",
     "trim": "#FA4616",
     "eraStyle": "buttoned",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    },
    {
     "key": "DET_2006",
@@ -615,7 +701,9 @@
     "secondary": "#0C2340",
     "trim": "#FA4616",
     "eraStyle": "modern",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    }
   ],
   "HOU": [
@@ -630,7 +718,9 @@
     "secondary": "#002D62",
     "trim": "#EB6E1F",
     "eraStyle": "flannel",
-    "confidence": "medium"
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
    },
    {
     "key": "HOU_1975",
@@ -643,7 +733,9 @@
     "secondary": "#E86100",
     "trim": "#002D62",
     "eraStyle": "pullover",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    },
    {
     "key": "HOU_1987",
@@ -656,7 +748,9 @@
     "secondary": "#E86100",
     "trim": "#002D62",
     "eraStyle": "buttoned",
-    "confidence": "medium"
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
    },
    {
     "key": "HOU_1994",
@@ -669,7 +763,9 @@
     "secondary": "#002D62",
     "trim": "#EB6E1F",
     "eraStyle": "buttoned",
-    "confidence": "medium"
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
    },
    {
     "key": "HOU_2000",
@@ -683,7 +779,9 @@
     "trim": "#000000",
     "eraStyle": "buttoned",
     "pattern": "pinstripe",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    },
    {
     "key": "HOU_2013",
@@ -696,7 +794,9 @@
     "secondary": "#002D62",
     "trim": "#EB6E1F",
     "eraStyle": "modern",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    }
   ],
   "KC": [
@@ -711,7 +811,9 @@
     "secondary": "#004687",
     "trim": "#004687",
     "eraStyle": "flannel",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    },
    {
     "key": "KC_1973",
@@ -724,7 +826,9 @@
     "secondary": "#004687",
     "trim": "#7BB2DD",
     "eraStyle": "pullover",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    },
    {
     "key": "KC_1992",
@@ -737,7 +841,9 @@
     "secondary": "#004687",
     "trim": "#BD9B60",
     "eraStyle": "buttoned",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    },
    {
     "key": "KC_2006",
@@ -750,7 +856,9 @@
     "secondary": "#004687",
     "trim": "#BD9B60",
     "eraStyle": "modern",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    }
   ],
   "LAA": [
@@ -766,7 +874,9 @@
     "secondary": "#003263",
     "trim": "#BA0021",
     "eraStyle": "flannel",
-    "confidence": "medium"
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
    },
    {
     "key": "LAA_1997",
@@ -781,7 +891,9 @@
     "trim": "#93B1D7",
     "eraStyle": "buttoned",
     "pattern": "pinstripe",
-    "confidence": "medium"
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
    },
    {
     "key": "LAA_2002",
@@ -795,7 +907,9 @@
     "secondary": "#BA0021",
     "trim": "#003263",
     "eraStyle": "buttoned",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    },
    {
     "key": "LAA_2005",
@@ -808,7 +922,9 @@
     "secondary": "#BA0021",
     "trim": "#003263",
     "eraStyle": "modern",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    }
   ],
   "LAD": [
@@ -823,7 +939,9 @@
     "secondary": "#005A9C",
     "trim": "#EF3E42",
     "eraStyle": "flannel",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    },
    {
     "key": "LAD_1972",
@@ -836,7 +954,9 @@
     "secondary": "#005A9C",
     "trim": "#EF3E42",
     "eraStyle": "buttoned",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    },
    {
     "key": "LAD_2007",
@@ -849,7 +969,9 @@
     "secondary": "#005A9C",
     "trim": "#EF3E42",
     "eraStyle": "modern",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    }
   ],
   "MIA": [
@@ -866,7 +988,9 @@
     "trim": "#000000",
     "eraStyle": "buttoned",
     "pattern": "pinstripe",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    },
    {
     "key": "MIA_2012",
@@ -879,7 +1003,9 @@
     "secondary": "#F9423A",
     "trim": "#0077C8",
     "eraStyle": "modern",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    },
    {
     "key": "MIA_2019",
@@ -892,7 +1018,9 @@
     "secondary": "#000000",
     "trim": "#41748D",
     "eraStyle": "modern",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    }
   ],
   "MIL": [
@@ -907,7 +1035,9 @@
     "secondary": "#0A2351",
     "trim": "#FFC52F",
     "eraStyle": "pullover",
-    "confidence": "medium"
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
    },
    {
     "key": "MIL_1978",
@@ -921,7 +1051,9 @@
     "trim": "#FFC52F",
     "eraStyle": "pullover",
     "pattern": "pinstripe",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    },
    {
     "key": "MIL_1994",
@@ -935,7 +1067,9 @@
     "trim": "#00534C",
     "eraStyle": "buttoned",
     "pattern": "pinstripe",
-    "confidence": "low"
+    "confidence": "low",
+    "status": "unverified",
+    "source_note": ""
    },
    {
     "key": "MIL_2000",
@@ -948,7 +1082,9 @@
     "secondary": "#12284B",
     "trim": "#B6922E",
     "eraStyle": "modern",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    }
   ],
   "MIN": [
@@ -964,7 +1100,9 @@
     "trim": "#D31145",
     "eraStyle": "flannel",
     "pattern": "pinstripe",
-    "confidence": "medium"
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
    },
    {
     "key": "MIN_1972",
@@ -977,7 +1115,9 @@
     "secondary": "#002B5C",
     "trim": "#D31145",
     "eraStyle": "pullover",
-    "confidence": "medium"
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
    },
    {
     "key": "MIN_1987",
@@ -991,7 +1131,9 @@
     "trim": "#D31145",
     "eraStyle": "buttoned",
     "pattern": "pinstripe",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    },
    {
     "key": "MIN_2010",
@@ -1004,7 +1146,9 @@
     "secondary": "#002B5C",
     "trim": "#D31145",
     "eraStyle": "modern",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    }
   ],
   "NYM": [
@@ -1020,7 +1164,9 @@
     "trim": "#FF5910",
     "eraStyle": "flannel",
     "pattern": "pinstripe",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    },
    {
     "key": "NYM_1978",
@@ -1034,7 +1180,9 @@
     "trim": "#FF5910",
     "eraStyle": "pullover",
     "pattern": "pinstripe",
-    "confidence": "medium"
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
    },
    {
     "key": "NYM_1993",
@@ -1048,7 +1196,9 @@
     "trim": "#FF5910",
     "eraStyle": "buttoned",
     "pattern": "pinstripe",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    },
    {
     "key": "NYM_1998",
@@ -1061,7 +1211,9 @@
     "secondary": "#000000",
     "trim": "#002D72",
     "eraStyle": "buttoned",
-    "confidence": "medium"
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
    },
    {
     "key": "NYM_2012",
@@ -1075,7 +1227,9 @@
     "trim": "#FF5910",
     "eraStyle": "modern",
     "pattern": "pinstripe",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    }
   ],
   "NYY": [
@@ -1091,7 +1245,9 @@
     "trim": "#C4CED3",
     "eraStyle": "flannel",
     "pattern": "pinstripe",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    },
    {
     "key": "NYY_1969",
@@ -1105,7 +1261,9 @@
     "trim": "#C4CED3",
     "eraStyle": "flannel",
     "pattern": "pinstripe",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    },
    {
     "key": "NYY_1973",
@@ -1119,7 +1277,9 @@
     "trim": "#C4CED3",
     "eraStyle": "buttoned",
     "pattern": "pinstripe",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    },
    {
     "key": "NYY_2006",
@@ -1133,7 +1293,9 @@
     "trim": "#C4CED3",
     "eraStyle": "modern",
     "pattern": "pinstripe",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    }
   ],
   "OAK": [
@@ -1149,7 +1311,9 @@
     "secondary": "#003087",
     "trim": "#A2AAAD",
     "eraStyle": "flannel",
-    "confidence": "medium"
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
    },
    {
     "key": "OAK_1969",
@@ -1162,7 +1326,9 @@
     "secondary": "#003831",
     "trim": "#EFB21E",
     "eraStyle": "flannel",
-    "confidence": "medium"
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
    },
    {
     "key": "OAK_1972",
@@ -1175,7 +1341,9 @@
     "secondary": "#003831",
     "trim": "#FFFFFF",
     "eraStyle": "pullover",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    },
    {
     "key": "OAK_1981",
@@ -1188,7 +1356,9 @@
     "secondary": "#003831",
     "trim": "#EFB21E",
     "eraStyle": "pullover",
-    "confidence": "medium"
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
    },
    {
     "key": "OAK_1987",
@@ -1201,7 +1371,9 @@
     "secondary": "#003831",
     "trim": "#EFB21E",
     "eraStyle": "buttoned",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    }
   ],
   "PHI": [
@@ -1216,7 +1388,9 @@
     "secondary": "#284898",
     "trim": "#E81828",
     "eraStyle": "flannel",
-    "confidence": "medium"
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
    },
    {
     "key": "PHI_1969",
@@ -1230,7 +1404,9 @@
     "trim": "#6F263D",
     "eraStyle": "flannel",
     "pattern": "pinstripe",
-    "confidence": "medium"
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
    },
    {
     "key": "PHI_1972",
@@ -1244,7 +1420,9 @@
     "trim": "#6F263D",
     "eraStyle": "pullover",
     "pattern": "pinstripe",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    },
    {
     "key": "PHI_1992",
@@ -1258,7 +1436,9 @@
     "trim": "#002D72",
     "eraStyle": "buttoned",
     "pattern": "pinstripe",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    },
    {
     "key": "PHI_2019",
@@ -1272,7 +1452,9 @@
     "trim": "#002D72",
     "eraStyle": "modern",
     "pattern": "pinstripe",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    }
   ],
   "PIT": [
@@ -1287,7 +1469,9 @@
     "secondary": "#27251F",
     "trim": "#FDB827",
     "eraStyle": "flannel",
-    "confidence": "medium"
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
    },
    {
     "key": "PIT_1969",
@@ -1300,7 +1484,9 @@
     "secondary": "#27251F",
     "trim": "#FDB827",
     "eraStyle": "flannel",
-    "confidence": "medium"
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
    },
    {
     "key": "PIT_1977",
@@ -1313,7 +1499,9 @@
     "secondary": "#27251F",
     "trim": "#FFFFFF",
     "eraStyle": "pullover",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    },
    {
     "key": "PIT_1985",
@@ -1326,7 +1514,9 @@
     "secondary": "#27251F",
     "trim": "#FDB827",
     "eraStyle": "pullover",
-    "confidence": "medium"
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
    },
    {
     "key": "PIT_1997",
@@ -1339,7 +1529,9 @@
     "secondary": "#27251F",
     "trim": "#FDB827",
     "eraStyle": "buttoned",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    }
   ],
   "SD": [
@@ -1354,7 +1546,9 @@
     "secondary": "#2F241D",
     "trim": "#FFC425",
     "eraStyle": "flannel",
-    "confidence": "medium"
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
    },
    {
     "key": "SD_1972",
@@ -1367,7 +1561,9 @@
     "secondary": "#2F241D",
     "trim": "#FFFFFF",
     "eraStyle": "pullover",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    },
    {
     "key": "SD_1985",
@@ -1381,7 +1577,9 @@
     "trim": "#D2691E",
     "eraStyle": "buttoned",
     "pattern": "pinstripe",
-    "confidence": "medium"
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
    },
    {
     "key": "SD_1991",
@@ -1395,7 +1593,9 @@
     "trim": "#D2691E",
     "eraStyle": "buttoned",
     "pattern": "pinstripe",
-    "confidence": "medium"
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
    },
    {
     "key": "SD_2004",
@@ -1408,7 +1608,9 @@
     "secondary": "#002D62",
     "trim": "#A0AAB2",
     "eraStyle": "modern",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    },
    {
     "key": "SD_2020",
@@ -1421,7 +1623,9 @@
     "secondary": "#2F241D",
     "trim": "#FFC425",
     "eraStyle": "modern",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    }
   ],
   "SEA": [
@@ -1436,7 +1640,9 @@
     "secondary": "#00338D",
     "trim": "#FFC52F",
     "eraStyle": "pullover",
-    "confidence": "medium"
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
    },
    {
     "key": "SEA_1987",
@@ -1449,7 +1655,9 @@
     "secondary": "#00338D",
     "trim": "#FFC52F",
     "eraStyle": "buttoned",
-    "confidence": "medium"
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
    },
    {
     "key": "SEA_1993",
@@ -1462,7 +1670,9 @@
     "secondary": "#0C2C56",
     "trim": "#005C5C",
     "eraStyle": "buttoned",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    }
   ],
   "SF": [
@@ -1478,7 +1688,9 @@
     "secondary": "#27251F",
     "trim": "#FD5A1E",
     "eraStyle": "flannel",
-    "confidence": "medium"
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
    },
    {
     "key": "SF_1969",
@@ -1491,7 +1703,9 @@
     "secondary": "#FD5A1E",
     "trim": "#27251F",
     "eraStyle": "flannel",
-    "confidence": "medium"
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
    },
    {
     "key": "SF_1977",
@@ -1504,7 +1718,9 @@
     "secondary": "#FD5A1E",
     "trim": "#27251F",
     "eraStyle": "pullover",
-    "confidence": "medium"
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
    },
    {
     "key": "SF_1983",
@@ -1517,7 +1733,9 @@
     "secondary": "#27251F",
     "trim": "#FD5A1E",
     "eraStyle": "buttoned",
-    "confidence": "medium"
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
    },
    {
     "key": "SF_2000",
@@ -1530,7 +1748,9 @@
     "secondary": "#27251F",
     "trim": "#FD5A1E",
     "eraStyle": "modern",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    }
   ],
   "STL": [
@@ -1545,7 +1765,9 @@
     "secondary": "#C41E3A",
     "trim": "#0C2340",
     "eraStyle": "flannel",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    },
    {
     "key": "STL_1973",
@@ -1558,7 +1780,9 @@
     "secondary": "#C41E3A",
     "trim": "#0C2340",
     "eraStyle": "pullover",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    },
    {
     "key": "STL_1985",
@@ -1571,7 +1795,9 @@
     "secondary": "#C41E3A",
     "trim": "#0C2340",
     "eraStyle": "buttoned",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    },
    {
     "key": "STL_2006",
@@ -1584,7 +1810,9 @@
     "secondary": "#C41E3A",
     "trim": "#0C2340",
     "eraStyle": "modern",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    }
   ],
   "TB": [
@@ -1599,7 +1827,9 @@
     "secondary": "#00285D",
     "trim": "#612D82",
     "eraStyle": "buttoned",
-    "confidence": "medium"
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
    },
    {
     "key": "TB_2008",
@@ -1612,7 +1842,9 @@
     "secondary": "#092C5C",
     "trim": "#8FBCE6",
     "eraStyle": "modern",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    }
   ],
   "TEX": [
@@ -1627,7 +1859,9 @@
     "secondary": "#003278",
     "trim": "#C0111F",
     "eraStyle": "pullover",
-    "confidence": "medium"
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
    },
    {
     "key": "TEX_1983",
@@ -1640,7 +1874,9 @@
     "secondary": "#003278",
     "trim": "#C0111F",
     "eraStyle": "buttoned",
-    "confidence": "medium"
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
    },
    {
     "key": "TEX_1994",
@@ -1653,7 +1889,9 @@
     "secondary": "#C0111F",
     "trim": "#003278",
     "eraStyle": "buttoned",
-    "confidence": "medium"
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
    },
    {
     "key": "TEX_2001",
@@ -1666,7 +1904,9 @@
     "secondary": "#003278",
     "trim": "#C0111F",
     "eraStyle": "modern",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    }
   ],
   "TOR": [
@@ -1681,7 +1921,9 @@
     "secondary": "#134A8E",
     "trim": "#E8291C",
     "eraStyle": "pullover",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    },
    {
     "key": "TOR_1997",
@@ -1694,7 +1936,9 @@
     "secondary": "#134A8E",
     "trim": "#001742",
     "eraStyle": "buttoned",
-    "confidence": "medium"
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
    },
    {
     "key": "TOR_2004",
@@ -1707,7 +1951,9 @@
     "secondary": "#1D2D5C",
     "trim": "#000000",
     "eraStyle": "modern",
-    "confidence": "medium"
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
    },
    {
     "key": "TOR_2012",
@@ -1720,7 +1966,9 @@
     "secondary": "#134A8E",
     "trim": "#1D2D5C",
     "eraStyle": "modern",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    }
   ],
   "WSH": [
@@ -1736,7 +1984,9 @@
     "secondary": "#003087",
     "trim": "#E4002B",
     "eraStyle": "pullover",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    },
    {
     "key": "WSH_1992",
@@ -1751,7 +2001,9 @@
     "trim": "#E4002B",
     "eraStyle": "buttoned",
     "pattern": "pinstripe",
-    "confidence": "medium"
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
    },
    {
     "key": "WSH_2005",
@@ -1764,7 +2016,9 @@
     "secondary": "#AB0003",
     "trim": "#14225A",
     "eraStyle": "modern",
-    "confidence": "high"
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
    }
   ],
   "CLB": [
@@ -1780,7 +2034,9 @@
     "secondary": "#1B2A4A",
     "trim": "#B22222",
     "eraStyle": "flannel",
-    "confidence": "low"
+    "confidence": "low",
+    "status": "unverified",
+    "source_note": ""
    }
   ],
   "NWE": [
@@ -1796,7 +2052,9 @@
     "secondary": "#14213D",
     "trim": "#C1121F",
     "eraStyle": "flannel",
-    "confidence": "low"
+    "confidence": "low",
+    "status": "unverified",
+    "source_note": ""
    }
   ],
   "IND": [
@@ -1812,7 +2070,9 @@
     "secondary": "#22304A",
     "trim": "#8B0000",
     "eraStyle": "flannel",
-    "confidence": "low"
+    "confidence": "low",
+    "status": "unverified",
+    "source_note": ""
    }
   ]
  }

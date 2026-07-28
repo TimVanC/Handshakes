@@ -25,6 +25,65 @@ const MLB_SAMPLES = [
   { name: "powder blue", primary: "#7CB8E6", secondary: "#134A8E", trim: "#FFFFFF", pinstripe: false },
 ];
 
+/* ---- Session 5: colorway review queue -------------------------------
+   Every era from the three colorways DBs rendered with its real colors,
+   unverified-first. Notes persist to localStorage under jr:note:<key> so
+   the owner can work through the backlog across visits; the coverage
+   report (scripts/coverage-report.mjs) orders the same eras by scheduling
+   urgency. Marking `verified` stays a JSON edit — deliberately not a
+   button, so verification always lands in git. Dev/preview only, like
+   the rest of this sheet. */
+import nbaCw from "../data/colorways.json";
+import nflCw from "../data/nfl/colorways.json";
+import mlbCw from "../data/mlb/colorways.json";
+
+function ReviewQueue() {
+  const all: Array<{ sport: string; fr: string; era: any }> = [];
+  for (const [sport, db] of [["nba", nbaCw], ["nfl", nflCw], ["mlb", mlbCw]] as const) {
+    for (const [fr, eras] of Object.entries((db as any).franchises)) {
+      for (const era of eras as any[]) all.push({ sport, fr, era });
+    }
+  }
+  const rank = (s?: string) => (s === "unverified" ? 0 : s === "probable" ? 1 : 2);
+  all.sort((a, b) => rank(a.era.status) - rank(b.era.status));
+  const unverified = all.filter((x) => rank(x.era.status) === 0).length;
+  return (
+    <div className="mt-6">
+      <h2 className="font-display text-lg">
+        Colorway review queue — {unverified} unverified of {all.length}
+      </h2>
+      <p className="max-w-2xl text-xs">
+        Verify against GUD (NFL) / Dressed to the Nines (MLB) / Uni Watch (NBA), then set
+        status/verified_by/verified_on/source_note in the sport&apos;s colorways.json. Notes
+        below are scratch (localStorage only).
+      </p>
+      <div className="mt-2 grid grid-cols-2 gap-3 md:grid-cols-4 lg:grid-cols-6">
+        {all.map(({ sport, fr, era }) => {
+          const noteKey = `jr:note:${sport}:${era.key}`;
+          const common = { primary: era.primary, secondary: era.secondary, trim: era.trim, number: 21, size: 90, label: era.tricode || fr };
+          return (
+            <div key={sport + era.key} className={"rounded border p-2 text-center " + (era.status === "verified" ? "border-green-600" : era.status === "probable" ? "border-yellow-500" : "border-red-500")}>
+              {sport === "nba" && <JerseyRenderer {...common} eraStyle={era.eraStyle as EraStyle} />}
+              {sport === "nfl" && <FootballJerseyRenderer {...common} eraStyle={era.eraStyle as FootballEraStyle} />}
+              {sport === "mlb" && <BaseballBackJerseyRenderer {...common} eraStyle={era.eraStyle as BaseballEraStyle} pinstripe={era.pattern === "pinstripe"} />}
+              <p className="text-[0.6rem] font-bold">{era.key}</p>
+              <p className="text-[0.55rem]">{era.identity} · {era.years[0]}–{era.years[1]}</p>
+              <p className="text-[0.55rem]">{era.status || "unverified"}{era.source_note ? ` · ${era.source_note}` : ""}</p>
+              <textarea
+                className="mt-1 w-full border text-[0.6rem]"
+                rows={1}
+                placeholder="notes"
+                defaultValue={typeof localStorage !== "undefined" ? localStorage.getItem(noteKey) || "" : ""}
+                onChange={(e) => localStorage.setItem(noteKey, e.target.value)}
+              />
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 export default function JerseyGallery() {
   const nbaEras: EraStyle[] = ["classic", "nineties", "baggy", "modern"];
   const nflEras: FootballEraStyle[] = ["classic", "stripes", "nineties", "modern"];
@@ -33,6 +92,7 @@ export default function JerseyGallery() {
   return (
     <div className="min-h-dvh p-6">
       <h1 className="font-display text-2xl">Jersey QA sheet</h1>
+      <ReviewQueue />
 
       {/* every accolade, at the size it actually renders on a card (14px)
           plus a blown-up copy for checking the drawing */}
