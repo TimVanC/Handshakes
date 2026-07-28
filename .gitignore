@@ -7,3 +7,4 @@ dist/
 scripts/.render.mjs
 pipeline/.cache/
 pipeline/out/
+.env
