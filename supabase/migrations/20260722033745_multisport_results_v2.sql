@@ -1,16 +1,33 @@
 -- Reconstructed from supabase_migrations.schema_migrations on 2026-07-27.
--- Verbatim below this header. See supabase/migrations/README.md.
 --
+-- ⚠ **NOT A FAITHFUL TRANSCRIPTION.** One statement in this file has been
+-- DEFUSED (commented out) — see the block near the bottom. This file is a
+-- safe-to-replay reconstruction, NOT a record of what ran.
+--
+-- For what actually ran, read `supabase_migrations.schema_migrations`
+-- version 20260722033745. **The ledger is the source of truth.**
+--
+-- See supabase/migrations/README.md.
 -- ============================================================
--- ⚠  NOT IDEMPOTENT — DO NOT RE-RUN.
+-- WHAT WAS DEFUSED AND WHY
 --
--- Ends with an unguarded `insert into public.plays_v2 ... from
--- public.plays` (no `on conflict`, no `where`). Re-running duplicates the
--- entire anonymous play pool and corrupts every NBA percentile, with no
--- natural key on plays_v2 to detect or undo it.
+-- This migration originally contained an UNGUARDED
+-- `insert into public.plays_v2 ... from public.plays` — no `on conflict`,
+-- no `where`. Executing it again duplicates the entire anonymous play
+-- pool and corrupts every NBA percentile, and `plays_v2` has no natural
+-- key to detect or undo the duplication with.
 --
--- A hand-maintained copy of this migration in supabase/multisport-migration.sql
--- was missing that insert entirely and claimed the migration was idempotent.
+-- Its comment reads "carry the existing NBA history over", which sounds
+-- like a one-time idempotent backfill. It is not guarded in any way.
+--
+-- A hand-maintained copy of this migration in
+-- supabase/multisport-migration.sql was missing that insert entirely and
+-- claimed the migration was idempotent. It is not.
+--
+-- A README warning does not survive an agent replaying this directory
+-- programmatically, which is the exact scenario the directory exists
+-- for. So the statement is disabled here rather than merely flagged.
+--
 -- See docs/2026-07-26-cloud-merge-reconciliation.md §2.
 -- ============================================================
 
@@ -77,9 +94,25 @@ select user_id, 'nba', day, won, revealed, score, is_archive, played_at
 from public.results
 on conflict (user_id, sport, day) do nothing;
 
-insert into public.plays_v2 (sport, day, won, revealed, score, hard, is_archive, created_at)
-select 'nba', day, won, revealed, score, hard, is_archive, created_at
-from public.plays;
+-- ============================================================
+-- ⚠ DEFUSED 2026-07-27 — DISABLED, DO NOT RE-ENABLE
+--
+-- The original statement at this position, verbatim:
+--
+--     insert into public.plays_v2 (sport, day, won, revealed, score, hard, is_archive, created_at)
+--     select 'nba', day, won, revealed, score, hard, is_archive, created_at
+--     from public.plays;
+--
+-- Left commented out because it has no `on conflict` guard and no
+-- `where`. It ran exactly once, on 2026-07-22, copying 41 rows. Running
+-- it a second time against a database that still holds those rows
+-- duplicates the whole pool, and nothing in plays_v2's schema can detect
+-- or reverse it afterwards.
+--
+-- Against an EMPTY database this is a no-op (there is nothing in
+-- public.plays to copy). Against the live database it is destructive.
+-- There is no case where re-enabling it is correct.
+-- ============================================================
 
 -- sport-aware percentile RPC (the original stays for the live client)
 create or replace function public.day_score_stats_v2(

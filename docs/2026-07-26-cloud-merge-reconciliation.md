@@ -359,12 +359,22 @@ This matters most for agent-applied migrations. SQL authored inline in an
 assistant session and applied straight to production leaves no artifact
 anywhere but the ledger, and nobody reads the ledger by habit.
 
-## 8. Two traps found in the recovered migrations
+## 8. Two traps found in the recovered migrations — both defused
 
 Both are the same shape of bug, and it is worth naming the shape: **a
 destructive or duplicating statement whose neighbouring comment describes
 something narrower and safer than the SQL actually does.** Both were harmless
 when applied and dangerous afterwards.
+
+**Both statements have been commented out** in `supabase/migrations/`, with the
+originals preserved verbatim in comment blocks above them. A README warning
+does not survive an agent replaying the directory programmatically, which is
+the scenario the directory exists for — so they are disabled, not just flagged.
+
+That makes those two files **deliberately unfaithful transcriptions**. The
+ledger remains the source of truth for what ran; the directory is a
+safe-to-replay reconstruction. Both facts are stated at the top of each
+modified file and in the README.
 
 ### `20260716172505_score_scale_1000` ends with `delete from public.plays;`
 
