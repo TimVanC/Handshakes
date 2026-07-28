@@ -1,43 +1,46 @@
 -- ============================================================
--- ⚠  THIS MIGRATION IS **NOT** IDEMPOTENT. DO NOT RE-RUN IT.  ⚠
+-- SUPERSEDED — KEPT ONLY AS A RECORD OF DRIFT. DO NOT RUN.
 --
--- The `insert into public.plays_v2 ... from public.plays` near the
--- bottom has NO `on conflict` clause and NO guard. Running this file a
--- second time copies the entire `plays` table into `plays_v2` AGAIN,
--- silently doubling the anonymous play pool and corrupting every NBA
--- percentile that `day_score_stats_v2` serves. There is no natural key
--- on `plays_v2` to detect or undo it with.
+-- This is the previous contents of multisport-migration.sql, verbatim
+-- below the banner, as of commit dc420ca (2026-07-21). It was NEVER an
+-- accurate record of what ran against production:
 --
--- An earlier version of this file carried a header claiming the
--- migration was idempotent and safe to re-run. That claim was FALSE and
--- has been removed. If you are holding a copy that still says it, throw
--- that copy away.
+--   * it is MISSING the `insert into public.plays_v2 ... from
+--     public.plays` statement that the applied migration contains, and
+--   * its header claims the migration is idempotent and safe to
+--     re-run. The applied migration is NOT idempotent.
 --
--- ------------------------------------------------------------
--- PROVENANCE — reconciled 2026-07-26
---
--- Below this header is the EXACT text of migration `20260722033745`
--- (`multisport_results_v2`) as recorded in
--- `supabase_migrations.schema_migrations`, i.e. what actually ran
--- against production. Nothing has been edited, reordered or omitted.
---
--- It is NOT what this file used to contain. The previous version was
--- missing the `plays` → `plays_v2` insert entirely, and was never at any
--- point in its git history an accurate record of what was applied. The
--- superseded text is kept verbatim alongside as
--- `multisport-migration.pre-reconciliation.sql` so the drift stays
--- visible and diffable.
---
--- Already applied. Recorded here for the repo's history.
+-- The applied text now lives in multisport-migration.sql.
 -- See docs/2026-07-26-cloud-merge-reconciliation.md §2.
---
--- Everything below this line is the applied migration, verbatim.
 -- ============================================================
 
--- Multi-sport results/plays as NEW tables so the currently-live NBA client
--- (which upserts results on_conflict user_id,day) keeps working untouched.
--- The multi-sport client reads/writes these; at merge time the originals
--- can be topped up and retired.
+-- ============================================================
+-- MULTI-SPORT MIGRATION  —  ALREADY APPLIED (2026-07-22)
+--
+-- Recorded here for the repo's history. It is idempotent, so re-running
+-- it is safe.
+--
+-- WHY NEW TABLES INSTEAD OF ALTERING `results`:
+-- the multi-sport client needs one row per (user, sport, day), which means
+-- the primary key has to become (user_id, sport, day). The NBA-only client
+-- that is live on main upserts with on_conflict=user_id,day — the moment
+-- that unique constraint disappears, every result it writes fails. Adding
+-- parallel tables lets both clients run at once: main keeps using
+-- results/plays, this branch uses results_v2/plays_v2, and nothing breaks
+-- while the branch sits in preview.
+--
+-- ON MERGE DAY, after main is serving the multi-sport build, top up any
+-- NBA rows the old client wrote in the meantime:
+--
+--   insert into public.results_v2
+--     (user_id, sport, day, won, revealed, score, is_archive, played_at)
+--   select user_id, 'nba', day, won, revealed, score, is_archive, played_at
+--   from public.results
+--   on conflict (user_id, sport, day) do nothing;
+--
+-- `results`, `plays` and day_score_stats(integer,integer) can be dropped
+-- once that top-up is done and no old clients remain.
+-- ============================================================
 
 create table if not exists public.results_v2 (
   user_id uuid not null references auth.users(id) on delete cascade,
@@ -69,7 +72,7 @@ create index if not exists plays_v2_sport_day_idx
 alter table public.results_v2 enable row level security;
 alter table public.plays_v2 enable row level security;
 
--- mirror the policies the originals use
+-- same rules the originals use
 drop policy if exists "own results_v2 read" on public.results_v2;
 create policy "own results_v2 read" on public.results_v2
   for select to authenticated using ((select auth.uid()) = user_id);
@@ -96,10 +99,6 @@ insert into public.results_v2 (user_id, sport, day, won, revealed, score, is_arc
 select user_id, 'nba', day, won, revealed, score, is_archive, played_at
 from public.results
 on conflict (user_id, sport, day) do nothing;
-
-insert into public.plays_v2 (sport, day, won, revealed, score, hard, is_archive, created_at)
-select 'nba', day, won, revealed, score, hard, is_archive, created_at
-from public.plays;
 
 -- sport-aware percentile RPC (the original stays for the live client)
 create or replace function public.day_score_stats_v2(
