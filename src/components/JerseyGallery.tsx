@@ -36,6 +36,8 @@ const MLB_SAMPLES = [
 import nbaCw from "../data/colorways.json";
 import nflCw from "../data/nfl/colorways.json";
 import mlbCw from "../data/mlb/colorways.json";
+import { eraTricode } from "../sports/nba";
+import type { ColorwayEra } from "../game/colorways";
 
 function ReviewQueue() {
   const all: Array<{ sport: string; fr: string; era: any }> = [];
@@ -60,7 +62,10 @@ function ReviewQueue() {
       <div className="mt-2 grid grid-cols-2 gap-3 md:grid-cols-4 lg:grid-cols-6">
         {all.map(({ sport, fr, era }) => {
           const noteKey = `jr:note:${sport}:${era.key}`;
-          const common = { primary: era.primary, secondary: era.secondary, trim: era.trim, number: 21, size: 90, label: era.tricode || fr };
+          // label mirrors the GAME's stamping (eraTricode maps "New Jersey
+          // Nets" eras to NJ, Vancouver to VAN…) so review judges what ships
+          const label = sport === "nba" ? eraTricode(era as ColorwayEra, fr) : era.tricode || fr;
+          const common = { primary: era.primary, secondary: era.secondary, trim: era.trim, number: 21, size: 90, label };
           return (
             <div key={sport + era.key} className={"rounded border p-2 text-center " + (era.status === "verified" ? "border-green-600" : era.status === "probable" ? "border-yellow-500" : "border-red-500")}>
               {sport === "nba" && <JerseyRenderer {...common} eraStyle={era.eraStyle as EraStyle} />}
