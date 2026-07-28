@@ -23,6 +23,14 @@ export interface ColorwayEra {
   /** MLB: pinstriped body */
   pattern?: "pinstripe";
   confidence: "high" | "medium" | "low";
+  /** Verification workflow (Session 5). `verified` is set ONLY by the owner
+   *  from the review queue — never programmatically. Scheduling (Session 6)
+   *  hard-gates on it. Default is `unverified`; `probable` was seeded from
+   *  confidence:"high" entries, which is an opinion, not a verification. */
+  status?: "verified" | "probable" | "unverified";
+  verified_by?: string;
+  verified_on?: string;
+  source_note?: string;
 }
 
 export type ColorwayDB = { franchises: Record<string, ColorwayEra[]> };

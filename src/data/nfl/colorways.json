@@ -1,175 +1,1506 @@
 {
-  "_meta": {
-    "description": "NFL franchise colorways by era, post-1970 merger. For rendering generic era-accurate jerseys (no logos, no wordmarks). Years are SEASON years (1995 = the 1995 season). Generated from general knowledge — every entry has a confidence flag. VERIFY all 'low' entries against teamcolorcodes.com and Gridiron Uniform Database before launch; transition years may be off by a season.",
-    "fields": {
-      "key": "unique id: TRICODE_startyear",
-      "primary": "home jersey body color",
-      "secondary": "number/stripe color",
-      "trim": "accent/outline color",
-      "eraStyle": "renderer treatment: classic (pre-'78 chunky sleeve stripes), stripes ('78-'95 two-tone), nineties ('96-'11 piping), modern ('12+ color-blocked yoke)",
-      "tricode": "era-correct city code when it differs from the modern key (OAK Raiders, SD Chargers, STL Rams...)",
-      "confidence": "high | medium | low"
-    },
-    "relocations": "Franchises keyed by MODERN tricode. Historical identities (Oilers, St. Louis Cardinals/Rams, San Diego Chargers, Baltimore Colts, Oakland/LA Raiders...) are era entries under the modern key with identity + tricode."
+ "_meta": {
+  "description": "NFL franchise colorways by era, post-1970 merger. For rendering generic era-accurate jerseys (no logos, no wordmarks). Years are SEASON years (1995 = the 1995 season). Generated from general knowledge — every entry has a confidence flag. VERIFY all 'low' entries against teamcolorcodes.com and Gridiron Uniform Database before launch; transition years may be off by a season.",
+  "fields": {
+   "key": "unique id: TRICODE_startyear",
+   "primary": "home jersey body color",
+   "secondary": "number/stripe color",
+   "trim": "accent/outline color",
+   "eraStyle": "renderer treatment: classic (pre-'78 chunky sleeve stripes), stripes ('78-'95 two-tone), nineties ('96-'11 piping), modern ('12+ color-blocked yoke)",
+   "tricode": "era-correct city code when it differs from the modern key (OAK Raiders, SD Chargers, STL Rams...)",
+   "confidence": "high | medium | low"
   },
-  "franchises": {
-    "ARI": [
-      { "key": "ARI_1970", "years": [1970, 1987], "identity": "St. Louis Cardinals (NFL)", "tricode": "STL", "primary": "#97233F", "secondary": "#FFFFFF", "trim": "#000000", "eraStyle": "classic", "confidence": "medium" },
-      { "key": "ARI_1988", "years": [1988, 1993], "identity": "Phoenix Cardinals", "tricode": "PHX", "primary": "#97233F", "secondary": "#FFFFFF", "trim": "#000000", "eraStyle": "stripes", "confidence": "medium" },
-      { "key": "ARI_1994", "years": [1994, 2004], "identity": "Arizona Cardinals", "primary": "#97233F", "secondary": "#FFFFFF", "trim": "#000000", "eraStyle": "nineties", "confidence": "medium" },
-      { "key": "ARI_2005", "years": [2005, 2099], "identity": "Arizona Cardinals", "primary": "#97233F", "secondary": "#FFFFFF", "trim": "#000000", "eraStyle": "modern", "confidence": "high" }
+  "relocations": "Franchises keyed by MODERN tricode. Historical identities (Oilers, St. Louis Cardinals/Rams, San Diego Chargers, Baltimore Colts, Oakland/LA Raiders...) are era entries under the modern key with identity + tricode."
+ },
+ "franchises": {
+  "ARI": [
+   {
+    "key": "ARI_1970",
+    "years": [
+     1970,
+     1987
     ],
-    "ATL": [
-      { "key": "ATL_1970", "years": [1970, 1989], "identity": "Atlanta Falcons", "primary": "#A71930", "secondary": "#FFFFFF", "trim": "#000000", "eraStyle": "classic", "confidence": "medium" },
-      { "key": "ATL_1990", "years": [1990, 2002], "identity": "Atlanta Falcons", "primary": "#000000", "secondary": "#FFFFFF", "trim": "#A71930", "eraStyle": "stripes", "confidence": "medium" },
-      { "key": "ATL_2003", "years": [2003, 2019], "identity": "Atlanta Falcons", "primary": "#A71930", "secondary": "#FFFFFF", "trim": "#000000", "eraStyle": "nineties", "confidence": "high" },
-      { "key": "ATL_2020", "years": [2020, 2099], "identity": "Atlanta Falcons", "primary": "#000000", "secondary": "#FFFFFF", "trim": "#A71930", "eraStyle": "modern", "confidence": "high" }
+    "identity": "St. Louis Cardinals (NFL)",
+    "tricode": "STL",
+    "primary": "#97233F",
+    "secondary": "#FFFFFF",
+    "trim": "#000000",
+    "eraStyle": "classic",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "ARI_1988",
+    "years": [
+     1988,
+     1993
     ],
-    "BAL": [
-      { "key": "BAL_1996", "years": [1996, 2099], "identity": "Baltimore Ravens", "primary": "#241773", "secondary": "#FFFFFF", "trim": "#9E7C0C", "eraStyle": "nineties", "confidence": "high" }
+    "identity": "Phoenix Cardinals",
+    "tricode": "PHX",
+    "primary": "#97233F",
+    "secondary": "#FFFFFF",
+    "trim": "#000000",
+    "eraStyle": "stripes",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "ARI_1994",
+    "years": [
+     1994,
+     2004
     ],
-    "BUF": [
-      { "key": "BUF_1970", "years": [1970, 1983], "identity": "Buffalo Bills", "primary": "#00338D", "secondary": "#FFFFFF", "trim": "#C60C30", "eraStyle": "classic", "confidence": "medium" },
-      { "key": "BUF_1984", "years": [1984, 2001], "identity": "Buffalo Bills", "primary": "#00338D", "secondary": "#FFFFFF", "trim": "#C60C30", "eraStyle": "stripes", "confidence": "high" },
-      { "key": "BUF_2002", "years": [2002, 2010], "identity": "Buffalo Bills (dark navy era)", "primary": "#0F2557", "secondary": "#C60C30", "trim": "#FFFFFF", "eraStyle": "nineties", "confidence": "medium" },
-      { "key": "BUF_2011", "years": [2011, 2099], "identity": "Buffalo Bills", "primary": "#00338D", "secondary": "#FFFFFF", "trim": "#C60C30", "eraStyle": "modern", "confidence": "high" }
+    "identity": "Arizona Cardinals",
+    "primary": "#97233F",
+    "secondary": "#FFFFFF",
+    "trim": "#000000",
+    "eraStyle": "nineties",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "ARI_2005",
+    "years": [
+     2005,
+     2099
     ],
-    "CAR": [
-      { "key": "CAR_1995", "years": [1995, 2011], "identity": "Carolina Panthers", "primary": "#000000", "secondary": "#0085CA", "trim": "#BFC0BF", "eraStyle": "nineties", "confidence": "high" },
-      { "key": "CAR_2012", "years": [2012, 2099], "identity": "Carolina Panthers", "primary": "#000000", "secondary": "#0085CA", "trim": "#BFC0BF", "eraStyle": "modern", "confidence": "high" }
+    "identity": "Arizona Cardinals",
+    "primary": "#97233F",
+    "secondary": "#FFFFFF",
+    "trim": "#000000",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   }
+  ],
+  "ATL": [
+   {
+    "key": "ATL_1970",
+    "years": [
+     1970,
+     1989
     ],
-    "CHI": [
-      { "key": "CHI_1970", "years": [1970, 1982], "identity": "Chicago Bears", "primary": "#0B162A", "secondary": "#FFFFFF", "trim": "#C83803", "eraStyle": "classic", "confidence": "high" },
-      { "key": "CHI_1983", "years": [1983, 2099], "identity": "Chicago Bears", "primary": "#0B162A", "secondary": "#FFFFFF", "trim": "#C83803", "eraStyle": "stripes", "confidence": "high" }
+    "identity": "Atlanta Falcons",
+    "primary": "#A71930",
+    "secondary": "#FFFFFF",
+    "trim": "#000000",
+    "eraStyle": "classic",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "ATL_1990",
+    "years": [
+     1990,
+     2002
     ],
-    "CIN": [
-      { "key": "CIN_1970", "years": [1970, 1980], "identity": "Cincinnati Bengals (pre-stripes)", "primary": "#000000", "secondary": "#FFFFFF", "trim": "#FB4F14", "eraStyle": "classic", "confidence": "medium" },
-      { "key": "CIN_1981", "years": [1981, 2003], "identity": "Cincinnati Bengals", "primary": "#000000", "secondary": "#FB4F14", "trim": "#FFFFFF", "eraStyle": "stripes", "confidence": "high" },
-      { "key": "CIN_2004", "years": [2004, 2020], "identity": "Cincinnati Bengals", "primary": "#000000", "secondary": "#FB4F14", "trim": "#FFFFFF", "eraStyle": "nineties", "confidence": "high" },
-      { "key": "CIN_2021", "years": [2021, 2099], "identity": "Cincinnati Bengals", "primary": "#000000", "secondary": "#FB4F14", "trim": "#FFFFFF", "eraStyle": "modern", "confidence": "high" }
+    "identity": "Atlanta Falcons",
+    "primary": "#000000",
+    "secondary": "#FFFFFF",
+    "trim": "#A71930",
+    "eraStyle": "stripes",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "ATL_2003",
+    "years": [
+     2003,
+     2019
     ],
-    "CLE": [
-      { "key": "CLE_1970", "years": [1970, 1995], "identity": "Cleveland Browns", "primary": "#311D00", "secondary": "#FFFFFF", "trim": "#FF3C00", "eraStyle": "classic", "confidence": "high" },
-      { "key": "CLE_1999", "years": [1999, 2014], "identity": "Cleveland Browns", "primary": "#311D00", "secondary": "#FFFFFF", "trim": "#FF3C00", "eraStyle": "nineties", "confidence": "high" },
-      { "key": "CLE_2015", "years": [2015, 2019], "identity": "Cleveland Browns (2015 rebrand)", "primary": "#311D00", "secondary": "#FF3C00", "trim": "#FFFFFF", "eraStyle": "modern", "confidence": "medium" },
-      { "key": "CLE_2020", "years": [2020, 2099], "identity": "Cleveland Browns", "primary": "#311D00", "secondary": "#FFFFFF", "trim": "#FF3C00", "eraStyle": "modern", "confidence": "high" }
+    "identity": "Atlanta Falcons",
+    "primary": "#A71930",
+    "secondary": "#FFFFFF",
+    "trim": "#000000",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "ATL_2020",
+    "years": [
+     2020,
+     2099
     ],
-    "DAL": [
-      { "key": "DAL_1970", "years": [1970, 1995], "identity": "Dallas Cowboys", "primary": "#003594", "secondary": "#FFFFFF", "trim": "#869397", "eraStyle": "classic", "confidence": "high" },
-      { "key": "DAL_1996", "years": [1996, 2099], "identity": "Dallas Cowboys", "primary": "#003594", "secondary": "#FFFFFF", "trim": "#869397", "eraStyle": "nineties", "confidence": "high" }
+    "identity": "Atlanta Falcons",
+    "primary": "#000000",
+    "secondary": "#FFFFFF",
+    "trim": "#A71930",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   }
+  ],
+  "BAL": [
+   {
+    "key": "BAL_1996",
+    "years": [
+     1996,
+     2099
     ],
-    "DEN": [
-      { "key": "DEN_1970", "years": [1970, 1996], "identity": "Denver Broncos (Orange Crush)", "primary": "#FB4F14", "secondary": "#FFFFFF", "trim": "#002244", "eraStyle": "stripes", "confidence": "high" },
-      { "key": "DEN_1997", "years": [1997, 2011], "identity": "Denver Broncos", "primary": "#0A2343", "secondary": "#FB4F14", "trim": "#FFFFFF", "eraStyle": "nineties", "confidence": "high" },
-      { "key": "DEN_2012", "years": [2012, 2099], "identity": "Denver Broncos", "primary": "#FB4F14", "secondary": "#FFFFFF", "trim": "#0A2343", "eraStyle": "modern", "confidence": "high" }
+    "identity": "Baltimore Ravens",
+    "primary": "#241773",
+    "secondary": "#FFFFFF",
+    "trim": "#9E7C0C",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   }
+  ],
+  "BUF": [
+   {
+    "key": "BUF_1970",
+    "years": [
+     1970,
+     1983
     ],
-    "DET": [
-      { "key": "DET_1970", "years": [1970, 1997], "identity": "Detroit Lions", "primary": "#0076B6", "secondary": "#FFFFFF", "trim": "#B0B7BC", "eraStyle": "classic", "confidence": "high" },
-      { "key": "DET_1998", "years": [1998, 2016], "identity": "Detroit Lions", "primary": "#0076B6", "secondary": "#FFFFFF", "trim": "#000000", "eraStyle": "nineties", "confidence": "medium" },
-      { "key": "DET_2017", "years": [2017, 2099], "identity": "Detroit Lions", "primary": "#0076B6", "secondary": "#FFFFFF", "trim": "#B0B7BC", "eraStyle": "modern", "confidence": "high" }
+    "identity": "Buffalo Bills",
+    "primary": "#00338D",
+    "secondary": "#FFFFFF",
+    "trim": "#C60C30",
+    "eraStyle": "classic",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "BUF_1984",
+    "years": [
+     1984,
+     2001
     ],
-    "GB": [
-      { "key": "GB_1970", "years": [1970, 1996], "identity": "Green Bay Packers", "primary": "#203731", "secondary": "#FFB612", "trim": "#FFFFFF", "eraStyle": "classic", "confidence": "high" },
-      { "key": "GB_1997", "years": [1997, 2099], "identity": "Green Bay Packers", "primary": "#203731", "secondary": "#FFB612", "trim": "#FFFFFF", "eraStyle": "stripes", "confidence": "high" }
+    "identity": "Buffalo Bills",
+    "primary": "#00338D",
+    "secondary": "#FFFFFF",
+    "trim": "#C60C30",
+    "eraStyle": "stripes",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "BUF_2002",
+    "years": [
+     2002,
+     2010
     ],
-    "HOU": [
-      { "key": "HOU_2002", "years": [2002, 2099], "identity": "Houston Texans", "primary": "#03202F", "secondary": "#FFFFFF", "trim": "#A71930", "eraStyle": "modern", "confidence": "high" }
+    "identity": "Buffalo Bills (dark navy era)",
+    "primary": "#0F2557",
+    "secondary": "#C60C30",
+    "trim": "#FFFFFF",
+    "eraStyle": "nineties",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "BUF_2011",
+    "years": [
+     2011,
+     2099
     ],
-    "IND": [
-      { "key": "IND_1970", "years": [1970, 1983], "identity": "Baltimore Colts", "tricode": "BAL", "primary": "#002C5F", "secondary": "#FFFFFF", "trim": "#A2AAAD", "eraStyle": "classic", "confidence": "high" },
-      { "key": "IND_1984", "years": [1984, 2099], "identity": "Indianapolis Colts", "primary": "#002C5F", "secondary": "#FFFFFF", "trim": "#A2AAAD", "eraStyle": "stripes", "confidence": "high" }
+    "identity": "Buffalo Bills",
+    "primary": "#00338D",
+    "secondary": "#FFFFFF",
+    "trim": "#C60C30",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   }
+  ],
+  "CAR": [
+   {
+    "key": "CAR_1995",
+    "years": [
+     1995,
+     2011
     ],
-    "JAX": [
-      { "key": "JAX_1995", "years": [1995, 2012], "identity": "Jacksonville Jaguars", "primary": "#006778", "secondary": "#FFFFFF", "trim": "#D7A22A", "eraStyle": "nineties", "confidence": "high" },
-      { "key": "JAX_2013", "years": [2013, 2017], "identity": "Jacksonville Jaguars (two-tone era)", "primary": "#000000", "secondary": "#FFFFFF", "trim": "#D7A22A", "eraStyle": "modern", "confidence": "medium" },
-      { "key": "JAX_2018", "years": [2018, 2099], "identity": "Jacksonville Jaguars", "primary": "#006778", "secondary": "#FFFFFF", "trim": "#000000", "eraStyle": "modern", "confidence": "high" }
+    "identity": "Carolina Panthers",
+    "primary": "#000000",
+    "secondary": "#0085CA",
+    "trim": "#BFC0BF",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "CAR_2012",
+    "years": [
+     2012,
+     2099
     ],
-    "KC": [
-      { "key": "KC_1970", "years": [1970, 2099], "identity": "Kansas City Chiefs", "primary": "#E31837", "secondary": "#FFFFFF", "trim": "#FFB81C", "eraStyle": "classic", "confidence": "high" }
+    "identity": "Carolina Panthers",
+    "primary": "#000000",
+    "secondary": "#0085CA",
+    "trim": "#BFC0BF",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   }
+  ],
+  "CHI": [
+   {
+    "key": "CHI_1970",
+    "years": [
+     1970,
+     1982
     ],
-    "LAC": [
-      { "key": "LAC_1970", "years": [1970, 1973], "identity": "San Diego Chargers (powder blue)", "tricode": "SD", "primary": "#7CB8E6", "secondary": "#FFB81C", "trim": "#FFFFFF", "eraStyle": "classic", "confidence": "medium" },
-      { "key": "LAC_1974", "years": [1974, 1987], "identity": "San Diego Chargers", "tricode": "SD", "primary": "#00338D", "secondary": "#FFB81C", "trim": "#FFFFFF", "eraStyle": "stripes", "confidence": "low" },
-      { "key": "LAC_1988", "years": [1988, 2006], "identity": "San Diego Chargers", "tricode": "SD", "primary": "#0A2342", "secondary": "#FFB81C", "trim": "#FFFFFF", "eraStyle": "nineties", "confidence": "medium" },
-      { "key": "LAC_2007", "years": [2007, 2016], "identity": "San Diego Chargers", "tricode": "SD", "primary": "#0A2342", "secondary": "#FFB81C", "trim": "#7CB8E6", "eraStyle": "nineties", "confidence": "medium" },
-      { "key": "LAC_2017", "years": [2017, 2019], "identity": "Los Angeles Chargers", "primary": "#0A2342", "secondary": "#FFB81C", "trim": "#7CB8E6", "eraStyle": "modern", "confidence": "high" },
-      { "key": "LAC_2020", "years": [2020, 2099], "identity": "Los Angeles Chargers", "primary": "#0080C6", "secondary": "#FFC20E", "trim": "#FFFFFF", "eraStyle": "modern", "confidence": "high" }
+    "identity": "Chicago Bears",
+    "primary": "#0B162A",
+    "secondary": "#FFFFFF",
+    "trim": "#C83803",
+    "eraStyle": "classic",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "CHI_1983",
+    "years": [
+     1983,
+     2099
     ],
-    "LAR": [
-      { "key": "LAR_1970", "years": [1970, 1994], "identity": "Los Angeles Rams", "tricode": "LA", "primary": "#003594", "secondary": "#FFD100", "trim": "#FFFFFF", "eraStyle": "classic", "confidence": "high" },
-      { "key": "LAR_1995", "years": [1995, 1999], "identity": "St. Louis Rams", "tricode": "STL", "primary": "#003594", "secondary": "#FFD100", "trim": "#FFFFFF", "eraStyle": "nineties", "confidence": "medium" },
-      { "key": "LAR_2000", "years": [2000, 2015], "identity": "St. Louis Rams (millennium blue & gold)", "tricode": "STL", "primary": "#002244", "secondary": "#B3995D", "trim": "#FFFFFF", "eraStyle": "nineties", "confidence": "high" },
-      { "key": "LAR_2016", "years": [2016, 2019], "identity": "Los Angeles Rams", "primary": "#002244", "secondary": "#FFFFFF", "trim": "#B3995D", "eraStyle": "modern", "confidence": "medium" },
-      { "key": "LAR_2020", "years": [2020, 2099], "identity": "Los Angeles Rams", "primary": "#003594", "secondary": "#FFD100", "trim": "#FFFFFF", "eraStyle": "modern", "confidence": "high" }
+    "identity": "Chicago Bears",
+    "primary": "#0B162A",
+    "secondary": "#FFFFFF",
+    "trim": "#C83803",
+    "eraStyle": "stripes",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   }
+  ],
+  "CIN": [
+   {
+    "key": "CIN_1970",
+    "years": [
+     1970,
+     1980
     ],
-    "LV": [
-      { "key": "LV_1970", "years": [1970, 1981], "identity": "Oakland Raiders", "tricode": "OAK", "primary": "#000000", "secondary": "#A5ACAF", "trim": "#FFFFFF", "eraStyle": "classic", "confidence": "high" },
-      { "key": "LV_1982", "years": [1982, 1994], "identity": "Los Angeles Raiders", "tricode": "LA", "primary": "#000000", "secondary": "#A5ACAF", "trim": "#FFFFFF", "eraStyle": "stripes", "confidence": "high" },
-      { "key": "LV_1995", "years": [1995, 2019], "identity": "Oakland Raiders", "tricode": "OAK", "primary": "#000000", "secondary": "#A5ACAF", "trim": "#FFFFFF", "eraStyle": "nineties", "confidence": "high" },
-      { "key": "LV_2020", "years": [2020, 2099], "identity": "Las Vegas Raiders", "primary": "#000000", "secondary": "#A5ACAF", "trim": "#FFFFFF", "eraStyle": "modern", "confidence": "high" }
+    "identity": "Cincinnati Bengals (pre-stripes)",
+    "primary": "#000000",
+    "secondary": "#FFFFFF",
+    "trim": "#FB4F14",
+    "eraStyle": "classic",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "CIN_1981",
+    "years": [
+     1981,
+     2003
     ],
-    "MIA": [
-      { "key": "MIA_1970", "years": [1970, 2012], "identity": "Miami Dolphins", "primary": "#008E97", "secondary": "#FFFFFF", "trim": "#FC4C02", "eraStyle": "classic", "confidence": "high" },
-      { "key": "MIA_2013", "years": [2013, 2099], "identity": "Miami Dolphins", "primary": "#008E97", "secondary": "#FFFFFF", "trim": "#FC4C02", "eraStyle": "modern", "confidence": "high" }
+    "identity": "Cincinnati Bengals",
+    "primary": "#000000",
+    "secondary": "#FB4F14",
+    "trim": "#FFFFFF",
+    "eraStyle": "stripes",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "CIN_2004",
+    "years": [
+     2004,
+     2020
     ],
-    "MIN": [
-      { "key": "MIN_1970", "years": [1970, 1995], "identity": "Minnesota Vikings", "primary": "#4F2683", "secondary": "#FFFFFF", "trim": "#FFC62F", "eraStyle": "classic", "confidence": "high" },
-      { "key": "MIN_1996", "years": [1996, 2012], "identity": "Minnesota Vikings", "primary": "#4F2683", "secondary": "#FFFFFF", "trim": "#FFC62F", "eraStyle": "nineties", "confidence": "high" },
-      { "key": "MIN_2013", "years": [2013, 2099], "identity": "Minnesota Vikings", "primary": "#4F2683", "secondary": "#FFC62F", "trim": "#FFFFFF", "eraStyle": "modern", "confidence": "high" }
+    "identity": "Cincinnati Bengals",
+    "primary": "#000000",
+    "secondary": "#FB4F14",
+    "trim": "#FFFFFF",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "CIN_2021",
+    "years": [
+     2021,
+     2099
     ],
-    "NE": [
-      { "key": "NE_1970", "years": [1970, 1992], "identity": "New England Patriots (Pat Patriot)", "primary": "#C8102E", "secondary": "#FFFFFF", "trim": "#0A2342", "eraStyle": "classic", "confidence": "high" },
-      { "key": "NE_1993", "years": [1993, 1999], "identity": "New England Patriots (Bledsoe blue)", "primary": "#00529B", "secondary": "#FFFFFF", "trim": "#C8102E", "eraStyle": "stripes", "confidence": "medium" },
-      { "key": "NE_2000", "years": [2000, 2099], "identity": "New England Patriots", "primary": "#002244", "secondary": "#FFFFFF", "trim": "#C60C30", "eraStyle": "nineties", "confidence": "high" }
+    "identity": "Cincinnati Bengals",
+    "primary": "#000000",
+    "secondary": "#FB4F14",
+    "trim": "#FFFFFF",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   }
+  ],
+  "CLE": [
+   {
+    "key": "CLE_1970",
+    "years": [
+     1970,
+     1995
     ],
-    "NO": [
-      { "key": "NO_1970", "years": [1970, 1995], "identity": "New Orleans Saints", "primary": "#000000", "secondary": "#D3BC8D", "trim": "#FFFFFF", "eraStyle": "classic", "confidence": "high" },
-      { "key": "NO_1996", "years": [1996, 2099], "identity": "New Orleans Saints", "primary": "#000000", "secondary": "#D3BC8D", "trim": "#FFFFFF", "eraStyle": "nineties", "confidence": "high" }
+    "identity": "Cleveland Browns",
+    "primary": "#311D00",
+    "secondary": "#FFFFFF",
+    "trim": "#FF3C00",
+    "eraStyle": "classic",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "CLE_1999",
+    "years": [
+     1999,
+     2014
     ],
-    "NYG": [
-      { "key": "NYG_1970", "years": [1970, 1999], "identity": "New York Giants", "primary": "#0B2265", "secondary": "#FFFFFF", "trim": "#A71930", "eraStyle": "classic", "confidence": "high" },
-      { "key": "NYG_2000", "years": [2000, 2099], "identity": "New York Giants", "primary": "#0B2265", "secondary": "#FFFFFF", "trim": "#A71930", "eraStyle": "nineties", "confidence": "high" }
+    "identity": "Cleveland Browns",
+    "primary": "#311D00",
+    "secondary": "#FFFFFF",
+    "trim": "#FF3C00",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "CLE_2015",
+    "years": [
+     2015,
+     2019
     ],
-    "NYJ": [
-      { "key": "NYJ_1970", "years": [1970, 1977], "identity": "New York Jets", "primary": "#115740", "secondary": "#FFFFFF", "trim": "#FFFFFF", "eraStyle": "classic", "confidence": "medium" },
-      { "key": "NYJ_1978", "years": [1978, 1997], "identity": "New York Jets (Sack Exchange)", "primary": "#115740", "secondary": "#FFFFFF", "trim": "#000000", "eraStyle": "stripes", "confidence": "medium" },
-      { "key": "NYJ_1998", "years": [1998, 2018], "identity": "New York Jets (hunter green)", "primary": "#203731", "secondary": "#FFFFFF", "trim": "#000000", "eraStyle": "nineties", "confidence": "high" },
-      { "key": "NYJ_2019", "years": [2019, 2099], "identity": "New York Jets (Gotham green)", "primary": "#125740", "secondary": "#FFFFFF", "trim": "#000000", "eraStyle": "modern", "confidence": "high" }
+    "identity": "Cleveland Browns (2015 rebrand)",
+    "primary": "#311D00",
+    "secondary": "#FF3C00",
+    "trim": "#FFFFFF",
+    "eraStyle": "modern",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "CLE_2020",
+    "years": [
+     2020,
+     2099
     ],
-    "PHI": [
-      { "key": "PHI_1970", "years": [1970, 1995], "identity": "Philadelphia Eagles (kelly green)", "primary": "#008E5D", "secondary": "#FFFFFF", "trim": "#A2AAAD", "eraStyle": "classic", "confidence": "high" },
-      { "key": "PHI_1996", "years": [1996, 2099], "identity": "Philadelphia Eagles (midnight green)", "primary": "#004C54", "secondary": "#FFFFFF", "trim": "#A5ACAF", "eraStyle": "nineties", "confidence": "high" }
+    "identity": "Cleveland Browns",
+    "primary": "#311D00",
+    "secondary": "#FFFFFF",
+    "trim": "#FF3C00",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   }
+  ],
+  "DAL": [
+   {
+    "key": "DAL_1970",
+    "years": [
+     1970,
+     1995
     ],
-    "PIT": [
-      { "key": "PIT_1970", "years": [1970, 1996], "identity": "Pittsburgh Steelers", "primary": "#101820", "secondary": "#FFB612", "trim": "#FFFFFF", "eraStyle": "classic", "confidence": "high" },
-      { "key": "PIT_1997", "years": [1997, 2099], "identity": "Pittsburgh Steelers", "primary": "#101820", "secondary": "#FFB612", "trim": "#FFFFFF", "eraStyle": "nineties", "confidence": "high" }
+    "identity": "Dallas Cowboys",
+    "primary": "#003594",
+    "secondary": "#FFFFFF",
+    "trim": "#869397",
+    "eraStyle": "classic",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "DAL_1996",
+    "years": [
+     1996,
+     2099
     ],
-    "SEA": [
-      { "key": "SEA_1976", "years": [1976, 2001], "identity": "Seattle Seahawks", "primary": "#00338D", "secondary": "#FFFFFF", "trim": "#69BE28", "eraStyle": "stripes", "confidence": "medium" },
-      { "key": "SEA_2002", "years": [2002, 2011], "identity": "Seattle Seahawks", "primary": "#002244", "secondary": "#FFFFFF", "trim": "#69BE28", "eraStyle": "nineties", "confidence": "high" },
-      { "key": "SEA_2012", "years": [2012, 2099], "identity": "Seattle Seahawks", "primary": "#002244", "secondary": "#FFFFFF", "trim": "#69BE28", "eraStyle": "modern", "confidence": "high" }
+    "identity": "Dallas Cowboys",
+    "primary": "#003594",
+    "secondary": "#FFFFFF",
+    "trim": "#869397",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   }
+  ],
+  "DEN": [
+   {
+    "key": "DEN_1970",
+    "years": [
+     1970,
+     1996
     ],
-    "SF": [
-      { "key": "SF_1970", "years": [1970, 1995], "identity": "San Francisco 49ers", "primary": "#AA0000", "secondary": "#FFFFFF", "trim": "#B3995D", "eraStyle": "classic", "confidence": "high" },
-      { "key": "SF_1996", "years": [1996, 2008], "identity": "San Francisco 49ers (shadow numbers)", "primary": "#900028", "secondary": "#FFFFFF", "trim": "#B3995D", "eraStyle": "nineties", "confidence": "medium" },
-      { "key": "SF_2009", "years": [2009, 2099], "identity": "San Francisco 49ers", "primary": "#AA0000", "secondary": "#FFFFFF", "trim": "#B3995D", "eraStyle": "modern", "confidence": "high" }
+    "identity": "Denver Broncos (Orange Crush)",
+    "primary": "#FB4F14",
+    "secondary": "#FFFFFF",
+    "trim": "#002244",
+    "eraStyle": "stripes",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "DEN_1997",
+    "years": [
+     1997,
+     2011
     ],
-    "TB": [
-      { "key": "TB_1976", "years": [1976, 1996], "identity": "Tampa Bay Buccaneers (creamsicle)", "primary": "#FF7900", "secondary": "#FFFFFF", "trim": "#D50A0A", "eraStyle": "stripes", "confidence": "high" },
-      { "key": "TB_1997", "years": [1997, 2013], "identity": "Tampa Bay Buccaneers", "primary": "#D50A0A", "secondary": "#FFFFFF", "trim": "#34302B", "eraStyle": "nineties", "confidence": "high" },
-      { "key": "TB_2014", "years": [2014, 2019], "identity": "Tampa Bay Buccaneers (alarm-clock era)", "primary": "#D50A0A", "secondary": "#DEE6E7", "trim": "#34302B", "eraStyle": "modern", "confidence": "medium" },
-      { "key": "TB_2020", "years": [2020, 2099], "identity": "Tampa Bay Buccaneers", "primary": "#D50A0A", "secondary": "#FFFFFF", "trim": "#34302B", "eraStyle": "modern", "confidence": "high" }
+    "identity": "Denver Broncos",
+    "primary": "#0A2343",
+    "secondary": "#FB4F14",
+    "trim": "#FFFFFF",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "DEN_2012",
+    "years": [
+     2012,
+     2099
     ],
-    "TEN": [
-      { "key": "TEN_1970", "years": [1970, 1996], "identity": "Houston Oilers", "tricode": "HOU", "primary": "#4B92DB", "secondary": "#FFFFFF", "trim": "#C8102E", "eraStyle": "classic", "confidence": "high" },
-      { "key": "TEN_1997", "years": [1997, 1998], "identity": "Tennessee Oilers", "tricode": "TEN", "primary": "#4B92DB", "secondary": "#FFFFFF", "trim": "#C8102E", "eraStyle": "nineties", "confidence": "medium" },
-      { "key": "TEN_1999", "years": [1999, 2017], "identity": "Tennessee Titans", "primary": "#0C2340", "secondary": "#FFFFFF", "trim": "#4B92DB", "eraStyle": "nineties", "confidence": "high" },
-      { "key": "TEN_2018", "years": [2018, 2099], "identity": "Tennessee Titans", "primary": "#0C2340", "secondary": "#FFFFFF", "trim": "#4B92DB", "eraStyle": "modern", "confidence": "high" }
+    "identity": "Denver Broncos",
+    "primary": "#FB4F14",
+    "secondary": "#FFFFFF",
+    "trim": "#0A2343",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   }
+  ],
+  "DET": [
+   {
+    "key": "DET_1970",
+    "years": [
+     1970,
+     1997
     ],
-    "WAS": [
-      { "key": "WAS_1970", "years": [1970, 2019], "identity": "Washington Redskins", "primary": "#5A1414", "secondary": "#FFFFFF", "trim": "#FFB612", "eraStyle": "classic", "confidence": "high" },
-      { "key": "WAS_2020", "years": [2020, 2021], "identity": "Washington Football Team", "primary": "#5A1414", "secondary": "#FFB612", "trim": "#FFFFFF", "eraStyle": "modern", "confidence": "high" },
-      { "key": "WAS_2022", "years": [2022, 2099], "identity": "Washington Commanders", "primary": "#5A1414", "secondary": "#FFFFFF", "trim": "#FFB612", "eraStyle": "modern", "confidence": "high" }
-    ]
-  }
+    "identity": "Detroit Lions",
+    "primary": "#0076B6",
+    "secondary": "#FFFFFF",
+    "trim": "#B0B7BC",
+    "eraStyle": "classic",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "DET_1998",
+    "years": [
+     1998,
+     2016
+    ],
+    "identity": "Detroit Lions",
+    "primary": "#0076B6",
+    "secondary": "#FFFFFF",
+    "trim": "#000000",
+    "eraStyle": "nineties",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "DET_2017",
+    "years": [
+     2017,
+     2099
+    ],
+    "identity": "Detroit Lions",
+    "primary": "#0076B6",
+    "secondary": "#FFFFFF",
+    "trim": "#B0B7BC",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   }
+  ],
+  "GB": [
+   {
+    "key": "GB_1970",
+    "years": [
+     1970,
+     1996
+    ],
+    "identity": "Green Bay Packers",
+    "primary": "#203731",
+    "secondary": "#FFB612",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "GB_1997",
+    "years": [
+     1997,
+     2099
+    ],
+    "identity": "Green Bay Packers",
+    "primary": "#203731",
+    "secondary": "#FFB612",
+    "trim": "#FFFFFF",
+    "eraStyle": "stripes",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   }
+  ],
+  "HOU": [
+   {
+    "key": "HOU_2002",
+    "years": [
+     2002,
+     2099
+    ],
+    "identity": "Houston Texans",
+    "primary": "#03202F",
+    "secondary": "#FFFFFF",
+    "trim": "#A71930",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   }
+  ],
+  "IND": [
+   {
+    "key": "IND_1970",
+    "years": [
+     1970,
+     1983
+    ],
+    "identity": "Baltimore Colts",
+    "tricode": "BAL",
+    "primary": "#002C5F",
+    "secondary": "#FFFFFF",
+    "trim": "#A2AAAD",
+    "eraStyle": "classic",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "IND_1984",
+    "years": [
+     1984,
+     2099
+    ],
+    "identity": "Indianapolis Colts",
+    "primary": "#002C5F",
+    "secondary": "#FFFFFF",
+    "trim": "#A2AAAD",
+    "eraStyle": "stripes",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   }
+  ],
+  "JAX": [
+   {
+    "key": "JAX_1995",
+    "years": [
+     1995,
+     2012
+    ],
+    "identity": "Jacksonville Jaguars",
+    "primary": "#006778",
+    "secondary": "#FFFFFF",
+    "trim": "#D7A22A",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "JAX_2013",
+    "years": [
+     2013,
+     2017
+    ],
+    "identity": "Jacksonville Jaguars (two-tone era)",
+    "primary": "#000000",
+    "secondary": "#FFFFFF",
+    "trim": "#D7A22A",
+    "eraStyle": "modern",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "JAX_2018",
+    "years": [
+     2018,
+     2099
+    ],
+    "identity": "Jacksonville Jaguars",
+    "primary": "#006778",
+    "secondary": "#FFFFFF",
+    "trim": "#000000",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   }
+  ],
+  "KC": [
+   {
+    "key": "KC_1970",
+    "years": [
+     1970,
+     2099
+    ],
+    "identity": "Kansas City Chiefs",
+    "primary": "#E31837",
+    "secondary": "#FFFFFF",
+    "trim": "#FFB81C",
+    "eraStyle": "classic",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   }
+  ],
+  "LAC": [
+   {
+    "key": "LAC_1970",
+    "years": [
+     1970,
+     1973
+    ],
+    "identity": "San Diego Chargers (powder blue)",
+    "tricode": "SD",
+    "primary": "#7CB8E6",
+    "secondary": "#FFB81C",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "LAC_1974",
+    "years": [
+     1974,
+     1987
+    ],
+    "identity": "San Diego Chargers",
+    "tricode": "SD",
+    "primary": "#00338D",
+    "secondary": "#FFB81C",
+    "trim": "#FFFFFF",
+    "eraStyle": "stripes",
+    "confidence": "low",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "LAC_1988",
+    "years": [
+     1988,
+     2006
+    ],
+    "identity": "San Diego Chargers",
+    "tricode": "SD",
+    "primary": "#0A2342",
+    "secondary": "#FFB81C",
+    "trim": "#FFFFFF",
+    "eraStyle": "nineties",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "LAC_2007",
+    "years": [
+     2007,
+     2016
+    ],
+    "identity": "San Diego Chargers",
+    "tricode": "SD",
+    "primary": "#0A2342",
+    "secondary": "#FFB81C",
+    "trim": "#7CB8E6",
+    "eraStyle": "nineties",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "LAC_2017",
+    "years": [
+     2017,
+     2019
+    ],
+    "identity": "Los Angeles Chargers",
+    "primary": "#0A2342",
+    "secondary": "#FFB81C",
+    "trim": "#7CB8E6",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "LAC_2020",
+    "years": [
+     2020,
+     2099
+    ],
+    "identity": "Los Angeles Chargers",
+    "primary": "#0080C6",
+    "secondary": "#FFC20E",
+    "trim": "#FFFFFF",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   }
+  ],
+  "LAR": [
+   {
+    "key": "LAR_1970",
+    "years": [
+     1970,
+     1994
+    ],
+    "identity": "Los Angeles Rams",
+    "tricode": "LA",
+    "primary": "#003594",
+    "secondary": "#FFD100",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "LAR_1995",
+    "years": [
+     1995,
+     1999
+    ],
+    "identity": "St. Louis Rams",
+    "tricode": "STL",
+    "primary": "#003594",
+    "secondary": "#FFD100",
+    "trim": "#FFFFFF",
+    "eraStyle": "nineties",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "LAR_2000",
+    "years": [
+     2000,
+     2015
+    ],
+    "identity": "St. Louis Rams (millennium blue & gold)",
+    "tricode": "STL",
+    "primary": "#002244",
+    "secondary": "#B3995D",
+    "trim": "#FFFFFF",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "LAR_2016",
+    "years": [
+     2016,
+     2019
+    ],
+    "identity": "Los Angeles Rams",
+    "primary": "#002244",
+    "secondary": "#FFFFFF",
+    "trim": "#B3995D",
+    "eraStyle": "modern",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "LAR_2020",
+    "years": [
+     2020,
+     2099
+    ],
+    "identity": "Los Angeles Rams",
+    "primary": "#003594",
+    "secondary": "#FFD100",
+    "trim": "#FFFFFF",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   }
+  ],
+  "LV": [
+   {
+    "key": "LV_1970",
+    "years": [
+     1970,
+     1981
+    ],
+    "identity": "Oakland Raiders",
+    "tricode": "OAK",
+    "primary": "#000000",
+    "secondary": "#A5ACAF",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "LV_1982",
+    "years": [
+     1982,
+     1994
+    ],
+    "identity": "Los Angeles Raiders",
+    "tricode": "LA",
+    "primary": "#000000",
+    "secondary": "#A5ACAF",
+    "trim": "#FFFFFF",
+    "eraStyle": "stripes",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "LV_1995",
+    "years": [
+     1995,
+     2019
+    ],
+    "identity": "Oakland Raiders",
+    "tricode": "OAK",
+    "primary": "#000000",
+    "secondary": "#A5ACAF",
+    "trim": "#FFFFFF",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "LV_2020",
+    "years": [
+     2020,
+     2099
+    ],
+    "identity": "Las Vegas Raiders",
+    "primary": "#000000",
+    "secondary": "#A5ACAF",
+    "trim": "#FFFFFF",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   }
+  ],
+  "MIA": [
+   {
+    "key": "MIA_1970",
+    "years": [
+     1970,
+     2012
+    ],
+    "identity": "Miami Dolphins",
+    "primary": "#008E97",
+    "secondary": "#FFFFFF",
+    "trim": "#FC4C02",
+    "eraStyle": "classic",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "MIA_2013",
+    "years": [
+     2013,
+     2099
+    ],
+    "identity": "Miami Dolphins",
+    "primary": "#008E97",
+    "secondary": "#FFFFFF",
+    "trim": "#FC4C02",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   }
+  ],
+  "MIN": [
+   {
+    "key": "MIN_1970",
+    "years": [
+     1970,
+     1995
+    ],
+    "identity": "Minnesota Vikings",
+    "primary": "#4F2683",
+    "secondary": "#FFFFFF",
+    "trim": "#FFC62F",
+    "eraStyle": "classic",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "MIN_1996",
+    "years": [
+     1996,
+     2012
+    ],
+    "identity": "Minnesota Vikings",
+    "primary": "#4F2683",
+    "secondary": "#FFFFFF",
+    "trim": "#FFC62F",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "MIN_2013",
+    "years": [
+     2013,
+     2099
+    ],
+    "identity": "Minnesota Vikings",
+    "primary": "#4F2683",
+    "secondary": "#FFC62F",
+    "trim": "#FFFFFF",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   }
+  ],
+  "NE": [
+   {
+    "key": "NE_1970",
+    "years": [
+     1970,
+     1992
+    ],
+    "identity": "New England Patriots (Pat Patriot)",
+    "primary": "#C8102E",
+    "secondary": "#FFFFFF",
+    "trim": "#0A2342",
+    "eraStyle": "classic",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "NE_1993",
+    "years": [
+     1993,
+     1999
+    ],
+    "identity": "New England Patriots (Bledsoe blue)",
+    "primary": "#00529B",
+    "secondary": "#FFFFFF",
+    "trim": "#C8102E",
+    "eraStyle": "stripes",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "NE_2000",
+    "years": [
+     2000,
+     2099
+    ],
+    "identity": "New England Patriots",
+    "primary": "#002244",
+    "secondary": "#FFFFFF",
+    "trim": "#C60C30",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   }
+  ],
+  "NO": [
+   {
+    "key": "NO_1970",
+    "years": [
+     1970,
+     1995
+    ],
+    "identity": "New Orleans Saints",
+    "primary": "#000000",
+    "secondary": "#D3BC8D",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "NO_1996",
+    "years": [
+     1996,
+     2099
+    ],
+    "identity": "New Orleans Saints",
+    "primary": "#000000",
+    "secondary": "#D3BC8D",
+    "trim": "#FFFFFF",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   }
+  ],
+  "NYG": [
+   {
+    "key": "NYG_1970",
+    "years": [
+     1970,
+     1999
+    ],
+    "identity": "New York Giants",
+    "primary": "#0B2265",
+    "secondary": "#FFFFFF",
+    "trim": "#A71930",
+    "eraStyle": "classic",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "NYG_2000",
+    "years": [
+     2000,
+     2099
+    ],
+    "identity": "New York Giants",
+    "primary": "#0B2265",
+    "secondary": "#FFFFFF",
+    "trim": "#A71930",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   }
+  ],
+  "NYJ": [
+   {
+    "key": "NYJ_1970",
+    "years": [
+     1970,
+     1977
+    ],
+    "identity": "New York Jets",
+    "primary": "#115740",
+    "secondary": "#FFFFFF",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "NYJ_1978",
+    "years": [
+     1978,
+     1997
+    ],
+    "identity": "New York Jets (Sack Exchange)",
+    "primary": "#115740",
+    "secondary": "#FFFFFF",
+    "trim": "#000000",
+    "eraStyle": "stripes",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "NYJ_1998",
+    "years": [
+     1998,
+     2018
+    ],
+    "identity": "New York Jets (hunter green)",
+    "primary": "#203731",
+    "secondary": "#FFFFFF",
+    "trim": "#000000",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "NYJ_2019",
+    "years": [
+     2019,
+     2099
+    ],
+    "identity": "New York Jets (Gotham green)",
+    "primary": "#125740",
+    "secondary": "#FFFFFF",
+    "trim": "#000000",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   }
+  ],
+  "PHI": [
+   {
+    "key": "PHI_1970",
+    "years": [
+     1970,
+     1995
+    ],
+    "identity": "Philadelphia Eagles (kelly green)",
+    "primary": "#008E5D",
+    "secondary": "#FFFFFF",
+    "trim": "#A2AAAD",
+    "eraStyle": "classic",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "PHI_1996",
+    "years": [
+     1996,
+     2099
+    ],
+    "identity": "Philadelphia Eagles (midnight green)",
+    "primary": "#004C54",
+    "secondary": "#FFFFFF",
+    "trim": "#A5ACAF",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   }
+  ],
+  "PIT": [
+   {
+    "key": "PIT_1970",
+    "years": [
+     1970,
+     1996
+    ],
+    "identity": "Pittsburgh Steelers",
+    "primary": "#101820",
+    "secondary": "#FFB612",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "PIT_1997",
+    "years": [
+     1997,
+     2099
+    ],
+    "identity": "Pittsburgh Steelers",
+    "primary": "#101820",
+    "secondary": "#FFB612",
+    "trim": "#FFFFFF",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   }
+  ],
+  "SEA": [
+   {
+    "key": "SEA_1976",
+    "years": [
+     1976,
+     2001
+    ],
+    "identity": "Seattle Seahawks",
+    "primary": "#00338D",
+    "secondary": "#FFFFFF",
+    "trim": "#69BE28",
+    "eraStyle": "stripes",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "SEA_2002",
+    "years": [
+     2002,
+     2011
+    ],
+    "identity": "Seattle Seahawks",
+    "primary": "#002244",
+    "secondary": "#FFFFFF",
+    "trim": "#69BE28",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "SEA_2012",
+    "years": [
+     2012,
+     2099
+    ],
+    "identity": "Seattle Seahawks",
+    "primary": "#002244",
+    "secondary": "#FFFFFF",
+    "trim": "#69BE28",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   }
+  ],
+  "SF": [
+   {
+    "key": "SF_1970",
+    "years": [
+     1970,
+     1995
+    ],
+    "identity": "San Francisco 49ers",
+    "primary": "#AA0000",
+    "secondary": "#FFFFFF",
+    "trim": "#B3995D",
+    "eraStyle": "classic",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "SF_1996",
+    "years": [
+     1996,
+     2008
+    ],
+    "identity": "San Francisco 49ers (shadow numbers)",
+    "primary": "#900028",
+    "secondary": "#FFFFFF",
+    "trim": "#B3995D",
+    "eraStyle": "nineties",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "SF_2009",
+    "years": [
+     2009,
+     2099
+    ],
+    "identity": "San Francisco 49ers",
+    "primary": "#AA0000",
+    "secondary": "#FFFFFF",
+    "trim": "#B3995D",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   }
+  ],
+  "TB": [
+   {
+    "key": "TB_1976",
+    "years": [
+     1976,
+     1996
+    ],
+    "identity": "Tampa Bay Buccaneers (creamsicle)",
+    "primary": "#FF7900",
+    "secondary": "#FFFFFF",
+    "trim": "#D50A0A",
+    "eraStyle": "stripes",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "TB_1997",
+    "years": [
+     1997,
+     2013
+    ],
+    "identity": "Tampa Bay Buccaneers",
+    "primary": "#D50A0A",
+    "secondary": "#FFFFFF",
+    "trim": "#34302B",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "TB_2014",
+    "years": [
+     2014,
+     2019
+    ],
+    "identity": "Tampa Bay Buccaneers (alarm-clock era)",
+    "primary": "#D50A0A",
+    "secondary": "#DEE6E7",
+    "trim": "#34302B",
+    "eraStyle": "modern",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "TB_2020",
+    "years": [
+     2020,
+     2099
+    ],
+    "identity": "Tampa Bay Buccaneers",
+    "primary": "#D50A0A",
+    "secondary": "#FFFFFF",
+    "trim": "#34302B",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   }
+  ],
+  "TEN": [
+   {
+    "key": "TEN_1970",
+    "years": [
+     1970,
+     1996
+    ],
+    "identity": "Houston Oilers",
+    "tricode": "HOU",
+    "primary": "#4B92DB",
+    "secondary": "#FFFFFF",
+    "trim": "#C8102E",
+    "eraStyle": "classic",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "TEN_1997",
+    "years": [
+     1997,
+     1998
+    ],
+    "identity": "Tennessee Oilers",
+    "tricode": "TEN",
+    "primary": "#4B92DB",
+    "secondary": "#FFFFFF",
+    "trim": "#C8102E",
+    "eraStyle": "nineties",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "TEN_1999",
+    "years": [
+     1999,
+     2017
+    ],
+    "identity": "Tennessee Titans",
+    "primary": "#0C2340",
+    "secondary": "#FFFFFF",
+    "trim": "#4B92DB",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "TEN_2018",
+    "years": [
+     2018,
+     2099
+    ],
+    "identity": "Tennessee Titans",
+    "primary": "#0C2340",
+    "secondary": "#FFFFFF",
+    "trim": "#4B92DB",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   }
+  ],
+  "WAS": [
+   {
+    "key": "WAS_1970",
+    "years": [
+     1970,
+     2019
+    ],
+    "identity": "Washington Redskins",
+    "primary": "#5A1414",
+    "secondary": "#FFFFFF",
+    "trim": "#FFB612",
+    "eraStyle": "classic",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "WAS_2020",
+    "years": [
+     2020,
+     2021
+    ],
+    "identity": "Washington Football Team",
+    "primary": "#5A1414",
+    "secondary": "#FFB612",
+    "trim": "#FFFFFF",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "WAS_2022",
+    "years": [
+     2022,
+     2099
+    ],
+    "identity": "Washington Commanders",
+    "primary": "#5A1414",
+    "secondary": "#FFFFFF",
+    "trim": "#FFB612",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   }
+  ]
+ }
 }

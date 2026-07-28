@@ -1,0 +1,20 @@
+# Session 5 — the ONE CI gate (per SESSION_5 doc: no test suite beyond this).
+name: ci
+on:
+  pull_request:
+  push:
+    branches: [main]
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci
+      - name: typecheck
+        run: npx tsc --noEmit
+      - name: data validator (hard gate)
+        run: node scripts/validate-data.mjs
+      - name: colorway coverage report (informational)
+        run: node scripts/coverage-report.mjs || true
