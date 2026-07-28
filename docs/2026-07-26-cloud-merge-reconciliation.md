@@ -250,9 +250,34 @@ that way.
 
 ## 5. Account inventory
 
-11 accounts. **`test@test.com` (`Staging Test`) is the only clearly non-real
-one** — and it was signed in and recording results on 2026-07-26, so confirm it
-is idle before deleting.
+11 accounts.
+
+### DECISION: `test@test.com` is kept. Deletion deferred past Session 6.
+
+`SESSION_2_cloud_merge.md` §2.3 asks for this account to be removed, and
+acceptance criterion 5 reads "Staging account gone." **That criterion is
+deliberately not met, by the owner's decision on 2026-07-27.** This is a
+decision, not an oversight — do not "finish the job" by deleting it.
+
+Reasoning, so it does not have to be relitigated:
+
+- **It is the owner's active test identity**, not an abandoned staging
+  artifact. It is the only account available for exercising signed-in code
+  paths, and Sessions 4, 5 and 6 all need one. It was signed in and recording
+  results as recently as 2026-07-27.
+- **Deleting it would not achieve the thing deletion is for.** Its games live
+  in `plays_v2`, which has no `user_id` — see §4. Removing the account removes
+  7 rows from `results_v2` (visible only on its own stats page) and leaves
+  **every one of its plays in the percentile pool, permanently and
+  unidentifiably**. The pool contamination survives the deletion either way.
+- The security case is thin: RLS confines the account to its own `results_v2`
+  rows, and the `plays_v2` insert policy is already open to `anon`, so it holds
+  no privilege an anonymous visitor lacks.
+
+Revisit after Session 6, when a signed-in test identity is no longer needed.
+One residual argument for eventual removal: it produced the single row in the
+database that disagrees with the NFL launch date (§3). That row is documented
+and can be excluded by user id without deleting anything.
 
 Two things worth flagging before anyone deletes anything else:
 
@@ -266,9 +291,9 @@ Two things worth flagging before anyone deletes anything else:
 - Two accounts hold zero rows (`a.chiusano9524`, never signed in;
   `josephchiusano14`). Real-looking abandoned signups, not staging artifacts.
 
-Deleting `test@test.com` cascades cleanly to `results_v2` (7 rows) and
-`results` (0 rows) via `results_v2_user_id_fkey ... on delete cascade`. **No
-orphans.** Its `plays_v2` rows survive — see §4.
+If `test@test.com` is ever deleted, it cascades cleanly to `results_v2` (7
+rows) and `results` (0 rows) via `results_v2_user_id_fkey ... on delete
+cascade`. **No orphans.** Its `plays_v2` rows survive regardless — see §4.
 
 ## 6. `syncUp` — silent total-failure bug
 
@@ -309,10 +334,60 @@ only in the database:
 - the 0–110 → 0–1000 score rescale, and the `revealed` cap raised to 20 for
   deep careers (Ish Smith, 16 stints)
 
-**Treat the database as the source of truth for schema, not `supabase/`.**
-Before any session reasons about schema — Session 6's scheduler especially —
-read `supabase_migrations.schema_migrations` directly rather than the repo.
+### Resolved 2026-07-27
 
-As of 2026-07-26 only `multisport-migration.sql` has been reconciled, and only
-because this session needed it. The other seven remain unrecorded; capturing
-them is a small, safe, documentation-only task that nobody has done yet.
+All eight applied migrations have now been pulled verbatim from the ledger into
+[`supabase/migrations/`](../supabase/migrations/), named to match their ledger
+versions, with [a README](../supabase/migrations/README.md) recording that they
+were **reconstructed from the database rather than authored ahead of it**.
+Fidelity was verified by comparing SQL-only content (comments and blank lines
+stripped) by md5 against `schema_migrations` — all eight matched.
+
+The project can now be rebuilt from the repo. It could not be before.
+
+### The rule that would have prevented all of this
+
+> **Anything applied via `apply_migration` gets committed to
+> `supabase/migrations/` in the same session it is applied.**
+
+Not "later", not "when the branch merges" — the same session. Every problem in
+this document traces back to that not happening: the drifted file in §2, the
+unrecorded base schema above, and the two destructive statements in §8 that
+nobody had read since the day they ran.
+
+This matters most for agent-applied migrations. SQL authored inline in an
+assistant session and applied straight to production leaves no artifact
+anywhere but the ledger, and nobody reads the ledger by habit.
+
+## 8. Two traps found in the recovered migrations
+
+Both are the same shape of bug, and it is worth naming the shape: **a
+destructive or duplicating statement whose neighbouring comment describes
+something narrower and safer than the SQL actually does.** Both were harmless
+when applied and dangerous afterwards.
+
+### `20260716172505_score_scale_1000` ends with `delete from public.plays;`
+
+Unfiltered. No `where`, no transaction, no undo. Re-running that migration
+**deletes the entire anonymous play pool** — every row, every day, every sport.
+
+Its own comment reads *"wipe any plays logged under the old 0-110 scale
+(pre-launch; scales can't be compared, and the pool restarts clean)"*, which
+describes a **filtered** cleanup of stale rows. The SQL is not filtered. When
+it ran on 2026-07-16 the distinction did not matter — the table held nothing
+but old-scale rows and the game had not launched. It matters now: `public.plays`
+holds 44 live rows, 41 of which are the sole pre-merge percentile history.
+
+### `20260722033745_multisport_results_v2` ends with an unguarded copy
+
+Covered in §2. Same shape: a comment reading "carry the existing NBA history
+over" above an insert with no `on conflict` guard.
+
+### Everything else
+
+The remaining five recovered migrations are non-idempotent but **fail loudly** —
+`create table` / `create policy` / `drop policy` / `add column` without
+`if [not] exists`. They error out rather than corrupting anything.
+`20260716062159` is genuinely idempotent.
+
+Full table in [`supabase/migrations/README.md`](../supabase/migrations/README.md).
