@@ -4,7 +4,7 @@
 
 - **Live:** journeymanjersey.com
 - **Repo:** `TimVanC/Journeyman`
-- **Status:** NBA is live. NFL and MLB are built and data-complete but pre-launch (see [Known Gaps](#known-gaps--pre-launch-checklist)).
+- **Status:** **All three sports are live.** NBA launched 2026-07-15; NFL and MLB launched 2026-07-22. Each is serving daily puzzles to real players with real streaks (see [Known Gaps](#known-gaps--pre-launch-checklist)).
 
 ---
 
