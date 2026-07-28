@@ -5,3 +5,5 @@ dist/
 
 # playercards render temp bundle
 scripts/.render.mjs
+pipeline/.cache/
+pipeline/out/
