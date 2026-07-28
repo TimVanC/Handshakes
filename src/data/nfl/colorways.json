@@ -58,8 +58,10 @@
     "trim": "#000000",
     "eraStyle": "nineties",
     "confidence": "medium",
-    "status": "unverified",
-    "source_note": ""
+    "status": "verified",
+    "source_note": "teamcolorcodes.com: #97233F Cardinal Red exact; era 94 rename->05 redesign",
+    "verified_by": "TimVanC (AI reference comparison, owner-approved)",
+    "verified_on": "2026-07-28"
    },
    {
     "key": "ARI_2005",
@@ -105,8 +107,10 @@
     "trim": "#A71930",
     "eraStyle": "stripes",
     "confidence": "medium",
-    "status": "unverified",
-    "source_note": ""
+    "status": "verified",
+    "source_note": "black-jersey era 1990-2002; trim #A71930 official Falcons red",
+    "verified_by": "TimVanC (AI reference comparison, owner-approved)",
+    "verified_on": "2026-07-28"
    },
    {
     "key": "ATL_2003",
@@ -387,8 +391,10 @@
     "trim": "#FFFFFF",
     "eraStyle": "modern",
     "confidence": "medium",
-    "status": "unverified",
-    "source_note": ""
+    "status": "verified",
+    "source_note": "teamcolorcodes.com: official trio #311D00/#FF3C00/#FFFFFF verbatim; 2015 rebrand->2020",
+    "verified_by": "TimVanC (AI reference comparison, owner-approved)",
+    "verified_on": "2026-07-28"
    },
    {
     "key": "CLE_2020",
@@ -835,8 +841,10 @@
     "trim": "#B3995D",
     "eraStyle": "modern",
     "confidence": "medium",
-    "status": "unverified",
-    "source_note": ""
+    "status": "verified",
+    "source_note": "Millennium navy/gold #002244/#B3995D, worn 2016-19 in LA",
+    "verified_by": "TimVanC (AI reference comparison, owner-approved)",
+    "verified_on": "2026-07-28"
    },
    {
     "key": "LAR_2020",
@@ -1372,8 +1380,10 @@
     "trim": "#34302B",
     "eraStyle": "modern",
     "confidence": "medium",
-    "status": "unverified",
-    "source_note": ""
+    "status": "verified",
+    "source_note": "official #D50A0A red + #34302B pewter; chrome numbers; 2014-19 set",
+    "verified_by": "TimVanC (AI reference comparison, owner-approved)",
+    "verified_on": "2026-07-28"
    },
    {
     "key": "TB_2020",
