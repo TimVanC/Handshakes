@@ -30,6 +30,21 @@ const PlayerCardsPreview = lazy(() => import("./components/PlayerCardsPreview"))
 
 initAnalytics();
 
+// Session 6: DB-backed serving, flag-gated (VITE_SERVE_FROM_DB=1). With the
+// flag off (the default) prefetch resolves immediately and mount timing is
+// unchanged. With it on, one RPC (raced against a 1.5s timeout inside
+// puzzleService) runs before mount; any failure falls back to the bundled
+// arrays. No top-level await — a plain promise chain keeps this module
+// synchronous for HMR and older targets.
+const prefetch = (async () => {
+  const { SERVE_FROM_DB, prefetchDbPuzzle } = await import("./lib/puzzleService");
+  if (!SERVE_FROM_DB || qa) return;
+  const { SPORT } = await import("./sports/active");
+  const d = Number(qaParams.get("d"));
+  await prefetchDbPuzzle(SPORT.sport, Number.isInteger(d) && d >= 1 ? d : null);
+})();
+
+prefetch.then(() =>
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     {qa ? (
@@ -47,4 +62,5 @@ createRoot(document.getElementById("root")!).render(
     )}
     <Analytics />
   </StrictMode>
+)
 );
