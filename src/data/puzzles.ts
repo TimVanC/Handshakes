@@ -2854,7 +2854,7 @@ export const puzzles: Puzzle[] = [
         ppg: 17.1,
         rpg: 8.2,
         apg: 1.3,
-        jerseyNumber: 32, // UNVERIFIED (recall) — check BR before merge
+        jerseyNumber: 32, // verified: landofbasketball.com, cross-checked vs Wikipedia season rosters
       },
       {
         franchise: "PHI",
@@ -2866,7 +2866,7 @@ export const puzzles: Puzzle[] = [
         ppg: 10.3,
         rpg: 4.4,
         apg: 0.9,
-        jerseyNumber: 32, // UNVERIFIED (recall) — check BR before merge
+        jerseyNumber: 9, // verified: landofbasketball.com, cross-checked vs Wikipedia season rosters
       },
       {
         franchise: "MIN",
@@ -2878,7 +2878,7 @@ export const puzzles: Puzzle[] = [
         ppg: 11.3,
         rpg: 6.9,
         apg: 1.3,
-        jerseyNumber: 32, // UNVERIFIED (recall) — check BR before merge
+        jerseyNumber: 32, // verified: landofbasketball.com, cross-checked vs Wikipedia season rosters
       },
       {
         franchise: "DET",
@@ -2890,7 +2890,7 @@ export const puzzles: Puzzle[] = [
         ppg: 12.3,
         rpg: 7.1,
         apg: 1.1,
-        jerseyNumber: 8, // UNVERIFIED (recall) — check BR before merge
+        jerseyNumber: 32, // verified: landofbasketball.com, cross-checked vs Wikipedia season rosters
       },
       {
         franchise: "MIN",
@@ -2902,7 +2902,7 @@ export const puzzles: Puzzle[] = [
         ppg: 9.3,
         rpg: 5.7,
         apg: 0.9,
-        jerseyNumber: 7, // UNVERIFIED (recall) — check BR before merge
+        jerseyNumber: 32, // verified: landofbasketball.com, cross-checked vs Wikipedia season rosters
       },
       {
         franchise: "MIL",
@@ -2914,7 +2914,7 @@ export const puzzles: Puzzle[] = [
         ppg: 10.4,
         rpg: 7.3,
         apg: 0.9,
-        jerseyNumber: 8, // UNVERIFIED (recall) — check BR before merge
+        jerseyNumber: 8, // verified: landofbasketball.com, cross-checked vs Wikipedia season rosters
       },
       {
         franchise: "DEN",
@@ -2926,7 +2926,7 @@ export const puzzles: Puzzle[] = [
         ppg: 5.1,
         rpg: 3.6,
         apg: 0.3,
-        jerseyNumber: 8, // UNVERIFIED (recall) — check BR before merge
+        jerseyNumber: 8, // verified: landofbasketball.com, cross-checked vs Wikipedia season rosters
       },
       {
         franchise: "PHI",
@@ -2938,7 +2938,7 @@ export const puzzles: Puzzle[] = [
         ppg: 9.2,
         rpg: 6.7,
         apg: 0.9,
-        jerseyNumber: 8, // UNVERIFIED (recall) — check BR before merge
+        jerseyNumber: 8, // verified: landofbasketball.com, cross-checked vs Wikipedia season rosters
       },
       {
         franchise: "CHI",
@@ -2950,7 +2950,7 @@ export const puzzles: Puzzle[] = [
         ppg: 11.2,
         rpg: 5.3,
         apg: 0.9,
-        jerseyNumber: 5, // UNVERIFIED (recall) — check BR before merge
+        jerseyNumber: 32, // verified: landofbasketball.com, cross-checked vs Wikipedia season rosters
       },
       {
         franchise: "CLE",
@@ -2962,7 +2962,7 @@ export const puzzles: Puzzle[] = [
         ppg: 8.1,
         rpg: 5,
         apg: 0.7,
-        jerseyNumber: 1, // UNVERIFIED (recall) — check BR before merge
+        jerseyNumber: 32, // verified: landofbasketball.com, cross-checked vs Wikipedia season rosters
       },
       {
         franchise: "OKC",
@@ -2974,7 +2974,7 @@ export const puzzles: Puzzle[] = [
         ppg: 6.6,
         rpg: 4.6,
         apg: 0.7,
-        jerseyNumber: 32, // UNVERIFIED (recall) — check BR before merge
+        jerseyNumber: 7, // verified: landofbasketball.com, cross-checked vs Wikipedia season rosters
       },
       {
         franchise: "CLE",
@@ -2986,7 +2986,7 @@ export const puzzles: Puzzle[] = [
         ppg: 6.5,
         rpg: 4.7,
         apg: 0.8,
-        jerseyNumber: 1, // UNVERIFIED (recall) — check BR before merge
+        jerseyNumber: 32, // verified: landofbasketball.com, cross-checked vs Wikipedia season rosters
       },
       {
         franchise: "ATL",
@@ -2998,7 +2998,7 @@ export const puzzles: Puzzle[] = [
         ppg: 3,
         rpg: 2.5,
         apg: 0.3,
-        jerseyNumber: 32, // UNVERIFIED (recall) — check BR before merge
+        jerseyNumber: 32, // verified: landofbasketball.com, cross-checked vs Wikipedia season rosters
       },
       {
         franchise: "BKN",
@@ -3010,7 +3010,7 @@ export const puzzles: Puzzle[] = [
         ppg: 0.5,
         rpg: 0.8,
         apg: 0.3,
-        jerseyNumber: 8, // UNVERIFIED (recall) — check BR before merge
+        jerseyNumber: 8, // verified: landofbasketball.com, cross-checked vs Wikipedia season rosters
       },
       {
         franchise: "LAL",
@@ -3022,7 +3022,7 @@ export const puzzles: Puzzle[] = [
         ppg: 0.5,
         rpg: 1.5,
         apg: 0.3,
-        jerseyNumber: 9, // UNVERIFIED (recall) — check BR before merge
+        jerseyNumber: 1, // verified: landofbasketball.com, cross-checked vs Wikipedia season rosters
       },
     ],
     revealOrder: [13, 14, 10, 8, 6, 12, 11, 9, 7, 1, 3, 5, 4, 2, 0],
@@ -3071,7 +3071,7 @@ export const puzzles: Puzzle[] = [
         ppg: 29.1,
         rpg: 7,
         apg: 2.2,
-        jerseyNumber: 21, // UNVERIFIED (recall) — check BR before merge
+        jerseyNumber: 21, // verified: landofbasketball.com, cross-checked vs Wikipedia season rosters
       },
       {
         franchise: "BOS",
@@ -3083,7 +3083,7 @@ export const puzzles: Puzzle[] = [
         ppg: 17.8,
         rpg: 5.2,
         apg: 2.2,
-        jerseyNumber: 12, // UNVERIFIED (recall) — check BR before merge
+        jerseyNumber: 12, // verified: landofbasketball.com, cross-checked vs Wikipedia season rosters
       },
       {
         franchise: "SAS",
@@ -3095,7 +3095,7 @@ export const puzzles: Puzzle[] = [
         ppg: 18.2,
         rpg: 6.4,
         apg: 1.9,
-        jerseyNumber: 21, // UNVERIFIED (recall) — check BR before merge
+        jerseyNumber: 21, // verified: landofbasketball.com, cross-checked vs Wikipedia season rosters
       },
       {
         franchise: "ORL",
@@ -3107,7 +3107,7 @@ export const puzzles: Puzzle[] = [
         ppg: 5.1,
         rpg: 2.6,
         apg: 0.6,
-        jerseyNumber: 12, // UNVERIFIED (recall) — check BR before merge
+        jerseyNumber: 21, // verified: landofbasketball.com, cross-checked vs Wikipedia season rosters
       },
     ],
     revealOrder: [4, 3, 1, 2, 0],
@@ -3140,7 +3140,7 @@ export const puzzles: Puzzle[] = [
         ppg: 16.9,
         rpg: 2.8,
         apg: 8.4,
-        jerseyNumber: 3, // UNVERIFIED (recall) — check BR before merge
+        jerseyNumber: 3, // verified: landofbasketball.com, cross-checked vs Wikipedia season rosters
       },
       {
         franchise: "BKN",
@@ -3152,7 +3152,7 @@ export const puzzles: Puzzle[] = [
         ppg: 23.1,
         rpg: 3.1,
         apg: 8.1,
-        jerseyNumber: 3, // UNVERIFIED (recall) — check BR before merge
+        jerseyNumber: 33, // verified: landofbasketball.com, cross-checked vs Wikipedia season rosters
         accolades: [
           { type: "all_star", count: 1 },
         ],
@@ -3167,7 +3167,7 @@ export const puzzles: Puzzle[] = [
         ppg: 21.3,
         rpg: 3.2,
         apg: 8.1,
-        jerseyNumber: 3, // UNVERIFIED (recall) — check BR before merge
+        jerseyNumber: 3, // verified: landofbasketball.com, cross-checked vs Wikipedia season rosters
         accolades: [
           { type: "all_star", count: 1 },
         ],
@@ -3182,7 +3182,7 @@ export const puzzles: Puzzle[] = [
         ppg: 18.2,
         rpg: 2.9,
         apg: 7,
-        jerseyNumber: 3, // UNVERIFIED (recall) — check BR before merge
+        jerseyNumber: 3, // verified: landofbasketball.com, cross-checked vs Wikipedia season rosters
       },
       {
         franchise: "BOS",
@@ -3194,7 +3194,7 @@ export const puzzles: Puzzle[] = [
         ppg: 3.8,
         rpg: 1.2,
         apg: 3.3,
-        jerseyNumber: 8, // UNVERIFIED (recall) — check BR before merge
+        jerseyNumber: 8, // verified: landofbasketball.com, cross-checked vs Wikipedia season rosters
       },
     ],
     revealOrder: [4, 2, 1, 0, 3],
