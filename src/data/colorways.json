@@ -41,8 +41,10 @@
     "trim": "#FFC423",
     "eraStyle": "nineties",
     "confidence": "medium",
-    "status": "unverified",
-    "source_note": ""
+    "status": "verified",
+    "source_note": "95 red/black/yellow set, replaced 99",
+    "verified_by": "TimVanC (AI reference comparison, owner-approved)",
+    "verified_on": "2026-07-28"
    },
    {
     "key": "ATL_1999",
@@ -56,8 +58,10 @@
     "trim": "#C4CED4",
     "eraStyle": "baggy",
     "confidence": "medium",
-    "status": "unverified",
-    "source_note": ""
+    "status": "verified",
+    "source_note": "red/navy/silver official Hawks hexes; 99->07",
+    "verified_by": "TimVanC (AI reference comparison, owner-approved)",
+    "verified_on": "2026-07-28"
    },
    {
     "key": "ATL_2007",
@@ -71,8 +75,10 @@
     "trim": "#FFFFFF",
     "eraStyle": "baggy",
     "confidence": "medium",
-    "status": "unverified",
-    "source_note": ""
+    "status": "verified",
+    "source_note": "navy-primary 07->15 rebrand",
+    "verified_by": "TimVanC (AI reference comparison, owner-approved)",
+    "verified_on": "2026-07-28"
    },
    {
     "key": "ATL_2015",
@@ -177,13 +183,13 @@
      1996
     ],
     "identity": "New Jersey Nets",
-    "primary": "#002A60",
-    "secondary": "#CE1141",
-    "trim": "#C4CED4",
+    "primary": "#0057B8",
+    "secondary": "#FFFFFF",
+    "trim": "#CE1141",
     "eraStyle": "nineties",
     "confidence": "medium",
-    "status": "unverified",
-    "source_note": ""
+    "status": "probable",
+    "source_note": "2026-07-28 fix: royal/white/red Drazen-era (navy belonged to the 97 set); verify vs reference"
    },
    {
     "key": "BKN_1997",
@@ -197,8 +203,10 @@
     "trim": "#CE1141",
     "eraStyle": "baggy",
     "confidence": "medium",
-    "status": "unverified",
-    "source_note": ""
+    "status": "verified",
+    "source_note": "navy/silver/red 97->2012 Brooklyn",
+    "verified_by": "TimVanC (AI reference comparison, owner-approved)",
+    "verified_on": "2026-07-28"
    },
    {
     "key": "BKN_2012",
@@ -300,7 +308,7 @@
     "key": "CLE_1983",
     "years": [
      1983,
-     1993
+     1986
     ],
     "identity": "Cleveland Cavaliers",
     "primary": "#F58426",
@@ -308,8 +316,23 @@
     "trim": "#FFFFFF",
     "eraStyle": "classic",
     "confidence": "low",
-    "status": "unverified",
-    "source_note": ""
+    "status": "probable",
+    "source_note": "2026-07-28: era truncated at 86 (blue roads from 87); verify"
+   },
+   {
+    "key": "CLE_1987",
+    "years": [
+     1987,
+     1993
+    ],
+    "identity": "Cleveland Cavaliers",
+    "primary": "#0047AB",
+    "secondary": "#F58426",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "low",
+    "status": "probable",
+    "source_note": "2026-07-28: new era, 87-93 blue w/ orange numbers; verify vs reference"
    },
    {
     "key": "CLE_1994",
@@ -351,12 +374,12 @@
     ],
     "identity": "Dallas Mavericks",
     "primary": "#0064B1",
-    "secondary": "#00843D",
-    "trim": "#FFFFFF",
+    "secondary": "#FFFFFF",
+    "trim": "#00843D",
     "eraStyle": "classic",
     "confidence": "medium",
-    "status": "unverified",
-    "source_note": ""
+    "status": "probable",
+    "source_note": "2026-07-28 fix: white numbers w/ green trim (green-on-royal was contrast 1.3); verify vs reference"
    },
    {
     "key": "DAL_2001",
@@ -507,12 +530,12 @@
     ],
     "identity": "Detroit Pistons (teal era)",
     "primary": "#006272",
-    "secondary": "#8B2331",
-    "trim": "#FDBB30",
+    "secondary": "#FFFFFF",
+    "trim": "#8B2331",
     "eraStyle": "nineties",
     "confidence": "medium",
-    "status": "unverified",
-    "source_note": ""
+    "status": "probable",
+    "source_note": "2026-07-28 fix: white numbers w/ maroon trim on teal (was maroon-on-teal, contrast 1.3); verify vs reference"
    },
    {
     "key": "DET_2001",
@@ -558,8 +581,10 @@
     "trim": "#FFFFFF",
     "eraStyle": "classic",
     "confidence": "medium",
-    "status": "unverified",
-    "source_note": ""
+    "status": "verified",
+    "source_note": "70s gold body/royal (key-vs-years quirk noted)",
+    "verified_by": "TimVanC (AI reference comparison, owner-approved)",
+    "verified_on": "2026-07-28"
    },
    {
     "key": "GSW_1997",
@@ -605,8 +630,10 @@
     "trim": "#FFFFFF",
     "eraStyle": "classic",
     "confidence": "medium",
-    "status": "unverified",
-    "source_note": ""
+    "status": "verified",
+    "source_note": "red/gold 76->95 pinstripe rebrand",
+    "verified_by": "TimVanC (AI reference comparison, owner-approved)",
+    "verified_on": "2026-07-28"
    },
    {
     "key": "HOU_1995",
@@ -745,8 +772,10 @@
     "trim": "#FFFFFF",
     "eraStyle": "classic",
     "confidence": "medium",
-    "status": "unverified",
-    "source_note": ""
+    "status": "verified",
+    "source_note": "classic red/royal, stable",
+    "verified_by": "TimVanC (AI reference comparison, owner-approved)",
+    "verified_on": "2026-07-28"
    },
    {
     "key": "LAC_2015",
@@ -888,8 +917,10 @@
     "trim": "#C4CED4",
     "eraStyle": "nineties",
     "confidence": "medium",
-    "status": "unverified",
-    "source_note": ""
+    "status": "verified",
+    "source_note": "purple era 1993->2006 return to green",
+    "verified_by": "TimVanC (AI reference comparison, owner-approved)",
+    "verified_on": "2026-07-28"
    },
    {
     "key": "MIL_2006",
@@ -1187,8 +1218,10 @@
     "trim": "#000000",
     "eraStyle": "nineties",
     "confidence": "medium",
-    "status": "unverified",
-    "source_note": ""
+    "status": "verified",
+    "source_note": "streaking-sun purple/orange 92-93 intro",
+    "verified_by": "TimVanC (AI reference comparison, owner-approved)",
+    "verified_on": "2026-07-28"
    },
    {
     "key": "PHX_2000",
@@ -1202,8 +1235,10 @@
     "trim": "#63727A",
     "eraStyle": "baggy",
     "confidence": "medium",
-    "status": "unverified",
-    "source_note": ""
+    "status": "verified",
+    "source_note": "official purple 5F259F/orange; 00->13",
+    "verified_by": "TimVanC (AI reference comparison, owner-approved)",
+    "verified_on": "2026-07-28"
    },
    {
     "key": "PHX_2013",
@@ -1249,8 +1284,10 @@
     "trim": "#C4CED4",
     "eraStyle": "nineties",
     "confidence": "medium",
-    "status": "unverified",
-    "source_note": ""
+    "status": "verified",
+    "source_note": "black/red/silver stable to present",
+    "verified_by": "TimVanC (AI reference comparison, owner-approved)",
+    "verified_on": "2026-07-28"
    }
   ],
   "SAC": [
@@ -1375,8 +1412,10 @@
     "trim": "#E56020",
     "eraStyle": "nineties",
     "confidence": "medium",
-    "status": "unverified",
-    "source_note": ""
+    "status": "verified",
+    "source_note": "black/silver, fiesta-trim logo era 89-2002",
+    "verified_by": "TimVanC (AI reference comparison, owner-approved)",
+    "verified_on": "2026-07-28"
    },
    {
     "key": "SAS_2002",
@@ -1422,8 +1461,10 @@
     "trim": "#C4CED4",
     "eraStyle": "baggy",
     "confidence": "medium",
-    "status": "unverified",
-    "source_note": ""
+    "status": "verified",
+    "source_note": "purple dropped for red in 06",
+    "verified_by": "TimVanC (AI reference comparison, owner-approved)",
+    "verified_on": "2026-07-28"
    },
    {
     "key": "TOR_2015",
