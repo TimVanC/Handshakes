@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc --noEmit && vite build",
+    "validate:puzzles": "node pipeline/validate-puzzles.mjs",
+    "build": "tsc --noEmit && node pipeline/validate-puzzles.mjs && vite build",
     "build:og": "node scripts/build-og.mjs",
     "build:playercards": "esbuild scripts/render-player-jerseys.tsx --bundle --platform=node --format=esm --jsx=automatic --loader:.json=json --external:react --external:react-dom --external:@resvg/resvg-js --outfile=scripts/.render.mjs && node scripts/.render.mjs",
     "preview": "vite preview"
