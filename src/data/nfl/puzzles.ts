@@ -19,6 +19,12 @@ import type { Puzzle } from "../../game/types";
  * reordering aired entries rewrites archive history. New puzzles go on
  * the end and air on the next open day.
  *
+ * 2026-08-03 owner swap (before airing — days 14-16 had not aired):
+ * Lynch/Vick/Flacco (ids 14-16) pulled from the unaired day-14/15/16
+ * slots as too-well-known and moved to nflBenchedPuzzles below; replaced
+ * in place by Testaverde/Collins/Jones (ids 18-20), Wikipedia+StatMuse
+ * verified (PFR was 403-blocking at authoring time).
+ *
  * DATA PROVENANCE — generated from general knowledge (2026-07-19).
  * Stint years, jersey numbers, and stat lines are best-effort recall and
  * MUST be verified against Pro-Football-Reference before launch:
@@ -1387,291 +1393,360 @@ export const nflPuzzles: Puzzle[] = [
     },
   },
   {
-    // Puzzle 14 — Marshawn Lynch: Beast Mode. The Buffalo years everyone
-    // forgets, the Seattle earthquake run, the Oakland homecoming, and a
-    // one-game 2019 return. 24 everywhere except rookie-contract 23.
-    id: 14,
+    // Puzzle 18 — Vinny Testaverde: 21 seasons, 7 franchises, 8 cards.
+    // The Browns-move years make CLE and BAL separate jerseys, and the
+    // 2005 Jets return is its own card. Swapped into the day-14 slot
+    // 2026-08-03 (owner: Lynch too well known — benched below).
+    // Wikipedia+StatMuse verified (PFR 403); stint sums reconcile with
+    // career totals (233 GP, 46,233 yds, 275 TD, 267 INT).
+    id: 18,
     pathType: "team",
-    answer: "Marshawn Lynch",
-    accolades: ["5× Pro Bowl", "Super Bowl XLVIII champion", "2012 First-Team All-Pro"],
+    answer: "Vinny Testaverde",
+    accolades: [
+      "2× Pro Bowl (1996, 1998)",
+      "1986 Heisman Trophy winner",
+      "No. 1 overall pick, 1987 NFL Draft",
+    ],
     stints: [
       {
-        franchise: "BUF",
-        displayTeam: "Buffalo Bills",
+        franchise: "TB",
+        displayTeam: "Tampa Bay Buccaneers",
+        startYear: 1987,
+        endYear: 1992,
+        jerseyNumber: 14,
+        statLine: [
+          { label: "GP", value: 76 },
+          { label: "Cmp%", value: "52.1" },
+          { label: "Yds", value: 14820 },
+          { label: "TD", value: 77 },
+          { label: "INT", value: 112 },
+        ],
+      },
+      {
+        franchise: "CLE",
+        displayTeam: "Cleveland Browns",
+        startYear: 1993,
+        endYear: 1995,
+        jerseyNumber: 12,
+        statLine: [
+          { label: "GP", value: 37 },
+          { label: "Cmp%", value: "57.9" },
+          { label: "Yds", value: 7255 },
+          { label: "TD", value: 47 },
+          { label: "INT", value: 37 },
+        ],
+      },
+      {
+        franchise: "BAL",
+        displayTeam: "Baltimore Ravens",
+        startYear: 1996,
+        endYear: 1997,
+        jerseyNumber: 12,
+        accolades: [
+          { type: "pro_bowl", count: 1 },
+        ],
+        statLine: [
+          { label: "GP", value: 29 },
+          { label: "Cmp%", value: "58.5" },
+          { label: "Yds", value: 7148 },
+          { label: "TD", value: 51 },
+          { label: "INT", value: 34 },
+        ],
+      },
+      {
+        franchise: "NYJ",
+        displayTeam: "New York Jets",
+        startYear: 1998,
+        endYear: 2003,
+        jerseyNumber: 16,
+        accolades: [
+          { type: "pro_bowl", count: 1 },
+        ],
+        statLine: [
+          { label: "GP", value: 59 },
+          { label: "Cmp%", value: "59.2" },
+          { label: "Yds", value: 11720 },
+          { label: "TD", value: 76 },
+          { label: "INT", value: 52 },
+        ],
+      },
+      {
+        franchise: "DAL",
+        displayTeam: "Dallas Cowboys",
+        startYear: 2004,
+        endYear: 2004,
+        jerseyNumber: 16,
+        statLine: [
+          { label: "GP", value: 16 },
+          { label: "Cmp%", value: "60.0" },
+          { label: "Yds", value: 3532 },
+          { label: "TD", value: 17 },
+          { label: "INT", value: 20 },
+        ],
+      },
+      {
+        franchise: "NYJ",
+        displayTeam: "New York Jets",
+        startYear: 2005,
+        endYear: 2005,
+        jerseyNumber: 16,
+        statLine: [
+          { label: "GP", value: 6 },
+          { label: "Cmp%", value: "56.6" },
+          { label: "Yds", value: 777 },
+          { label: "TD", value: 1 },
+          { label: "INT", value: 6 },
+        ],
+      },
+      {
+        franchise: "NE",
+        displayTeam: "New England Patriots",
+        startYear: 2006,
+        endYear: 2006,
+        jerseyNumber: 14,
+        statLine: [
+          { label: "GP", value: 3 },
+          { label: "Cmp%", value: "66.7" },
+          { label: "Yds", value: 29 },
+          { label: "TD", value: 1 },
+          { label: "INT", value: 0 },
+        ],
+      },
+      {
+        franchise: "CAR",
+        displayTeam: "Carolina Panthers",
         startYear: 2007,
-        endYear: 2010,
-        jerseyNumber: 23,
+        endYear: 2007,
+        jerseyNumber: 16,
+        statLine: [
+          { label: "GP", value: 7 },
+          { label: "Cmp%", value: "54.7" },
+          { label: "Yds", value: 952 },
+          { label: "TD", value: 5 },
+          { label: "INT", value: 6 },
+        ],
+      },
+    ],
+    // one-off codas first (NE cameo, CAR farewell, the Jets return),
+    // then the long runs; draft-team TB closer
+    revealOrder: [6, 7, 5, 4, 1, 2, 3, 0],
+    hints: {
+      position: "QB",
+      height: "6'5\"",
+      draftYear: "1987",
+      draftPick: "Round 1, #1",
+      college: "Miami (FL)",
+    },
+  },
+  {
+    // Puzzle 19 — Kerry Collins: six franchises, 17 seasons, an NFC title
+    // with the Giants in the middle. The 1998 CAR/NO split year makes two
+    // cards, one season. Swapped into the day-15 slot 2026-08-03 (owner:
+    // Vick too well known — benched below). Wikipedia+StatMuse verified
+    // (PFR 403); stint sums reconcile with career totals (40,922 yds,
+    // 208 TD, 196 INT).
+    id: 19,
+    pathType: "team",
+    answer: "Kerry Collins",
+    accolades: ["2× Pro Bowl (1996, 2008)", "NFC Champion (2000)", "College Football Hall of Fame (2018)"],
+    stints: [
+      {
+        franchise: "CAR",
+        displayTeam: "Carolina Panthers",
+        startYear: 1995,
+        endYear: 1998,
+        jerseyNumber: 12,
         accolades: [
           { type: "pro_bowl", count: 1 },
         ],
         statLine: [
           { label: "GP", value: 45 },
-          { label: "Att", value: 688 },
-          { label: "Yds", value: 2776 },
-          { label: "YPC", value: "4.0" },
-          { label: "TD", value: 17 },
+          { label: "Cmp%", value: "51.8" },
+          { label: "Yds", value: 8306 },
+          { label: "TD", value: 47 },
+          { label: "INT", value: 54 },
         ],
       },
       {
-        franchise: "SEA",
-        displayTeam: "Seattle Seahawks",
-        startYear: 2010,
-        endYear: 2015,
-        jerseyNumber: 24,
-        accolades: [
-          { type: "pro_bowl", count: 4 },
-          { type: "all_pro", count: 1 },
-          { type: "champion", count: 1 },
-        ],
+        franchise: "NO",
+        displayTeam: "New Orleans Saints",
+        startYear: 1998,
+        endYear: 1998,
+        jerseyNumber: 13,
         statLine: [
-          { label: "GP", value: 82 },
-          { label: "Att", value: 1456 },
-          { label: "Yds", value: 6347 },
-          { label: "YPC", value: "4.4" },
-          { label: "TD", value: 57 },
+          { label: "GP", value: 7 },
+          { label: "Cmp%", value: "49.2" },
+          { label: "Yds", value: 1202 },
+          { label: "TD", value: 4 },
+          { label: "INT", value: 10 },
+        ],
+      },
+      {
+        franchise: "NYG",
+        displayTeam: "New York Giants",
+        startYear: 1999,
+        endYear: 2003,
+        jerseyNumber: 5,
+        statLine: [
+          { label: "GP", value: 71 },
+          { label: "Cmp%", value: "58.5" },
+          { label: "Yds", value: 16875 },
+          { label: "TD", value: 81 },
+          { label: "INT", value: 70 },
         ],
       },
       {
         franchise: "LV",
         displayTeam: "Oakland Raiders",
-        startYear: 2017,
-        endYear: 2018,
-        jerseyNumber: 24,
+        startYear: 2004,
+        endYear: 2005,
+        jerseyNumber: 5,
         statLine: [
-          { label: "GP", value: 21 },
-          { label: "Att", value: 297 },
-          { label: "Yds", value: 1267 },
-          { label: "YPC", value: "4.3" },
-          { label: "TD", value: 10 },
+          { label: "GP", value: 29 },
+          { label: "Cmp%", value: "54.8" },
+          { label: "Yds", value: 7254 },
+          { label: "TD", value: 41 },
+          { label: "INT", value: 32 },
         ],
       },
       {
-        franchise: "SEA",
-        displayTeam: "Seattle Seahawks",
-        startYear: 2019,
-        endYear: 2019,
-        jerseyNumber: 24,
-        statLine: [
-          { label: "GP", value: 1 },
-          { label: "Att", value: 12 },
-          { label: "Yds", value: 34 },
-          { label: "YPC", value: "2.8" },
-          { label: "TD", value: 1 },
-        ],
-      },
-    ],
-    revealOrder: [2, 3, 1, 0],
-    hints: {
-      position: "RB",
-      height: "5'11\"",
-      draftYear: "2007",
-      draftPick: "Round 1, #12",
-      college: "California",
-    },
-  },
-  {
-    // Puzzle 15 — Michael Vick: the Falcons revolution, the Philadelphia
-    // redemption arc (2010 Comeback Player), then quiet Jets and Steelers
-    // codas. nflverse lists him as "Mike Vick"; the playerIndex entry is
-    // updated to the household form in this same commit.
-    id: 15,
-    pathType: "team",
-    answer: "Michael Vick",
-    accolades: ["4× Pro Bowl", "2010 Comeback Player of the Year", "First QB to rush for 1,000 yards (2006)"],
-    stints: [
-      {
-        franchise: "ATL",
-        displayTeam: "Atlanta Falcons",
-        startYear: 2001,
-        endYear: 2006,
-        jerseyNumber: 7,
-        accolades: [
-          { type: "pro_bowl", count: 3 },
-        ],
-        statLine: [
-          { label: "GP", value: 74 },
-          { label: "Cmp%", value: "53.8" },
-          { label: "Yds", value: 11505 },
-          { label: "TD", value: 71 },
-          { label: "INT", value: 52 },
-        ],
-      },
-      {
-        franchise: "PHI",
-        displayTeam: "Philadelphia Eagles",
-        startYear: 2009,
-        endYear: 2013,
-        jerseyNumber: 7,
+        franchise: "TEN",
+        displayTeam: "Tennessee Titans",
+        startYear: 2006,
+        endYear: 2010,
+        jerseyNumber: 5,
         accolades: [
           { type: "pro_bowl", count: 1 },
-          { type: "comeback", count: 1 },
         ],
         statLine: [
-          { label: "GP", value: 54 },
-          { label: "Cmp%", value: "59.5" },
-          { label: "Yds", value: 9984 },
-          { label: "TD", value: 57 },
-          { label: "INT", value: 33 },
-        ],
-      },
-      {
-        franchise: "NYJ",
-        displayTeam: "New York Jets",
-        startYear: 2014,
-        endYear: 2014,
-        jerseyNumber: 1,
-        statLine: [
-          { label: "GP", value: 9 },
-          { label: "Cmp%", value: "52.9" },
-          { label: "Yds", value: 604 },
-          { label: "TD", value: 3 },
-          { label: "INT", value: 2 },
-        ],
-      },
-      {
-        franchise: "PIT",
-        displayTeam: "Pittsburgh Steelers",
-        startYear: 2015,
-        endYear: 2015,
-        jerseyNumber: 2,
-        statLine: [
-          { label: "GP", value: 5 },
-          { label: "Cmp%", value: "60.6" },
-          { label: "Yds", value: 371 },
-          { label: "TD", value: 2 },
-          { label: "INT", value: 1 },
-        ],
-      },
-    ],
-    revealOrder: [3, 2, 1, 0],
-    hints: {
-      position: "QB",
-      height: "6'0\"",
-      draftYear: "2001",
-      draftPick: "Round 1, #1",
-      college: "Virginia Tech",
-    },
-  },
-  {
-    // Puzzle 16 — Joe Flacco: eleven years a Raven (SB XLVII MVP), then the
-    // long goodbye — Denver, three Jets seasons, and the Cleveland/Indy/
-    // Cleveland-again/Cincinnati shuffle. The 2025 split (CLE weeks 1-4,
-    // traded to CIN) is two cards, one season.
-    id: 16,
-    pathType: "team",
-    answer: "Joe Flacco",
-    accolades: ["Super Bowl XLVII MVP", "Super Bowl XLVII champion"],
-    stints: [
-      {
-        franchise: "BAL",
-        displayTeam: "Baltimore Ravens",
-        startYear: 2008,
-        endYear: 2018,
-        jerseyNumber: 5,
-        accolades: [
-          { type: "sb_mvp", count: 1 },
-          { type: "champion", count: 1 },
-        ],
-        statLine: [
-          { label: "GP", value: 163 },
-          { label: "Cmp%", value: "61.7" },
-          { label: "Yds", value: 38245 },
-          { label: "TD", value: 212 },
-          { label: "INT", value: 136 },
-        ],
-      },
-      {
-        franchise: "DEN",
-        displayTeam: "Denver Broncos",
-        startYear: 2019,
-        endYear: 2019,
-        jerseyNumber: 5,
-        statLine: [
-          { label: "GP", value: 8 },
-          { label: "Cmp%", value: "65.3" },
-          { label: "Yds", value: 1822 },
-          { label: "TD", value: 6 },
-          { label: "INT", value: 5 },
-        ],
-      },
-      {
-        franchise: "NYJ",
-        displayTeam: "New York Jets",
-        startYear: 2020,
-        endYear: 2022,
-        jerseyNumber: 19, // 5 in 2020, 19 from 2021 (weekly rosters)
-        statLine: [
-          { label: "GP", value: 12 },
-          { label: "Cmp%", value: "57.5" },
-          { label: "Yds", value: 2253 },
-          { label: "TD", value: 14 },
-          { label: "INT", value: 6 },
-        ],
-      },
-      {
-        franchise: "CLE",
-        displayTeam: "Cleveland Browns",
-        startYear: 2023,
-        endYear: 2023,
-        jerseyNumber: 15,
-        statLine: [
-          { label: "GP", value: 5 },
-          { label: "Cmp%", value: "60.3" },
-          { label: "Yds", value: 1616 },
-          { label: "TD", value: 13 },
-          { label: "INT", value: 8 },
+          { label: "GP", value: 43 },
+          { label: "Cmp%", value: "56.7" },
+          { label: "Yds", value: 6804 },
+          { label: "TD", value: 33 },
+          { label: "INT", value: 29 },
         ],
       },
       {
         franchise: "IND",
         displayTeam: "Indianapolis Colts",
-        startYear: 2024,
-        endYear: 2024,
-        jerseyNumber: 15,
+        startYear: 2011,
+        endYear: 2011,
+        jerseyNumber: 5,
         statLine: [
-          { label: "GP", value: 7 },
-          { label: "Cmp%", value: "65.3" },
-          { label: "Yds", value: 1761 },
-          { label: "TD", value: 12 },
-          { label: "INT", value: 7 },
-        ],
-      },
-      {
-        franchise: "CLE",
-        displayTeam: "Cleveland Browns",
-        startYear: 2025,
-        endYear: 2025,
-        jerseyNumber: 15,
-        statLine: [
-          { label: "GP", value: 4 },
-          { label: "Cmp%", value: "58.1" },
-          { label: "Yds", value: 815 },
+          { label: "GP", value: 3 },
+          { label: "Cmp%", value: "49.0" },
+          { label: "Yds", value: 481 },
           { label: "TD", value: 2 },
-          { label: "INT", value: 6 },
-        ],
-      },
-      {
-        franchise: "CIN",
-        displayTeam: "Cincinnati Bengals",
-        startYear: 2025,
-        endYear: 2025,
-        jerseyNumber: 16,
-        statLine: [
-          { label: "GP", value: 9 },
-          { label: "Cmp%", value: "61.7" },
-          { label: "Yds", value: 1664 },
-          { label: "TD", value: 13 },
-          { label: "INT", value: 4 },
+          { label: "INT", value: 1 },
         ],
       },
     ],
-    revealOrder: [4, 3, 5, 6, 2, 1, 0],
+    // the anonymous codas first (Colts cameo, the seven Saints games),
+    // Giants NFC-title run late, draft-team Carolina closer
+    revealOrder: [5, 1, 3, 4, 2, 0],
     hints: {
       position: "QB",
-      height: "6'6\"",
-      draftYear: "2008",
-      draftPick: "Round 1, #18",
-      college: "Delaware",
+      height: "6'5\"",
+      draftYear: "1995",
+      draftPick: "Round 1, #5",
+      college: "Penn State",
+    },
+  },
+  {
+    // Puzzle 20 — Thomas Jones: the quiet 10,000-yard grinder. Slow Arizona
+    // start, one Tampa year, then three-year runs in Chicago and New York
+    // before the Kansas City coda. Swapped into the day-16 slot 2026-08-03
+    // (owner: Flacco too well known — benched below). Wikipedia+StatMuse+
+    // StatsCrew verified (PFR 403); stint sums reconcile with career totals
+    // (10,591 rush yds, 68 rush TD).
+    id: 20,
+    pathType: "team",
+    answer: "Thomas Jones",
+    accolades: ["1× Pro Bowl (2008)", "10,000+ career rushing yards"],
+    stints: [
+      {
+        franchise: "ARI",
+        displayTeam: "Arizona Cardinals",
+        startYear: 2000,
+        endYear: 2002,
+        jerseyNumber: 26,
+        statLine: [
+          { label: "GP", value: 39 },
+          { label: "Att", value: 362 },
+          { label: "Yds", value: 1264 },
+          { label: "YPC", value: "3.5" },
+          { label: "TD", value: 9 },
+        ],
+      },
+      {
+        franchise: "TB",
+        displayTeam: "Tampa Bay Buccaneers",
+        startYear: 2003,
+        endYear: 2003,
+        jerseyNumber: 22,
+        statLine: [
+          { label: "GP", value: 16 },
+          { label: "Att", value: 137 },
+          { label: "Yds", value: 627 },
+          { label: "YPC", value: "4.6" },
+          { label: "TD", value: 3 },
+        ],
+      },
+      {
+        franchise: "CHI",
+        displayTeam: "Chicago Bears",
+        startYear: 2004,
+        endYear: 2006,
+        jerseyNumber: 20,
+        statLine: [
+          { label: "GP", value: 45 },
+          { label: "Att", value: 850 },
+          { label: "Yds", value: 3493 },
+          { label: "YPC", value: "4.1" },
+          { label: "TD", value: 22 },
+        ],
+      },
+      {
+        franchise: "NYJ",
+        displayTeam: "New York Jets",
+        startYear: 2007,
+        endYear: 2009,
+        jerseyNumber: 20,
+        accolades: [
+          { type: "pro_bowl", count: 1 },
+        ],
+        statLine: [
+          { label: "GP", value: 48 },
+          { label: "Att", value: 931 },
+          { label: "Yds", value: 3833 },
+          { label: "YPC", value: "4.1" },
+          { label: "TD", value: 28 },
+        ],
+      },
+      {
+        franchise: "KC",
+        displayTeam: "Kansas City Chiefs",
+        startYear: 2010,
+        endYear: 2011,
+        jerseyNumber: 20,
+        statLine: [
+          { label: "GP", value: 32 },
+          { label: "Att", value: 398 },
+          { label: "Yds", value: 1374 },
+          { label: "YPC", value: "3.5" },
+          { label: "TD", value: 6 },
+        ],
+      },
+    ],
+    // the one-year Tampa stop and KC coda first, draft-team ARI fourth,
+    // Pro Bowl Jets run as the closer
+    revealOrder: [1, 4, 2, 0, 3],
+    hints: {
+      position: "RB",
+      height: "5'10\"",
+      draftYear: "2000",
+      draftPick: "Round 1, #7",
+      college: "Virginia",
     },
   },
   {
@@ -1817,6 +1892,301 @@ export const nflPuzzles: Puzzle[] = [
       draftYear: "2012",
       draftPick: "Undrafted",
       college: "Houston",
+    },
+  },
+];
+
+/**
+ * Benched 2026-08-03 (owner call: too well known for the early run).
+ * NOT scheduled — kept fully authored so any of them can be re-aired by
+ * moving the object back into nflPuzzles at an unaired position.
+ */
+export const nflBenchedPuzzles: Puzzle[] = [
+  {
+    // Marshawn Lynch: Beast Mode. The Buffalo years everyone forgets, the
+    // Seattle earthquake run, the Oakland homecoming, and a one-game 2019
+    // return. 24 everywhere except rookie-contract 23.
+    id: 14,
+    pathType: "team",
+    answer: "Marshawn Lynch",
+    accolades: ["5× Pro Bowl", "Super Bowl XLVIII champion", "2012 First-Team All-Pro"],
+    stints: [
+      {
+        franchise: "BUF",
+        displayTeam: "Buffalo Bills",
+        startYear: 2007,
+        endYear: 2010,
+        jerseyNumber: 23,
+        accolades: [
+          { type: "pro_bowl", count: 1 },
+        ],
+        statLine: [
+          { label: "GP", value: 45 },
+          { label: "Att", value: 688 },
+          { label: "Yds", value: 2776 },
+          { label: "YPC", value: "4.0" },
+          { label: "TD", value: 17 },
+        ],
+      },
+      {
+        franchise: "SEA",
+        displayTeam: "Seattle Seahawks",
+        startYear: 2010,
+        endYear: 2015,
+        jerseyNumber: 24,
+        accolades: [
+          { type: "pro_bowl", count: 4 },
+          { type: "all_pro", count: 1 },
+          { type: "champion", count: 1 },
+        ],
+        statLine: [
+          { label: "GP", value: 82 },
+          { label: "Att", value: 1456 },
+          { label: "Yds", value: 6347 },
+          { label: "YPC", value: "4.4" },
+          { label: "TD", value: 57 },
+        ],
+      },
+      {
+        franchise: "LV",
+        displayTeam: "Oakland Raiders",
+        startYear: 2017,
+        endYear: 2018,
+        jerseyNumber: 24,
+        statLine: [
+          { label: "GP", value: 21 },
+          { label: "Att", value: 297 },
+          { label: "Yds", value: 1267 },
+          { label: "YPC", value: "4.3" },
+          { label: "TD", value: 10 },
+        ],
+      },
+      {
+        franchise: "SEA",
+        displayTeam: "Seattle Seahawks",
+        startYear: 2019,
+        endYear: 2019,
+        jerseyNumber: 24,
+        statLine: [
+          { label: "GP", value: 1 },
+          { label: "Att", value: 12 },
+          { label: "Yds", value: 34 },
+          { label: "YPC", value: "2.8" },
+          { label: "TD", value: 1 },
+        ],
+      },
+    ],
+    revealOrder: [2, 3, 1, 0],
+    hints: {
+      position: "RB",
+      height: "5'11\"",
+      draftYear: "2007",
+      draftPick: "Round 1, #12",
+      college: "California",
+    },
+  },
+  {
+    // Michael Vick: the Falcons revolution, the Philadelphia redemption arc
+    // (2010 Comeback Player), then quiet Jets and Steelers codas. nflverse
+    // lists him as "Mike Vick"; playerIndex carries the household form.
+    id: 15,
+    pathType: "team",
+    answer: "Michael Vick",
+    accolades: ["4× Pro Bowl", "2010 Comeback Player of the Year", "First QB to rush for 1,000 yards (2006)"],
+    stints: [
+      {
+        franchise: "ATL",
+        displayTeam: "Atlanta Falcons",
+        startYear: 2001,
+        endYear: 2006,
+        jerseyNumber: 7,
+        accolades: [
+          { type: "pro_bowl", count: 3 },
+        ],
+        statLine: [
+          { label: "GP", value: 74 },
+          { label: "Cmp%", value: "53.8" },
+          { label: "Yds", value: 11505 },
+          { label: "TD", value: 71 },
+          { label: "INT", value: 52 },
+        ],
+      },
+      {
+        franchise: "PHI",
+        displayTeam: "Philadelphia Eagles",
+        startYear: 2009,
+        endYear: 2013,
+        jerseyNumber: 7,
+        accolades: [
+          { type: "pro_bowl", count: 1 },
+          { type: "comeback", count: 1 },
+        ],
+        statLine: [
+          { label: "GP", value: 54 },
+          { label: "Cmp%", value: "59.5" },
+          { label: "Yds", value: 9984 },
+          { label: "TD", value: 57 },
+          { label: "INT", value: 33 },
+        ],
+      },
+      {
+        franchise: "NYJ",
+        displayTeam: "New York Jets",
+        startYear: 2014,
+        endYear: 2014,
+        jerseyNumber: 1,
+        statLine: [
+          { label: "GP", value: 9 },
+          { label: "Cmp%", value: "52.9" },
+          { label: "Yds", value: 604 },
+          { label: "TD", value: 3 },
+          { label: "INT", value: 2 },
+        ],
+      },
+      {
+        franchise: "PIT",
+        displayTeam: "Pittsburgh Steelers",
+        startYear: 2015,
+        endYear: 2015,
+        jerseyNumber: 2,
+        statLine: [
+          { label: "GP", value: 5 },
+          { label: "Cmp%", value: "60.6" },
+          { label: "Yds", value: 371 },
+          { label: "TD", value: 2 },
+          { label: "INT", value: 1 },
+        ],
+      },
+    ],
+    revealOrder: [3, 2, 1, 0],
+    hints: {
+      position: "QB",
+      height: "6'0\"",
+      draftYear: "2001",
+      draftPick: "Round 1, #1",
+      college: "Virginia Tech",
+    },
+  },
+  {
+    // Joe Flacco: eleven years a Raven (SB XLVII MVP), then the long
+    // goodbye — Denver, three Jets seasons, and the Cleveland/Indy/
+    // Cleveland-again/Cincinnati shuffle. The 2025 split (CLE weeks 1-4,
+    // traded to CIN) is two cards, one season.
+    id: 16,
+    pathType: "team",
+    answer: "Joe Flacco",
+    accolades: ["Super Bowl XLVII MVP", "Super Bowl XLVII champion"],
+    stints: [
+      {
+        franchise: "BAL",
+        displayTeam: "Baltimore Ravens",
+        startYear: 2008,
+        endYear: 2018,
+        jerseyNumber: 5,
+        accolades: [
+          { type: "sb_mvp", count: 1 },
+          { type: "champion", count: 1 },
+        ],
+        statLine: [
+          { label: "GP", value: 163 },
+          { label: "Cmp%", value: "61.7" },
+          { label: "Yds", value: 38245 },
+          { label: "TD", value: 212 },
+          { label: "INT", value: 136 },
+        ],
+      },
+      {
+        franchise: "DEN",
+        displayTeam: "Denver Broncos",
+        startYear: 2019,
+        endYear: 2019,
+        jerseyNumber: 5,
+        statLine: [
+          { label: "GP", value: 8 },
+          { label: "Cmp%", value: "65.3" },
+          { label: "Yds", value: 1822 },
+          { label: "TD", value: 6 },
+          { label: "INT", value: 5 },
+        ],
+      },
+      {
+        franchise: "NYJ",
+        displayTeam: "New York Jets",
+        startYear: 2020,
+        endYear: 2022,
+        jerseyNumber: 19, // 5 in 2020, 19 from 2021 (weekly rosters)
+        statLine: [
+          { label: "GP", value: 12 },
+          { label: "Cmp%", value: "57.5" },
+          { label: "Yds", value: 2253 },
+          { label: "TD", value: 14 },
+          { label: "INT", value: 6 },
+        ],
+      },
+      {
+        franchise: "CLE",
+        displayTeam: "Cleveland Browns",
+        startYear: 2023,
+        endYear: 2023,
+        jerseyNumber: 15,
+        statLine: [
+          { label: "GP", value: 5 },
+          { label: "Cmp%", value: "60.3" },
+          { label: "Yds", value: 1616 },
+          { label: "TD", value: 13 },
+          { label: "INT", value: 8 },
+        ],
+      },
+      {
+        franchise: "IND",
+        displayTeam: "Indianapolis Colts",
+        startYear: 2024,
+        endYear: 2024,
+        jerseyNumber: 15,
+        statLine: [
+          { label: "GP", value: 7 },
+          { label: "Cmp%", value: "65.3" },
+          { label: "Yds", value: 1761 },
+          { label: "TD", value: 12 },
+          { label: "INT", value: 7 },
+        ],
+      },
+      {
+        franchise: "CLE",
+        displayTeam: "Cleveland Browns",
+        startYear: 2025,
+        endYear: 2025,
+        jerseyNumber: 15,
+        statLine: [
+          { label: "GP", value: 4 },
+          { label: "Cmp%", value: "58.1" },
+          { label: "Yds", value: 815 },
+          { label: "TD", value: 2 },
+          { label: "INT", value: 6 },
+        ],
+      },
+      {
+        franchise: "CIN",
+        displayTeam: "Cincinnati Bengals",
+        startYear: 2025,
+        endYear: 2025,
+        jerseyNumber: 16,
+        statLine: [
+          { label: "GP", value: 9 },
+          { label: "Cmp%", value: "61.7" },
+          { label: "Yds", value: 1664 },
+          { label: "TD", value: 13 },
+          { label: "INT", value: 4 },
+        ],
+      },
+    ],
+    revealOrder: [4, 3, 5, 6, 2, 1, 0],
+    hints: {
+      position: "QB",
+      height: "6'6\"",
+      draftYear: "2008",
+      draftPick: "Round 1, #18",
+      college: "Delaware",
     },
   },
 ];

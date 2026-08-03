@@ -35,13 +35,13 @@ export const ROSTER: string[] = [
   "Kobe Bryant", // day 19 — swapped down from day 9 (a two-team star, not a journeyman)
   "Allen Iverson",
   "Rasheed Wallace",
-  "Shaquille O'Neal", // day 22 — swapped down from day 10
-  "Gary Payton",
+  "Garrett Temple", // day 22 — 12 franchises; owner swap 2026-08-03 (Shaq → day 28)
+  "Earl Boykins", // day 23 — 10 franchises at 5'5"; owner swap 2026-08-03 (Payton → day 43)
   "Jim Jackson", // 12 franchises (moved from day 9 to make room for Baron Davis)
   "Joe Smith",
-  "Dominique Wilkins",
+  "Kevin Ollie", // day 26 — 11+ franchises; owner swap 2026-08-03 (Wilkins → day 40)
   "Stephon Marbury",
-  "Garrett Temple",
+  "Shaquille O'Neal", // day 28 — swapped down from day 22 (owner: too well known there)
   "Ray Allen",
   "Glen Rice",
   "D.J. Augustin",
@@ -53,10 +53,10 @@ export const ROSTER: string[] = [
   "Mike James",
   "Bob McAdoo",
   "Tim Hardaway",
-  "Kevin Ollie",
+  "Dominique Wilkins", // day 40 — swapped down from day 26
   "Chris Webber",
   "Rajon Rondo",
-  "Earl Boykins",
+  "Gary Payton", // day 43 — swapped down from day 23
   "Adrian Dantley",
   "Sam Cassell",
   "Drew Gooden",
