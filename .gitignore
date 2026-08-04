@@ -5,8 +5,13 @@ dist-admin/
 *.local
 .DS_Store
 
+# build-time aired-only data modules (pipeline/trim-unaired.mjs)
+src/data/generated/
+
 # playercards render temp bundle
 scripts/.render.mjs
 pipeline/.cache/
 pipeline/out/
 .env
+.vercel
+.env*

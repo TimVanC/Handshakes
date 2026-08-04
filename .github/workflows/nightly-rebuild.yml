@@ -1,0 +1,25 @@
+# Nightly rebuild — keeps the production bundle's aired-puzzle cutoff fresh.
+#
+# The deployed JS carries only puzzles that had aired as of the last build
+# (pipeline/trim-unaired.mjs). Without a daily deploy, the DB-failure
+# fallback would drift stale between content pushes. An empty commit is the
+# trigger because Vercel deploys from git; 05:10 UTC is past midnight ET
+# year-round (04:00 UTC in EDT, 05:00 in EST), so the new day's puzzle is
+# already "aired" when the build computes the cutoff.
+name: nightly-rebuild
+on:
+  schedule:
+    - cron: "10 5 * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          git config user.name "journeyman-nightly"
+          git config user.email "actions@users.noreply.github.com"
+          git commit --allow-empty -m "chore: nightly rebuild (refresh aired-puzzle bundle)"
+          git push

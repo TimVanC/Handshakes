@@ -7,7 +7,7 @@
     "dev": "vite",
     "dev:admin": "vite --config vite.admin.config.ts",
     "validate:puzzles": "node pipeline/validate-puzzles.mjs",
-    "build": "tsc --noEmit && node pipeline/validate-puzzles.mjs && vite build",
+    "build": "tsc --noEmit && node pipeline/validate-puzzles.mjs && node pipeline/trim-unaired.mjs && vite build",
     "build:admin": "tsc --noEmit -p tsconfig.admin.json && vite build --config vite.admin.config.ts",
     "build:og": "node scripts/build-og.mjs",
     "build:playercards": "esbuild scripts/render-player-jerseys.tsx --bundle --platform=node --format=esm --jsx=automatic --loader:.json=json --external:react --external:react-dom --external:@resvg/resvg-js --outfile=scripts/.render.mjs && node scripts/.render.mjs",

@@ -84,11 +84,7 @@ export const ROSTER: string[] = [
   "Matt Bonner",
 ];
 
-/** case/accent-insensitive comparison key */
-export function rosterKey(name: string): string {
-  return name
-    .normalize("NFD")
-    .replace(/[̀-ͯ]/g, "")
-    .toLowerCase()
-    .trim();
-}
+// rosterKey lives in its own module so the build-time aired-roster swap
+// (vite.config.ts + pipeline/trim-unaired.mjs) can re-export it without
+// resolving back into this file.
+export { rosterKey } from "./rosterKey";
