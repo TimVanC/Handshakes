@@ -77,6 +77,11 @@ export const ROSTER: string[] = [
   "Luke Ridnour",
   "Maurice Evans",
   "Chuck Hayes",
+  "Raja Bell",
+  "Jarrett Jack",
+  "Vladimir Radmanović",
+  "Nate Robinson",
+  "Matt Bonner",
 ];
 
 /** case/accent-insensitive comparison key */

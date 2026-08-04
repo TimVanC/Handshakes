@@ -12,6 +12,9 @@ export type AccoladeType =
   | "sixth_man"
   | "roy"
   | "all_nba"
+  | "all_defensive"
+  | "all_rookie"
+  | "dunk_champion"
   | "olympic_gold"
   // NFL (champion = Super Bowl ring, roy/mvp shared)
   | "pro_bowl"

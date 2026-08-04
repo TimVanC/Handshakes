@@ -115,6 +115,9 @@ export const nba: SportConfig = {
     sixth_man: { Icon: SixthManIcon, label: "6MOY", wordmark: true },
     roy: { Icon: RoyIcon, label: "ROY", wordmark: true },
     all_nba: { Icon: FirstTeamIcon, label: "All-NBA First Team", wordmark: true },
+    all_defensive: { Icon: ShieldIcon, label: "All-Defensive Team" },
+    all_rookie: { Icon: RoyIcon, label: "All-Rookie Team", wordmark: true },
+    dunk_champion: { Icon: BasketballIcon, label: "Dunk Contest champion" },
     olympic_gold: { Icon: MedalIcon, label: "Olympic gold" },
   },
 

@@ -202,14 +202,25 @@ function bioHints(html) {
 }
 
 function renderPuzzle(player, id) {
-  const lines = ["  {", `    // Basketball-Reference career table + uniform history verified 2026-08-03.`, `    id: ${id},`, `    pathType: "team",`, `    answer: ${JSON.stringify(player.answer)},`];
-  const awards = CONFIG_BY_NAME[player.answer]?.awards ?? (player.answer === "Channing Frye" ? [{ franchise: "CLE", year: 2015, type: "champion" }] : []);
-  if (awards.length) lines.push(`    accolades: ["${awards.length}× NBA champion"],`);
+  const lines = ["  {", `    // ${player.source} verified 2026-08-03.`, `    id: ${id},`, `    pathType: "team",`, `    answer: ${JSON.stringify(player.answer)},`];
+  const manual = CONFIG_BY_NAME[player.answer];
+  const awards = manual?.awards ?? (player.answer === "Channing Frye" ? [{ franchise: "CLE", year: 2015, type: "champion" }] : []);
+  const summaryAccolades = manual?.summaryAccolades ?? (awards.length ? [`${awards.length}× NBA champion`] : []);
+  if (summaryAccolades.length) lines.push(`    accolades: ${JSON.stringify(summaryAccolades)},`);
   lines.push("    stints: [");
   player.stints.forEach((s) => {
     lines.push("      {", `        franchise: "${s.franchise}",`, `        displayTeam: ${JSON.stringify(s.displayTeam)},`, `        startYear: ${s.startYear},`, `        endYear: ${s.endYear},`, `        gp: ${s.gp},`, `        mpg: ${s.mpg.toFixed(1)},`, `        ppg: ${s.ppg.toFixed(1)},`, `        rpg: ${s.rpg.toFixed(1)},`, `        apg: ${s.apg.toFixed(1)},`, `        jerseyNumber: ${s.jerseyNumber},`);
-    const stintAwards = awards.filter((award) => award.franchise === s.franchise && award.year >= s.startYear && award.year <= s.endYear);
-    if (stintAwards.length) lines.push(`        accolades: [{ type: "champion", count: ${stintAwards.length} }],`);
+    const stintAwards = awards.filter((award) => award.franchise === s.franchise && award.year >= s.startYear && award.year <= s.endYear)
+      .map(() => ({ type: "champion", count: 1 }));
+    const configuredAccolades = (manual?.stintAccolades ?? []).filter((award) =>
+      award.franchise === s.franchise && award.startYear === s.startYear && award.endYear === s.endYear);
+    const combined = [...stintAwards, ...configuredAccolades].reduce((result, award) => {
+      const existing = result.find((item) => item.type === award.type);
+      if (existing) existing.count += award.count;
+      else result.push({ type: award.type, count: award.count });
+      return result;
+    }, []);
+    if (combined.length) lines.push(`        accolades: ${JSON.stringify(combined)},`);
     lines.push("      },");
   });
   const order = player.stints.map((_, i) => i).sort((a, b) => player.stints[a].gp - player.stints[b].gp);
@@ -225,21 +236,21 @@ const authored = [];
 for (const [answer, brId] of PLAYERS) {
   const manual = CONFIG_BY_NAME[answer];
   if (manual?.stints) {
-    authored.push({ answer, brId, hints: manual.hints, stints: manual.stints });
+    authored.push({ answer, brId, source: "Manually audited career data", hints: manual.hints, stints: manual.stints });
     continue;
   }
   if (manual?.espnId) {
     const rows = await espnRows(manual.espnId);
     const stints = groupRows(rows, manual.jerseyHistory).map((group) => finishGroup(group));
-    authored.push({ answer, brId, hints: manual.hints, stints });
+    authored.push({ answer, brId, source: "ESPN career averages + independently verified uniform history", hints: manual.hints, stints });
     continue;
   }
   const html = await page(brId);
   const uniformRows = uniforms(html);
   const stints = groupRows(seasonRows(html), uniformRows).map((group) => finishGroup(group));
   const derivedHints = bioHints(html);
-  authored.push({ answer, brId, hints: { ...derivedHints, ...HINT_OVERRIDES[answer], ...CONFIG_BY_NAME[answer]?.hints }, stints });
+  authored.push({ answer, brId, source: "Basketball-Reference career table + uniform history", hints: { ...derivedHints, ...HINT_OVERRIDES[answer], ...CONFIG_BY_NAME[answer]?.hints }, stints });
 }
-await writeFile(`${OUT}/${OUTPUT_BASE}.json`, JSON.stringify({ source: "Basketball-Reference player pages", players: authored }, null, 2));
+await writeFile(`${OUT}/${OUTPUT_BASE}.json`, JSON.stringify({ source: "See each player's source field", players: authored }, null, 2));
 await writeFile(`${OUT}/${OUTPUT_BASE}.tsfrag`, authored.map((player, i) => renderPuzzle(player, START_ID + i)).join("\n") + "\n");
-console.log(`Wrote ${authored.length} NBA puzzles in randomized schedule order.`);
+console.log(`Wrote ${authored.length} NBA puzzles in configured schedule order.`);

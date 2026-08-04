@@ -42,7 +42,7 @@ const SPORTS = {
     bench: [],
     cw: JSON.parse(readFileSync("src/data/colorways.json", "utf8")).franchises,
     seasons: JSON.parse(readFileSync("src/data/teamSeasons.json", "utf8")),
-    accolades: new Set(["all_star","champion","mvp","fmvp","dpoy","sixth_man","roy","all_nba","olympic_gold"]),
+    accolades: new Set(["all_star","champion","mvp","fmvp","dpoy","sixth_man","roy","all_nba","all_defensive","all_rookie","dunk_champion","olympic_gold"]),
     nbaStats: true,
     roster: [...readFileSync("src/data/roster.ts", "utf8").matchAll(/^\s+"([^"]+)",/gm)].map((m) => m[1]),
   },
