@@ -89,6 +89,8 @@ interface Props {
   hidden?: boolean;
   /** hard mode: no flipping for the season record, no accolade hardware */
   hard?: boolean;
+  /** QA/inspection views can mount directly on the statistical back. */
+  initialBack?: boolean;
   /** "flip every card" broadcast from the spread. `n` bumps on each press so
    *  a card that was tapped out of sync still obeys the next one. */
   flipAll?: { back: boolean; n: number };
@@ -104,13 +106,14 @@ export default function JerseyCard({
   dealDelay = 0,
   hidden = false,
   hard = false,
+  initialBack = false,
   flipAll,
   cardRef,
 }: Props) {
   const ref = useRef<HTMLElement | null>(null);
   const flipRef = useRef<HTMLDivElement | null>(null);
   const animating = useRef(false);
-  const [showBack, setShowBack] = useState(false);
+  const [showBack, setShowBack] = useState(initialBack);
   // a card that mounts hidden arrived via GhostCard, which already scrolled
   // the deck into view at flip-start — scrolling again once it lands here
   // would fight the ghost's own flight animation

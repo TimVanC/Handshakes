@@ -8,6 +8,7 @@ import { initAnalytics } from "./lib/analytics";
 // dev-only QA pages:
 //   ?jerseys — every renderer × era × colorway, plus the icon sets
 //   ?cards   — a real JerseyCard carrying every accolade for the league
+//   ?inspect&p=N — a real puzzle, fully revealed with fronts + backs
 // Available on localhost AND on Vercel preview builds (so branches can be
 // reviewed on staging), but never on the live domain — these pages reveal
 // artwork and card internals that would spoil the daily.
@@ -23,10 +24,13 @@ const qa = !qaAllowed
       ? "cards"
       : qaParams.has("playercards")
         ? "playercards"
+        : qaParams.has("inspect")
+          ? "inspect"
         : null;
 const JerseyGallery = lazy(() => import("./components/JerseyGallery"));
 const CardPreview = lazy(() => import("./components/CardPreview"));
 const PlayerCardsPreview = lazy(() => import("./components/PlayerCardsPreview"));
+const PuzzleInspectPreview = lazy(() => import("./components/PuzzleInspectPreview"));
 
 initAnalytics();
 
@@ -53,6 +57,8 @@ createRoot(document.getElementById("root")!).render(
           <JerseyGallery />
         ) : qa === "playercards" ? (
           <PlayerCardsPreview />
+        ) : qa === "inspect" ? (
+          <PuzzleInspectPreview />
         ) : (
           <CardPreview />
         )}

@@ -15,6 +15,8 @@
  *  - unique puzzle ids within each file
  *  - revealOrder is an exact permutation of the stint indices
  *  - every stint's (franchise, startYear) maps to a colorway era
+ *  - every season covered by every stint has a W-L/playoff-result row
+ *  - every stint accolade uses a key rendered by that sport
  *  - stat shape (nba: gp/mpg/ppg/rpg/apg; nfl/mlb: 5-cell statLine)
  */
 import { readFileSync } from "node:fs";
@@ -39,6 +41,8 @@ const SPORTS = {
     active: loadArray("src/data/puzzles.ts", "puzzles"),
     bench: [],
     cw: JSON.parse(readFileSync("src/data/colorways.json", "utf8")).franchises,
+    seasons: JSON.parse(readFileSync("src/data/teamSeasons.json", "utf8")),
+    accolades: new Set(["all_star","champion","mvp","fmvp","dpoy","sixth_man","roy","all_nba","olympic_gold"]),
     nbaStats: true,
     roster: [...readFileSync("src/data/roster.ts", "utf8").matchAll(/^\s+"([^"]+)",/gm)].map((m) => m[1]),
   },
@@ -46,11 +50,15 @@ const SPORTS = {
     active: loadArray("src/data/nfl/puzzles.ts", "nflPuzzles"),
     bench: loadArray("src/data/nfl/puzzles.ts", "nflBenchedPuzzles", true),
     cw: JSON.parse(readFileSync("src/data/nfl/colorways.json", "utf8")).franchises,
+    seasons: JSON.parse(readFileSync("src/data/nfl/teamSeasons.json", "utf8")),
+    accolades: new Set(["pro_bowl","champion","mvp","sb_mvp","all_pro","roy","droy","opoy","comeback","rushing_title","receiving_title","olympic_gold"]),
   },
   mlb: {
     active: loadArray("src/data/mlb/puzzles.ts", "mlbPuzzles"),
     bench: loadArray("src/data/mlb/puzzles.ts", "mlbBenchedPuzzles", true),
     cw: JSON.parse(readFileSync("src/data/mlb/colorways.json", "utf8")).franchises,
+    seasons: JSON.parse(readFileSync("src/data/mlb/teamSeasons.json", "utf8")),
+    accolades: new Set(["all_star","champion","mvp","ws_mvp","cy_young","roy","gold_glove","silver_slugger","batting_title","reliever_award","olympic_gold"]),
   },
 };
 
@@ -97,6 +105,13 @@ for (const [sport, cfg] of Object.entries(SPORTS)) {
       if (!eras.find((e) => s.startYear >= e.years[0] && s.startYear <= e.years[1]))
         err(`${tag}: NO ERA for ${s.franchise} ${s.startYear} (${s.displayTeam})`);
       if (s.endYear < s.startYear) err(`${tag}: endYear < startYear on ${s.franchise}`);
+      for (let year = s.startYear; year <= s.endYear; year++) {
+        if (!cfg.seasons[s.franchise]?.[year]) err(`${tag}: NO SEASON RESULT for ${s.franchise} ${year}`);
+      }
+      for (const accolade of s.accolades ?? []) {
+        if (!cfg.accolades.has(accolade.type)) err(`${tag}: unsupported accolade ${accolade.type} on ${s.franchise}`);
+        if (!Number.isInteger(accolade.count) || accolade.count < 1) err(`${tag}: invalid accolade count on ${s.franchise}`);
+      }
       if (cfg.nbaStats) {
         for (const f of ["gp", "mpg", "ppg", "rpg", "apg"]) if (typeof s[f] !== "number") err(`${tag}: ${s.franchise} missing ${f}`);
       } else if (!Array.isArray(s.statLine) || s.statLine.length !== 5) {

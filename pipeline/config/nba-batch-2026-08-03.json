@@ -1,0 +1,50 @@
+{
+  "outputBase": "nba-batch-2026-08-03",
+  "startId": 44,
+  "players": [
+    { "answer": "Rasual Butler", "brId": "butlera01" },
+    { "answer": "Jeff Green", "brId": "greenje02", "awards": [{ "franchise": "DEN", "year": 2022, "type": "champion" }] },
+    { "answer": "Tony Delk", "brId": "delkto01" },
+    { "answer": "Jodie Meeks", "brId": "meeksjo01", "awards": [{ "franchise": "TOR", "year": 2018, "type": "champion" }] },
+    { "answer": "Keyon Dooling", "brId": "doolike01" },
+    { "answer": "Trevor Ariza", "brId": "arizatr01", "awards": [{ "franchise": "LAL", "year": 2008, "type": "champion" }] },
+    { "answer": "Quincy Acy", "brId": "acyqu01" },
+    { "answer": "Chris Duhon", "brId": "duhonch01" },
+    { "answer": "Corey Brewer", "brId": "breweco01", "awards": [{ "franchise": "DAL", "year": 2010, "type": "champion" }] },
+    { "answer": "Jarvis Hayes", "brId": "hayesja01" },
+    { "answer": "Steve Blake", "brId": "blakest01" },
+    { "answer": "Reggie Bullock", "brId": "bullore01" },
+    { "answer": "Michael Doleac", "brId": "doleami01", "awards": [{ "franchise": "MIA", "year": 2005, "type": "champion" }] },
+    { "answer": "Gerald Green", "brId": "greenge01" },
+    { "answer": "Brandon Rush", "brId": "rushbr01", "awards": [{ "franchise": "GSW", "year": 2014, "type": "champion" }] },
+    { "answer": "Carlos Arroyo", "brId": "arroyca01" },
+    { "answer": "Jared Dudley", "brId": "dudleja01", "awards": [{ "franchise": "LAL", "year": 2019, "type": "champion" }] },
+    { "answer": "Ronnie Brewer", "brId": "brewero02" },
+    { "answer": "Eddie House", "brId": "houseed01", "awards": [{ "franchise": "BOS", "year": 2007, "type": "champion" }] },
+    { "answer": "Jason Smith", "brId": "smithja02" },
+    { "answer": "D.J. Augustin", "brId": "augusdj01" },
+    { "answer": "Anthony Parker", "brId": "parkean01" },
+    { "answer": "Walter McCarty", "brId": "mccarwa01" },
+    { "answer": "Alan Anderson", "brId": "anderal01" },
+    { "answer": "Jason Kapono", "brId": "kaponja01", "awards": [{ "franchise": "MIA", "year": 2005, "type": "champion" }] },
+    { "answer": "Luther Head", "brId": "headlu01" },
+    { "answer": "Willie Green", "brId": "greenwi01" },
+    { "answer": "Francisco García", "brId": "garcifr01" },
+    { "answer": "Dahntay Jones", "brId": "jonesda02", "awards": [{ "franchise": "CLE", "year": 2015, "type": "champion" }] },
+    { "answer": "Marquis Daniels", "brId": "daniema01" },
+    {
+      "answer": "Ronnie Price",
+      "brId": "pricero01",
+      "hints": { "position": "PG/SG", "height": "6'2\"", "draftYear": "2005", "draftPick": "Undrafted", "college": "Utah Valley" },
+      "stints": [
+        { "franchise": "SAC", "displayTeam": "Sacramento Kings", "startYear": 2005, "endYear": 2006, "gp": 87, "mpg": 8.2, "ppg": 2.9, "rpg": 1.0, "apg": 0.7, "jerseyNumber": 7 },
+        { "franchise": "UTA", "displayTeam": "Utah Jazz", "startYear": 2007, "endYear": 2010, "gp": 232, "mpg": 12.3, "ppg": 3.8, "rpg": 1.1, "apg": 1.6, "jerseyNumber": 17 },
+        { "franchise": "PHX", "displayTeam": "Phoenix Suns", "startYear": 2011, "endYear": 2011, "gp": 36, "mpg": 14.4, "ppg": 3.6, "rpg": 1.6, "apg": 1.9, "jerseyNumber": 2 },
+        { "franchise": "POR", "displayTeam": "Portland Trail Blazers", "startYear": 2012, "endYear": 2012, "gp": 39, "mpg": 13.1, "ppg": 2.7, "rpg": 1.1, "apg": 1.9, "jerseyNumber": 24 },
+        { "franchise": "ORL", "displayTeam": "Orlando Magic", "startYear": 2013, "endYear": 2013, "gp": 31, "mpg": 12.2, "ppg": 2.4, "rpg": 1.4, "apg": 2.1, "jerseyNumber": 10 },
+        { "franchise": "LAL", "displayTeam": "Los Angeles Lakers", "startYear": 2014, "endYear": 2014, "gp": 43, "mpg": 22.8, "ppg": 5.1, "rpg": 1.6, "apg": 3.8, "jerseyNumber": 9 },
+        { "franchise": "PHX", "displayTeam": "Phoenix Suns", "startYear": 2015, "endYear": 2016, "gp": 76, "mpg": 17.7, "ppg": 4.5, "rpg": 1.5, "apg": 2.2, "jerseyNumber": 14 }
+      ]
+    }
+  ]
+}

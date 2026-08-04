@@ -307,6 +307,7 @@ export const FmvpIcon = (p: IconProps) => <WordMark text="FMVP" {...p} />;
 // NFL
 export const SbMvpIcon = (p: IconProps) => <WordMark text="SBMVP" {...p} />;
 export const OroyIcon = (p: IconProps) => <WordMark text="OROY" {...p} />;
+export const DroyIcon = (p: IconProps) => <WordMark text="DROY" {...p} />;
 export const OpoyIcon = (p: IconProps) => <WordMark text="OPOY" {...p} />;
 export const ComebackIcon = (p: IconProps) => <WordMark text="CMB" {...p} />;
 // MLB

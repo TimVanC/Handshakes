@@ -244,16 +244,31 @@
     "key": "CHA_2004",
     "years": [
      2004,
-     2013
+     2011
     ],
     "identity": "Charlotte Bobcats",
     "primary": "#E35205",
-    "secondary": "#14213D",
-    "trim": "#C4CED4",
+    "secondary": "#FFFFFF",
+    "trim": "#1B365D",
     "eraStyle": "baggy",
-    "confidence": "medium",
-    "status": "unverified",
-    "source_note": ""
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Charlotte's official 2004 unveiling specifies an orange road body with white, Bobcats Blue, black and silver details; https://www.nba.com/hornets/news/uniforms_release_040821.html"
+   },
+   {
+    "key": "CHA_2012",
+    "years": [
+     2012,
+     2013
+    ],
+    "identity": "Charlotte Bobcats (navy/light-blue era)",
+    "primary": "#14213D",
+    "secondary": "#FFFFFF",
+    "trim": "#1BA1E2",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Charlotte's official 2012 unveiling specifies a blue road jersey with white numbers and light-blue trim; https://www.nba.com/hornets/charlotte-bobcats-unveil-new-uniforms-and-color-scheme"
    },
    {
     "key": "CHA_2014",
@@ -334,20 +349,20 @@
     "status": "probable",
     "source_note": "2026-07-28: new era, 87-93 blue w/ orange numbers; verify vs reference"
    },
-   {
-    "key": "CLE_1994",
+  {
+   "key": "CLE_1994",
     "years": [
      1994,
      2002
     ],
     "identity": "Cleveland Cavaliers",
-    "primary": "#006BB6",
-    "secondary": "#000000",
-    "trim": "#F58426",
+    "primary": "#000000",
+    "secondary": "#FFFFFF",
+    "trim": "#55C2FF",
     "eraStyle": "nineties",
-    "confidence": "medium",
-    "status": "unverified",
-    "source_note": ""
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Cavaliers official uniform history: 1994-2003 road set used a black body, white numbers/lettering, powder-blue treatment and orange outlines; https://www.nba.com/cavaliers/history/uniform-logo-history"
    },
    {
     "key": "CLE_2003",
@@ -594,12 +609,12 @@
     ],
     "identity": "Golden State Warriors",
     "primary": "#04529C",
-    "secondary": "#FFA400",
-    "trim": "#BE3A34",
+    "secondary": "#FFFFFF",
+    "trim": "#FFA400",
     "eraStyle": "baggy",
-    "confidence": "medium",
-    "status": "unverified",
-    "source_note": ""
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "NBA uniform history identifies the 1997-2010 We Believe set's deep-blue and orange identity; white lettering is confirmed by the dated Basketball-Reference uniform rendering; https://www.nba.com/news/jersey-day-2025-new-age-tradition"
    },
    {
     "key": "GSW_2010",
@@ -698,20 +713,35 @@
     "status": "probable",
     "source_note": ""
    },
+  {
+   "key": "IND_1990",
+   "years": [
+    1990,
+    1996
+   ],
+    "identity": "Indiana Pacers (Flo Jo)",
+    "primary": "#002D62",
+    "secondary": "#FFFFFF",
+    "trim": "#FDBB30",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Pacers official jersey timeline dates the Flo Jo set to 1990-91 through 1996-97; https://www.nba.com/pacers/gallery/pacers-jerseys-through-years"
+   },
    {
-    "key": "IND_1990",
+    "key": "IND_1997",
     "years": [
-     1990,
+     1997,
      2004
     ],
     "identity": "Indiana Pacers (pinstripe)",
     "primary": "#002D62",
-    "secondary": "#FDBB30",
-    "trim": "#FFFFFF",
+    "secondary": "#FFFFFF",
+    "trim": "#FDBB30",
     "eraStyle": "nineties",
-    "confidence": "medium",
-    "status": "unverified",
-    "source_note": ""
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Pacers official jersey timeline dates the blue/white/gold pinstripe set to 1997-98 through 2004-05; https://www.nba.com/pacers/gallery/pacers-jerseys-through-years"
    },
    {
     "key": "IND_2005",
@@ -922,20 +952,20 @@
     "verified_by": "TimVanC (AI reference comparison, owner-approved)",
     "verified_on": "2026-07-28"
    },
-   {
-    "key": "MIL_2006",
+  {
+   "key": "MIL_2006",
     "years": [
      2006,
      2014
     ],
     "identity": "Milwaukee Bucks",
     "primary": "#AC1A2F",
-    "secondary": "#00471B",
-    "trim": "#C4CED4",
+    "secondary": "#FFFFFF",
+    "trim": "#00471B",
     "eraStyle": "baggy",
-    "confidence": "medium",
-    "status": "unverified",
-    "source_note": ""
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Bucks official jersey history identifies the 2006-15 road look and the era's red, green and silver palette; dated uniform imagery confirms white road numbers with green trim; https://www.nba.com/bucks/features/boeder-bucks-jersey-rankings"
    },
    {
     "key": "MIL_2015",
@@ -969,20 +999,20 @@
     "status": "unverified",
     "source_note": ""
    },
-   {
-    "key": "MIN_1996",
+  {
+   "key": "MIN_1996",
     "years": [
      1996,
      2007
     ],
     "identity": "Minnesota Timberwolves (trees)",
     "primary": "#0C2340",
-    "secondary": "#236192",
+    "secondary": "#FFFFFF",
     "trim": "#78BE20",
     "eraStyle": "baggy",
-    "confidence": "medium",
-    "status": "unverified",
-    "source_note": ""
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Timberwolves official history dates the tree-lined midnight-blue, white and green identity to the 1996-97 redesign; https://www.nba.com/timberwolves/history"
    },
    {
     "key": "MIN_2008",
@@ -992,12 +1022,12 @@
     ],
     "identity": "Minnesota Timberwolves",
     "primary": "#0C2340",
-    "secondary": "#236192",
+    "secondary": "#FFFFFF",
     "trim": "#C4CED4",
     "eraStyle": "baggy",
-    "confidence": "medium",
-    "status": "unverified",
-    "source_note": ""
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Minnesota's official 2008 unveiling documents the slate-blue road body, white identity accents, and 2008-09 launch; https://www.nba.com/timberwolves/news/wolves_unveil_new_uniforms_080818.html"
    },
    {
     "key": "MIN_2017",
@@ -1024,12 +1054,12 @@
     ],
     "identity": "New Orleans Hornets",
     "primary": "#00788C",
-    "secondary": "#1D1160",
-    "trim": "#FFC72C",
+    "secondary": "#FFFFFF",
+    "trim": "#1D1160",
     "eraStyle": "baggy",
-    "confidence": "medium",
-    "status": "unverified",
-    "source_note": ""
+    "confidence": "high",
+    "status": "probable",
+    "source_note": "Contemporary 2002 coverage documents teal uniforms with purple, gold and white detailing; the dated Basketball-Reference renderings confirm the white road numerals; https://www.sportsbusinessjournal.com/Daily/Issues/2002/08/20/Franchises/What-No-Beads-Hornets-Add-Pinch-Of-Mardi-Gras-Gold-To-Logo/"
    },
    {
     "key": "NOP_2013",
@@ -1103,12 +1133,12 @@
     ],
     "identity": "Seattle SuperSonics",
     "primary": "#00653A",
-    "secondary": "#FFC200",
-    "trim": "#FFFFFF",
+    "secondary": "#FFFFFF",
+    "trim": "#FFC200",
     "eraStyle": "baggy",
-    "confidence": "medium",
-    "status": "unverified",
-    "source_note": ""
+    "confidence": "high",
+    "status": "probable",
+    "source_note": "The 2001-08 Seattle set is documented as a dark-green road uniform with white-and-gold accents; https://en.wikipedia.org/wiki/Seattle_SuperSonics"
    },
    {
     "key": "OKC_2008",
@@ -1167,12 +1197,12 @@
     ],
     "identity": "Philadelphia 76ers (black/gold era)",
     "primary": "#000000",
-    "secondary": "#ED174C",
-    "trim": "#C4CED4",
+    "secondary": "#FFFFFF",
+    "trim": "#ED174C",
     "eraStyle": "baggy",
-    "confidence": "medium",
-    "status": "unverified",
-    "source_note": ""
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Philadelphia's official uniform history documents the 1997-2009 black road set with white numbers trimmed in red and red/gold uniform trim; https://www.nba.com/sixers/history/76ers-jerseys"
    },
    {
     "key": "PHI_2009",
@@ -1590,20 +1620,20 @@
     "status": "probable",
     "source_note": ""
    },
-   {
-    "key": "WAS_1997",
+  {
+   "key": "WAS_1997",
     "years": [
      1997,
      2010
     ],
     "identity": "Washington Wizards (blue/bronze)",
     "primary": "#00265B",
-    "secondary": "#BB9754",
-    "trim": "#000000",
+    "secondary": "#FFFFFF",
+    "trim": "#BB9754",
     "eraStyle": "baggy",
-    "confidence": "medium",
-    "status": "unverified",
-    "source_note": ""
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Wizards official jersey timeline dates the blue road colorway and blue/black/bronze/white rebrand to 1997; https://www.nba.com/wizards/jersey-timeline"
    },
    {
     "key": "WAS_2011",

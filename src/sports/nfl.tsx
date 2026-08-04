@@ -17,6 +17,7 @@ import {
   MedalIcon,
   OpoyIcon,
   OroyIcon,
+  DroyIcon,
   SbMvpIcon,
   StarIcon,
   TrophyIcon,
@@ -96,6 +97,7 @@ export const nfl: SportConfig = {
     sb_mvp: { Icon: SbMvpIcon, label: "Super Bowl MVP", wordmark: true },
     all_pro: { Icon: FirstTeamIcon, label: "First-Team All-Pro", wordmark: true },
     roy: { Icon: OroyIcon, label: "Off. Rookie of the Year", wordmark: true },
+    droy: { Icon: DroyIcon, label: "Def. Rookie of the Year", wordmark: true },
     opoy: { Icon: OpoyIcon, label: "Off. Player of the Year", wordmark: true },
     comeback: { Icon: ComebackIcon, label: "Comeback Player", wordmark: true },
     // the Lombardi covers the ring, so the plain trophy is free for

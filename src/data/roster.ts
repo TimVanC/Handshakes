@@ -35,13 +35,12 @@ export const ROSTER: string[] = [
   "Kobe Bryant", // day 19 — swapped down from day 9 (a two-team star, not a journeyman)
   "Allen Iverson",
   "Rasheed Wallace",
-  "Garrett Temple", // day 22 — 12 franchises; owner swap 2026-08-03 (Shaq → day 28)
-  "Earl Boykins", // day 23 — 10 franchises at 5'5"; owner swap 2026-08-03 (Payton → day 43)
+  "Garrett Temple", // day 22 — 12 franchises; owner swap 2026-08-03
+  "Earl Boykins", // day 23 — 10 franchises at 5'5"; owner swap 2026-08-03 (Payton → day 41)
   "Jim Jackson", // 12 franchises (moved from day 9 to make room for Baron Davis)
   "Joe Smith",
-  "Kevin Ollie", // day 26 — 11+ franchises; owner swap 2026-08-03 (Wilkins → day 40)
+  "Kevin Ollie", // day 26 — 11+ franchises; owner swap 2026-08-03
   "Stephon Marbury",
-  "Shaquille O'Neal", // day 28 — swapped down from day 22 (owner: too well known there)
   "Ray Allen",
   "Glen Rice",
   "D.J. Augustin",
@@ -53,29 +52,24 @@ export const ROSTER: string[] = [
   "Mike James",
   "Bob McAdoo",
   "Tim Hardaway",
-  "Dominique Wilkins", // day 40 — swapped down from day 26
   "Chris Webber",
   "Rajon Rondo",
-  "Gary Payton", // day 43 — swapped down from day 23
+  "Gary Payton", // day 41 — swapped down from day 23
   "Adrian Dantley",
   "Sam Cassell",
   "Drew Gooden",
   "Grant Hill",
   "Jerry Stackhouse",
   "Damon Jones",
-  "Pau Gasol",
   "Kevin Willis",
   "Aaron Williams",
   "Dikembe Mutombo",
   "Kenny Anderson",
   "Mark Bryant",
-  "Dwyane Wade",
   "Juwan Howard",
   "Benoit Benjamin",
-  "Kevin Durant",
   "Larry Hughes",
   "Tyrone Corbin",
-  "James Harden",
   "Stephen Jackson",
   "Eddie House",
   "Russell Westbrook",
@@ -95,7 +89,6 @@ export const ROSTER: string[] = [
   "Dennis Johnson",
   "Dwight Howard",
   "Marcus Morris",
-  "Bernard King",
   "Carmelo Anthony",
   "JaVale McGee",
   "Mitch Richmond",
@@ -108,13 +101,48 @@ export const ROSTER: string[] = [
   "Metta World Peace",
   "Corey Brewer",
   "Dale Ellis",
-  "LeBron James", // swapped down from day 8
   "Dave Bing",
   "Nate Archibald",
   "Earl Monroe",
   "Connie Hawkins",
   "Robert Parish",
   "Rick Barry", // displaced from day 8 by Horry
+  // ---- days 94-103: duplicate-screened and randomized 2026-08-03 ----
+  "Mike Muscala",
+  "Reggie Evans",
+  "Wayne Ellington",
+  "Robin Lopez",
+  "Omri Casspi",
+  "Austin Rivers",
+  "Anthony Tolliver",
+  "Delon Wright",
+  "Channing Frye",
+  "James Johnson",
+  // ---- duplicate-screened, randomized and authored 2026-08-03 ----
+  "Rasual Butler",
+  "Tony Delk",
+  "Jodie Meeks",
+  "Keyon Dooling",
+  "Quincy Acy",
+  "Chris Duhon",
+  "Jarvis Hayes",
+  "Steve Blake",
+  "Reggie Bullock",
+  "Michael Doleac",
+  "Brandon Rush",
+  "Carlos Arroyo",
+  "Ronnie Brewer",
+  "Jason Smith",
+  "Anthony Parker",
+  "Walter McCarty",
+  "Alan Anderson",
+  "Jason Kapono",
+  "Luther Head",
+  "Willie Green",
+  "Francisco García",
+  "Dahntay Jones",
+  "Marquis Daniels",
+  "Ronnie Price",
 ];
 
 /** case/accent-insensitive comparison key */

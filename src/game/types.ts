@@ -16,6 +16,7 @@ export type AccoladeType =
   // NFL (champion = Super Bowl ring, roy/mvp shared)
   | "pro_bowl"
   | "all_pro"
+  | "droy"
   | "sb_mvp"
   | "opoy"
   | "comeback"
