@@ -991,6 +991,11 @@ select {
     0 0 0 1px rgba(179, 133, 90, 0.55),
     0 0 46px -4px rgba(179, 133, 90, 0.5);
 }
+
+.account-prompt-close {
+  transform: translateY(0.35rem);
+}
+
 /* a bright accent bar across the very top — the eye-catch cue */
 .account-prompt-panel::before {
   content: "";

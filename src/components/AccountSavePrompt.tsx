@@ -219,7 +219,7 @@ export default function AccountSavePrompt({ onSignUp, onClose }: Props) {
               KEEP YOUR GAMES
             </h2>
           </div>
-          <button type="button" className="chip cursor-pointer" onClick={onClose} aria-label="Not now">
+          <button type="button" className="chip account-prompt-close cursor-pointer" onClick={onClose} aria-label="Not now">
             ✕
           </button>
         </div>
