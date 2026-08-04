@@ -109,4 +109,7 @@ export const NFL_ROSTER: string[] = [
   "Ndamukong Suh",
   "Cortland Finnegan",
   "Mike Adams",
+  // ---- duplicate-screened, randomized and authored 2026-08-03 ----
+  "Lance Moore",
+  "Domenik Hixon",
 ];

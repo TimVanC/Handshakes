@@ -10,6 +10,7 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 
 const CACHE = "pipeline/.cache/nba-br";
+const ESPN_CACHE = "pipeline/.cache/nba-espn";
 const OUT = "pipeline/out";
 const DEFAULT_PLAYERS = [
   ["Mike Muscala", "muscami01"],
@@ -40,6 +41,7 @@ const FRANCHISE = {
 };
 
 const TEAM_NAMES = {
+  BKN: "Brooklyn Nets", PHX: "Phoenix Suns",
   ATL: "Atlanta Hawks", BOS: "Boston Celtics", BRK: "Brooklyn Nets", NJN: "New Jersey Nets",
   CHA: "Charlotte Bobcats", CHO: "Charlotte Hornets", CHI: "Chicago Bulls", CLE: "Cleveland Cavaliers",
   DAL: "Dallas Mavericks", DEN: "Denver Nuggets", DET: "Detroit Pistons", GSW: "Golden State Warriors",
@@ -129,14 +131,46 @@ function groupRows(rows, uniformRows) {
   for (const row of rows) {
     if (!row.franchise) throw new Error(`unmapped team: ${row.abbr}`);
     row.jerseyNumber = jerseyFor(row, uniformRows);
+    const displayTeam = row.displayTeam ?? TEAM_NAMES[row.abbr];
     const last = groups.at(-1);
-    if (last && last.franchise === row.franchise && last.displayTeam === TEAM_NAMES[row.abbr] && last.jerseyNumber === row.jerseyNumber && row.year <= last.endYear + 1) {
+    if (last && last.franchise === row.franchise && last.displayTeam === displayTeam && last.jerseyNumber === row.jerseyNumber && row.year <= last.endYear + 1) {
       last.rows.push(row); last.endYear = Math.max(last.endYear, row.year);
     } else {
-      groups.push({ franchise: row.franchise, displayTeam: TEAM_NAMES[row.abbr], startYear: row.year, endYear: row.year, jerseyNumber: row.jerseyNumber, rows: [row] });
+      groups.push({ franchise: row.franchise, displayTeam, startYear: row.year, endYear: row.year, jerseyNumber: row.jerseyNumber, rows: [row] });
     }
   }
   return groups;
+}
+
+const ESPN_TEAM = { WSH: "WAS", WAS: "WAS", UTAH: "UTA", SA: "SAS", GS: "GSW", SEA: "OKC", NJ: "BKN", BRK: "BKN", NY: "NYK", NO: "NOP", NOH: "NOP", CHA: "CHA", PHO: "PHX" };
+function historicalTeam(franchise, year) {
+  if (franchise === "OKC" && year <= 2007) return "Seattle SuperSonics";
+  if (franchise === "NOP" && year <= 2012) return "New Orleans Hornets";
+  if (franchise === "BKN" && year <= 2011) return "New Jersey Nets";
+  if (franchise === "CHA" && year <= 2013) return "Charlotte Bobcats";
+  return TEAM_NAMES[franchise];
+}
+async function espnRows(id) {
+  await mkdir(ESPN_CACHE, { recursive: true });
+  const path = `${ESPN_CACHE}/${id}.json`;
+  let payload;
+  try { payload = JSON.parse(await readFile(path, "utf8")); }
+  catch {
+    const response = await fetch(`https://site.web.api.espn.com/apis/common/v3/sports/basketball/nba/athletes/${id}/stats`);
+    if (!response.ok) throw new Error(`ESPN NBA ${id}: ${response.status}`);
+    payload = await response.json();
+    await writeFile(path, JSON.stringify(payload));
+  }
+  const teams = new Map(Object.values(payload.teams ?? {}).map((team) => [String(team.id), ESPN_TEAM[team.abbreviation] ?? team.abbreviation]));
+  const category = payload.categories?.find((item) => item.name === "averages");
+  if (!category) throw new Error(`ESPN NBA ${id}: averages missing`);
+  return category.statistics.filter((row) => row.teamId).map((row) => {
+    const franchise = teams.get(String(row.teamId));
+    const year = Number(row.season.year) - 1;
+    if (!franchise) throw new Error(`ESPN NBA ${id}: unmapped team ${row.teamId}`);
+    return { abbr: franchise, franchise, displayTeam: historicalTeam(franchise, year), year,
+      gp: Number(row.stats[0]), mpg: Number(row.stats[2]), ppg: Number(row.stats[17]), rpg: Number(row.stats[11]), apg: Number(row.stats[12]) };
+  });
 }
 
 function oneDecimal(value) { return Math.round(value * 10) / 10; }
@@ -192,6 +226,12 @@ for (const [answer, brId] of PLAYERS) {
   const manual = CONFIG_BY_NAME[answer];
   if (manual?.stints) {
     authored.push({ answer, brId, hints: manual.hints, stints: manual.stints });
+    continue;
+  }
+  if (manual?.espnId) {
+    const rows = await espnRows(manual.espnId);
+    const stints = groupRows(rows, manual.jerseyHistory).map((group) => finishGroup(group));
+    authored.push({ answer, brId, hints: manual.hints, stints });
     continue;
   }
   const html = await page(brId);

@@ -1,0 +1,19 @@
+{
+  "outputBase": "nfl-batch-2026-08-04",
+  "startId": 74,
+  "players": ["Lance Moore", "Domenik Hixon"],
+  "firstSeason": 2004,
+  "positions": {
+    "Lance Moore": "WR",
+    "Domenik Hixon": "WR / KR"
+  },
+  "bios": {
+    "Domenik Hixon": {
+      "college": "Akron"
+    }
+  },
+  "accolades": {
+    "Lance Moore": [["NO", 2009, "champion"]],
+    "Domenik Hixon": [["NYG", 2007, "champion"], ["NYG", 2011, "champion"]]
+  }
+}

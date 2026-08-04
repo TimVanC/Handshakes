@@ -71,6 +71,12 @@ export const ROSTER: string[] = [
   "Dahntay Jones",
   "Marquis Daniels",
   "Ronnie Price",
+  "Shelvin Mack",
+  "Greivis Vásquez",
+  "Beno Udrih",
+  "Luke Ridnour",
+  "Maurice Evans",
+  "Chuck Hayes",
 ];
 
 /** case/accent-insensitive comparison key */
