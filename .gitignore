@@ -1,5 +1,7 @@
 node_modules/
 dist/
+dist-admin/
+.admin-dev.*.log
 *.local
 .DS_Store
 
