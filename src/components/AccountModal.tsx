@@ -3,6 +3,7 @@ import type { Session, User } from "@supabase/supabase-js";
 import { SPORTS, SPORT_ORDER } from "../sports";
 import type { Sport } from "../sports/types";
 import { supabase } from "../lib/supabase";
+import { renderGoogleButton } from "../lib/googleIdentity";
 import { computeStats, fetchAllResults, SCORE_BUCKETS, type CloudResult } from "../lib/cloud";
 import type { AccountCtaSource } from "../lib/analytics";
 
@@ -217,7 +218,19 @@ function AuthForm({
     }
   };
 
-  const google = async () => {
+  // Google's own button (rendered by GIS) signs in from this origin, so the
+  // consent screen shows journeymanjersey.com — not the Supabase project URL.
+  // If the GIS script can't load (ad blockers, offline), fall back to the old
+  // redirect-through-Supabase flow; both land on the same account.
+  const googleRef = useRef<HTMLDivElement>(null);
+  const [googleFallback, setGoogleFallback] = useState(false);
+  useEffect(() => {
+    const el = googleRef.current;
+    if (!el || googleFallback) return;
+    renderGoogleButton(el, setError).catch(() => setGoogleFallback(true));
+  }, [confirmPhone, googleFallback]);
+
+  const googleRedirect = async () => {
     setError(null);
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "google",
@@ -323,9 +336,13 @@ function AuthForm({
         <span className="h-px flex-1 bg-line" /> or <span className="h-px flex-1 bg-line" />
       </div>
 
-      <button type="button" className="btn w-full py-2.5" onClick={google}>
-        Continue with Google
-      </button>
+      {googleFallback ? (
+        <button type="button" className="btn w-full py-2.5" onClick={googleRedirect}>
+          Continue with Google
+        </button>
+      ) : (
+        <div ref={googleRef} className="flex min-h-[40px] justify-center" />
+      )}
 
       {message && <p className="font-bold text-[#2e7d43]">{message}</p>}
       {error && <p className="font-bold text-[#b3362a]">{error}</p>}
