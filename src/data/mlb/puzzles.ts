@@ -16,6 +16,10 @@ import type { Puzzle } from "../../game/types";
  * below and replaced in place by Hawkins/Melky/Haren/Asdrúbal (ids 22-25).
  * Jimmie Foxx (day 13) was already live that day and was left alone.
  *
+ * 2026-08-06 owner request: Omir Santos (id 76) inserted at index 16 =
+ * day 17 (2026-08-07); Melky Cabrera and everything after shift back one
+ * day. Days 1-16 were already aired/airing and are untouched.
+ *
  * 2026-08-03 requested batch: days 22-43 were randomized once, then
  * authored from MLB Stats API people/yearByYear/rosterEntries/fullSeason
  * data. Team-row totals were reconciled field-by-field to each player's
@@ -1916,6 +1920,86 @@ export const mlbPuzzles: Puzzle[] = [
       height: "6'2\"",
       debutYear: "2003",
       born: "Neu-Ulm, Germany",
+    },
+  },
+  {
+    // Puzzle 76 — Omir Santos: backup catcher, four cups of coffee around
+    // one real season — 96 games for the 2009 Mets and the go-ahead 9th-
+    // inning HR off Papelbon at Fenway. Yankees 21st-rounder (2001) who
+    // never played a game for them. Owner request 2026-08-05, slotted in
+    // at day 17 (2026-08-07; everything after shifts back one day).
+    // MLB Stats API verified: people + yearByYear + rosterEntries + team
+    // season rosters (2026-08-05).
+    id: 76,
+    pathType: "team",
+    answer: "Omir Santos",
+    stints: [
+      {
+        franchise: "BAL",
+        displayTeam: "Baltimore Orioles",
+        startYear: 2008,
+        endYear: 2008,
+        jerseyNumber: 63,
+        statLine: [
+          { label: "G", value: 11 },
+          { label: "AVG", value: ".100" },
+          { label: "HR", value: 0 },
+          { label: "RBI", value: 0 },
+          { label: "SB", value: 0 },
+        ],
+      },
+      {
+        franchise: "NYM",
+        displayTeam: "New York Mets",
+        startYear: 2009,
+        endYear: 2009,
+        jerseyNumber: 9,
+        statLine: [
+          { label: "G", value: 96 },
+          { label: "AVG", value: ".260" },
+          { label: "HR", value: 7 },
+          { label: "RBI", value: 40 },
+          { label: "SB", value: 0 },
+        ],
+      },
+      {
+        franchise: "DET",
+        displayTeam: "Detroit Tigers",
+        startYear: 2011,
+        endYear: 2012,
+        jerseyNumber: 18,
+        statLine: [
+          { label: "G", value: 14 },
+          { label: "AVG", value: ".200" },
+          { label: "HR", value: 0 },
+          { label: "RBI", value: 1 },
+          { label: "SB", value: 0 },
+        ],
+      },
+      {
+        franchise: "CLE",
+        displayTeam: "Cleveland Indians",
+        startYear: 2013,
+        endYear: 2013,
+        jerseyNumber: 58,
+        statLine: [
+          { label: "G", value: 1 },
+          { label: "AVG", value: ".000" },
+          { label: "HR", value: 0 },
+          { label: "RBI", value: 0 },
+          { label: "SB", value: 0 },
+        ],
+      },
+    ],
+    // the one-game Cleveland cameo and Orioles cup of coffee first,
+    // the 2009 Mets year (his whole career, basically) last
+    revealOrder: [3, 0, 2, 1],
+    hints: {
+      position: "C",
+      batsThrows: "R / R",
+      height: "6'0\"",
+      debutYear: "2008",
+      born: "Bayamón, Puerto Rico",
     },
   },
   {
