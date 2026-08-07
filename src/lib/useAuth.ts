@@ -14,6 +14,27 @@ import { SPORTS, SPORT_ORDER } from "../sports";
  *  this capture always wins that race. */
 const LANDING_HASH = location.hash;
 
+/** The account a recovery link was minted for, decoded from the landing
+ *  hash's access token. Email links open in the phone's DEFAULT browser, so
+ *  a reset requested elsewhere (incognito, another browser) can land in a
+ *  browser already signed in as a DIFFERENT account — if the token then
+ *  fails to apply, the new-password form must not silently change whoever
+ *  happens to be signed in. This is who it's allowed to change. */
+export const RECOVERY_TARGET = (() => {
+  if (!/type=recovery/.test(LANDING_HASH)) return null;
+  const m = /access_token=([^&]+)/.exec(LANDING_HASH);
+  const b64 = m?.[1].split(".")[1]?.replace(/-/g, "+").replace(/_/g, "/");
+  if (!b64) return null;
+  try {
+    const payload = JSON.parse(atob(b64.padEnd(b64.length + ((4 - (b64.length % 4)) % 4), "=")));
+    return typeof payload.sub === "string"
+      ? { id: payload.sub, email: typeof payload.email === "string" ? payload.email : null }
+      : null;
+  } catch {
+    return null;
+  }
+})();
+
 /** Password-recovery arrival state. "reset" = a valid reset link signed the
  *  user in and they should now choose a new password; "expired" = the link's
  *  token was already dead when they landed. */

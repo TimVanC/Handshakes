@@ -4,6 +4,7 @@ import { SPORTS, SPORT_ORDER } from "../sports";
 import type { Sport } from "../sports/types";
 import { supabase } from "../lib/supabase";
 import { renderGoogleButton } from "../lib/googleIdentity";
+import { RECOVERY_TARGET } from "../lib/useAuth";
 import { computeStats, fetchAllResults, SCORE_BUCKETS, type CloudResult } from "../lib/cloud";
 import type { AccountCtaSource } from "../lib/analytics";
 
@@ -46,6 +47,12 @@ export default function AccountModal({
   const [view, setView] = useState<AuthView>(recovery === "expired" ? "forgot" : "signup");
   // signed in, but only via a reset — hold the locker until a password is set
   const [resettingPw, setResettingPw] = useState(recovery === "reset");
+  // email links open in the phone's DEFAULT browser, which may hold a session
+  // for a DIFFERENT account than the link was minted for (e.g. reset requested
+  // from incognito). If the link's token didn't apply, changing the password
+  // of whoever is signed in would hijack the wrong account — block it.
+  const wrongAccount =
+    resettingPw && !!session && !!RECOVERY_TARGET && RECOVERY_TARGET.id !== session.user.id;
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
@@ -63,7 +70,9 @@ export default function AccountModal({
           : "Join the league";
   const heading = session
     ? resettingPw
-      ? "Set a new password"
+      ? wrongAccount
+        ? "Wrong account for this link"
+        : "Set a new password"
       : "Your locker"
     : view === "signup"
       ? signupHeading
@@ -91,7 +100,23 @@ export default function AccountModal({
 
         {session ? (
           resettingPw ? (
-            <NewPasswordForm onDone={() => setResettingPw(false)} />
+            wrongAccount ? (
+              <RecoveryMismatch
+                target={RECOVERY_TARGET?.email ?? null}
+                current={session.user.email ?? session.user.phone ?? "this account"}
+                onSwitch={async () => {
+                  await supabase.auth.signOut();
+                  setView("forgot");
+                  setResettingPw(false);
+                }}
+                onStay={() => setResettingPw(false)}
+              />
+            ) : (
+              <NewPasswordForm
+                identity={session.user.email ?? session.user.phone ?? null}
+                onDone={() => setResettingPw(false)}
+              />
+            )
           ) : (
             <SignedIn session={session} defaultScope={defaultScope} />
           )
@@ -100,6 +125,7 @@ export default function AccountModal({
             view={view}
             onSwitchView={setView}
             signupContext={signupContext}
+            initialIdentifier={RECOVERY_TARGET?.email ?? ""}
             initialError={
               recovery === "expired"
                 ? "That reset link has expired — request a new one."
@@ -150,17 +176,21 @@ function AuthForm({
   onSwitchView,
   signupContext,
   initialError = null,
+  initialIdentifier = "",
   onRecoveryVerified,
 }: {
   view: AuthView;
   onSwitchView: (v: AuthView) => void;
   signupContext: AccountCtaSource;
   initialError?: string | null;
+  /** prefill for the email/phone field (e.g. the account a recovery link
+   *  was for, after a wrong-account landing signs out to re-request) */
+  initialIdentifier?: string;
   /** a forgot-password phone code checked out — the user is now signed in
    *  and the parent should show the choose-a-new-password form */
   onRecoveryVerified: () => void;
 }) {
-  const [identifier, setIdentifier] = useState("");
+  const [identifier, setIdentifier] = useState(initialIdentifier);
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
   const [showPw, setShowPw] = useState(false);
@@ -626,10 +656,50 @@ function AuthForm({
 
 /* ------------------------------------------------------------------ */
 
+/** A reset link landed in a browser signed in as a DIFFERENT account than
+ *  the link was minted for (its token didn't apply — e.g. requested from
+ *  incognito, opened in the default browser). Never let that reset go
+ *  through against the wrong account. */
+function RecoveryMismatch({
+  target,
+  current,
+  onSwitch,
+  onStay,
+}: {
+  target: string | null;
+  current: string;
+  onSwitch: () => void;
+  onStay: () => void;
+}) {
+  return (
+    <div className="mt-3 space-y-3 text-sm">
+      <p className="leading-relaxed">
+        That reset link was for{" "}
+        <strong>{target ?? "a different account"}</strong>, but this browser is
+        signed in as <strong>{current}</strong> — so nothing was changed.
+      </p>
+      <button type="button" className="btn btn-primary w-full py-2.5" onClick={onSwitch}>
+        Sign out &amp; reset {target ?? "the other account"}
+      </button>
+      <button type="button" className="btn w-full py-2" onClick={onStay}>
+        Stay signed in as {current}
+      </button>
+    </div>
+  );
+}
+
 /** Shown after a recovery sign-in (email link or texted code): the user is
  *  authenticated, but only because of the reset — capture the new password
  *  before letting the locker take over. */
-function NewPasswordForm({ onDone }: { onDone: () => void }) {
+function NewPasswordForm({
+  identity,
+  onDone,
+}: {
+  /** the email/phone whose password is being changed — always shown, so a
+   *  reset can never silently apply to an unexpected account */
+  identity: string | null;
+  onDone: () => void;
+}) {
   const [password, setPassword] = useState("");
   const [showPw, setShowPw] = useState(false);
   const [busy, setBusy] = useState(false);
@@ -665,7 +735,13 @@ function NewPasswordForm({ onDone }: { onDone: () => void }) {
   return (
     <form onSubmit={submit} className="mt-3 space-y-2 text-sm">
       <p className="text-xs leading-relaxed text-ink-soft">
-        You're signed in — choose a new password for next time.
+        You're signed in{identity && (
+          <>
+            {" as "}
+            <strong className="text-ink">{identity}</strong>
+          </>
+        )}{" "}
+        — choose a new password for next time.
       </p>
       <div className="relative">
         <input
