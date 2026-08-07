@@ -21,45 +21,12 @@ export default function GuessInput({ disabled, alreadyGuessed, onGuess }: Props)
   const [indexReady, setIndexReady] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const listboxId = useId();
-  // where the page was scrolled the moment the input took focus — see the
-  // keyboard counter-scroll effect below
-  const scrollBeforeFocus = useRef(0);
 
   useEffect(() => {
     let alive = true;
     SPORT.searchPlayers.load().then(() => alive && setIndexReady(true));
     return () => {
       alive = false;
-    };
-  }, []);
-
-  // iOS Safari scrolls the DOCUMENT toward the bottom when the keyboard
-  // opens, to bring the focused field above it — pointless here, because
-  // the guess bar is position:fixed and visible above the keyboard no
-  // matter what, so all that scroll does is dump the player into the empty
-  // padding below the spread (and Safari never scrolls back on dismiss).
-  // The keyboard opening shows up as a visualViewport resize: put the page
-  // back where it was. Guarded on our input holding focus so an orientation
-  // change or address-bar collapse doesn't yank the scroll around.
-  useEffect(() => {
-    const vv = window.visualViewport;
-    if (!vv) return;
-    let settle: number | undefined;
-    const restore = () => {
-      if (document.activeElement !== inputRef.current) return;
-      window.scrollTo({ top: scrollBeforeFocus.current });
-      // Safari can land its own scroll a beat AFTER the resize event —
-      // reassert once more when the keyboard animation has settled
-      window.clearTimeout(settle);
-      settle = window.setTimeout(() => {
-        if (document.activeElement === inputRef.current)
-          window.scrollTo({ top: scrollBeforeFocus.current });
-      }, 250);
-    };
-    vv.addEventListener("resize", restore);
-    return () => {
-      vv.removeEventListener("resize", restore);
-      window.clearTimeout(settle);
     };
   }, []);
 
@@ -139,10 +106,7 @@ export default function GuessInput({ disabled, alreadyGuessed, onGuess }: Props)
           setOpen(true);
           setHighlight(0);
         }}
-        onFocus={() => {
-          scrollBeforeFocus.current = window.scrollY;
-          setOpen(true);
-        }}
+        onFocus={() => setOpen(true)}
         onBlur={() => setTimeout(() => setOpen(false), 120)}
         onKeyDown={onKeyDown}
         autoComplete="off"

@@ -14,7 +14,6 @@ import SettingsModal from "./components/SettingsModal";
 import GiveUpModal from "./components/GiveUpModal";
 import { FlagIcon, FlipIcon, LockIcon } from "./components/Icons";
 import { usePasswordRecovery, useSession } from "./lib/useAuth";
-import { useKeyboardInset } from "./lib/useKeyboardInset";
 import { logPlay, pushResult } from "./lib/cloud";
 import { trackAccountCta, trackGameCompleted, trackGameStarted } from "./lib/analytics";
 import type { AccountCtaSource } from "./lib/analytics";
@@ -255,9 +254,6 @@ export default function App() {
   const [flipAll, setFlipAll] = useState({ back: false, n: 0 });
   // the white flag asks "are you sure?" before it forfeits the puzzle
   const [confirmGiveUp, setConfirmGiveUp] = useState(false);
-  // on-screen keyboard height — the guess bar lifts by this much, because a
-  // fixed bottom bar is otherwise BEHIND the iOS keyboard (see the hook)
-  const kbInset = useKeyboardInset();
 
   const phase = getPhase(state, puzzle);
   const over = state.status !== "playing";
@@ -761,17 +757,15 @@ export default function App() {
         )}
       </main>
 
-      {/* guess bar — thumb zone on mobile; `bottom` tracks the visual
-          viewport so the bar rides on top of the on-screen keyboard instead
-          of drowning behind it (see useKeyboardInset). A large inset means
-          the keyboard is up — swap the safe-area (home indicator) padding
-          for plain padding then, since the keyboard IS that clearance. */}
-      <div
-        className={`fixed inset-x-0 z-30 border-t-2 border-ink bg-paper/95 pt-2.5 backdrop-blur-sm ${
-          kbInset > 100 ? "pb-3" : "pb-[max(0.75rem,env(safe-area-inset-bottom))]"
-        }`}
-        style={{ bottom: kbInset }}
-      >
+      {/* guess bar — thumb zone on mobile. Keyboard handling is left to the
+          browser on purpose: iOS shows a focused field by scrolling the page
+          itself, and every attempt to counter-manage that (lifting the bar
+          by the visualViewport delta, restoring scroll) fought the browser
+          and lost — the bar would lift then snap back behind the keyboard.
+          The default scroll is not pretty but always keeps typing visible,
+          and committing a guess blurs on touch (see GuessInput) so the
+          board is back in full view for the payoff. */}
+      <div className="fixed inset-x-0 bottom-0 z-30 border-t-2 border-ink bg-paper/95 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-2.5 backdrop-blur-sm">
         {state.wrongGuesses.length > 0 && (
           <div className="mx-auto max-w-xl px-4 pb-2" aria-label="Wrong guesses">
             <ul className="flex flex-wrap justify-center gap-1.5">
