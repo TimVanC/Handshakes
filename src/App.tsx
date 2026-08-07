@@ -761,15 +761,16 @@ export default function App() {
         )}
       </main>
 
-      {/* guess bar — thumb zone on mobile; rides up on top of the on-screen
-          keyboard (kbInset) instead of drowning behind it. The safe-area
-          padding is the home-indicator clearance — the keyboard IS that
-          clearance while it's up, so swap to the plain padding then. */}
+      {/* guess bar — thumb zone on mobile; `bottom` tracks the visual
+          viewport so the bar rides on top of the on-screen keyboard instead
+          of drowning behind it (see useKeyboardInset). A large inset means
+          the keyboard is up — swap the safe-area (home indicator) padding
+          for plain padding then, since the keyboard IS that clearance. */}
       <div
-        className={`fixed inset-x-0 bottom-0 z-30 border-t-2 border-ink bg-paper/95 pt-2.5 backdrop-blur-sm ${
-          kbInset ? "pb-3" : "pb-[max(0.75rem,env(safe-area-inset-bottom))]"
+        className={`fixed inset-x-0 z-30 border-t-2 border-ink bg-paper/95 pt-2.5 backdrop-blur-sm ${
+          kbInset > 100 ? "pb-3" : "pb-[max(0.75rem,env(safe-area-inset-bottom))]"
         }`}
-        style={kbInset ? { transform: `translateY(-${kbInset}px)` } : undefined}
+        style={{ bottom: kbInset }}
       >
         {state.wrongGuesses.length > 0 && (
           <div className="mx-auto max-w-xl px-4 pb-2" aria-label="Wrong guesses">

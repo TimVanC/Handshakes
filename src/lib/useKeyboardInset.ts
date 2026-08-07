@@ -1,17 +1,19 @@
 import { useEffect, useState } from "react";
 
 /**
- * How much of the layout viewport's bottom the on-screen keyboard covers,
- * in px (0 when closed).
+ * Distance (px) from the LAYOUT viewport's bottom edge up to the VISUAL
+ * viewport's bottom edge — i.e. how far a position:fixed bottom bar must be
+ * raised to sit at the bottom of what the user actually sees. 0 when they
+ * coincide (no keyboard, no viewport shuffling).
  *
- * iOS Safari pins position:fixed elements to the LAYOUT viewport, which the
- * keyboard overlays — so a fixed bottom bar simply vanishes behind it. The
- * only reliable signal is the visualViewport shrinking; whoever renders the
- * bar lifts it by this amount so it rides on top of the keyboard.
- *
- * The 100px floor filters out the small visual-viewport wobbles Safari
- * emits when the address bar collapses/expands — no keyboard is that short,
- * and treating a wobble as a keyboard would bounce the bar around.
+ * iOS pins fixed elements to the layout viewport, which the on-screen
+ * keyboard covers. Worse, when the keyboard opens iOS reveals the focused
+ * field by scrolling EITHER the document OR the visual viewport within the
+ * layout viewport (offsetTop), depending on mood — a naive "keyboard
+ * height" number computed once goes stale the moment it picks the second
+ * option (the bar would lift, then snap back down). Recomputing this gap
+ * from offsetTop+height on every visualViewport resize AND scroll keeps
+ * the bar glued to the visible bottom through all of it.
  */
 export function useKeyboardInset(): number {
   const [inset, setInset] = useState(0);
@@ -19,8 +21,9 @@ export function useKeyboardInset(): number {
     const vv = window.visualViewport;
     if (!vv) return;
     const update = () => {
-      const kb = window.innerHeight - vv.height - vv.offsetTop;
-      setInset(kb > 100 ? Math.round(kb) : 0);
+      const gap = Math.round(window.innerHeight - vv.height - vv.offsetTop);
+      // <2px is layout rounding noise, not a keyboard
+      setInset(gap > 2 ? gap : 0);
     };
     update();
     vv.addEventListener("resize", update);
