@@ -203,7 +203,7 @@ export default function JerseyCard({
         ref.current = el;
         cardRef?.(el);
       }}
-      className={`jersey-card w-full px-1.5 pb-2 pt-1 md:w-36 ${hard ? "" : "cursor-pointer"} ${isNewest && dealDelay > 0 ? "deal-in" : ""}`}
+      className={`jersey-card w-full px-1.5 pb-2 pt-1 md:w-36 ${hard ? "" : "cursor-pointer"} ${isNewest && dealDelay > 0 ? "deal-in" : ""} ${isNewest && dealDelay === 0 ? "just-dealt" : ""}`}
       style={
         {
           "--nudge": `${NUDGES[spreadIndex % NUDGES.length]}px`,

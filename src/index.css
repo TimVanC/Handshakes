@@ -153,6 +153,27 @@ select {
   animation: deal-in 720ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
+/* the just-dealt card wears a gold ring for a beat — a new jersey slots
+   into the middle of the career spread, and with 5+ cards on the table
+   it's easy to lose which one just landed. Holds while you find it, then
+   fades. An outline (not box-shadow) so the card's resting shadow and its
+   hover transition stay untouched. */
+@keyframes just-dealt-ring {
+  0%,
+  65% {
+    outline-color: #d9a520;
+  }
+  100% {
+    outline-color: transparent;
+  }
+}
+
+.just-dealt {
+  outline: 3px solid transparent;
+  outline-offset: 2px;
+  animation: just-dealt-ring 3.2s ease-out both;
+}
+
 /* tap-to-flip: a 2D squeeze (scaleX to 0, swap, scale back) driven by
    WAAPI in JerseyCard. Deliberately NOT a 3D flip — perspective +
    backface-visibility force cards into composited layers that mobile
