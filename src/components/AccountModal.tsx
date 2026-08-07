@@ -20,6 +20,9 @@ interface Props {
   onAuthed?: () => void;
   /** tailors the sign-up promise to the CTA that opened the modal */
   signupContext?: AccountCtaSource;
+  /** set when a password-reset link landed the user here: "reset" opens the
+   *  choose-a-new-password form, "expired" opens the request-a-new-link form */
+  recovery?: "reset" | "expired" | null;
 }
 
 /** Sign-up / sign-in when logged out; profile + lifetime stats when in. */
@@ -29,13 +32,20 @@ export default function AccountModal({
   onClose,
   onAuthed,
   signupContext = "stats",
+  recovery = null,
 }: Props) {
   // did this modal open on the auth form rather than the locker?
   const openedSignedOut = useRef(!session);
+  // recovery flows (email link or phone code) sign the user in as a side
+  // effect — don't let that auto-fire onAuthed and close the modal out from
+  // under the new-password form
+  const recoveryFlow = useRef(recovery === "reset");
   useEffect(() => {
-    if (openedSignedOut.current && session) onAuthed?.();
+    if (openedSignedOut.current && session && !recoveryFlow.current) onAuthed?.();
   }, [session, onAuthed]);
-  const [view, setView] = useState<"signup" | "signin">("signup");
+  const [view, setView] = useState<AuthView>(recovery === "expired" ? "forgot" : "signup");
+  // signed in, but only via a reset — hold the locker until a password is set
+  const [resettingPw, setResettingPw] = useState(recovery === "reset");
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
@@ -51,7 +61,15 @@ export default function AccountModal({
         : signupContext === "home"
           ? "Keep your stats"
           : "Join the league";
-  const heading = session ? "Your locker" : view === "signup" ? signupHeading : "Sign in";
+  const heading = session
+    ? resettingPw
+      ? "Set a new password"
+      : "Your locker"
+    : view === "signup"
+      ? signupHeading
+      : view === "signin"
+        ? "Sign in"
+        : "Reset your password";
 
   return (
     <div
@@ -72,9 +90,26 @@ export default function AccountModal({
         </div>
 
         {session ? (
-          <SignedIn session={session} defaultScope={defaultScope} />
+          resettingPw ? (
+            <NewPasswordForm onDone={() => setResettingPw(false)} />
+          ) : (
+            <SignedIn session={session} defaultScope={defaultScope} />
+          )
         ) : (
-          <AuthForm view={view} onSwitchView={setView} signupContext={signupContext} />
+          <AuthForm
+            view={view}
+            onSwitchView={setView}
+            signupContext={signupContext}
+            initialError={
+              recovery === "expired"
+                ? "That reset link has expired — request a new one."
+                : null
+            }
+            onRecoveryVerified={() => {
+              recoveryFlow.current = true;
+              setResettingPw(true);
+            }}
+          />
         )}
       </div>
     </div>
@@ -108,23 +143,33 @@ function parseIdentifier(raw: string): { email: string } | { phone: string } | n
   return null;
 }
 
+type AuthView = "signup" | "signin" | "forgot";
+
 function AuthForm({
   view,
   onSwitchView,
   signupContext,
+  initialError = null,
+  onRecoveryVerified,
 }: {
-  view: "signup" | "signin";
-  onSwitchView: (v: "signup" | "signin") => void;
+  view: AuthView;
+  onSwitchView: (v: AuthView) => void;
   signupContext: AccountCtaSource;
+  initialError?: string | null;
+  /** a forgot-password phone code checked out — the user is now signed in
+   *  and the parent should show the choose-a-new-password form */
+  onRecoveryVerified: () => void;
 }) {
   const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
   const [showPw, setShowPw] = useState(false);
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(initialError);
   // set while a phone sign-up waits on its SMS confirmation code
   const [confirmPhone, setConfirmPhone] = useState<string | null>(null);
+  // set while a forgot-password request waits on its SMS code
+  const [resetPhone, setResetPhone] = useState<string | null>(null);
   const [code, setCode] = useState("");
 
   const submit = async (e: React.FormEvent) => {
@@ -218,6 +263,87 @@ function AuthForm({
     }
   };
 
+  /** Email accounts get Supabase's reset link (which lands back on the site
+   *  as a recovery session); phone accounts get a texted sign-in code that
+   *  leads to the same choose-a-new-password form. */
+  const submitForgot = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const id = parseIdentifier(identifier);
+    if (!id) {
+      setError("Enter a valid email address or phone number");
+      return;
+    }
+    setBusy(true);
+    setError(null);
+    setMessage(null);
+    try {
+      if ("email" in id) {
+        const { error } = await supabase.auth.resetPasswordForEmail(id.email, {
+          redirectTo: location.origin,
+        });
+        if (error) throw error;
+        // deliberately the same wording whether or not the account exists, so
+        // this form can't be used to probe which emails are registered
+        setMessage("If that email has an account, a reset link is on the way.");
+      } else {
+        const { error } = await supabase.auth.signInWithOtp({
+          phone: id.phone,
+          options: { shouldCreateUser: false },
+        });
+        // shouldCreateUser:false makes Supabase refuse unknown numbers with a
+        // "signups not allowed" error — translate it
+        if (error)
+          throw /signup/i.test(error.message)
+            ? new Error("No account found with that phone number.")
+            : error;
+        setResetPhone(id.phone);
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong");
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  const confirmResetCode = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!resetPhone) return;
+    setBusy(true);
+    setError(null);
+    try {
+      const { error } = await supabase.auth.verifyOtp({
+        phone: resetPhone,
+        token: code,
+        type: "sms",
+      });
+      if (error) throw error;
+      onRecoveryVerified(); // signed in — parent swaps in the new-password form
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "That code didn't match");
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  const resendResetCode = async () => {
+    if (!resetPhone) return;
+    setBusy(true);
+    setError(null);
+    setMessage(null);
+    try {
+      const { error } = await supabase.auth.signInWithOtp({
+        phone: resetPhone,
+        options: { shouldCreateUser: false },
+      });
+      if (error) throw error;
+      setMessage("New code sent.");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Couldn't resend the code");
+    } finally {
+      setBusy(false);
+    }
+  };
+
   // Google's own button (rendered by GIS) signs in from this origin, so the
   // consent screen shows journeymanjersey.com — not the Supabase project URL.
   // If the GIS script can't load (ad blockers, offline), fall back to the old
@@ -282,6 +408,88 @@ function AuthForm({
     );
   }
 
+  // forgot password, step 2 (phone accounts): confirm the texted code
+  if (view === "forgot" && resetPhone) {
+    return (
+      <form onSubmit={confirmResetCode} className="mt-3 space-y-2 text-sm">
+        <p className="text-xs text-ink-soft">
+          We texted a code to {resetPhone}.{" "}
+          <button
+            type="button"
+            className="underline"
+            onClick={() => {
+              setResetPhone(null);
+              setCode("");
+              setError(null);
+            }}
+          >
+            Wrong number?
+          </button>
+        </p>
+        <input
+          type="text"
+          inputMode="numeric"
+          autoComplete="one-time-code"
+          required
+          placeholder="6-digit code"
+          value={code}
+          onChange={(e) => setCode(e.target.value)}
+          className="w-full rounded-lg border-2 border-ink bg-card px-3 py-2.5"
+        />
+        <button type="submit" className="btn btn-primary w-full py-2.5" disabled={busy}>
+          {busy ? "…" : "Confirm code"}
+        </button>
+        <p className="text-center text-xs text-ink-soft">
+          Didn't get it?{" "}
+          <button type="button" className="underline" onClick={resendResetCode} disabled={busy}>
+            Resend code
+          </button>
+        </p>
+        {message && <p className="font-bold text-[#2e7d43]">{message}</p>}
+        {error && <p className="font-bold text-[#b3362a]">{error}</p>}
+      </form>
+    );
+  }
+
+  // forgot password, step 1: which account?
+  if (view === "forgot") {
+    return (
+      <form onSubmit={submitForgot} className="mt-3 space-y-2 text-sm">
+        <p className="text-xs leading-relaxed text-ink-soft">
+          Enter your account's email or phone number. Email accounts get a
+          reset link; phone accounts get a texted code.
+        </p>
+        <input
+          type="text"
+          required
+          autoComplete="username"
+          placeholder="Email or phone number"
+          value={identifier}
+          onChange={(e) => setIdentifier(e.target.value)}
+          className="w-full rounded-lg border-2 border-ink bg-card px-3 py-2.5"
+        />
+        <button type="submit" className="btn btn-primary w-full py-2.5" disabled={busy}>
+          {busy ? "…" : "Continue"}
+        </button>
+        {message && <p className="font-bold text-[#2e7d43]">{message}</p>}
+        {error && <p className="font-bold text-[#b3362a]">{error}</p>}
+        <p className="pt-1 text-center text-xs text-ink-soft">
+          <button
+            type="button"
+            className="font-bold text-ink underline underline-offset-2"
+            onClick={() => {
+              onSwitchView("signin");
+              setError(null);
+              setMessage(null);
+            }}
+          >
+            Back to sign in
+          </button>
+        </p>
+      </form>
+    );
+  }
+
   return (
     <div className="mt-3 space-y-3 text-sm">
       {view === "signup" && (
@@ -327,6 +535,21 @@ function AuthForm({
             {showPw ? "Hide" : "Show"}
           </button>
         </div>
+        {view === "signin" && (
+          <p className="text-right">
+            <button
+              type="button"
+              className="text-xs text-ink-soft underline underline-offset-2"
+              onClick={() => {
+                onSwitchView("forgot");
+                setError(null);
+                setMessage(null);
+              }}
+            >
+              Forgot password?
+            </button>
+          </p>
+        )}
         <button type="submit" className="btn btn-primary w-full py-2.5" disabled={busy}>
           {busy ? "…" : view === "signup" ? "Create free account" : "Sign in"}
         </button>
@@ -373,6 +596,82 @@ function AuthForm({
         )}
       </p>
     </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+
+/** Shown after a recovery sign-in (email link or texted code): the user is
+ *  authenticated, but only because of the reset — capture the new password
+ *  before letting the locker take over. */
+function NewPasswordForm({ onDone }: { onDone: () => void }) {
+  const [password, setPassword] = useState("");
+  const [showPw, setShowPw] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [done, setDone] = useState(false);
+
+  const submit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setBusy(true);
+    setError(null);
+    try {
+      const { error } = await supabase.auth.updateUser({ password });
+      if (error) throw error;
+      setDone(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong");
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  if (done) {
+    return (
+      <div className="mt-3 space-y-3 text-sm">
+        <p className="font-bold text-[#2e7d43]">Password updated — you're signed in.</p>
+        <button type="button" className="btn btn-primary w-full py-2.5" onClick={onDone}>
+          Open your locker
+        </button>
+      </div>
+    );
+  }
+
+  return (
+    <form onSubmit={submit} className="mt-3 space-y-2 text-sm">
+      <p className="text-xs leading-relaxed text-ink-soft">
+        You're signed in — choose a new password for next time.
+      </p>
+      <div className="relative">
+        <input
+          type={showPw ? "text" : "password"}
+          required
+          minLength={6}
+          autoComplete="new-password"
+          placeholder="New password (6+ characters)"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="w-full rounded-lg border-2 border-ink bg-card px-3 py-2.5 pr-14"
+        />
+        <button
+          type="button"
+          className="absolute inset-y-0 right-0 px-3 text-xs font-bold uppercase tracking-wide text-ink-soft"
+          onClick={() => setShowPw((s) => !s)}
+          aria-label={showPw ? "Hide password" : "Show password"}
+        >
+          {showPw ? "Hide" : "Show"}
+        </button>
+      </div>
+      <button type="submit" className="btn btn-primary w-full py-2.5" disabled={busy}>
+        {busy ? "…" : "Save new password"}
+      </button>
+      {error && <p className="font-bold text-[#b3362a]">{error}</p>}
+      <p className="pt-1 text-center text-xs text-ink-soft">
+        <button type="button" className="underline underline-offset-2" onClick={onDone}>
+          Skip for now
+        </button>
+      </p>
+    </form>
   );
 }
 

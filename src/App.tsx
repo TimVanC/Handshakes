@@ -12,7 +12,7 @@ import AccountModal from "./components/AccountModal";
 import ArchiveModal from "./components/ArchiveModal";
 import SettingsModal from "./components/SettingsModal";
 import { FlipIcon, LockIcon } from "./components/Icons";
-import { useSession } from "./lib/useAuth";
+import { usePasswordRecovery, useSession } from "./lib/useAuth";
 import { logPlay, pushResult } from "./lib/cloud";
 import { trackAccountCta, trackGameCompleted, trackGameStarted } from "./lib/analytics";
 import type { AccountCtaSource } from "./lib/analytics";
@@ -179,6 +179,18 @@ export default function App() {
   };
   const [showArchive, setShowArchive] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
+
+  // a password-reset link landed here — open the locker modal straight onto
+  // the new-password form ("reset") or the request-a-new-link form ("expired")
+  const [pwRecovery, clearPwRecovery] = usePasswordRecovery();
+  useEffect(() => {
+    if (!pwRecovery) return;
+    setShowAccount(true);
+    // scrub the dead link's error hash so a refresh doesn't replay it (a
+    // live recovery hash is consumed and cleared by supabase-js itself)
+    if (pwRecovery === "expired")
+      history.replaceState(null, "", location.pathname + location.search);
+  }, [pwRecovery]);
 
   // scrub ?play from the address bar so a refresh doesn't re-skip the
   // start screen and the URL stays clean; also log the started game (the
@@ -885,7 +897,12 @@ export default function App() {
           session={session ?? null}
           defaultScope={accountScope}
           signupContext={accountSource}
-          onClose={() => setShowAccount(false)}
+          recovery={pwRecovery}
+          onClose={() => {
+            setShowAccount(false);
+            // reopening the locker later shouldn't re-enter the reset flow
+            clearPwRecovery();
+          }}
           onAuthed={() => {
             // finishing sign-up drops the form, never the stats panel
             setShowAccount(false);
