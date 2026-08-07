@@ -162,12 +162,13 @@ function AuthForm({
 }) {
   const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
+  const [password2, setPassword2] = useState("");
   const [showPw, setShowPw] = useState(false);
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(initialError);
-  // set while a phone sign-up waits on its SMS confirmation code
-  const [confirmPhone, setConfirmPhone] = useState<string | null>(null);
+  // set while a sign-up waits on its emailed/texted 6-digit confirmation code
+  const [confirm, setConfirm] = useState<{ email: string } | { phone: string } | null>(null);
   // set while a forgot-password request waits on its SMS code
   const [resetPhone, setResetPhone] = useState<string | null>(null);
   const [code, setCode] = useState("");
@@ -177,6 +178,10 @@ function AuthForm({
     const id = parseIdentifier(identifier);
     if (!id) {
       setError("Enter a valid email address or phone number");
+      return;
+    }
+    if (view === "signup" && password !== password2) {
+      setError("Passwords don't match");
       return;
     }
     setBusy(true);
@@ -197,7 +202,9 @@ function AuthForm({
           } else if (data.session) {
             setMessage("Account created — you're in!");
           } else {
-            setMessage("Check your email to confirm your account, then sign in.");
+            // genuinely new — Supabase emailed a 6-digit code (the "Confirm
+            // signup" email template must include {{ .Token }})
+            setConfirm({ email: id.email });
           }
         } else {
           const { data, error } = await supabase.auth.signUp({ phone: id.phone, password });
@@ -210,7 +217,7 @@ function AuthForm({
           } else if (data.session) {
             setMessage("Account created — you're in!");
           } else {
-            setConfirmPhone(id.phone); // genuinely new — Supabase texted a code
+            setConfirm({ phone: id.phone }); // genuinely new — Supabase texted a code
           }
         }
       } else {
@@ -229,15 +236,15 @@ function AuthForm({
 
   const confirmCode = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!confirmPhone) return;
+    if (!confirm) return;
     setBusy(true);
     setError(null);
     try {
-      const { error } = await supabase.auth.verifyOtp({
-        phone: confirmPhone,
-        token: code,
-        type: "sms",
-      });
+      const { error } = await supabase.auth.verifyOtp(
+        "email" in confirm
+          ? { email: confirm.email, token: code, type: "signup" }
+          : { phone: confirm.phone, token: code, type: "sms" }
+      );
       if (error) throw error;
       // verified = signed in; onAuthStateChange re-renders into "Your locker"
     } catch (err) {
@@ -248,12 +255,16 @@ function AuthForm({
   };
 
   const resendCode = async () => {
-    if (!confirmPhone) return;
+    if (!confirm) return;
     setBusy(true);
     setError(null);
     setMessage(null);
     try {
-      const { error } = await supabase.auth.resend({ type: "sms", phone: confirmPhone });
+      const { error } = await supabase.auth.resend(
+        "email" in confirm
+          ? { type: "signup", email: confirm.email }
+          : { type: "sms", phone: confirm.phone }
+      );
       if (error) throw error;
       setMessage("New code sent.");
     } catch (err) {
@@ -354,7 +365,7 @@ function AuthForm({
     const el = googleRef.current;
     if (!el || googleFallback) return;
     renderGoogleButton(el, setError).catch(() => setGoogleFallback(true));
-  }, [confirmPhone, googleFallback]);
+  }, [confirm, googleFallback]);
 
   const googleRedirect = async () => {
     setError(null);
@@ -365,22 +376,24 @@ function AuthForm({
     if (error) setError(error.message);
   };
 
-  // phone sign-up confirmation step
-  if (confirmPhone) {
+  // sign-up confirmation step: the emailed/texted 6-digit code
+  if (confirm) {
+    const byEmail = "email" in confirm;
     return (
       <form onSubmit={confirmCode} className="mt-3 space-y-2 text-sm">
         <p className="text-xs text-ink-soft">
-          We texted a code to {confirmPhone}.{" "}
+          We {byEmail ? "emailed" : "texted"} a code to{" "}
+          {byEmail ? confirm.email : confirm.phone}.{" "}
           <button
             type="button"
             className="underline"
             onClick={() => {
-              setConfirmPhone(null);
+              setConfirm(null);
               setCode("");
               setError(null);
             }}
           >
-            Wrong number?
+            {byEmail ? "Wrong email?" : "Wrong number?"}
           </button>
         </p>
         <input
@@ -535,6 +548,18 @@ function AuthForm({
             {showPw ? "Hide" : "Show"}
           </button>
         </div>
+        {view === "signup" && (
+          <input
+            type={showPw ? "text" : "password"}
+            required
+            minLength={6}
+            autoComplete="new-password"
+            placeholder="Confirm password"
+            value={password2}
+            onChange={(e) => setPassword2(e.target.value)}
+            className="w-full rounded-lg border-2 border-ink bg-card px-3 py-2.5"
+          />
+        )}
         {view === "signin" && (
           <p className="text-right">
             <button
