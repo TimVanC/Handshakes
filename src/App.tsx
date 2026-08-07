@@ -664,11 +664,12 @@ export default function App() {
             Puzzle #{day} · jersey {state.revealed} of {total}
           </span>
           {/* reading every card back one tap at a time is the tedious part —
-              this turns the whole spread over at once. Two cards minimum:
-              below that it's the same work as tapping the card.
+              this turns the whole spread over at once. Always present (not
+              popping in at two cards) so the counter row doesn't reshuffle
+              mid-game; with one card out it simply flips that card.
               Icon only, deliberately: the "Show backs"/"Show fronts" label
               pair is parked, not lost — see _brief/flip-all-control.md. */}
-          {!hard && state.revealed > 1 && (
+          {!hard && (
             <button
               type="button"
               className="flip-all"
