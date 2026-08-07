@@ -171,6 +171,16 @@ export function FlipIcon(p: IconProps) {
   );
 }
 
+/** white flag — surrender the whole puzzle */
+export function FlagIcon(p: IconProps) {
+  return (
+    <Base {...p}>
+      <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" />
+      <path d="M4 22v-7" />
+    </Base>
+  );
+}
+
 /** headstone for a DNF (custom) */
 export function GraveIcon(p: IconProps) {
   return (

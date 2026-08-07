@@ -465,6 +465,12 @@ select {
     border-radius: 16px;
     box-shadow: 0 24px 60px -12px rgba(29, 26, 19, 0.55);
   }
+
+  /* a one-question panel (the give-up confirm) — full-width bottom sheet on
+     phones like every modal, but no wider than its question on desktop */
+  .modal-panel-sm {
+    max-width: 21rem;
+  }
 }
 
 @keyframes modal-in {

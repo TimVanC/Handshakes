@@ -11,7 +11,8 @@ import Confetti from "./components/Confetti";
 import AccountModal from "./components/AccountModal";
 import ArchiveModal from "./components/ArchiveModal";
 import SettingsModal from "./components/SettingsModal";
-import { FlipIcon, LockIcon } from "./components/Icons";
+import GiveUpModal from "./components/GiveUpModal";
+import { FlagIcon, FlipIcon, LockIcon } from "./components/Icons";
 import { usePasswordRecovery, useSession } from "./lib/useAuth";
 import { logPlay, pushResult } from "./lib/cloud";
 import { trackAccountCta, trackGameCompleted, trackGameStarted } from "./lib/analytics";
@@ -251,6 +252,8 @@ export default function App() {
   // "flip all" broadcast — `n` bumps per press so every revealed card obeys
   // even if it drifted out of sync from an individual tap
   const [flipAll, setFlipAll] = useState({ back: false, n: 0 });
+  // the white flag asks "are you sure?" before it forfeits the puzzle
+  const [confirmGiveUp, setConfirmGiveUp] = useState(false);
 
   const phase = getPhase(state, puzzle);
   const over = state.status !== "playing";
@@ -642,6 +645,21 @@ export default function App() {
 
       <main className="relative z-0">
         <p className="mt-4 flex flex-wrap items-center justify-center gap-x-2 text-center text-[0.7rem] font-bold uppercase tracking-[0.2em] text-ink-soft">
+          {/* white flag — forfeit the whole puzzle from anywhere in the game,
+              mirroring the flip-all control on the other side of the counter.
+              It only opens the confirm; the actual give_up is dispatched from
+              the modal so a stray tap can't end the game. */}
+          {!over && (
+            <button
+              type="button"
+              className="flip-all"
+              aria-label="Give up on this puzzle"
+              title="Give up"
+              onClick={() => setConfirmGiveUp(true)}
+            >
+              <FlagIcon size={16} />
+            </button>
+          )}
           <span>
             Puzzle #{day} · jersey {state.revealed} of {total}
           </span>
@@ -796,6 +814,17 @@ export default function App() {
       )}
 
       {celebrate && <Confetti egg={eggFor(puzzle.answer)} />}
+
+      {confirmGiveUp && !over && (
+        <GiveUpModal
+          onClose={() => setConfirmGiveUp(false)}
+          onGiveUp={() => {
+            setConfirmGiveUp(false);
+            finishFlip(); // a surrender mid-flip settles the pending reveal first
+            dispatch({ type: "give_up" });
+          }}
+        />
+      )}
 
       {showStart && (
         <StartScreen
