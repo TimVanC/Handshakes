@@ -3,6 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <!-- iOS Safari sometimes auto-zooms when an input takes focus and never
+         zooms back out; maximum-scale=1 disables exactly that focus zoom.
+         iOS has ignored maximum-scale for USER pinch-zoom since iOS 10, so
+         accessibility is unaffected there — but Android Chrome would honor
+         it and lock out pinch zoom entirely, hence the Apple-only sniff
+         (iPadOS reports itself as MacIntel-with-touch). -->
+    <script>
+      if (
+        /iPhone|iPad|iPod/.test(navigator.userAgent) ||
+        (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1)
+      ) {
+        document
+          .querySelector("meta[name=viewport]")
+          .setAttribute(
+            "content",
+            "width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1"
+          );
+      }
+    </script>
     <meta name="theme-color" content="#ece5d4" />
     <!-- "Guess the … player" phrasing matches the query cluster people
          actually search ("guess the NBA player game"); og:title below keeps
