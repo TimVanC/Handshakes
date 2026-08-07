@@ -369,6 +369,23 @@ select {
 
 
 /* combobox */
+/* the guess box is type="search" purely to keep iOS AutoFill away — undo
+   every scrap of WebKit's native search-field chrome so it still looks like
+   our plain bordered input (the combobox has its own clearing behavior) */
+.combo-input {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.combo-input::-webkit-search-decoration,
+.combo-input::-webkit-search-cancel-button,
+.combo-input::-webkit-search-results-button,
+.combo-input::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  appearance: none;
+  display: none;
+}
+
 .combo-input {
   width: 100%;
   font-family: var(--font-ui);

@@ -112,9 +112,16 @@ export default function GuessInput({ disabled, alreadyGuessed, onGuess }: Props)
 
   return (
     <div className="relative flex-1">
+      {/* type="search" + the attribute battery below keeps iOS AutoFill out
+          of the way: Safari classifies fields by heuristics (placeholder and
+          label text included — the word "name" alone offers up YOUR contact
+          card), and a search field with autocomplete/correct off is the one
+          shape it leaves alone. The QuickType bar itself is OS territory a
+          page can't remove outright; this strips everything it feeds on. */}
       <input
         ref={inputRef}
-        type="text"
+        type="search"
+        name="player-search"
         role="combobox"
         aria-expanded={results.length > 0}
         aria-controls={listboxId}
@@ -124,7 +131,7 @@ export default function GuessInput({ disabled, alreadyGuessed, onGuess }: Props)
         aria-autocomplete="list"
         aria-label="Guess the player"
         className="combo-input"
-        placeholder={disabled ? "Puzzle finished" : "Type a name"}
+        placeholder={disabled ? "Puzzle finished" : "Guess the player"}
         disabled={disabled}
         value={query}
         onChange={(e) => {
@@ -139,7 +146,10 @@ export default function GuessInput({ disabled, alreadyGuessed, onGuess }: Props)
         onBlur={() => setTimeout(() => setOpen(false), 120)}
         onKeyDown={onKeyDown}
         autoComplete="off"
+        autoCorrect="off"
+        autoCapitalize="words"
         spellCheck={false}
+        enterKeyHint="go"
       />
       {results.length > 0 && (
         <ul id={listboxId} role="listbox" className="combo-list">
