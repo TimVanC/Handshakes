@@ -15,3 +15,6 @@ pipeline/out/
 .env
 .vercel
 .env*
+
+# TypeScript incremental build cache
+*.tsbuildinfo
