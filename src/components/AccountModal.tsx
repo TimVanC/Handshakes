@@ -24,6 +24,9 @@ interface Props {
   /** set when a password-reset link landed the user here: "reset" opens the
    *  choose-a-new-password form, "expired" opens the request-a-new-link form */
   recovery?: "reset" | "expired" | null;
+  /** which auth form to open on when signed out — the sign-in button opens
+   *  straight to "signin"; everything else defaults to the sign-up pitch */
+  initialView?: "signup" | "signin";
 }
 
 /** Sign-up / sign-in when logged out; profile + lifetime stats when in. */
@@ -34,6 +37,7 @@ export default function AccountModal({
   onAuthed,
   signupContext = "stats",
   recovery = null,
+  initialView = "signup",
 }: Props) {
   // did this modal open on the auth form rather than the locker?
   const openedSignedOut = useRef(!session);
@@ -44,7 +48,7 @@ export default function AccountModal({
   useEffect(() => {
     if (openedSignedOut.current && session && !recoveryFlow.current) onAuthed?.();
   }, [session, onAuthed]);
-  const [view, setView] = useState<AuthView>(recovery === "expired" ? "forgot" : "signup");
+  const [view, setView] = useState<AuthView>(recovery === "expired" ? "forgot" : initialView);
   // signed in, but only via a reset — hold the locker until a password is set
   const [resettingPw, setResettingPw] = useState(recovery === "reset");
   // email links open in the phone's DEFAULT browser, which may hold a session

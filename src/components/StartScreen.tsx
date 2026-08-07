@@ -1,7 +1,7 @@
 import { SPORT } from "../sports/active";
 import { SPORTS, SPORT_ORDER, sportHref } from "../sports";
 import type { Sport } from "../sports/types";
-import { ChartIcon, FlameIcon, LockIcon } from "./Icons";
+import { ChartIcon, FlameIcon, LockIcon, UserIcon } from "./Icons";
 import HomeMenu from "./HomeMenu";
 import HeroCards from "./HeroCards";
 
@@ -13,6 +13,8 @@ interface Props {
   onArchive: () => void;
   onStats: () => void;
   onAccount: () => void;
+  /** opens the account modal straight on the sign-in form */
+  onSignIn: () => void;
   signedIn: boolean;
 }
 
@@ -44,10 +46,25 @@ export default function StartScreen({
   onArchive,
   onStats,
   onAccount,
+  onSignIn,
   signedIn,
 }: Props) {
   return (
     <div className="start-screen" role="dialog" aria-label="Journeyman — pick a league">
+      {/* returning players with an account but no session need a plain
+          sign-in door — everything else on this screen pitches sign-UP */}
+      {!signedIn && (
+        <button
+          type="button"
+          className="chip absolute left-4 top-4 cursor-pointer"
+          aria-label="Sign in"
+          title="Sign in"
+          onClick={onSignIn}
+        >
+          <UserIcon size={18} />
+        </button>
+      )}
+
       {/* stats + how-to-play + settings, tucked into the hamburger */}
       <HomeMenu
         onStats={onStats}

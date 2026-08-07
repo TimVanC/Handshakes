@@ -166,14 +166,19 @@ export default function App() {
   // that's what they were reaching for, otherwise just back to the page
   const [afterAuth, setAfterAuth] = useState<"archive" | null>(null);
   const [accountSource, setAccountSource] = useState<AccountCtaSource>("stats");
+  // which auth form the modal opens on: the sign-in button opens "signin",
+  // every other signed-out entry point pitches sign-up
+  const [accountView, setAccountView] = useState<"signup" | "signin">("signup");
   const openAccount = (
     scope: Sport | "all",
     next: "archive" | null = null,
-    source: AccountCtaSource = "stats"
+    source: AccountCtaSource = "stats",
+    view: "signup" | "signin" = "signup"
   ) => {
     setAccountScope(scope);
     setAfterAuth(next);
     setAccountSource(source);
+    setAccountView(view);
     if (!session) trackAccountCta({ source, action: "clicked" });
     setShowAccount(true);
   };
@@ -804,6 +809,7 @@ export default function App() {
           onArchive={() => setShowArchive(true)}
           onStats={() => openAccount("all")}
           onAccount={() => openAccount("all", null, "home")}
+          onSignIn={() => openAccount("all", null, "home", "signin")}
           signedIn={!!session}
         />
       )}
@@ -897,6 +903,7 @@ export default function App() {
           session={session ?? null}
           defaultScope={accountScope}
           signupContext={accountSource}
+          initialView={accountView}
           recovery={pwRecovery}
           onClose={() => {
             setShowAccount(false);
