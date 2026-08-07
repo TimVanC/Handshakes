@@ -164,18 +164,18 @@ select {
     box-shadow:
       0 1px 2px rgba(60, 45, 20, 0.18),
       0 8px 18px -8px rgba(60, 45, 20, 0.35),
-      0 0 16px 4px rgba(217, 165, 32, 0.4);
+      0 0 18px 6px rgba(217, 165, 32, 0.55);
   }
   100% {
     box-shadow:
       0 1px 2px rgba(60, 45, 20, 0.18),
       0 8px 18px -8px rgba(60, 45, 20, 0.35),
-      0 0 16px 4px rgba(217, 165, 32, 0);
+      0 0 18px 6px rgba(217, 165, 32, 0);
   }
 }
 
 .just-dealt {
-  animation: just-dealt-glow 2s ease-out both;
+  animation: just-dealt-glow 2.6s ease-out both;
 }
 
 /* tap-to-flip: a 2D squeeze (scaleX to 0, swap, scale back) driven by
