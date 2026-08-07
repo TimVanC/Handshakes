@@ -14,6 +14,7 @@ import SettingsModal from "./components/SettingsModal";
 import GiveUpModal from "./components/GiveUpModal";
 import { FlagIcon, FlipIcon, LockIcon } from "./components/Icons";
 import { usePasswordRecovery, useSession } from "./lib/useAuth";
+import { useKeyboardInset } from "./lib/useKeyboardInset";
 import { logPlay, pushResult } from "./lib/cloud";
 import { trackAccountCta, trackGameCompleted, trackGameStarted } from "./lib/analytics";
 import type { AccountCtaSource } from "./lib/analytics";
@@ -254,6 +255,9 @@ export default function App() {
   const [flipAll, setFlipAll] = useState({ back: false, n: 0 });
   // the white flag asks "are you sure?" before it forfeits the puzzle
   const [confirmGiveUp, setConfirmGiveUp] = useState(false);
+  // on-screen keyboard height — the guess bar lifts by this much, because a
+  // fixed bottom bar is otherwise BEHIND the iOS keyboard (see the hook)
+  const kbInset = useKeyboardInset();
 
   const phase = getPhase(state, puzzle);
   const over = state.status !== "playing";
@@ -757,8 +761,16 @@ export default function App() {
         )}
       </main>
 
-      {/* guess bar — thumb zone on mobile */}
-      <div className="fixed inset-x-0 bottom-0 z-30 border-t-2 border-ink bg-paper/95 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-2.5 backdrop-blur-sm">
+      {/* guess bar — thumb zone on mobile; rides up on top of the on-screen
+          keyboard (kbInset) instead of drowning behind it. The safe-area
+          padding is the home-indicator clearance — the keyboard IS that
+          clearance while it's up, so swap to the plain padding then. */}
+      <div
+        className={`fixed inset-x-0 bottom-0 z-30 border-t-2 border-ink bg-paper/95 pt-2.5 backdrop-blur-sm ${
+          kbInset ? "pb-3" : "pb-[max(0.75rem,env(safe-area-inset-bottom))]"
+        }`}
+        style={kbInset ? { transform: `translateY(-${kbInset}px)` } : undefined}
+      >
         {state.wrongGuesses.length > 0 && (
           <div className="mx-auto max-w-xl px-4 pb-2" aria-label="Wrong guesses">
             <ul className="flex flex-wrap justify-center gap-1.5">
