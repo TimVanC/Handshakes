@@ -131,7 +131,7 @@ export default function GuessInput({ disabled, alreadyGuessed, onGuess }: Props)
         aria-autocomplete="list"
         aria-label="Guess the player"
         className="combo-input"
-        placeholder={disabled ? "Puzzle finished" : "Guess the player"}
+        placeholder={disabled ? "Puzzle finished" : "Type a player"}
         disabled={disabled}
         value={query}
         onChange={(e) => {
