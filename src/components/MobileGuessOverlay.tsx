@@ -38,6 +38,28 @@ export default function MobileGuessOverlay({
     };
   }, []);
 
+  // Chrome iOS's accessory-bar checkmark dismisses the keyboard WITHOUT
+  // blurring the field, so the blur-close below can't catch it. The
+  // keyboard's departure is still visible as the visual viewport growing
+  // back to full height — once we've seen it open (height dropped) and
+  // then close (height recovered), the search leaves with it, no matter
+  // how the keyboard was dismissed. onClose rides a ref so this mounts
+  // once and the baseline height (captured pre-keyboard) never resets.
+  const closeRef = useRef(onClose);
+  closeRef.current = onClose;
+  useEffect(() => {
+    const vv = window.visualViewport;
+    if (!vv) return;
+    const fullHeight = vv.height; // overlay mounts before the keyboard opens
+    let sawKeyboard = false;
+    const onResize = () => {
+      if (vv.height < fullHeight - 100) sawKeyboard = true;
+      else if (sawKeyboard && vv.height > fullHeight - 60) closeRef.current();
+    };
+    vv.addEventListener("resize", onResize);
+    return () => vv.removeEventListener("resize", onResize);
+  }, []);
+
   const guessedLower = alreadyGuessed.map((g) => g.toLowerCase());
   const results = indexReady
     ? SPORT.searchPlayers
