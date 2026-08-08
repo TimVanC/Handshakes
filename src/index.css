@@ -188,6 +188,37 @@ select {
     0 0 18px 6px rgba(217, 165, 32, 0.55);
 }
 
+/* warm wash: alongside the halo, the just-dealt card's FACE is tinted
+   gold and fades back to plain cardstock in step with the glow. Painted
+   as an overlay (::before) because the card's paper background is an
+   opaque noise+gradient stack that can't cross-fade on its own. The deck's
+   face-up card and the ghost wear the constant version so the tint, like
+   the halo, is born at the flip and rides the flight. */
+.deck-card.is-face::before,
+.glow-gold::before,
+.just-dealt::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: rgba(217, 165, 32, 0.16);
+}
+
+@keyframes just-dealt-wash {
+  0%,
+  45% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.just-dealt::before {
+  animation: just-dealt-wash 2.6s ease-out both;
+}
+
 /* tap-to-flip: a 2D squeeze (scaleX to 0, swap, scale back) driven by
    WAAPI in JerseyCard. Deliberately NOT a 3D flip — perspective +
    backface-visibility force cards into composited layers that mobile
