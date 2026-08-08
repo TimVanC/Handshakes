@@ -255,6 +255,55 @@ export default function App() {
   // the white flag asks "are you sure?" before it forfeits the puzzle
   const [confirmGiveUp, setConfirmGiveUp] = useState(false);
 
+  // ---- keyboard-aware guess dock (touch screens) ----
+  // While the guess input is focused, the dock is pinned by an explicit
+  // `top` glued to the visual viewport's bottom edge — i.e. right above the
+  // on-screen keyboard — recomputed on every visualViewport resize/scroll.
+  // Computed ONLY from visualViewport numbers: window.innerHeight is a liar
+  // on iOS Chrome (it can shrink when the keyboard opens), which is what
+  // sank the previous bottom-inset approach. Nothing moves at the moment of
+  // focus itself (the first pin lands where the bar already sits), so the
+  // tap gesture completes undisturbed and the keyboard reliably appears —
+  // repositioning under the finger is what caused the double-tap bug.
+  const dockRef = useRef<HTMLDivElement | null>(null);
+  const [dockTop, setDockTop] = useState<number | null>(null);
+  // set while the dock owns focus on a touch screen; carries the scroll
+  // position to give back after iOS's pointless reveal-scroll
+  const dockFocus = useRef<{ scrollY: number } | null>(null);
+
+  const pinDock = () => {
+    const vv = window.visualViewport;
+    if (!vv || !dockFocus.current || !dockRef.current) return;
+    setDockTop(Math.max(0, vv.offsetTop + vv.height - dockRef.current.offsetHeight));
+  };
+
+  useEffect(() => {
+    const vv = window.visualViewport;
+    if (!vv) return;
+    let settle: number | undefined;
+    const onResize = () => {
+      if (!dockFocus.current) return;
+      pinDock();
+      // iOS "reveals" the focused field by scrolling the page toward the
+      // bottom — pointless now that the dock rides the visual viewport, so
+      // put the player back on their spread (and once more after the
+      // keyboard animation settles; the browser can land its scroll late)
+      window.scrollTo({ top: dockFocus.current.scrollY });
+      window.clearTimeout(settle);
+      settle = window.setTimeout(() => {
+        if (dockFocus.current) window.scrollTo({ top: dockFocus.current.scrollY });
+      }, 250);
+    };
+    vv.addEventListener("resize", onResize);
+    vv.addEventListener("scroll", pinDock);
+    return () => {
+      vv.removeEventListener("resize", onResize);
+      vv.removeEventListener("scroll", pinDock);
+      window.clearTimeout(settle);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- listeners only
+  }, []);
+
   const phase = getPhase(state, puzzle);
   const over = state.status !== "playing";
 
@@ -757,16 +806,31 @@ export default function App() {
         )}
       </main>
 
-      {/* guess bar — thumb zone on mobile. While the input holds focus on a
-          touch device the whole dock jumps to the TOP of the screen (see
-          .guess-dock in index.css): the keyboard can never cover the top,
-          so the browser has no reason to scroll the page to reveal the
-          field — the board stays put and the bar floats over it. (Lifting
-          the bar above the keyboard in place was tried and lost a fight
-          with iOS's own scroll heuristics — top-docking sidesteps the
-          keyboard's geometry entirely.) Committing a guess blurs on touch
-          (see GuessInput), which drops the dock back to the bottom. */}
-      <div className="guess-dock fixed inset-x-0 bottom-0 z-30 border-t-2 border-ink bg-paper/95 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-2.5 backdrop-blur-sm">
+      {/* guess bar — thumb zone on mobile; glides up to ride just above the
+          on-screen keyboard while typing (see the dock block above).
+          Committing a guess blurs on touch (see GuessInput), which drops
+          the dock back to the bottom and the keyboard with it. */}
+      <div
+        ref={dockRef}
+        className="guess-dock fixed inset-x-0 bottom-0 z-30 border-t-2 border-ink bg-paper/95 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-2.5 backdrop-blur-sm"
+        style={dockTop !== null ? { top: dockTop, bottom: "auto" } : undefined}
+        onFocus={() => {
+          // touch screens only — on desktop the keyboard is not on the
+          // screen and the bottom bar is exactly where it should be
+          if (!window.matchMedia("(pointer: coarse)").matches) return;
+          dockFocus.current = { scrollY: window.scrollY };
+          pinDock(); // lands where the bar already sits — no jump mid-tap
+        }}
+        onBlur={() => {
+          // let focus land somewhere first — moving between the input and
+          // the suggestion list must not count as leaving the dock
+          setTimeout(() => {
+            if (dockRef.current?.contains(document.activeElement)) return;
+            dockFocus.current = null;
+            setDockTop(null);
+          }, 0);
+        }}
+      >
         {state.wrongGuesses.length > 0 && (
           <div className="mx-auto max-w-xl px-4 pb-2" aria-label="Wrong guesses">
             <ul className="flex flex-wrap justify-center gap-1.5">
