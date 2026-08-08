@@ -838,11 +838,12 @@ export default function App() {
       <div
         ref={dockRef}
         className="guess-dock fixed inset-x-0 bottom-0 z-30 border-t-2 border-ink bg-paper/95 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-2.5 backdrop-blur-sm"
-        // while pinned above the keyboard, only `top` moves — `bottom: 0`
-        // stays, so the dock stretches down to the screen bottom and its
-        // paper background curtains off the cards that would otherwise
-        // peek through the gap between the input row and the keyboard
-        style={dockTop !== null ? { top: dockTop } : undefined}
+        // the dock itself stays content-height even while pinned — pinDock
+        // measures offsetHeight, so letting it stretch to the screen bottom
+        // fed the measurement back into the pin and ratcheted the bar up
+        // the screen. The gap down to the keyboard is masked by the
+        // separate curtain layer rendered just below.
+        style={dockTop !== null ? { top: dockTop, bottom: "auto" } : undefined}
         onFocus={() => {
           // touch screens only — on desktop the keyboard is not on the
           // screen and the bottom bar is exactly where it should be
@@ -900,6 +901,19 @@ export default function App() {
           </p>
         )}
       </div>
+
+      {/* curtain behind the pinned dock: masks the cards that would peek
+          through between the input row and the keyboard. A separate layer
+          (not the dock stretched) so the dock's measured height stays its
+          content height for the pin math. Catching taps here is fine —
+          tapping it blurs the input, which is how you'd expect to exit. */}
+      {dockTop !== null && (
+        <div
+          aria-hidden="true"
+          className="fixed inset-x-0 bottom-0 z-20 bg-paper/95 backdrop-blur-sm"
+          style={{ top: dockTop }}
+        />
+      )}
 
       {ghost && (
         <GhostCard
