@@ -203,6 +203,15 @@ select {
   border-radius: inherit;
   pointer-events: none;
   background: rgba(217, 165, 32, 0.16);
+  /* tint the PAPER only — negative z drops the wash behind the jersey
+     art, year and stats, which need a stacking context on the card to
+     stop it from falling behind the card's own background too. The deck
+     face (z-index:3) and the ghost (inline z-index) already have one. */
+  z-index: -1;
+}
+
+.just-dealt {
+  isolation: isolate;
 }
 
 @keyframes just-dealt-wash {

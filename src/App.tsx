@@ -322,6 +322,11 @@ export default function App() {
   const phase = getPhase(state, puzzle);
   const over = state.status !== "playing";
 
+  // how many jerseys were already out when this page LOADED — the arrival
+  // highlight (gold halo + face wash) is only for reveals that happen live,
+  // never replayed for the newest card after a refresh or a return visit
+  const initialRevealed = useRef(state.revealed);
+
   // persist every move so a refresh resumes mid-game
   useEffect(() => storage.saveGameState(state), [state]);
 
@@ -781,6 +786,11 @@ export default function App() {
                 dealDelay={cascadeDelays.get(stintIdx) ?? 0}
                 hidden={ghost?.key === stintIdx || flightIdx === stintIdx}
                 hard={hard}
+                fresh={
+                  !over &&
+                  stintIdx === newestIdx &&
+                  state.revealed > initialRevealed.current
+                }
                 flipAll={flipAll}
                 cardRef={(el) => {
                   if (el) cardEls.current.set(stintIdx, el);

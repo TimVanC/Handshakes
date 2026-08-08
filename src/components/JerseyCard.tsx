@@ -89,6 +89,10 @@ interface Props {
   hidden?: boolean;
   /** hard mode: no flipping for the season record, no accolade hardware */
   hard?: boolean;
+  /** revealed live this session — wears the fading gold halo + face wash.
+   *  Deliberately NOT derived from isNewest: a reload re-mounts the same
+   *  newest card, and the arrival highlight must not replay for it. */
+  fresh?: boolean;
   /** QA/inspection views can mount directly on the statistical back. */
   initialBack?: boolean;
   /** "flip every card" broadcast from the spread. `n` bumps on each press so
@@ -106,6 +110,7 @@ export default function JerseyCard({
   dealDelay = 0,
   hidden = false,
   hard = false,
+  fresh = false,
   initialBack = false,
   flipAll,
   cardRef,
@@ -203,7 +208,7 @@ export default function JerseyCard({
         ref.current = el;
         cardRef?.(el);
       }}
-      className={`jersey-card w-full px-1.5 pb-2 pt-1 md:w-36 ${hard ? "" : "cursor-pointer"} ${isNewest && dealDelay > 0 ? "deal-in" : ""} ${isNewest && dealDelay === 0 ? "just-dealt" : ""}`}
+      className={`jersey-card w-full px-1.5 pb-2 pt-1 md:w-36 ${hard ? "" : "cursor-pointer"} ${isNewest && dealDelay > 0 ? "deal-in" : ""} ${fresh ? "just-dealt" : ""}`}
       style={
         {
           "--nudge": `${NUDGES[spreadIndex % NUDGES.length]}px`,
