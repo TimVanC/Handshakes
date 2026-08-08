@@ -268,13 +268,25 @@ export default function App() {
   const dockRef = useRef<HTMLDivElement | null>(null);
   const [dockTop, setDockTop] = useState<number | null>(null);
   // set while the dock owns focus on a touch screen; carries the scroll
-  // position the page is frozen at (and restored to on blur)
-  const dockFocus = useRef<{ scrollY: number } | null>(null);
+  // position the page is frozen at (and restored to on blur) plus where the
+  // viewport bottom was at focus, to tell pre- from post-keyboard events
+  const dockFocus = useRef<{ scrollY: number; bottomAtFocus: number } | null>(null);
+  // the measured above-the-keyboard spot from the last time it was open —
+  // later focuses jump STRAIGHT there, before iOS can even consider a
+  // reveal-scroll
+  const lastDockTop = useRef<number | null>(null);
 
   const pinDock = () => {
     const vv = window.visualViewport;
-    if (!vv || !dockFocus.current || !dockRef.current) return;
-    setDockTop(Math.max(0, vv.offsetTop + vv.height - dockRef.current.offsetHeight));
+    const f = dockFocus.current;
+    if (!vv || !f || !dockRef.current) return;
+    const exact = vv.offsetTop + vv.height - dockRef.current.offsetHeight;
+    // ignore pre-keyboard events: until the viewport actually shrinks,
+    // "exact" is just the screen bottom, and moving there would undo the
+    // preemptive jump that stops iOS from scrolling in the first place
+    if (exact >= f.bottomAtFocus - 120) return;
+    lastDockTop.current = exact;
+    setDockTop(Math.max(0, Math.round(exact)));
   };
 
   useEffect(() => {
@@ -807,20 +819,30 @@ export default function App() {
         onFocus={() => {
           // touch screens only — on desktop the keyboard is not on the
           // screen and the bottom bar is exactly where it should be
-          if (!window.matchMedia("(pointer: coarse)").matches) return;
+          const vv = window.visualViewport;
+          if (!vv || !window.matchMedia("(pointer: coarse)").matches) return;
           const y = window.scrollY;
-          dockFocus.current = { scrollY: y };
+          const bottom = vv.offsetTop + vv.height;
+          dockFocus.current = { scrollY: y, bottomAtFocus: bottom };
           // freeze the page in place: body position:fixed at the current
           // scroll leaves the document with nothing scrollable, so iOS's
-          // compositor-side reveal-scroll (which fires before any event
-          // JS could react to) has nothing to yank. The dock itself stays
-          // viewport-fixed and unaffected. Unfrozen on blur.
+          // reveal-scroll can't move the page itself. Unfrozen on blur.
           const b = document.body.style;
           b.position = "fixed";
           b.top = `-${y}px`;
           b.left = "0";
           b.right = "0";
-          pinDock(); // lands where the bar already sits — no jump mid-tap
+          // the decisive move: iOS drags the view (page or visual
+          // viewport, whichever it can) to any focused field that will
+          // sit under the keyboard — decided BEFORE any resize event
+          // reaches us. So don't be under the keyboard: jump the dock
+          // preemptively to the remembered above-keyboard spot, or a
+          // half-screen estimate on the very first focus, and let
+          // pinDock glide it to the exact spot once the keyboard lands.
+          const h = dockRef.current?.offsetHeight ?? 0;
+          setDockTop(
+            Math.max(0, Math.round(lastDockTop.current ?? bottom - vv.height * 0.5 - h))
+          );
         }}
         onBlur={() => {
           // let focus land somewhere first — moving between the input and
