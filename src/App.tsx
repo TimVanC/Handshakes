@@ -1,5 +1,7 @@
 import { useEffect, useLayoutEffect, useReducer, useRef, useState } from "react";
+import { flushSync } from "react-dom";
 import Header from "./components/Header";
+import MobileGuessOverlay from "./components/MobileGuessOverlay";
 import JerseyCard, { DeckCard, GhostCard, type CardRect } from "./components/JerseyCard";
 import HintTray from "./components/HintTray";
 import GuessInput from "./components/GuessInput";
@@ -155,6 +157,10 @@ function resetTestSlots() {
 const AUTO_PLAY =
   new URLSearchParams(location.search).has("play") || sportFromPath() !== null;
 
+/** touch screen → guesses go through the full-screen search overlay;
+ *  fine pointer → the inline combobox (no on-screen keyboard to fight) */
+const COARSE_POINTER = window.matchMedia("(pointer: coarse)").matches;
+
 export default function App() {
   const { day, puzzle, testIndex, archiveDay } = resolveGame();
   const total = puzzle.stints.length;
@@ -255,69 +261,22 @@ export default function App() {
   // the white flag asks "are you sure?" before it forfeits the puzzle
   const [confirmGiveUp, setConfirmGiveUp] = useState(false);
 
-  // ---- keyboard-aware guess dock (touch screens) ----
-  // While the guess input is focused, the dock is pinned by an explicit
-  // `top` glued to the visual viewport's bottom edge — i.e. right above the
-  // on-screen keyboard — recomputed on every visualViewport resize/scroll.
-  // Computed ONLY from visualViewport numbers: window.innerHeight is a liar
-  // on iOS Chrome (it can shrink when the keyboard opens), which is what
-  // sank the previous bottom-inset approach. Nothing moves at the moment of
-  // focus itself (the first pin lands where the bar already sits), so the
-  // tap gesture completes undisturbed and the keyboard reliably appears —
-  // repositioning under the finger is what caused the double-tap bug.
-  const dockRef = useRef<HTMLDivElement | null>(null);
-  const [dockTop, setDockTop] = useState<number | null>(null);
-  // set while the dock owns focus on a touch screen; carries the scroll
-  // position to give back after iOS's pointless reveal-scroll, and when
-  // focus was taken (the reveal-scroll is only fought during the opening
-  // beat — after that the player is free to scroll around while typing)
-  const dockFocus = useRef<{ scrollY: number; at: number } | null>(null);
-
-  const pinDock = () => {
-    const vv = window.visualViewport;
-    if (!vv || !dockFocus.current || !dockRef.current) return;
-    setDockTop(Math.max(0, vv.offsetTop + vv.height - dockRef.current.offsetHeight));
+  // ---- mobile guess search (touch screens) ----
+  // Typing happens in a full-screen overlay with the input at the TOP of
+  // the screen (the Immaculate Grid / Poeltl pattern): the iOS keyboard
+  // opening below it never needs to reveal-scroll anything, which kills
+  // the entire family of viewport glitches the old bottom-pinned input
+  // fought (and lost against). The bottom bar's "input" is just the
+  // trigger. Desktop keeps the inline combobox.
+  const [searchOpen, setSearchOpen] = useState(false);
+  const searchInputRef = useRef<HTMLInputElement | null>(null);
+  const openSearch = () => {
+    // mount the overlay synchronously so the focus() below still runs
+    // inside the tap's user activation — focusing from an effect after
+    // the re-render would leave the keyboard down
+    flushSync(() => setSearchOpen(true));
+    searchInputRef.current?.focus();
   };
-
-  useEffect(() => {
-    const vv = window.visualViewport;
-    if (!vv) return;
-    let settle: number | undefined;
-    const onResize = () => {
-      if (!dockFocus.current) return;
-      pinDock();
-      // iOS "reveals" the focused field by scrolling the page toward the
-      // bottom — pointless now that the dock rides the visual viewport, so
-      // put the player back on their spread (and once more after the
-      // keyboard animation settles; the browser can land its scroll late)
-      window.scrollTo({ top: dockFocus.current.scrollY });
-      window.clearTimeout(settle);
-      settle = window.setTimeout(() => {
-        if (dockFocus.current) window.scrollTo({ top: dockFocus.current.scrollY });
-      }, 250);
-    };
-    // iOS's reveal-scroll arrives as ordinary document scrolls a frame or
-    // two BEFORE the visualViewport resize — waiting for the resize alone
-    // let the page visibly pull down and snap back. Snap every scroll back
-    // the instant it happens during the keyboard's opening beat instead.
-    // (scrollTo re-fires this listener, but at the target position it's a
-    // no-op, so there's no loop.)
-    const onWinScroll = () => {
-      const f = dockFocus.current;
-      if (!f || performance.now() - f.at > 700) return;
-      if (window.scrollY !== f.scrollY) window.scrollTo({ top: f.scrollY });
-    };
-    vv.addEventListener("resize", onResize);
-    vv.addEventListener("scroll", pinDock);
-    window.addEventListener("scroll", onWinScroll);
-    return () => {
-      vv.removeEventListener("resize", onResize);
-      vv.removeEventListener("scroll", pinDock);
-      window.removeEventListener("scroll", onWinScroll);
-      window.clearTimeout(settle);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- listeners only
-  }, []);
 
   const phase = getPhase(state, puzzle);
   const over = state.status !== "playing";
@@ -831,33 +790,10 @@ export default function App() {
         )}
       </main>
 
-      {/* guess bar — thumb zone on mobile; glides up to ride just above the
-          on-screen keyboard while typing (see the dock block above).
-          Committing a guess blurs on touch (see GuessInput), which drops
-          the dock back to the bottom and the keyboard with it. */}
-      <div
-        ref={dockRef}
-        className={`guess-dock fixed inset-x-0 bottom-0 z-30 border-t-2 border-ink bg-paper/95 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-2.5 backdrop-blur-sm ${
-          dockTop !== null ? "is-pinned" : ""
-        }`}
-        style={dockTop !== null ? { top: dockTop, bottom: "auto" } : undefined}
-        onFocus={() => {
-          // touch screens only — on desktop the keyboard is not on the
-          // screen and the bottom bar is exactly where it should be
-          if (!window.matchMedia("(pointer: coarse)").matches) return;
-          dockFocus.current = { scrollY: window.scrollY, at: performance.now() };
-          pinDock(); // lands where the bar already sits — no jump mid-tap
-        }}
-        onBlur={() => {
-          // let focus land somewhere first — moving between the input and
-          // the suggestion list must not count as leaving the dock
-          setTimeout(() => {
-            if (dockRef.current?.contains(document.activeElement)) return;
-            dockFocus.current = null;
-            setDockTop(null);
-          }, 0);
-        }}
-      >
+      {/* guess bar — thumb zone on mobile. On touch screens the "input" is
+          a trigger that opens the full-screen search overlay; the system
+          keyboard never opens over this bar, so it just stays put. */}
+      <div className="fixed inset-x-0 bottom-0 z-30 border-t-2 border-ink bg-paper/95 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-2.5 backdrop-blur-sm">
         {state.wrongGuesses.length > 0 && (
           <div className="mx-auto max-w-xl px-4 pb-2" aria-label="Wrong guesses">
             <ul className="flex flex-wrap justify-center gap-1.5">
@@ -870,14 +806,25 @@ export default function App() {
           </div>
         )}
         <div className="mx-auto flex max-w-xl items-stretch gap-2 px-4">
-          <GuessInput
-            disabled={over}
-            alreadyGuessed={state.wrongGuesses}
-            onGuess={(name) => {
-              finishFlip(); // a guess mid-flip settles the pending reveal first
-              dispatch({ type: "guess", puzzle, name });
-            }}
-          />
+          {COARSE_POINTER ? (
+            <button
+              type="button"
+              className="combo-input flex-1 text-left text-ink-soft"
+              disabled={over}
+              onClick={openSearch}
+            >
+              {over ? "Puzzle finished" : "Type a player"}
+            </button>
+          ) : (
+            <GuessInput
+              disabled={over}
+              alreadyGuessed={state.wrongGuesses}
+              onGuess={(name) => {
+                finishFlip(); // a guess mid-flip settles the pending reveal first
+                dispatch({ type: "guess", puzzle, name });
+              }}
+            />
+          )}
           <button
             type="button"
             className="btn shrink-0"
@@ -898,6 +845,19 @@ export default function App() {
           </p>
         )}
       </div>
+
+      {searchOpen && !over && (
+        <MobileGuessOverlay
+          alreadyGuessed={state.wrongGuesses}
+          inputRef={searchInputRef}
+          onClose={() => setSearchOpen(false)}
+          onGuess={(name) => {
+            setSearchOpen(false); // unmounting the input drops the keyboard
+            finishFlip(); // a guess mid-flip settles the pending reveal first
+            dispatch({ type: "guess", puzzle, name });
+          }}
+        />
+      )}
 
       {ghost && (
         <GhostCard
