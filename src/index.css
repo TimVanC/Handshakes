@@ -460,6 +460,25 @@ select {
   transition: top 200ms ease;
 }
 
+/* pinned above the keyboard, the dock hangs a solid paper skirt below
+   itself. Safari (and Chrome) float TRANSLUCENT chrome between the page
+   and the keyboard — the URL pill and the form accessory bar — and a
+   webpage cannot move or cover them; what it CAN do is make the page
+   region beneath them plain paper, so they frost over cardstock instead
+   of a soup of jerseys. Tall enough for Safari's full chrome stack;
+   whatever runs past the keyboard's edge hides beneath it. Absolutely
+   positioned so offsetHeight — which feeds the pin math — is unaffected
+   (a stretched dock once ratcheted itself up the screen). */
+.guess-dock.is-pinned::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 300px;
+  background: var(--color-paper);
+}
+
 /* combobox */
 /* the guess box is type="search" purely to keep iOS AutoFill away — undo
    every scrap of WebKit's native search-field chrome so it still looks like

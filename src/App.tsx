@@ -837,7 +837,9 @@ export default function App() {
           the dock back to the bottom and the keyboard with it. */}
       <div
         ref={dockRef}
-        className="guess-dock fixed inset-x-0 bottom-0 z-30 border-t-2 border-ink bg-paper/95 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-2.5 backdrop-blur-sm"
+        className={`guess-dock fixed inset-x-0 bottom-0 z-30 border-t-2 border-ink bg-paper/95 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-2.5 backdrop-blur-sm ${
+          dockTop !== null ? "is-pinned" : ""
+        }`}
         style={dockTop !== null ? { top: dockTop, bottom: "auto" } : undefined}
         onFocus={() => {
           // touch screens only — on desktop the keyboard is not on the
