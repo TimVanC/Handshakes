@@ -838,7 +838,11 @@ export default function App() {
       <div
         ref={dockRef}
         className="guess-dock fixed inset-x-0 bottom-0 z-30 border-t-2 border-ink bg-paper/95 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-2.5 backdrop-blur-sm"
-        style={dockTop !== null ? { top: dockTop, bottom: "auto" } : undefined}
+        // while pinned above the keyboard, only `top` moves — `bottom: 0`
+        // stays, so the dock stretches down to the screen bottom and its
+        // paper background curtains off the cards that would otherwise
+        // peek through the gap between the input row and the keyboard
+        style={dockTop !== null ? { top: dockTop } : undefined}
         onFocus={() => {
           // touch screens only — on desktop the keyboard is not on the
           // screen and the bottom bar is exactly where it should be
