@@ -74,6 +74,15 @@ export default function MobileGuessOverlay({
                   onGuess(results[0].name);
                 }
               }}
+              // the keyboard's Done/✓ dismisses the keyboard by blurring the
+              // field — the search bar must leave with it, or it strands a
+              // second "Type a player" at the top of the screen. Result rows
+              // preventDefault their mousedown so picking one never blurs.
+              onBlur={() => {
+                setTimeout(() => {
+                  if (document.activeElement !== inputRef.current) onClose();
+                }, 100);
+              }}
               autoComplete="off"
               autoCorrect="off"
               autoCapitalize="words"
@@ -95,6 +104,9 @@ export default function MobileGuessOverlay({
                 <button
                   type="button"
                   className="flex w-full items-baseline justify-between gap-3 border-b border-line py-3 text-left"
+                  // fires before the input's blur — keeping focus means the
+                  // blur-close above can't unmount this row mid-tap
+                  onMouseDown={(e) => e.preventDefault()}
                   onClick={() => onGuess(p.name)}
                 >
                   <span className="font-semibold">{p.name}</span>
