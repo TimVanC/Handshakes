@@ -411,6 +411,30 @@ select {
 }
 
 
+/* while typing on a touch screen, the guess dock docks to the TOP of the
+   viewport instead of sitting at the bottom: the on-screen keyboard can
+   never cover the top, so the browser never scrolls the page to reveal
+   the focused field — the card spread stays where it was and the bar
+   floats in front of it. Blurring (or committing a guess) drops it back
+   to the bottom. Desktop (fine pointer) keeps the bottom bar always. */
+@media (pointer: coarse) {
+  .guess-dock:focus-within {
+    top: 0;
+    bottom: auto;
+    border-top-width: 0;
+    border-bottom-width: 2px;
+    padding-bottom: 0.75rem;
+  }
+
+  /* suggestions normally open UP from the bottom bar — from the top dock
+     they open DOWN instead, hanging over the spread */
+  .guess-dock:focus-within .combo-list {
+    bottom: auto;
+    top: calc(100% + 6px);
+    box-shadow: 0 8px 24px -10px rgba(60, 45, 20, 0.45);
+  }
+}
+
 /* combobox */
 /* the guess box is type="search" purely to keep iOS AutoFill away — undo
    every scrap of WebKit's native search-field chrome so it still looks like

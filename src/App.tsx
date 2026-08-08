@@ -757,15 +757,16 @@ export default function App() {
         )}
       </main>
 
-      {/* guess bar — thumb zone on mobile. Keyboard handling is left to the
-          browser on purpose: iOS shows a focused field by scrolling the page
-          itself, and every attempt to counter-manage that (lifting the bar
-          by the visualViewport delta, restoring scroll) fought the browser
-          and lost — the bar would lift then snap back behind the keyboard.
-          The default scroll is not pretty but always keeps typing visible,
-          and committing a guess blurs on touch (see GuessInput) so the
-          board is back in full view for the payoff. */}
-      <div className="fixed inset-x-0 bottom-0 z-30 border-t-2 border-ink bg-paper/95 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-2.5 backdrop-blur-sm">
+      {/* guess bar — thumb zone on mobile. While the input holds focus on a
+          touch device the whole dock jumps to the TOP of the screen (see
+          .guess-dock in index.css): the keyboard can never cover the top,
+          so the browser has no reason to scroll the page to reveal the
+          field — the board stays put and the bar floats over it. (Lifting
+          the bar above the keyboard in place was tried and lost a fight
+          with iOS's own scroll heuristics — top-docking sidesteps the
+          keyboard's geometry entirely.) Committing a guess blurs on touch
+          (see GuessInput), which drops the dock back to the bottom. */}
+      <div className="guess-dock fixed inset-x-0 bottom-0 z-30 border-t-2 border-ink bg-paper/95 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-2.5 backdrop-blur-sm">
         {state.wrongGuesses.length > 0 && (
           <div className="mx-auto max-w-xl px-4 pb-2" aria-label="Wrong guesses">
             <ul className="flex flex-wrap justify-center gap-1.5">
