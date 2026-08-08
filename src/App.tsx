@@ -268,10 +268,8 @@ export default function App() {
   const dockRef = useRef<HTMLDivElement | null>(null);
   const [dockTop, setDockTop] = useState<number | null>(null);
   // set while the dock owns focus on a touch screen; carries the scroll
-  // position to give back after iOS's pointless reveal-scroll, and when
-  // focus was taken (the reveal-scroll is only fought during the opening
-  // beat — after that the player is free to scroll around while typing)
-  const dockFocus = useRef<{ scrollY: number; at: number } | null>(null);
+  // position the page is frozen at (and restored to on blur)
+  const dockFocus = useRef<{ scrollY: number } | null>(null);
 
   const pinDock = () => {
     const vv = window.visualViewport;
@@ -282,39 +280,16 @@ export default function App() {
   useEffect(() => {
     const vv = window.visualViewport;
     if (!vv) return;
-    let settle: number | undefined;
-    const onResize = () => {
-      if (!dockFocus.current) return;
-      pinDock();
-      // iOS "reveals" the focused field by scrolling the page toward the
-      // bottom — pointless now that the dock rides the visual viewport, so
-      // put the player back on their spread (and once more after the
-      // keyboard animation settles; the browser can land its scroll late)
-      window.scrollTo({ top: dockFocus.current.scrollY });
-      window.clearTimeout(settle);
-      settle = window.setTimeout(() => {
-        if (dockFocus.current) window.scrollTo({ top: dockFocus.current.scrollY });
-      }, 250);
-    };
-    // iOS's reveal-scroll arrives as ordinary document scrolls a frame or
-    // two BEFORE the visualViewport resize — waiting for the resize alone
-    // let the page visibly pull down and snap back. Snap every scroll back
-    // the instant it happens during the keyboard's opening beat instead.
-    // (scrollTo re-fires this listener, but at the target position it's a
-    // no-op, so there's no loop.)
-    const onWinScroll = () => {
-      const f = dockFocus.current;
-      if (!f || performance.now() - f.at > 700) return;
-      if (window.scrollY !== f.scrollY) window.scrollTo({ top: f.scrollY });
-    };
-    vv.addEventListener("resize", onResize);
+    // No scroll-countering here anymore: iOS performs its reveal-scroll in
+    // the compositor and only reports it AFTERWARDS (scroll events are
+    // coalesced), so reacting to events can never stop the visible yank.
+    // Instead the page is frozen outright while the dock owns focus (see
+    // onFocus below) — with nothing scrollable there is nothing to yank.
+    vv.addEventListener("resize", pinDock);
     vv.addEventListener("scroll", pinDock);
-    window.addEventListener("scroll", onWinScroll);
     return () => {
-      vv.removeEventListener("resize", onResize);
+      vv.removeEventListener("resize", pinDock);
       vv.removeEventListener("scroll", pinDock);
-      window.removeEventListener("scroll", onWinScroll);
-      window.clearTimeout(settle);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps -- listeners only
   }, []);
@@ -833,7 +808,18 @@ export default function App() {
           // touch screens only — on desktop the keyboard is not on the
           // screen and the bottom bar is exactly where it should be
           if (!window.matchMedia("(pointer: coarse)").matches) return;
-          dockFocus.current = { scrollY: window.scrollY, at: performance.now() };
+          const y = window.scrollY;
+          dockFocus.current = { scrollY: y };
+          // freeze the page in place: body position:fixed at the current
+          // scroll leaves the document with nothing scrollable, so iOS's
+          // compositor-side reveal-scroll (which fires before any event
+          // JS could react to) has nothing to yank. The dock itself stays
+          // viewport-fixed and unaffected. Unfrozen on blur.
+          const b = document.body.style;
+          b.position = "fixed";
+          b.top = `-${y}px`;
+          b.left = "0";
+          b.right = "0";
           pinDock(); // lands where the bar already sits — no jump mid-tap
         }}
         onBlur={() => {
@@ -841,8 +827,15 @@ export default function App() {
           // the suggestion list must not count as leaving the dock
           setTimeout(() => {
             if (dockRef.current?.contains(document.activeElement)) return;
+            const f = dockFocus.current;
             dockFocus.current = null;
             setDockTop(null);
+            const b = document.body.style;
+            b.position = "";
+            b.top = "";
+            b.left = "";
+            b.right = "";
+            if (f) window.scrollTo({ top: f.scrollY });
           }, 0);
         }}
       >
