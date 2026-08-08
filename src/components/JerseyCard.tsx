@@ -398,7 +398,7 @@ export function GhostCard({
   return (
     <div
       ref={ref}
-      className="jersey-card w-full px-1.5 pb-2 pt-1"
+      className="jersey-card glow-gold w-full px-1.5 pb-2 pt-1"
       style={{
         // absolute in document coords (not fixed/viewport): if the page is
         // still smooth-scrolling mid-flight, the ghost rides WITH the layout

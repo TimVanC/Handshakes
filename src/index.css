@@ -178,6 +178,16 @@ select {
   animation: just-dealt-glow 2.6s ease-out both;
 }
 
+/* constant version of the halo for the flight leg (GhostCard) — same
+   shadow stack .just-dealt holds at its peak, so the handoff at landing
+   is invisible */
+.glow-gold {
+  box-shadow:
+    0 1px 2px rgba(60, 45, 20, 0.18),
+    0 8px 18px -8px rgba(60, 45, 20, 0.35),
+    0 0 18px 6px rgba(217, 165, 32, 0.55);
+}
+
 /* tap-to-flip: a 2D squeeze (scaleX to 0, swap, scale back) driven by
    WAAPI in JerseyCard. Deliberately NOT a 3D flip — perspective +
    backface-visibility force cards into composited layers that mobile
@@ -264,6 +274,14 @@ select {
   background: linear-gradient(168deg, #fdfaf3 0%, var(--color-card) 55%, #f1ead9 100%);
   border-color: var(--color-line);
   color: var(--color-ink);
+  /* the gold halo is born WITH the flip (the deck's box-shadow transition
+     eases it in) — the ghost carries it through the flight and the landed
+     card's .just-dealt fade takes over, one continuous glow end to end */
+  box-shadow:
+    3px 4px 0 -1px var(--color-court),
+    6px 8px 0 -2px color-mix(in srgb, var(--color-court) 70%, black),
+    0 10px 20px -8px rgba(60, 45, 20, 0.5),
+    0 0 18px 6px rgba(217, 165, 32, 0.55);
 }
 
 /* ------------------------------------------------------------------
