@@ -460,6 +460,22 @@ select {
   transition: top 200ms ease;
 }
 
+/* pinned above the keyboard, the dock grows a short paper skirt below
+   itself: the visual viewport's reported bottom and the keyboard's true
+   top can disagree by a strip, and the spread showed through it. Solid
+   paper, and absolutely positioned so offsetHeight — which feeds the pin
+   math — is unaffected (a stretched dock once ratcheted itself up the
+   screen). Anything past the keyboard's edge just hides beneath it. */
+.guess-dock.is-pinned::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 140px;
+  background: var(--color-paper);
+}
+
 /* combobox */
 /* the guess box is type="search" purely to keep iOS AutoFill away — undo
    every scrap of WebKit's native search-field chrome so it still looks like

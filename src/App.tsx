@@ -837,12 +837,14 @@ export default function App() {
           the dock back to the bottom and the keyboard with it. */}
       <div
         ref={dockRef}
-        className="guess-dock fixed inset-x-0 bottom-0 z-30 border-t-2 border-ink bg-paper/95 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-2.5 backdrop-blur-sm"
-        // the dock itself stays content-height even while pinned — pinDock
-        // measures offsetHeight, so letting it stretch to the screen bottom
-        // fed the measurement back into the pin and ratcheted the bar up
-        // the screen. The gap down to the keyboard is masked by the
-        // separate curtain layer rendered just below.
+        // the dock stays content-height while pinned — pinDock measures
+        // offsetHeight, so any stretched box would feed back into the pin
+        // math and ratchet the bar up the screen. The sliver of spread
+        // between the bar and the keyboard is covered by the .is-pinned
+        // skirt instead (absolutely positioned: adds no measured height).
+        className={`guess-dock fixed inset-x-0 bottom-0 z-30 border-t-2 border-ink bg-paper/95 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-2.5 backdrop-blur-sm ${
+          dockTop !== null ? "is-pinned" : ""
+        }`}
         style={dockTop !== null ? { top: dockTop, bottom: "auto" } : undefined}
         onFocus={() => {
           // touch screens only — on desktop the keyboard is not on the
@@ -902,18 +904,6 @@ export default function App() {
         )}
       </div>
 
-      {/* curtain behind the pinned dock: masks the cards that would peek
-          through between the input row and the keyboard. A separate layer
-          (not the dock stretched) so the dock's measured height stays its
-          content height for the pin math. Catching taps here is fine —
-          tapping it blurs the input, which is how you'd expect to exit. */}
-      {dockTop !== null && (
-        <div
-          aria-hidden="true"
-          className="fixed inset-x-0 bottom-0 z-20 bg-paper/95 backdrop-blur-sm"
-          style={{ top: dockTop }}
-        />
-      )}
 
       {ghost && (
         <GhostCard
