@@ -10158,7 +10158,7 @@ export const mlbPuzzles: Puzzle[] = [
         displayTeam: "Houston Astros",
         startYear: 1991,
         endYear: 1991,
-        jerseyNumber: null,
+        jerseyNumber: 28,
         statLine: [
           { label: "G", value: 20 },
           { label: "AVG", value: ".203" },
@@ -10172,7 +10172,7 @@ export const mlbPuzzles: Puzzle[] = [
         displayTeam: "Cleveland Indians",
         startYear: 1992,
         endYear: 1996,
-        jerseyNumber: null,
+        jerseyNumber: 7,
         statLine: [
           { label: "G", value: 680 },
           { label: "AVG", value: ".316" },
@@ -10186,7 +10186,7 @@ export const mlbPuzzles: Puzzle[] = [
         displayTeam: "Atlanta Braves",
         startYear: 1997,
         endYear: 1997,
-        jerseyNumber: null,
+        jerseyNumber: 7,
         statLine: [
           { label: "G", value: 122 },
           { label: "AVG", value: ".333" },
@@ -10356,7 +10356,7 @@ export const mlbPuzzles: Puzzle[] = [
         displayTeam: "Milwaukee Brewers",
         startYear: 1988,
         endYear: 1991,
-        jerseyNumber: null,
+        jerseyNumber: 11,
         statLine: [
           { label: "G", value: 294 },
           { label: "AVG", value: ".259" },
@@ -10370,7 +10370,7 @@ export const mlbPuzzles: Puzzle[] = [
         displayTeam: "San Diego Padres",
         startYear: 1992,
         endYear: 1993,
-        jerseyNumber: null,
+        jerseyNumber: 10,
         statLine: [
           { label: "G", value: 214 },
           { label: "AVG", value: ".319" },
@@ -10384,7 +10384,7 @@ export const mlbPuzzles: Puzzle[] = [
         displayTeam: "Florida Marlins",
         startYear: 1993,
         endYear: 1998,
-        jerseyNumber: null,
+        jerseyNumber: 10,
         statLine: [
           { label: "G", value: 558 },
           { label: "AVG", value: ".288" },
@@ -10484,7 +10484,7 @@ export const mlbPuzzles: Puzzle[] = [
         displayTeam: "Toronto Blue Jays",
         startYear: 1986,
         endYear: 1990,
-        jerseyNumber: null,
+        jerseyNumber: 19,
         statLine: [
           { label: "G", value: 578 },
           { label: "AVG", value: ".278" },
@@ -10498,7 +10498,7 @@ export const mlbPuzzles: Puzzle[] = [
         displayTeam: "San Diego Padres",
         startYear: 1991,
         endYear: 1993,
-        jerseyNumber: null,
+        jerseyNumber: 29,
         statLine: [
           { label: "G", value: 388 },
           { label: "AVG", value: ".281" },
@@ -10512,7 +10512,7 @@ export const mlbPuzzles: Puzzle[] = [
         displayTeam: "Atlanta Braves",
         startYear: 1993,
         endYear: 1997,
-        jerseyNumber: null,
+        jerseyNumber: 27,
         statLine: [
           { label: "G", value: 636 },
           { label: "AVG", value: ".293" },
@@ -12860,7 +12860,7 @@ export const mlbPuzzles: Puzzle[] = [
         displayTeam: "Pittsburgh Pirates",
         startYear: 1990,
         endYear: 1990,
-        jerseyNumber: null,
+        jerseyNumber: 52,
         statLine: [
           { label: "G", value: 2 },
           { label: "AVG", value: ".200" },
@@ -12874,7 +12874,7 @@ export const mlbPuzzles: Puzzle[] = [
         displayTeam: "Montreal Expos",
         startYear: 1990,
         endYear: 1990,
-        jerseyNumber: null,
+        jerseyNumber: 18,
         statLine: [
           { label: "G", value: 14 },
           { label: "AVG", value: ".200" },
@@ -12888,7 +12888,7 @@ export const mlbPuzzles: Puzzle[] = [
         displayTeam: "Montreal Expos",
         startYear: 1992,
         endYear: 1996,
-        jerseyNumber: null,
+        jerseyNumber: 18,
         statLine: [
           { label: "G", value: 594 },
           { label: "AVG", value: ".293" },
@@ -12902,7 +12902,7 @@ export const mlbPuzzles: Puzzle[] = [
         displayTeam: "Florida Marlins",
         startYear: 1997,
         endYear: 1997,
-        jerseyNumber: null,
+        jerseyNumber: 18,
         statLine: [
           { label: "G", value: 150 },
           { label: "AVG", value: ".292" },
@@ -13002,7 +13002,7 @@ export const mlbPuzzles: Puzzle[] = [
         displayTeam: "Montreal Expos",
         startYear: 1993,
         endYear: 1996,
-        jerseyNumber: null,
+        jerseyNumber: 30,
         statLine: [
           { label: "G", value: 256 },
           { label: "AVG", value: ".250" },
@@ -13130,7 +13130,7 @@ export const mlbPuzzles: Puzzle[] = [
         displayTeam: "Houston Astros",
         startYear: 1990,
         endYear: 1995,
-        jerseyNumber: null,
+        jerseyNumber: 26,
         statLine: [
           { label: "G", value: 593 },
           { label: "AVG", value: ".268" },
@@ -13144,7 +13144,7 @@ export const mlbPuzzles: Puzzle[] = [
         displayTeam: "Chicago Cubs",
         startYear: 1995,
         endYear: 1996,
-        jerseyNumber: null,
+        jerseyNumber: 25,
         statLine: [
           { label: "G", value: 223 },
           { label: "AVG", value: ".278" },
@@ -13158,7 +13158,7 @@ export const mlbPuzzles: Puzzle[] = [
         displayTeam: "Houston Astros",
         startYear: 1997,
         endYear: 1997,
-        jerseyNumber: null,
+        jerseyNumber: 26,
         statLine: [
           { label: "G", value: 152 },
           { label: "AVG", value: ".258" },
@@ -13172,7 +13172,7 @@ export const mlbPuzzles: Puzzle[] = [
         displayTeam: "Detroit Tigers",
         startYear: 1998,
         endYear: 1998,
-        jerseyNumber: null,
+        jerseyNumber: 28,
         statLine: [
           { label: "G", value: 154 },
           { label: "AVG", value: ".267" },
@@ -13432,7 +13432,7 @@ export const mlbPuzzles: Puzzle[] = [
         displayTeam: "Toronto Blue Jays",
         startYear: 1987,
         endYear: 1992,
-        jerseyNumber: null,
+        jerseyNumber: 36,
         statLine: [
           { label: "G", value: 237 },
           { label: "W-L", value: "47-37" },
@@ -13446,7 +13446,7 @@ export const mlbPuzzles: Puzzle[] = [
         displayTeam: "Detroit Tigers",
         startYear: 1993,
         endYear: 1995,
-        jerseyNumber: null,
+        jerseyNumber: 16,
         statLine: [
           { label: "G", value: 66 },
           { label: "W-L", value: "26-19" },
@@ -13460,7 +13460,7 @@ export const mlbPuzzles: Puzzle[] = [
         displayTeam: "Cincinnati Reds",
         startYear: 1995,
         endYear: 1995,
-        jerseyNumber: null,
+        jerseyNumber: 49,
         statLine: [
           { label: "G", value: 11 },
           { label: "W-L", value: "6-5" },
@@ -13474,7 +13474,7 @@ export const mlbPuzzles: Puzzle[] = [
         displayTeam: "Baltimore Orioles",
         startYear: 1996,
         endYear: 1996,
-        jerseyNumber: null,
+        jerseyNumber: 36,
         statLine: [
           { label: "G", value: 34 },
           { label: "W-L", value: "11-14" },
@@ -15184,7 +15184,7 @@ export const mlbPuzzles: Puzzle[] = [
         displayTeam: "Texas Rangers",
         startYear: 1989,
         endYear: 1989,
-        jerseyNumber: null,
+        jerseyNumber: 17,
         statLine: [
           { label: "G", value: 25 },
           { label: "AVG", value: ".238" },
@@ -15198,7 +15198,7 @@ export const mlbPuzzles: Puzzle[] = [
         displayTeam: "Chicago White Sox",
         startYear: 1989,
         endYear: 1991,
-        jerseyNumber: null,
+        jerseyNumber: 25,
         statLine: [
           { label: "G", value: 302 },
           { label: "AVG", value: ".227" },
@@ -15270,7 +15270,7 @@ export const mlbPuzzles: Puzzle[] = [
         displayTeam: "Oakland Athletics",
         startYear: 1985,
         endYear: 1992,
-        jerseyNumber: null,
+        jerseyNumber: 33,
         statLine: [
           { label: "G", value: 950 },
           { label: "AVG", value: ".267" },
@@ -15284,7 +15284,7 @@ export const mlbPuzzles: Puzzle[] = [
         displayTeam: "Texas Rangers",
         startYear: 1992,
         endYear: 1994,
-        jerseyNumber: null,
+        jerseyNumber: 33,
         statLine: [
           { label: "G", value: 193 },
           { label: "AVG", value: ".269" },
@@ -15298,7 +15298,7 @@ export const mlbPuzzles: Puzzle[] = [
         displayTeam: "Boston Red Sox",
         startYear: 1995,
         endYear: 1996,
-        jerseyNumber: null,
+        jerseyNumber: 33,
         statLine: [
           { label: "G", value: 198 },
           { label: "AVG", value: ".298" },
@@ -15312,7 +15312,7 @@ export const mlbPuzzles: Puzzle[] = [
         displayTeam: "Oakland Athletics",
         startYear: 1997,
         endYear: 1997,
-        jerseyNumber: null,
+        jerseyNumber: 33,
         statLine: [
           { label: "G", value: 108 },
           { label: "AVG", value: ".235" },
@@ -15326,7 +15326,7 @@ export const mlbPuzzles: Puzzle[] = [
         displayTeam: "Toronto Blue Jays",
         startYear: 1998,
         endYear: 1998,
-        jerseyNumber: null,
+        jerseyNumber: 44,
         statLine: [
           { label: "G", value: 151 },
           { label: "AVG", value: ".237" },

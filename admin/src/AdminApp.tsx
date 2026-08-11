@@ -85,6 +85,9 @@ export default function AdminApp({ session }: { session: Session }) {
   const [activeSport, setActiveSport] = useState<Sport | "all">("all");
   const [dragging, setDragging] = useState<{ sport: Sport; id: number } | null>(null);
   const [dropHint, setDropHint] = useState<{ sport: Sport; index: number } | null>(null);
+  const [query, setQuery] = useState("");
+  const [tierFilter, setTierFilter] = useState<Tier[]>([]);
+  const [verifyFilter, setVerifyFilter] = useState<"all" | "full" | "partial">("all");
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
@@ -248,9 +251,28 @@ export default function AdminApp({ session }: { session: Session }) {
     setSaving(false);
   };
 
+  const normalize = (value: string) => value.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase();
+  const filtersActive = query.trim() !== "" || tierFilter.length > 0 || verifyFilter !== "all";
+  const matchesFilters = useCallback(
+    (row: ScheduleRow) => {
+      if (query.trim() && !normalize(row.answer).includes(normalize(query.trim()))) return false;
+      if (tierFilter.length) {
+        const tier = tiers[`${row.sport}|${row.answer}`];
+        if (!tier || !tierFilter.includes(tier)) return false;
+      }
+      if (verifyFilter !== "all") {
+        const full = verificationFor(row).full;
+        if (verifyFilter === "full" ? !full : full) return false;
+      }
+      return true;
+    },
+    [query, tierFilter, verifyFilter, tiers]
+  );
+
   const visibleSports = activeSport === "all" ? SPORT_ORDER : [activeSport];
   const archiveRows = [...allRows]
     .filter((row) => row.frozen || row.day <= currentDays[row.sport])
+    .filter(matchesFilters)
     .sort((a, b) => dateFor(b.sport, b.day).getTime() - dateFor(a.sport, a.day).getTime());
 
   return (
@@ -286,6 +308,53 @@ export default function AdminApp({ session }: { session: Session }) {
           </div>
         </section>
 
+        <section className="filter-row" aria-label="Player filters">
+          <input
+            className="filter-search"
+            type="search"
+            placeholder="Search players…"
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+          />
+          <div className="filter-group" role="group" aria-label="Tier filter">
+            {TIER_ORDER.map((tier) => (
+              <button
+                key={tier}
+                className={`filter-chip ${tierFilter.includes(tier) ? "active" : ""}`}
+                onClick={() =>
+                  setTierFilter((current) =>
+                    current.includes(tier) ? current.filter((t) => t !== tier) : [...current, tier]
+                  )
+                }
+              >
+                {tier}
+              </button>
+            ))}
+          </div>
+          <div className="filter-group" role="group" aria-label="Verification filter">
+            {([["all", "Any status"], ["full", "✓ Verified"], ["partial", "Partial"]] as const).map(([value, label]) => (
+              <button
+                key={value}
+                className={`filter-chip ${verifyFilter === value ? "active" : ""}`}
+                onClick={() => setVerifyFilter(value)}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+          {filtersActive ? (
+            <button
+              className="text-button"
+              onClick={() => { setQuery(""); setTierFilter([]); setVerifyFilter("all"); }}
+            >
+              Clear filters
+            </button>
+          ) : null}
+          {filtersActive && view === "schedule" ? (
+            <span className="filter-note">Filters on — reordering paused</span>
+          ) : null}
+        </section>
+
         {error ? <div className="banner banner-error" role="alert">{error}</div> : null}
         {notice ? <div className="banner banner-success" role="status">{notice}</div> : null}
 
@@ -314,6 +383,8 @@ export default function AdminApp({ session }: { session: Session }) {
                   sport={sport}
                   rows={drafts[sport]}
                   tiers={tiers}
+                  matchesFilters={matchesFilters}
+                  locked={filtersActive}
                   dragging={dragging}
                   dropHint={dropHint?.sport === sport ? dropHint.index : null}
                   onDragStart={(id) => setDragging({ sport, id })}
@@ -448,6 +519,8 @@ function SportColumn({
   sport,
   rows,
   tiers,
+  matchesFilters,
+  locked,
   dragging,
   dropHint,
   onDragStart,
@@ -461,6 +534,8 @@ function SportColumn({
   sport: Sport;
   rows: ScheduleRow[];
   tiers: Record<string, Tier>;
+  matchesFilters: (row: ScheduleRow) => boolean;
+  locked: boolean;
   dragging: { sport: Sport; id: number } | null;
   dropHint: number | null;
   onDragStart: (id: number) => void;
@@ -472,15 +547,20 @@ function SportColumn({
   onOpen: (row: ScheduleRow) => void;
 }) {
   const daySlots = rows.map((row) => row.day).sort((a, b) => a - b);
+  // While filters are on, non-matching cards are hidden but every card keeps
+  // its ORIGINAL index, so day labels stay correct; reordering is paused so
+  // hidden neighbors can never be jumped invisibly.
+  const shown = locked ? rows.filter(matchesFilters).length : rows.length;
   return (
     <div className="sport-column" style={{ "--sport": SPORT_ACCENT[sport] } as React.CSSProperties}>
       <header className="sport-heading">
         <span>{SPORTS[sport].league}</span>
-        <small>{rows.length} upcoming</small>
+        <small>{locked ? `${shown} of ${rows.length} upcoming` : `${rows.length} upcoming`}</small>
       </header>
-      <div className="sport-list" onDragOver={onDragOverList} onDrop={onDrop}>
+      <div className="sport-list" onDragOver={locked ? undefined : onDragOverList} onDrop={locked ? undefined : onDrop}>
         {rows.length === 0 ? <p className="empty-column">No future puzzles scheduled.</p> : null}
-        {rows.map((row, index) => (
+        {locked && rows.length > 0 && shown === 0 ? <p className="empty-column">No players match the filters.</p> : null}
+        {rows.map((row, index) => locked && !matchesFilters(row) ? null : (
           <article
             className={[
               "schedule-card",
@@ -489,15 +569,16 @@ function SportColumn({
               index === rows.length - 1 && dropHint === rows.length ? "drop-after" : "",
             ].filter(Boolean).join(" ")}
             key={row.schedule_id}
-            draggable
+            draggable={!locked}
             onDragStart={(event) => {
+              if (locked) return;
               event.dataTransfer.effectAllowed = "move";
               event.dataTransfer.setData("text/plain", String(row.schedule_id));
               onDragStart(row.schedule_id);
             }}
             onDragEnd={onDragEnd}
-            onDragOver={(event) => onDragOverCard(index, event)}
-            onDrop={onDrop}
+            onDragOver={locked ? undefined : (event) => onDragOverCard(index, event)}
+            onDrop={locked ? undefined : onDrop}
           >
             <div className="drag-handle" title="Drag to reorder" aria-hidden="true"><i /><i /><i /></div>
             <button className="card-open" onClick={() => onOpen({ ...row, day: daySlots[index] })}>
@@ -510,8 +591,8 @@ function SportColumn({
               </span>
             </button>
             <div className="move-buttons" aria-label={`Move ${row.answer}`}>
-              <button disabled={index === 0} onClick={() => onMove(index, index - 1)} aria-label="Move one day earlier">↑</button>
-              <button disabled={index === rows.length - 1} onClick={() => onMove(index, index + 1)} aria-label="Move one day later">↓</button>
+              <button disabled={locked || index === 0} onClick={() => onMove(index, index - 1)} aria-label="Move one day earlier">↑</button>
+              <button disabled={locked || index === rows.length - 1} onClick={() => onMove(index, index + 1)} aria-label="Move one day later">↓</button>
             </div>
           </article>
         ))}
