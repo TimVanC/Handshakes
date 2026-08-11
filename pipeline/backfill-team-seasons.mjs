@@ -135,13 +135,25 @@ const oldNFL = {
   BAL:{ 1996:[4,12,0], 1997:[6,9,1] }, NYJ:{ 1998:[12,4,0,"CONF"] },
   CAR:{ 1995:[7,9,0], 1996:[12,4,0,"CONF"], 1997:[7,9,0], 1998:[4,12,0] },
   NO:{ 1998:[6,10,0] },
+  // 2026-08-10 legacy batch (Warner/Bledsoe/Cunningham/J.George/E.George/
+  // Plummer/Vinatieri), checked against the Wikipedia per-franchise season
+  // tables like the rows above.
+  PHI:{ 1985:[7,9,0], 1986:[5,10,1], 1987:[7,8,0], 1988:[10,6,0,"DIV"], 1989:[11,5,0,"WC"], 1990:[10,6,0,"WC"], 1991:[10,6,0], 1992:[11,5,0,"DIV"], 1993:[8,8,0], 1994:[7,9,0], 1995:[10,6,0,"DIV"] },
+  MIN:{ 1997:[9,7,0,"DIV"], 1998:[15,1,0,"CONF"] },
+  NE:{ 1993:[5,11,0], 1994:[10,6,0,"WC"], 1995:[6,10,0], 1996:[11,5,0,"SB",0], 1997:[10,6,0,"DIV"], 1998:[9,7,0,"WC"] },
+  IND:{ 1990:[7,9,0], 1991:[1,15,0], 1992:[9,7,0], 1993:[4,12,0] },
+  ATL:{ 1994:[7,9,0], 1995:[9,7,0,"WC"], 1996:[3,13,0] },
+  LV:{ 1997:[4,12,0], 1998:[8,8,0] },
+  TEN:{ 1996:[8,8,0], 1997:[8,8,0], 1998:[8,8,0] },
+  ARI:{ 1997:[4,12,0], 1998:[9,7,0,"DIV"] },
+  LAR:{ 1998:[4,12,0] },
 };
 for (const [year, teams] of sets.nfl.needed) for (const team of teams) {
   if (sets.nfl.db[team]?.[year]) continue;
   const legacy = oldNFL[team]?.[year];
   if (legacy) {
-    const [w,l,t,po=""] = legacy;
-    (sets.nfl.db[team] ??= {})[year] = { w,l,...(t ? {t} : {}),po };
+    const [w,l,t,po="",fw] = legacy;
+    (sets.nfl.db[team] ??= {})[year] = { w,l,...(t ? {t} : {}),po,...(fw === undefined ? {} : {fw}) };
     continue;
   }
   const yearGames = nflByYear.get(year) ?? [];

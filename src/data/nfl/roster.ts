@@ -151,4 +151,7 @@ export const NFL_ROSTER: string[] = [
   // ---- duplicate-screened, randomized and authored 2026-08-03 ----
   "Antonio Brown",
   "Odell Beckham Jr.",
+  // ---- duplicate-screened, randomized and authored 2026-08-03 ----
+  "Jake Plummer",
+  "Adam Vinatieri",
 ];

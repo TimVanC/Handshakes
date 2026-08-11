@@ -44,11 +44,11 @@ const PUZZLES = {
 
 // New names per sport being activated by this rebalance run; each one's tier
 // comes from player_tiers (already-scheduled names are skipped automatically).
-// Round 2 (B-C refill): the casual-household sprinkle.
+// Round 3 (legacy hand-authored batch): the pre-nflverse careers.
 const NEW_NAMES = {
-  nba: ["Dwight Howard", "Carmelo Anthony", "Dwyane Wade", "Dennis Rodman"],
-  mlb: ["Ichiro Suzuki", "Manny Ramírez", "Sammy Sosa", "José Canseco"],
-  nfl: ["Michael Vick", "Cam Newton", "Antonio Brown", "Odell Beckham Jr."],
+  nba: [],
+  mlb: [],
+  nfl: ["Kurt Warner", "Drew Bledsoe", "Randall Cunningham", "Jeff George", "Eddie George", "Jake Plummer", "Adam Vinatieri"],
 };
 
 const client = new pg.Client({ connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false } });
