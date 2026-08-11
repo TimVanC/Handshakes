@@ -169,7 +169,8 @@ details summary { cursor: pointer; color: var(--muted); font-size: 0.8rem; font-
 .schedule-date b { font-family: "Archivo Black", sans-serif; font-size: 0.78rem; }
 .schedule-date small { color: var(--muted); font-size: 0.62rem; }
 .player-name { min-width: 0; overflow: hidden; font-family: "Archivo Black", sans-serif; font-size: clamp(0.78rem, 1.15vw, 0.95rem); text-overflow: ellipsis; white-space: nowrap; }
-.card-meta { display: flex; gap: 0.35rem; overflow: hidden; }
+.card-meta { display: flex; align-items: center; gap: 0.35rem; overflow: hidden; }
+.card-meta .tier-pill { margin-left: 0; }
 .card-meta em { color: var(--muted); font-size: 0.58rem; font-style: normal; text-transform: capitalize; white-space: nowrap; }
 .move-buttons { display: grid; grid-template-rows: 1fr 1fr; border-left: 1px solid #ddd6c8; }
 .move-buttons button { width: 2rem; border: 0; background: transparent; color: #776f62; font-weight: 800; cursor: pointer; }
@@ -193,6 +194,23 @@ details summary { cursor: pointer; color: var(--muted); font-size: 0.8rem; font-
 .archive-table small { color: var(--muted); font-size: 0.68rem; }
 .archive-note { margin: 0.8rem 0 0; color: var(--muted); font-size: 0.7rem; }
 .league-pill { display: inline-flex; width: fit-content; align-items: center; justify-content: center; padding: 0.28rem 0.42rem; border-radius: 0.35rem; color: white; font-size: 0.58rem; font-weight: 800; letter-spacing: 0.08em; }
+
+.tier-pill { display: inline-flex; align-items: center; justify-content: center; margin-left: 0.4rem; padding: 0.14rem 0.34rem; border-radius: 0.3rem; color: white; font-family: "Archivo Black", sans-serif; font-size: 0.55rem; letter-spacing: 0.06em; vertical-align: middle; cursor: help; }
+.tier-leg { background: #a8891f; }
+.tier-bc { background: #3f7d4e; }
+.tier-s { background: #2f6f8f; }
+.tier-a { background: #5b5f9e; }
+.tier-bk { background: #7d4b7f; }
+.tier-ghost { background: #6b6b6b; }
+
+.tier-key { margin: 0 0 0.9rem; border: 1px solid #c7c0b1; border-radius: 0.6rem; background: rgba(248, 245, 236, 0.74); }
+.tier-key summary { padding: 0.55rem 0.8rem; font-family: "Archivo Black", sans-serif; font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; }
+.tier-key-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 0.6rem; padding: 0.2rem 0.8rem 0.6rem; }
+.tier-key-grid > div { padding: 0.5rem 0.6rem; border: 1px solid #ddd6c8; border-radius: 0.45rem; background: #fffdf7; }
+.tier-key-grid .tier-pill { margin: 0 0 0.3rem; }
+.tier-key-grid strong { display: block; margin-bottom: 0.15rem; font-size: 0.72rem; }
+.tier-key-grid p { margin: 0; color: var(--muted); font-size: 0.66rem; line-height: 1.35; }
+.tier-key-note { margin: 0; padding: 0 0.8rem 0.7rem; color: var(--muted); font-size: 0.66rem; }
 .league-nba { background: #bb6337; }
 .league-nfl { background: #47725f; }
 .league-mlb { background: #4c648c; }

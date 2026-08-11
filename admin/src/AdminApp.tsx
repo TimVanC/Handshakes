@@ -21,6 +21,43 @@ interface ScheduleRow {
 type SportMap<T> = Record<Sport, T>;
 type View = "schedule" | "archive";
 
+type Tier = "LEG" | "B-C" | "S" | "A" | "B-K" | "GHOST";
+
+const TIER_ORDER: Tier[] = ["LEG", "B-C", "S", "A", "B-K", "GHOST"];
+
+const TIER_INFO: Record<Tier, { className: string; label: string; blurb: string }> = {
+  LEG: {
+    className: "tier-leg",
+    label: "Legend (outlier)",
+    blurb: "All-time icon or one-team great. Trivially easy — the first jersey gives it away. Avoid scheduling.",
+  },
+  "B-C": {
+    className: "tier-bc",
+    label: "B · Casual",
+    blurb: "Household star even casual fans know (Vince Carter, Allen Iverson). Sprinkle in as easy days.",
+  },
+  S: {
+    className: "tier-s",
+    label: "S · Sweet spot",
+    blurb: "The bullseye: a true journeyman with real name recognition. Most fans get there if they dig. Lean heavy here.",
+  },
+  A: {
+    className: "tier-a",
+    label: "A · Deeper bag",
+    blurb: "Still well known, but a deeper pull that takes real digging. Second-most common tier.",
+  },
+  "B-K": {
+    className: "tier-bk",
+    label: "B · Ball knower",
+    blurb: "Only diehards land this. Sprinkle in as hard days — never run several in a row.",
+  },
+  GHOST: {
+    className: "tier-ghost",
+    label: "Ghost (outlier)",
+    blurb: "Too deep even for ball knowers. A lost day for almost everyone. Avoid scheduling.",
+  },
+};
+
 const LAUNCH: SportMap<string> = {
   nba: "2026-07-15",
   nfl: "2026-07-22",
@@ -38,6 +75,7 @@ const emptyNumbers = (): SportMap<number> => ({ nba: 0, nfl: 0, mlb: 0 });
 
 export default function AdminApp({ session }: { session: Session }) {
   const [allRows, setAllRows] = useState<ScheduleRow[]>([]);
+  const [tiers, setTiers] = useState<Record<string, Tier>>({});
   const [drafts, setDrafts] = useState<SportMap<ScheduleRow[]>>(emptyRows);
   const [originalIds, setOriginalIds] = useState<SportMap<number[]>>({ nba: [], nfl: [], mlb: [] });
   const [versions, setVersions] = useState<SportMap<number>>(emptyNumbers);
@@ -54,16 +92,18 @@ export default function AdminApp({ session }: { session: Session }) {
   const load = useCallback(async () => {
     setLoading(true);
     setError("");
-    const [scheduleResult, versionResult, ...dayResults] = await Promise.all([
+    const [scheduleResult, versionResult, tierResult, ...dayResults] = await Promise.all([
       supabase
         .from("scheduled_puzzles")
         .select("schedule_id,sport,day,answer,puzzle,source,status,frozen,generated_at")
         .order("day"),
       supabase.from("schedule_versions").select("sport,version"),
+      supabase.from("player_tiers").select("sport,player_name,tier"),
       ...SPORT_ORDER.map((sport) => supabase.rpc("current_day", { p_sport: sport })),
     ]);
 
-    const firstError = scheduleResult.error ?? versionResult.error ?? dayResults.find((r) => r.error)?.error;
+    const firstError =
+      scheduleResult.error ?? versionResult.error ?? tierResult.error ?? dayResults.find((r) => r.error)?.error;
     if (firstError) {
       setError(firstError.message);
       setLoading(false);
@@ -89,7 +129,13 @@ export default function AdminApp({ session }: { session: Session }) {
       nextVersions[sport] = Number(row.version);
     }
 
+    const nextTiers: Record<string, Tier> = {};
+    for (const row of tierResult.data ?? []) {
+      nextTiers[`${row.sport}|${row.player_name}`] = row.tier as Tier;
+    }
+
     setAllRows(rows);
+    setTiers(nextTiers);
     setDrafts(nextDrafts);
     setOriginalIds(nextOriginal);
     setVersions(nextVersions);
@@ -229,12 +275,15 @@ export default function AdminApp({ session }: { session: Session }) {
               </div>
             </section>
 
+            <TierKey />
+
             <section className={`schedule-board columns-${visibleSports.length}`}>
               {visibleSports.map((sport) => (
                 <SportColumn
                   key={sport}
                   sport={sport}
                   rows={drafts[sport]}
+                  tiers={tiers}
                   dragging={dragging}
                   onDragStart={(id) => setDragging({ sport, id })}
                   onDragEnd={() => setDragging(null)}
@@ -246,7 +295,7 @@ export default function AdminApp({ session }: { session: Session }) {
             </section>
           </>
         ) : (
-          <Archive rows={archiveRows} activeSport={activeSport} onOpen={setSelected} />
+          <Archive rows={archiveRows} activeSport={activeSport} tiers={tiers} onOpen={setSelected} />
         )}
       </main>
 
@@ -260,14 +309,48 @@ export default function AdminApp({ session }: { session: Session }) {
         </div>
       ) : null}
 
-      {selected ? <PlayerDrawer row={selected} onClose={() => setSelected(null)} /> : null}
+      {selected ? (
+        <PlayerDrawer row={selected} tier={tiers[`${selected.sport}|${selected.answer}`]} onClose={() => setSelected(null)} />
+      ) : null}
     </div>
+  );
+}
+
+function TierBadge({ tier }: { tier: Tier | undefined }) {
+  if (!tier) return null;
+  const info = TIER_INFO[tier];
+  return (
+    <span className={`tier-pill ${info.className}`} title={`${info.label} — ${info.blurb}`}>
+      {tier}
+    </span>
+  );
+}
+
+function TierKey() {
+  return (
+    <details className="tier-key">
+      <summary>Tier key</summary>
+      <div className="tier-key-grid">
+        {TIER_ORDER.map((tier) => (
+          <div key={tier}>
+            <TierBadge tier={tier} />
+            <strong>{TIER_INFO[tier].label}</strong>
+            <p>{TIER_INFO[tier].blurb}</p>
+          </div>
+        ))}
+      </div>
+      <p className="tier-key-note">
+        Ordered easiest → hardest. Target mix: mostly S and A, with B-Casual and B-Knower sprinkled from both ends.
+        LEG and GHOST are outliers that sit outside the four playable tiers.
+      </p>
+    </details>
   );
 }
 
 function SportColumn({
   sport,
   rows,
+  tiers,
   dragging,
   onDragStart,
   onDragEnd,
@@ -277,6 +360,7 @@ function SportColumn({
 }: {
   sport: Sport;
   rows: ScheduleRow[];
+  tiers: Record<string, Tier>;
   dragging: { sport: Sport; id: number } | null;
   onDragStart: (id: number) => void;
   onDragEnd: () => void;
@@ -311,7 +395,11 @@ function SportColumn({
             <button className="card-open" onClick={() => onOpen({ ...row, day: daySlots[index] })}>
               <span className="schedule-date"><b>{shortDate(row.sport, daySlots[index])}</b><small>#{daySlots[index]}</small></span>
               <span className="player-name">{row.answer}</span>
-              <span className="card-meta"><em>{row.puzzle.stints.length} jerseys</em><em>{row.source}</em></span>
+              <span className="card-meta">
+                <TierBadge tier={tiers[`${row.sport}|${row.answer}`]} />
+                <em>{row.puzzle.stints.length} jerseys</em>
+                <em>{row.source}</em>
+              </span>
             </button>
             <div className="move-buttons" aria-label={`Move ${row.answer}`}>
               <button disabled={index === 0} onClick={() => onMove(index, index - 1)} aria-label="Move one day earlier">↑</button>
@@ -324,7 +412,17 @@ function SportColumn({
   );
 }
 
-function Archive({ rows, activeSport, onOpen }: { rows: ScheduleRow[]; activeSport: Sport | "all"; onOpen: (row: ScheduleRow) => void }) {
+function Archive({
+  rows,
+  activeSport,
+  tiers,
+  onOpen,
+}: {
+  rows: ScheduleRow[];
+  activeSport: Sport | "all";
+  tiers: Record<string, Tier>;
+  onOpen: (row: ScheduleRow) => void;
+}) {
   const visible = rows.filter((row) => activeSport === "all" || row.sport === activeSport);
   return (
     <section className="archive-section">
@@ -339,7 +437,10 @@ function Archive({ rows, activeSport, onOpen }: { rows: ScheduleRow[]; activeSpo
         {visible.map((row) => (
           <button key={`${row.sport}-${row.day}`} onClick={() => onOpen(row)}>
             <span className={`league-pill league-${row.sport}`}>{row.sport.toUpperCase()}</span>
-            <span><strong>{row.answer}</strong><small>{longDate(row.sport, row.day)} · Puzzle #{row.day}</small></span>
+            <span>
+              <strong>{row.answer} <TierBadge tier={tiers[`${row.sport}|${row.answer}`]} /></strong>
+              <small>{longDate(row.sport, row.day)} · Puzzle #{row.day}</small>
+            </span>
             <span className="lock-label">Locked</span>
             <span aria-hidden="true">›</span>
           </button>
@@ -351,7 +452,7 @@ function Archive({ rows, activeSport, onOpen }: { rows: ScheduleRow[]; activeSpo
   );
 }
 
-function PlayerDrawer({ row, onClose }: { row: ScheduleRow; onClose: () => void }) {
+function PlayerDrawer({ row, tier, onClose }: { row: ScheduleRow; tier: Tier | undefined; onClose: () => void }) {
   useEffect(() => {
     const close = (event: KeyboardEvent) => event.key === "Escape" && onClose();
     window.addEventListener("keydown", close);
@@ -365,7 +466,7 @@ function PlayerDrawer({ row, onClose }: { row: ScheduleRow; onClose: () => void 
         <header className="drawer-header">
           <div>
             <span className={`league-pill league-${row.sport}`}>{row.sport.toUpperCase()}</span>
-            <h2>{row.answer}</h2>
+            <h2>{row.answer} <TierBadge tier={tier} /></h2>
             <p>{longDate(row.sport, row.day)} · Puzzle #{row.day} · {row.source}</p>
           </div>
           <button className="drawer-close" onClick={onClose} aria-label="Close player review">×</button>
