@@ -84,6 +84,7 @@ export default function AdminApp({ session }: { session: Session }) {
   const [view, setView] = useState<View>("schedule");
   const [activeSport, setActiveSport] = useState<Sport | "all">("all");
   const [dragging, setDragging] = useState<{ sport: Sport; id: number } | null>(null);
+  const [dropHint, setDropHint] = useState<{ sport: Sport; index: number } | null>(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
@@ -166,13 +167,42 @@ export default function AdminApp({ session }: { session: Session }) {
     setNotice("");
   };
 
-  const drop = (sport: Sport, targetId: number, event: DragEvent) => {
+  // While dragging, hovering the top half of a card targets the slot above
+  // it, the bottom half the slot below — dropHint.index is the insertion
+  // slot the colored line marks.
+  const dragOverCard = (sport: Sport, index: number, event: DragEvent) => {
     event.preventDefault();
     if (!dragging || dragging.sport !== sport) return;
+    const rect = (event.currentTarget as HTMLElement).getBoundingClientRect();
+    const before = event.clientY - rect.top < rect.height / 2;
+    const next = index + (before ? 0 : 1);
+    if (dropHint?.sport !== sport || dropHint.index !== next) setDropHint({ sport, index: next });
+  };
+
+  const dragOverList = (sport: Sport, event: DragEvent) => {
+    if (!dragging || dragging.sport !== sport) return;
+    event.preventDefault();
+    // Auto-scroll long columns while dragging near their edges.
+    const list = event.currentTarget as HTMLElement;
+    const rect = list.getBoundingClientRect();
+    if (event.clientY < rect.top + 56) list.scrollTop -= 16;
+    else if (event.clientY > rect.bottom - 56) list.scrollTop += 16;
+    // Hovering the empty space under the last card drops at the end.
+    if (event.target === event.currentTarget) {
+      const end = drafts[sport].length;
+      if (dropHint?.sport !== sport || dropHint.index !== end) setDropHint({ sport, index: end });
+    }
+  };
+
+  const drop = (sport: Sport, event: DragEvent) => {
+    event.preventDefault();
+    if (!dragging || dragging.sport !== sport || !dropHint || dropHint.sport !== sport) return;
     const from = drafts[sport].findIndex((row) => row.schedule_id === dragging.id);
-    const to = drafts[sport].findIndex((row) => row.schedule_id === targetId);
-    move(sport, from, to);
+    let to = dropHint.index;
+    if (from < to) to -= 1;
+    move(sport, from, Math.max(0, Math.min(to, drafts[sport].length - 1)));
     setDragging(null);
+    setDropHint(null);
   };
 
   const discard = () => {
@@ -285,9 +315,12 @@ export default function AdminApp({ session }: { session: Session }) {
                   rows={drafts[sport]}
                   tiers={tiers}
                   dragging={dragging}
+                  dropHint={dropHint?.sport === sport ? dropHint.index : null}
                   onDragStart={(id) => setDragging({ sport, id })}
-                  onDragEnd={() => setDragging(null)}
-                  onDrop={(id, event) => drop(sport, id, event)}
+                  onDragEnd={() => { setDragging(null); setDropHint(null); }}
+                  onDragOverCard={(index, event) => dragOverCard(sport, index, event)}
+                  onDragOverList={(event) => dragOverList(sport, event)}
+                  onDrop={(event) => drop(sport, event)}
                   onMove={(from, to) => move(sport, from, to)}
                   onOpen={setSelected}
                 />
@@ -313,6 +346,70 @@ export default function AdminApp({ session }: { session: Session }) {
         <PlayerDrawer row={selected} tier={tiers[`${selected.sport}|${selected.answer}`]} onClose={() => setSelected(null)} />
       ) : null}
     </div>
+  );
+}
+
+interface Verification {
+  jerseys: boolean;
+  numbers: boolean;
+  stats: boolean;
+  pp: boolean;
+  full: boolean;
+}
+
+// Computed from the actual data, not stored flags: colorway era status for
+// jerseys, non-null numbers, complete stat cells, and a full hint ladder.
+function verificationFor(row: ScheduleRow): Verification {
+  const config = SPORTS[row.sport];
+  const stints = row.puzzle.stints;
+  const jerseys = stints.every(
+    (stint) => resolveColorway(config.colorways, stint.franchise, stint.startYear, stint.endYear)?.status === "verified"
+  );
+  const numbers = stints.every((stint) => stint.jerseyNumber !== null && stint.jerseyNumber !== undefined);
+  const stats = stints.every((stint) =>
+    config.cardStats(stint).every((cell) => {
+      if (cell.value === null || cell.value === undefined) return false;
+      if (typeof cell.value === "number") return !Number.isNaN(cell.value);
+      return String(cell.value).trim() !== "";
+    })
+  );
+  const pp = config.hintLadder.every((hint) => {
+    const value = row.puzzle.hints[hint.key];
+    return value !== null && value !== undefined && String(value).trim() !== "";
+  });
+  return { jerseys, numbers, stats, pp, full: jerseys && numbers && stats && pp };
+}
+
+const VERIFY_PARTS: Array<{ key: keyof Omit<Verification, "full">; label: string }> = [
+  { key: "jerseys", label: "Jerseys" },
+  { key: "numbers", label: "Numbers" },
+  { key: "stats", label: "Stats" },
+  { key: "pp", label: "PP" },
+];
+
+function VerifyBadge({ row }: { row: ScheduleRow }) {
+  const v = verificationFor(row);
+  if (v.full) return <span className="verify-pill verify-full" title="Jerseys, numbers, stats, and player profile all verified">✓ Verified</span>;
+  const good = VERIFY_PARTS.filter((part) => v[part.key]).map((part) => part.label);
+  const bad = VERIFY_PARTS.filter((part) => !v[part.key]).map((part) => part.label);
+  if (!good.length) return <span className="verify-pill verify-none" title={`Unverified: ${bad.join(", ")}`}>Unverified</span>;
+  return (
+    <span className="verify-pill verify-part" title={`Still unverified: ${bad.join(", ")}`}>
+      {good.join(" · ")} verified
+    </span>
+  );
+}
+
+function VerifyBreakdown({ row }: { row: ScheduleRow }) {
+  const v = verificationFor(row);
+  return (
+    <section className="verify-breakdown" aria-label="Verification status">
+      {VERIFY_PARTS.map((part) => (
+        <span key={part.key} className={`verify-pill ${v[part.key] ? "verify-full" : "verify-none"}`}>
+          {v[part.key] ? "✓" : "✗"} {part.key === "pp" ? "Player profile" : part.label}
+        </span>
+      ))}
+    </section>
   );
 }
 
@@ -352,8 +449,11 @@ function SportColumn({
   rows,
   tiers,
   dragging,
+  dropHint,
   onDragStart,
   onDragEnd,
+  onDragOverCard,
+  onDragOverList,
   onDrop,
   onMove,
   onOpen,
@@ -362,9 +462,12 @@ function SportColumn({
   rows: ScheduleRow[];
   tiers: Record<string, Tier>;
   dragging: { sport: Sport; id: number } | null;
+  dropHint: number | null;
   onDragStart: (id: number) => void;
   onDragEnd: () => void;
-  onDrop: (id: number, event: DragEvent) => void;
+  onDragOverCard: (index: number, event: DragEvent) => void;
+  onDragOverList: (event: DragEvent) => void;
+  onDrop: (event: DragEvent) => void;
   onMove: (from: number, to: number) => void;
   onOpen: (row: ScheduleRow) => void;
 }) {
@@ -375,11 +478,16 @@ function SportColumn({
         <span>{SPORTS[sport].league}</span>
         <small>{rows.length} upcoming</small>
       </header>
-      <div className="sport-list">
+      <div className="sport-list" onDragOver={onDragOverList} onDrop={onDrop}>
         {rows.length === 0 ? <p className="empty-column">No future puzzles scheduled.</p> : null}
         {rows.map((row, index) => (
           <article
-            className={`schedule-card ${dragging?.id === row.schedule_id ? "is-dragging" : ""}`}
+            className={[
+              "schedule-card",
+              dragging?.id === row.schedule_id ? "is-dragging" : "",
+              dropHint === index ? "drop-before" : "",
+              index === rows.length - 1 && dropHint === rows.length ? "drop-after" : "",
+            ].filter(Boolean).join(" ")}
             key={row.schedule_id}
             draggable
             onDragStart={(event) => {
@@ -388,8 +496,8 @@ function SportColumn({
               onDragStart(row.schedule_id);
             }}
             onDragEnd={onDragEnd}
-            onDragOver={(event) => event.preventDefault()}
-            onDrop={(event) => onDrop(row.schedule_id, event)}
+            onDragOver={(event) => onDragOverCard(index, event)}
+            onDrop={onDrop}
           >
             <div className="drag-handle" title="Drag to reorder" aria-hidden="true"><i /><i /><i /></div>
             <button className="card-open" onClick={() => onOpen({ ...row, day: daySlots[index] })}>
@@ -397,8 +505,8 @@ function SportColumn({
               <span className="player-name">{row.answer}</span>
               <span className="card-meta">
                 <TierBadge tier={tiers[`${row.sport}|${row.answer}`]} />
+                <VerifyBadge row={row} />
                 <em>{row.puzzle.stints.length} jerseys</em>
-                <em>{row.source}</em>
               </span>
             </button>
             <div className="move-buttons" aria-label={`Move ${row.answer}`}>
@@ -438,7 +546,7 @@ function Archive({
           <button key={`${row.sport}-${row.day}`} onClick={() => onOpen(row)}>
             <span className={`league-pill league-${row.sport}`}>{row.sport.toUpperCase()}</span>
             <span>
-              <strong>{row.answer} <TierBadge tier={tiers[`${row.sport}|${row.answer}`]} /></strong>
+              <strong>{row.answer} <TierBadge tier={tiers[`${row.sport}|${row.answer}`]} /> <VerifyBadge row={row} /></strong>
               <small>{longDate(row.sport, row.day)} · Puzzle #{row.day}</small>
             </span>
             <span className="lock-label">Locked</span>
@@ -471,6 +579,8 @@ function PlayerDrawer({ row, tier, onClose }: { row: ScheduleRow; tier: Tier | u
           </div>
           <button className="drawer-close" onClick={onClose} aria-label="Close player review">×</button>
         </header>
+
+        <VerifyBreakdown row={row} />
 
         {row.puzzle.accolades?.length ? <p className="career-accolades">{row.puzzle.accolades.join(" · ")}</p> : null}
 
