@@ -23,27 +23,20 @@ create table if not exists public.player_tiers (
 
 alter table public.player_tiers enable row level security;
 
+-- Matches the access rule the advisor-fixes migration settled on for the
+-- other admin tables: allowlisted owner via has_schedule_admin_access().
 drop policy if exists "owner reads player tiers" on public.player_tiers;
 create policy "owner reads player tiers"
   on public.player_tiers for select
   to authenticated
-  using (
-    (select auth.jwt()->>'aal') = 'aal2'
-    and (select public.is_schedule_admin())
-  );
+  using ((select public.has_schedule_admin_access()));
 
 drop policy if exists "owner manages player tiers" on public.player_tiers;
 create policy "owner manages player tiers"
   on public.player_tiers for all
   to authenticated
-  using (
-    (select auth.jwt()->>'aal') = 'aal2'
-    and (select public.is_schedule_admin())
-  )
-  with check (
-    (select auth.jwt()->>'aal') = 'aal2'
-    and (select public.is_schedule_admin())
-  );
+  using ((select public.has_schedule_admin_access()))
+  with check ((select public.has_schedule_admin_access()));
 
 revoke all on public.player_tiers from public, anon, authenticated;
 grant select, insert, update, delete on public.player_tiers to authenticated;
