@@ -6303,7 +6303,7 @@ export const nflPuzzles: Puzzle[] = [
   },
   {
     // nflverse weekly stats + weekly rosters verified (2026-08-11).
-    id: 17,
+    id: 86,
     pathType: "team",
     answer: "Alex Smith",
     stints: [
@@ -6375,7 +6375,7 @@ export const nflPuzzles: Puzzle[] = [
   },
   {
     // nflverse weekly stats + weekly rosters verified (2026-08-11).
-    id: 18,
+    id: 87,
     pathType: "team",
     answer: "Teddy Bridgewater",
     stints: [
@@ -6489,7 +6489,7 @@ export const nflPuzzles: Puzzle[] = [
   },
   {
     // nflverse weekly stats + weekly rosters verified (2026-08-11).
-    id: 19,
+    id: 88,
     pathType: "team",
     answer: "Ryan Tannehill",
     stints: [
@@ -6533,7 +6533,7 @@ export const nflPuzzles: Puzzle[] = [
   },
   {
     // nflverse weekly stats + weekly rosters verified (2026-08-11).
-    id: 20,
+    id: 89,
     pathType: "team",
     answer: "Tyrod Taylor",
     stints: [
@@ -6647,7 +6647,7 @@ export const nflPuzzles: Puzzle[] = [
   },
   {
     // nflverse weekly stats + weekly rosters verified (2026-08-11).
-    id: 21,
+    id: 90,
     pathType: "team",
     answer: "Nick Foles",
     stints: [
@@ -6761,7 +6761,7 @@ export const nflPuzzles: Puzzle[] = [
   },
   {
     // nflverse weekly stats + weekly rosters verified (2026-08-11).
-    id: 22,
+    id: 91,
     pathType: "team",
     answer: "Jameis Winston",
     stints: [
@@ -6833,7 +6833,7 @@ export const nflPuzzles: Puzzle[] = [
   },
   {
     // nflverse weekly stats + weekly rosters verified (2026-08-11).
-    id: 23,
+    id: 92,
     pathType: "team",
     answer: "Marcus Mariota",
     stints: [
@@ -6919,7 +6919,7 @@ export const nflPuzzles: Puzzle[] = [
   },
   {
     // nflverse weekly stats + weekly rosters verified (2026-08-11).
-    id: 24,
+    id: 93,
     pathType: "team",
     answer: "Mark Sanchez",
     stints: [
@@ -6991,7 +6991,7 @@ export const nflPuzzles: Puzzle[] = [
   },
   {
     // nflverse weekly stats + weekly rosters verified (2026-08-11).
-    id: 25,
+    id: 94,
     pathType: "team",
     answer: "Jeff Garcia",
     stints: [
@@ -7091,7 +7091,7 @@ export const nflPuzzles: Puzzle[] = [
   },
   {
     // nflverse weekly stats + weekly rosters verified (2026-08-11).
-    id: 26,
+    id: 95,
     pathType: "team",
     answer: "Matt Hasselbeck",
     stints: [
@@ -7163,7 +7163,7 @@ export const nflPuzzles: Puzzle[] = [
   },
   {
     // nflverse weekly stats + weekly rosters verified (2026-08-11).
-    id: 27,
+    id: 96,
     pathType: "team",
     answer: "Steven Jackson",
     stints: [
@@ -7221,7 +7221,7 @@ export const nflPuzzles: Puzzle[] = [
   },
   {
     // nflverse weekly stats + weekly rosters verified (2026-08-11).
-    id: 28,
+    id: 97,
     pathType: "team",
     answer: "DeMarco Murray",
     stints: [
@@ -7279,7 +7279,7 @@ export const nflPuzzles: Puzzle[] = [
   },
   {
     // nflverse weekly stats + weekly rosters verified (2026-08-11).
-    id: 29,
+    id: 98,
     pathType: "team",
     answer: "Jamaal Charles",
     stints: [
@@ -7337,7 +7337,7 @@ export const nflPuzzles: Puzzle[] = [
   },
   {
     // nflverse weekly stats + weekly rosters verified (2026-08-11).
-    id: 30,
+    id: 99,
     pathType: "team",
     answer: "Le'Veon Bell",
     stints: [
@@ -7423,7 +7423,7 @@ export const nflPuzzles: Puzzle[] = [
   },
   {
     // nflverse weekly stats + weekly rosters verified (2026-08-11).
-    id: 31,
+    id: 100,
     pathType: "team",
     answer: "Todd Gurley",
     stints: [
@@ -7481,7 +7481,7 @@ export const nflPuzzles: Puzzle[] = [
   },
   {
     // nflverse weekly stats + weekly rosters verified (2026-08-11).
-    id: 32,
+    id: 101,
     pathType: "team",
     answer: "Melvin Gordon",
     stints: [
@@ -7553,7 +7553,7 @@ export const nflPuzzles: Puzzle[] = [
   },
   {
     // nflverse weekly stats + weekly rosters verified (2026-08-11).
-    id: 33,
+    id: 102,
     pathType: "team",
     answer: "Mark Ingram",
     stints: [
@@ -7625,7 +7625,7 @@ export const nflPuzzles: Puzzle[] = [
   },
   {
     // nflverse weekly stats + weekly rosters verified (2026-08-11).
-    id: 34,
+    id: 103,
     pathType: "team",
     answer: "Ricky Williams",
     stints: [
@@ -7683,7 +7683,7 @@ export const nflPuzzles: Puzzle[] = [
   },
   {
     // nflverse weekly stats + weekly rosters verified (2026-08-11).
-    id: 35,
+    id: 104,
     pathType: "team",
     answer: "Chris Johnson",
     stints: [
@@ -7741,7 +7741,7 @@ export const nflPuzzles: Puzzle[] = [
   },
   {
     // nflverse weekly stats + weekly rosters verified (2026-08-11).
-    id: 36,
+    id: 105,
     pathType: "team",
     answer: "Steve Smith Sr.",
     stints: [
@@ -7785,7 +7785,7 @@ export const nflPuzzles: Puzzle[] = [
   },
   {
     // nflverse weekly stats + weekly rosters verified (2026-08-11).
-    id: 37,
+    id: 106,
     pathType: "team",
     answer: "Wes Welker",
     stints: [
@@ -7871,7 +7871,7 @@ export const nflPuzzles: Puzzle[] = [
   },
   {
     // nflverse weekly stats + weekly rosters verified (2026-08-11).
-    id: 38,
+    id: 107,
     pathType: "team",
     answer: "Andre Johnson",
     stints: [
@@ -7929,7 +7929,7 @@ export const nflPuzzles: Puzzle[] = [
   },
   {
     // nflverse weekly stats + weekly rosters verified (2026-08-11).
-    id: 39,
+    id: 108,
     pathType: "team",
     answer: "Mike Wallace",
     stints: [
@@ -8015,7 +8015,7 @@ export const nflPuzzles: Puzzle[] = [
   },
   {
     // nflverse weekly stats + weekly rosters verified (2026-08-11).
-    id: 40,
+    id: 109,
     pathType: "team",
     answer: "Vincent Jackson",
     stints: [
@@ -8059,7 +8059,7 @@ export const nflPuzzles: Puzzle[] = [
   },
   {
     // nflverse weekly stats + weekly rosters verified (2026-08-11).
-    id: 41,
+    id: 110,
     pathType: "team",
     answer: "Percy Harvin",
     stints: [
@@ -8131,7 +8131,7 @@ export const nflPuzzles: Puzzle[] = [
   },
   {
     // nflverse weekly stats + weekly rosters verified (2026-08-11).
-    id: 42,
+    id: 111,
     pathType: "team",
     answer: "Sammy Watkins",
     stints: [
@@ -8231,7 +8231,7 @@ export const nflPuzzles: Puzzle[] = [
   },
   {
     // nflverse weekly stats + weekly rosters verified (2026-08-11).
-    id: 43,
+    id: 112,
     pathType: "team",
     answer: "Jimmy Graham",
     stints: [
@@ -8317,7 +8317,7 @@ export const nflPuzzles: Puzzle[] = [
   },
   {
     // nflverse weekly stats + weekly rosters verified (2026-08-11).
-    id: 44,
+    id: 113,
     pathType: "team",
     answer: "Greg Olsen",
     stints: [
@@ -8375,7 +8375,7 @@ export const nflPuzzles: Puzzle[] = [
   },
   {
     // nflverse weekly stats + weekly rosters verified (2026-08-11).
-    id: 45,
+    id: 114,
     pathType: "team",
     answer: "Vernon Davis",
     stints: [
@@ -8433,7 +8433,7 @@ export const nflPuzzles: Puzzle[] = [
   },
   {
     // nflverse weekly stats + weekly rosters verified (2026-08-11).
-    id: 46,
+    id: 115,
     pathType: "team",
     answer: "Zach Ertz",
     stints: [
@@ -8491,7 +8491,7 @@ export const nflPuzzles: Puzzle[] = [
   },
   {
     // nflverse weekly stats + weekly rosters verified (2026-08-11).
-    id: 47,
+    id: 116,
     pathType: "team",
     answer: "Richard Sherman",
     stints: [
@@ -8549,7 +8549,7 @@ export const nflPuzzles: Puzzle[] = [
   },
   {
     // nflverse weekly stats + weekly rosters verified (2026-08-11).
-    id: 48,
+    id: 117,
     pathType: "team",
     answer: "Darrelle Revis",
     stints: [
@@ -8635,7 +8635,7 @@ export const nflPuzzles: Puzzle[] = [
   },
   {
     // nflverse weekly stats + weekly rosters verified (2026-08-11).
-    id: 49,
+    id: 118,
     pathType: "team",
     answer: "Aqib Talib",
     stints: [
@@ -8707,7 +8707,7 @@ export const nflPuzzles: Puzzle[] = [
   },
   {
     // nflverse weekly stats + weekly rosters verified (2026-08-11).
-    id: 50,
+    id: 119,
     pathType: "team",
     answer: "Antonio Cromartie",
     stints: [
@@ -8793,7 +8793,7 @@ export const nflPuzzles: Puzzle[] = [
   },
   {
     // nflverse weekly stats + weekly rosters verified (2026-08-11).
-    id: 51,
+    id: 120,
     pathType: "team",
     answer: "Champ Bailey",
     stints: [
@@ -8837,7 +8837,7 @@ export const nflPuzzles: Puzzle[] = [
   },
   {
     // nflverse weekly stats + weekly rosters verified (2026-08-11).
-    id: 52,
+    id: 121,
     pathType: "team",
     answer: "Dwight Freeney",
     stints: [
@@ -8923,7 +8923,7 @@ export const nflPuzzles: Puzzle[] = [
   },
   {
     // nflverse weekly stats + weekly rosters verified (2026-08-11).
-    id: 53,
+    id: 122,
     pathType: "team",
     answer: "Julius Peppers",
     stints: [
@@ -8995,7 +8995,7 @@ export const nflPuzzles: Puzzle[] = [
   },
   {
     // nflverse weekly stats + weekly rosters verified (2026-08-11).
-    id: 54,
+    id: 123,
     pathType: "team",
     answer: "Jared Allen",
     stints: [
@@ -9067,7 +9067,7 @@ export const nflPuzzles: Puzzle[] = [
   },
   {
     // nflverse weekly stats + weekly rosters verified (2026-08-11).
-    id: 55,
+    id: 124,
     pathType: "team",
     answer: "DeMarcus Ware",
     stints: [
@@ -9111,7 +9111,7 @@ export const nflPuzzles: Puzzle[] = [
   },
   {
     // nflverse weekly stats + weekly rosters verified (2026-08-11).
-    id: 56,
+    id: 125,
     pathType: "team",
     answer: "Terrell Suggs",
     stints: [
@@ -9169,7 +9169,7 @@ export const nflPuzzles: Puzzle[] = [
   },
   {
     // nflverse weekly stats + weekly rosters verified (2026-08-11).
-    id: 57,
+    id: 126,
     pathType: "team",
     answer: "Mario Williams",
     stints: [
@@ -9227,7 +9227,7 @@ export const nflPuzzles: Puzzle[] = [
   },
   {
     // nflverse weekly stats + weekly rosters verified (2026-08-11).
-    id: 58,
+    id: 127,
     pathType: "team",
     answer: "Tyrann Mathieu",
     stints: [
