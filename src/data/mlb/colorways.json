@@ -99,8 +99,10 @@
     "trim": "#CE1141",
     "eraStyle": "flannel",
     "confidence": "medium",
-    "status": "unverified",
-    "source_note": ""
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
    },
    {
     "key": "ATL_1969",
@@ -227,8 +229,10 @@
     "trim": "#DF4601",
     "eraStyle": "modern",
     "confidence": "high",
-    "status": "probable",
-    "source_note": ""
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
    },
    {
     "key": "BAL_2009",
@@ -261,8 +265,10 @@
     "trim": "#0C2340",
     "eraStyle": "flannel",
     "confidence": "medium",
-    "status": "unverified",
-    "source_note": ""
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
    },
    {
     "key": "BOS_1969",
@@ -343,8 +349,10 @@
     "eraStyle": "flannel",
     "pattern": "pinstripe",
     "confidence": "medium",
-    "status": "unverified",
-    "source_note": ""
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
    },
    {
     "key": "CHC_1969",
@@ -474,8 +482,10 @@
     "trim": "#C8102E",
     "eraStyle": "buttoned",
     "confidence": "medium",
-    "status": "unverified",
-    "source_note": ""
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
    },
    {
     "key": "CHW_1991",
@@ -624,8 +634,10 @@
     "trim": "#0C2340",
     "eraStyle": "pullover",
     "confidence": "low",
-    "status": "unverified",
-    "source_note": ""
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
    },
    {
     "key": "CLE_1994",
@@ -744,8 +756,10 @@
     "eraStyle": "modern",
     "pattern": "pinstripe",
     "confidence": "high",
-    "status": "probable",
-    "source_note": ""
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
    }
   ],
   "DET": [
@@ -872,8 +886,10 @@
     "trim": "#002D62",
     "eraStyle": "buttoned",
     "confidence": "medium",
-    "status": "unverified",
-    "source_note": ""
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
    },
    {
     "key": "HOU_1994",
@@ -884,11 +900,13 @@
     "identity": "Houston Astros (navy & gold)",
     "primary": "#FFFFFF",
     "secondary": "#002D62",
-    "trim": "#EB6E1F",
+    "trim": "#B49759",
     "eraStyle": "buttoned",
     "confidence": "medium",
-    "status": "unverified",
-    "source_note": ""
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline. Trim corrected during audit.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
    },
    {
     "key": "HOU_2000",
@@ -1057,8 +1075,10 @@
     "trim": "#003263",
     "eraStyle": "buttoned",
     "confidence": "high",
-    "status": "probable",
-    "source_note": ""
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
    },
    {
     "key": "LAA_2005",
@@ -1072,8 +1092,10 @@
     "trim": "#003263",
     "eraStyle": "buttoned",
     "confidence": "high",
-    "status": "probable",
-    "source_note": ""
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
    },
    {
     "key": "LAA_2006",
@@ -1241,11 +1263,13 @@
     "identity": "Miami Marlins",
     "primary": "#FFFFFF",
     "secondary": "#000000",
-    "trim": "#41748D",
+    "trim": "#00A3E0",
     "eraStyle": "modern",
     "confidence": "high",
-    "status": "probable",
-    "source_note": ""
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline. Trim corrected during audit.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
    }
   ],
   "MIL": [
@@ -1277,8 +1301,10 @@
     "eraStyle": "pullover",
     "pattern": "pinstripe",
     "confidence": "high",
-    "status": "probable",
-    "source_note": ""
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
    },
    {
     "key": "MIL_1994",
@@ -1533,8 +1559,10 @@
     "eraStyle": "flannel",
     "pattern": "pinstripe",
     "confidence": "high",
-    "status": "probable",
-    "source_note": ""
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
    },
    {
     "key": "NYY_1969",
@@ -1565,8 +1593,10 @@
     "eraStyle": "buttoned",
     "pattern": "pinstripe",
     "confidence": "high",
-    "status": "probable",
-    "source_note": ""
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
    },
    {
     "key": "NYY_2006",
@@ -1601,8 +1631,10 @@
     "trim": "#A2AAAD",
     "eraStyle": "flannel",
     "confidence": "medium",
-    "status": "unverified",
-    "source_note": ""
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
    },
    {
     "key": "OAK_1969",
@@ -1646,8 +1678,10 @@
     "trim": "#EFB21E",
     "eraStyle": "pullover",
     "confidence": "medium",
-    "status": "unverified",
-    "source_note": ""
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
    },
    {
     "key": "OAK_1987",
@@ -1697,8 +1731,10 @@
     "trim": "#E81828",
     "eraStyle": "flannel",
     "confidence": "medium",
-    "status": "unverified",
-    "source_note": ""
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
    },
    {
     "key": "PHI_1969",
@@ -1781,8 +1817,10 @@
     "eraStyle": "modern",
     "pattern": "pinstripe",
     "confidence": "high",
-    "status": "probable",
-    "source_note": ""
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
    }
   ],
   "PIT": [
@@ -1798,8 +1836,10 @@
     "trim": "#FDB827",
     "eraStyle": "flannel",
     "confidence": "medium",
-    "status": "unverified",
-    "source_note": ""
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
    },
    {
     "key": "PIT_1969",
@@ -1843,8 +1883,10 @@
     "trim": "#FDB827",
     "eraStyle": "pullover",
     "confidence": "medium",
-    "status": "unverified",
-    "source_note": ""
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
    },
    {
     "key": "PIT_1997",
@@ -1992,8 +2034,10 @@
     "trim": "#FFC425",
     "eraStyle": "modern",
     "confidence": "high",
-    "status": "probable",
-    "source_note": ""
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
    }
   ],
   "SEA": [
@@ -2136,8 +2180,10 @@
     "trim": "#FD5A1E",
     "eraStyle": "buttoned",
     "confidence": "medium",
-    "status": "unverified",
-    "source_note": ""
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
    },
    {
     "key": "SF_2000",
@@ -2268,8 +2314,10 @@
     "trim": "#00A9E0",
     "eraStyle": "buttoned",
     "confidence": "medium",
-    "status": "probable",
-    "source_note": "Official Rays All-Time Uniforms separates the 1998-2000 rainbow/purple set from 2001-07."
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
    },
    {
     "key": "TB_2001",
@@ -2300,8 +2348,10 @@
     "trim": "#000000",
     "eraStyle": "modern",
     "confidence": "medium",
-    "status": "probable",
-    "source_note": "Official Rays All-Time Uniforms identifies distinct 2001-07 home/road sets; club history documents the 2001 shift from purple/rainbow to green."
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
    },
    {
     "key": "TB_2008",
@@ -2364,8 +2414,10 @@
     "trim": "#C0111F",
     "eraStyle": "buttoned",
     "confidence": "medium",
-    "status": "unverified",
-    "source_note": ""
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
    },
    {
     "key": "TEX_1994",
@@ -2432,8 +2484,10 @@
     "trim": "#E8291C",
     "eraStyle": "pullover",
     "confidence": "high",
-    "status": "probable",
-    "source_note": ""
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
    },
    {
     "key": "TOR_1997",
@@ -2518,8 +2572,10 @@
     "trim": "#E4002B",
     "eraStyle": "pullover",
     "confidence": "high",
-    "status": "probable",
-    "source_note": ""
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
    },
    {
     "key": "WSH_1992",
@@ -2589,8 +2645,10 @@
     "trim": "#B22222",
     "eraStyle": "flannel",
     "confidence": "low",
-    "status": "unverified",
-    "source_note": ""
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
    }
   ],
   "NWE": [
@@ -2625,8 +2683,10 @@
     "trim": "#8B0000",
     "eraStyle": "flannel",
     "confidence": "low",
-    "status": "unverified",
-    "source_note": ""
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
    }
   ]
  }
