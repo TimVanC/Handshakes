@@ -29,6 +29,7 @@ const RB = new Set(config?.rushing ?? [
   "Cordarrelle Patterson", "Carlos Hyde", "Chris Ivory",
 ]);
 const DEF = new Set(config?.defensive ?? []);
+const QB = new Set(config?.passing ?? []);
 const POSITION = {
   "Cordarrelle Patterson": "RB / WR / KR",
   "Ted Ginn Jr.": "WR / KR",
@@ -94,13 +95,20 @@ const weeklyStats = [];
 const weeklyRosters = [];
 const seasonalStats = [];
 for (let season = firstSeason; season <= 2025; season++) {
-  const [weekStatsText, weekRosterText, seasonStatsText] = await Promise.all([
+  const [weekStatsText, seasonStatsText] = await Promise.all([
     cached(`stats_player_week_${season}.csv`, `https://github.com/nflverse/nflverse-data/releases/download/stats_player/stats_player_week_${season}.csv`),
-    cached(`roster_weekly_${season}.csv`, `https://github.com/nflverse/nflverse-data/releases/download/weekly_rosters/roster_weekly_${season}.csv`),
     cached(`stats_player_reg_${season}.csv`, `https://github.com/nflverse/nflverse-data/releases/download/stats_player/stats_player_reg_${season}.csv`),
   ]);
+  // nflverse weekly rosters begin in 2002; earlier jersey numbers fall back
+  // to the season-roster rows inside representativeNumber.
+  let weekRosterText = "";
+  try {
+    weekRosterText = await cached(`roster_weekly_${season}.csv`, `https://github.com/nflverse/nflverse-data/releases/download/weekly_rosters/roster_weekly_${season}.csv`);
+  } catch (error) {
+    if (season >= 2002) throw error;
+  }
   weeklyStats.push(...csv(weekStatsText).filter((row) => ids.has(row.player_id) && row.season_type === "REG"));
-  weeklyRosters.push(...csv(weekRosterText).filter((row) => ids.has(row.gsis_id) && (!row.game_type || row.game_type === "REG")));
+  if (weekRosterText) weeklyRosters.push(...csv(weekRosterText).filter((row) => ids.has(row.gsis_id) && (!row.game_type || row.game_type === "REG")));
   seasonalStats.push(...csv(seasonStatsText).filter((row) => ids.has(row.player_id) && row.season_type === "REG"));
 }
 
@@ -126,14 +134,16 @@ for (const name of PLAYERS.filter((player) => DEF.has(player))) {
 }
 
 const num = (value) => Number(value || 0);
-function verifyPlayerTotals(name, id, rushing, defensive) {
+function verifyPlayerTotals(name, id, rushing, defensive, passing) {
   const weeks = weeklyStats.filter((row) => row.player_id === id);
   const seasons = seasonalStats.filter((row) => row.player_id === id);
   const fields = defensive
     ? ["def_tackles_solo", "def_tackle_assists", "def_sacks", "def_interceptions", "def_fumbles_forced"]
-    : rushing
-      ? ["carries", "rushing_yards", "rushing_tds"]
-      : ["receptions", "receiving_yards", "receiving_tds"];
+    : passing
+      ? ["completions", "attempts", "passing_yards", "passing_tds", "passing_interceptions"]
+      : rushing
+        ? ["carries", "rushing_yards", "rushing_tds"]
+        : ["receptions", "receiving_yards", "receiving_tds"];
   const weekGames = new Set(weeks.map((row) => row.game_id)).size;
   const seasonGames = seasons.reduce((sum, row) => sum + num(row.games), 0);
   if (weekGames !== seasonGames) throw new Error(`${name}: weekly games ${weekGames} != season total ${seasonGames}`);
@@ -164,6 +174,7 @@ function displayTeam(code, year) {
   return names[code] || code;
 }
 
+const seasonalFallbackRows = [...bios.values()].flatMap((bio) => bio.rows);
 function representativeNumber(playerId, code, startYear, endYear) {
   const score = new Map();
   const seen = new Set();
@@ -175,6 +186,14 @@ function representativeNumber(playerId, code, startYear, endYear) {
     seen.add(key);
     score.set(row.jersey_number, (score.get(row.jersey_number) || 0) + 1);
   }
+  if (!score.size) {
+    // Pre-2002 seasons have no weekly rosters; use the season-roster rows.
+    for (const row of seasonalFallbackRows) {
+      if (row.gsis_id !== playerId || franchise(row.team) !== code || num(row.season) < startYear || num(row.season) > endYear) continue;
+      if (!/^\d+$/.test(row.jersey_number) || row.jersey_number === "0") continue;
+      score.set(row.jersey_number, (score.get(row.jersey_number) || 0) + 1);
+    }
+  }
   if (!score.size) return null;
   return Number([...score].sort((a, b) => b[1] - a[1] || Number(a[0]) - Number(b[0]))[0][0]);
 }
@@ -183,12 +202,15 @@ function groupStints(rows) {
   const groups = [];
   for (const row of rows.sort((a, b) => num(a.season) - num(b.season) || num(a.week) - num(b.week))) {
     const code = franchise(row.team), season = num(row.season);
+    const identity = displayTeam(code, season);
     const last = groups.at(-1);
     // Bridge a single no-stat season (usually IR) when the player remained
-    // with the same franchise, so one continuous tenure stays one card.
-    if (last && last.franchise === code && season <= last.endYear + 2) {
+    // with the same franchise, so one continuous tenure stays one card —
+    // but split when the franchise identity changes (relocation / rename),
+    // because each colorway era carries exactly one identity.
+    if (last && last.franchise === code && last.identity === identity && season <= last.endYear + 2) {
       last.endYear = Math.max(last.endYear, season); last.rows.push(row);
-    } else groups.push({ franchise: code, startYear: season, endYear: season, rows: [row] });
+    } else groups.push({ franchise: code, identity, startYear: season, endYear: season, rows: [row] });
   }
   return groups;
 }
@@ -206,9 +228,20 @@ function aggregateDefense(name, code, startYear, endYear) {
     { label: "FF", value: total("fumblesForced") },
   ];
 }
-function aggregate(rows, rushing, defensive) {
+function aggregate(rows, rushing, defensive, passing) {
   const games = new Set(rows.map((row) => row.game_id || `${row.season}-${row.week}-${row.team}`)).size;
   if (defensive) throw new Error("defensive aggregation requires the ESPN stint identity");
+  if (passing) {
+    const completions = rows.reduce((sum, row) => sum + num(row.completions), 0);
+    const attempts = rows.reduce((sum, row) => sum + num(row.attempts), 0);
+    return [
+      { label: "GP", value: games },
+      { label: "Cmp%", value: attempts ? (completions / attempts * 100).toFixed(1) : "0.0" },
+      { label: "Yds", value: rows.reduce((sum, row) => sum + num(row.passing_yards), 0) },
+      { label: "TD", value: rows.reduce((sum, row) => sum + num(row.passing_tds), 0) },
+      { label: "INT", value: rows.reduce((sum, row) => sum + num(row.passing_interceptions), 0) },
+    ];
+  }
   if (rushing) {
     const att = rows.reduce((sum, row) => sum + num(row.carries), 0);
     const yards = rows.reduce((sum, row) => sum + num(row.rushing_yards), 0);
@@ -255,9 +288,9 @@ function renderPuzzle(puzzle) {
 const puzzles = [], audits = [];
 let nextId = config?.startId ?? 21;
 for (const name of PLAYERS) {
-  const bio = bios.get(name), lastBio = bio.rows.at(-1), rushing = RB.has(name), defensive = DEF.has(name);
+  const bio = bios.get(name), lastBio = bio.rows.at(-1), rushing = RB.has(name), defensive = DEF.has(name), passing = QB.has(name);
   const bioOverride = config?.bios?.[name] ?? {};
-  verifyPlayerTotals(name, bio.id, rushing, defensive);
+  verifyPlayerTotals(name, bio.id, rushing, defensive, passing);
   const rows = weeklyStats.filter((row) => row.player_id === bio.id);
   const stints = groupStints(rows).map((group) => ({
     franchise: group.franchise, displayTeam: displayTeam(group.franchise, group.startYear),
@@ -265,7 +298,7 @@ for (const name of PLAYERS) {
     jerseyNumber: representativeNumber(bio.id, group.franchise, group.startYear, group.endYear),
     statLine: defensive
       ? aggregateDefense(name, group.franchise, group.startYear, group.endYear)
-      : aggregate(group.rows, rushing, false),
+      : aggregate(group.rows, rushing, false, passing),
   }));
   for (const stint of stints) {
     const override = config?.stintOverrides?.[`${name}|${stint.franchise}`];

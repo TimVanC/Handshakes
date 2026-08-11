@@ -53,7 +53,7 @@ for (const [sport, cfg] of Object.entries(CFG)) {
   if (sport === "nba") cfg.roster.forEach((name, i) => { const p = byAnswer.get(norm(name)); if (p) days.push({ day: i + 1, p }); });
   else cfg.puzzles.forEach((p, i) => days.push({ day: i + 1, p }));
   for (const { day, p } of days) {
-    schedSql += `insert into public.scheduled_puzzles (sport, day, answer, puzzle, source, status, frozen) values (${esc(sport)}, ${day}, ${esc(p.answer)}, ${esc(JSON.stringify(p))}::jsonb, 'authored', ${day <= today ? "'aired'" : "'scheduled'"}, ${day <= today}) on conflict (sport, day) do nothing;\n`;
+    schedSql += `insert into public.scheduled_puzzles (sport, day, answer, puzzle, source, status, frozen) select ${esc(sport)}, ${day}, ${esc(p.answer)}, ${esc(JSON.stringify(p))}::jsonb, 'authored', ${day <= today ? "'aired'" : "'scheduled'"}, ${day <= today} where not exists (select 1 from public.scheduled_puzzles sp where sp.sport = ${esc(sport)} and lower(sp.answer) = lower(${esc(p.answer)})) and not exists (select 1 from public.retired_puzzles rp where rp.sport = ${esc(sport)} and lower(rp.answer) = lower(${esc(p.answer)})) on conflict (sport, day) do nothing;\n`;
   }
   // 2. priority queue (wishlist order, minus already-scheduled answers)
   const scheduled = new Set(days.map((d) => norm(d.p.answer)));
@@ -76,7 +76,7 @@ for (const [sport, cfg] of Object.entries(CFG)) {
     if (!p) { skipLog.push(`[${sport}] ${name}: SKIP — no built puzzle (generator not yet implemented)`); continue; }
     const bad = gateEras(p);
     if (bad.length) { skipLog.push(`[${sport}] ${name}: SKIP — unverified colorways: ${bad.slice(0, 3).join("; ")}${bad.length > 3 ? ` (+${bad.length - 3})` : ""}`); continue; }
-    schedSql += `insert into public.scheduled_puzzles (sport, day, answer, puzzle, source, status, frozen) values (${esc(sport)}, ${next}, ${esc(p.answer)}, ${esc(JSON.stringify(p))}::jsonb, 'generated', 'scheduled', false) on conflict (sport, day) do nothing;\n`;
+    schedSql += `insert into public.scheduled_puzzles (sport, day, answer, puzzle, source, status, frozen) select ${esc(sport)}, ${next}, ${esc(p.answer)}, ${esc(JSON.stringify(p))}::jsonb, 'generated', 'scheduled', false where not exists (select 1 from public.scheduled_puzzles sp where sp.sport = ${esc(sport)} and lower(sp.answer) = lower(${esc(p.answer)})) and not exists (select 1 from public.retired_puzzles rp where rp.sport = ${esc(sport)} and lower(rp.answer) = lower(${esc(p.answer)})) on conflict (sport, day) do nothing;\n`;
     skipLog.push(`[${sport}] ${name}: SCHEDULED day ${next}`);
     next++;
   }

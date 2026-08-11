@@ -34,6 +34,7 @@ const CONFIG_BY_NAME = Object.fromEntries((config.players ?? []).map((player) =>
 const FRANCHISE = {
   ATL: "ATL", BOS: "BOS", BRK: "BKN", NJN: "BKN", CHA: "CHA", CHO: "CHA",
   CHI: "CHI", CLE: "CLE", DAL: "DAL", DEN: "DEN", DET: "DET", GSW: "GSW",
+  CHH: "CHA",
   HOU: "HOU", IND: "IND", LAC: "LAC", LAL: "LAL", MEM: "MEM", VAN: "MEM",
   MIA: "MIA", MIL: "MIL", MIN: "MIN", NOH: "NOP", NOK: "NOP", NOP: "NOP",
   NYK: "NYK", OKC: "OKC", SEA: "OKC", ORL: "ORL", PHI: "PHI", PHO: "PHX",
@@ -43,11 +44,11 @@ const FRANCHISE = {
 const TEAM_NAMES = {
   BKN: "Brooklyn Nets", PHX: "Phoenix Suns",
   ATL: "Atlanta Hawks", BOS: "Boston Celtics", BRK: "Brooklyn Nets", NJN: "New Jersey Nets",
-  CHA: "Charlotte Bobcats", CHO: "Charlotte Hornets", CHI: "Chicago Bulls", CLE: "Cleveland Cavaliers",
+  CHA: "Charlotte Bobcats", CHO: "Charlotte Hornets", CHH: "Charlotte Hornets", CHI: "Chicago Bulls", CLE: "Cleveland Cavaliers",
   DAL: "Dallas Mavericks", DEN: "Denver Nuggets", DET: "Detroit Pistons", GSW: "Golden State Warriors",
   HOU: "Houston Rockets", IND: "Indiana Pacers", LAC: "Los Angeles Clippers", LAL: "Los Angeles Lakers",
   MEM: "Memphis Grizzlies", VAN: "Vancouver Grizzlies", MIA: "Miami Heat", MIL: "Milwaukee Bucks",
-  MIN: "Minnesota Timberwolves", NOH: "New Orleans Hornets", NOK: "New Orleans/Oklahoma City Hornets",
+  MIN: "Minnesota Timberwolves", NOH: "New Orleans Hornets", NOK: "New Orleans Hornets",
   NOP: "New Orleans Pelicans", NYK: "New York Knicks", OKC: "Oklahoma City Thunder",
   SEA: "Seattle SuperSonics", ORL: "Orlando Magic", PHI: "Philadelphia 76ers", PHO: "Phoenix Suns",
   POR: "Portland Trail Blazers", SAC: "Sacramento Kings", SAS: "San Antonio Spurs",

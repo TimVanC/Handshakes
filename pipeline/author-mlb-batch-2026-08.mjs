@@ -211,7 +211,9 @@ const audits = [];
 let nextId = config?.startId ?? 26;
 for (const requestedName of PLAYERS) {
   const search = await get(`/api/v1/people/search?names=${encodeURIComponent(requestedName)}`);
-  const personStub = search.people.find((p) => p.fullName.normalize("NFD").replace(/\p{Diacritic}/gu, "") === requestedName.normalize("NFD").replace(/\p{Diacritic}/gu, "")) || search.people[0];
+  const personStub = config?.personIds?.[requestedName]
+    ? { id: config.personIds[requestedName] }
+    : search.people.find((p) => p.fullName.normalize("NFD").replace(/\p{Diacritic}/gu, "") === requestedName.normalize("NFD").replace(/\p{Diacritic}/gu, "")) || search.people[0];
   if (!personStub) throw new Error(`No MLB identity match for ${requestedName}`);
   const detail = (await get(`/api/v1/people/${personStub.id}?hydrate=rosterEntries`)).people[0];
   const configuredAwards = config?.accolades?.[requestedName] ?? [];
