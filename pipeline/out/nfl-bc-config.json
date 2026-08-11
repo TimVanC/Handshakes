@@ -1,0 +1,8 @@
+{
+  "startId": 76,
+  "outputBase": "nfl-batch-2026-08-bc",
+  "firstSeason": 2010,
+  "players": ["Cam Newton", "Antonio Brown", "Odell Beckham Jr."],
+  "passing": ["Cam Newton"],
+  "sourceNames": { "Odell Beckham Jr.": "Odell Beckham" }
+}

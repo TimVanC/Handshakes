@@ -9502,14 +9502,208 @@ export const nflPuzzles: Puzzle[] = [
       college: "Delaware",
     },
   },
-];
-
-/**
- * Benched 2026-08-03 (owner call: too well known for the early run).
- * NOT scheduled — kept fully authored so any of them can be re-aired by
- * moving the object back into nflPuzzles at an unaired position.
- */
-export const nflBenchedPuzzles: Puzzle[] = [
+  {
+    // nflverse weekly stats + weekly rosters verified (2026-08-11).
+    id: 76,
+    pathType: "team",
+    answer: "Cam Newton",
+    stints: [
+      {
+        franchise: "CAR",
+        displayTeam: "Carolina Panthers",
+        startYear: 2011,
+        endYear: 2019,
+        jerseyNumber: 1,
+        statLine: [
+          { label: "GP", value: 125 },
+          { label: "Cmp%", value: "59.6" },
+          { label: "Yds", value: 29041 },
+          { label: "TD", value: 182 },
+          { label: "INT", value: 108 },
+        ],
+      },
+      {
+        franchise: "NE",
+        displayTeam: "New England Patriots",
+        startYear: 2020,
+        endYear: 2020,
+        jerseyNumber: 1,
+        statLine: [
+          { label: "GP", value: 15 },
+          { label: "Cmp%", value: "65.8" },
+          { label: "Yds", value: 2657 },
+          { label: "TD", value: 8 },
+          { label: "INT", value: 10 },
+        ],
+      },
+      {
+        franchise: "CAR",
+        displayTeam: "Carolina Panthers",
+        startYear: 2021,
+        endYear: 2021,
+        jerseyNumber: 1,
+        statLine: [
+          { label: "GP", value: 7 },
+          { label: "Cmp%", value: "54.8" },
+          { label: "Yds", value: 684 },
+          { label: "TD", value: 4 },
+          { label: "INT", value: 5 },
+        ],
+      },
+    ],
+    revealOrder: [2, 1, 0],
+    hints: {
+      position: "QB",
+      height: "6'5\"",
+      draftYear: "2011",
+      draftPick: "Round 1, #1",
+      college: "Auburn",
+    },
+  },
+  {
+    // nflverse weekly stats + weekly rosters verified (2026-08-11).
+    id: 77,
+    pathType: "team",
+    answer: "Antonio Brown",
+    stints: [
+      {
+        franchise: "PIT",
+        displayTeam: "Pittsburgh Steelers",
+        startYear: 2010,
+        endYear: 2018,
+        jerseyNumber: 84,
+        statLine: [
+          { label: "GP", value: 130 },
+          { label: "Rec", value: 837 },
+          { label: "Rec Yds", value: 11207 },
+          { label: "Y/R", value: "13.4" },
+          { label: "TD", value: 74 },
+        ],
+      },
+      {
+        franchise: "NE",
+        displayTeam: "New England Patriots",
+        startYear: 2019,
+        endYear: 2019,
+        jerseyNumber: 17,
+        statLine: [
+          { label: "GP", value: 1 },
+          { label: "Rec", value: 4 },
+          { label: "Rec Yds", value: 56 },
+          { label: "Y/R", value: "14.0" },
+          { label: "TD", value: 1 },
+        ],
+      },
+      {
+        franchise: "TB",
+        displayTeam: "Tampa Bay Buccaneers",
+        startYear: 2020,
+        endYear: 2021,
+        jerseyNumber: 81,
+        statLine: [
+          { label: "GP", value: 15 },
+          { label: "Rec", value: 87 },
+          { label: "Rec Yds", value: 1028 },
+          { label: "Y/R", value: "11.8" },
+          { label: "TD", value: 8 },
+        ],
+      },
+    ],
+    revealOrder: [1, 2, 0],
+    hints: {
+      position: "WR",
+      height: "5'10\"",
+      draftYear: "2010",
+      draftPick: "Round 6, #195",
+      college: "Central Michigan",
+    },
+  },
+  {
+    // nflverse weekly stats + weekly rosters verified (2026-08-11).
+    id: 78,
+    pathType: "team",
+    answer: "Odell Beckham Jr.",
+    stints: [
+      {
+        franchise: "NYG",
+        displayTeam: "New York Giants",
+        startYear: 2014,
+        endYear: 2018,
+        jerseyNumber: 13,
+        statLine: [
+          { label: "GP", value: 59 },
+          { label: "Rec", value: 390 },
+          { label: "Rec Yds", value: 5476 },
+          { label: "Y/R", value: "14.0" },
+          { label: "TD", value: 44 },
+        ],
+      },
+      {
+        franchise: "CLE",
+        displayTeam: "Cleveland Browns",
+        startYear: 2019,
+        endYear: 2021,
+        jerseyNumber: 13,
+        statLine: [
+          { label: "GP", value: 29 },
+          { label: "Rec", value: 114 },
+          { label: "Rec Yds", value: 1586 },
+          { label: "Y/R", value: "13.9" },
+          { label: "TD", value: 7 },
+        ],
+      },
+      {
+        franchise: "LAR",
+        displayTeam: "Los Angeles Rams",
+        startYear: 2021,
+        endYear: 2021,
+        jerseyNumber: 3,
+        statLine: [
+          { label: "GP", value: 8 },
+          { label: "Rec", value: 27 },
+          { label: "Rec Yds", value: 305 },
+          { label: "Y/R", value: "11.3" },
+          { label: "TD", value: 5 },
+        ],
+      },
+      {
+        franchise: "BAL",
+        displayTeam: "Baltimore Ravens",
+        startYear: 2023,
+        endYear: 2023,
+        jerseyNumber: 3,
+        statLine: [
+          { label: "GP", value: 14 },
+          { label: "Rec", value: 35 },
+          { label: "Rec Yds", value: 565 },
+          { label: "Y/R", value: "16.1" },
+          { label: "TD", value: 3 },
+        ],
+      },
+      {
+        franchise: "MIA",
+        displayTeam: "Miami Dolphins",
+        startYear: 2024,
+        endYear: 2024,
+        jerseyNumber: 3,
+        statLine: [
+          { label: "GP", value: 8 },
+          { label: "Rec", value: 9 },
+          { label: "Rec Yds", value: 55 },
+          { label: "Y/R", value: "6.1" },
+          { label: "TD", value: 0 },
+        ],
+      },
+    ],
+    revealOrder: [4, 2, 3, 1, 0],
+    hints: {
+      position: "WR",
+      height: "5'11\"",
+      draftYear: "2014",
+      draftPick: "Round 1, #12",
+      college: "Louisiana State",
+    },
+  },
   {
     // Michael Vick: the Falcons revolution, the Philadelphia redemption arc
     // (2010 Comeback Player), then quiet Jets and Steelers codas. nflverse
@@ -9591,5 +9785,13 @@ export const nflBenchedPuzzles: Puzzle[] = [
       draftPick: "Round 1, #1",
       college: "Virginia Tech",
     },
-  },
+  },
+];
+
+/**
+ * Benched 2026-08-03 (owner call: too well known for the early run).
+ * NOT scheduled — kept fully authored so any of them can be re-aired by
+ * moving the object back into nflPuzzles at an unaired position.
+ */
+export const nflBenchedPuzzles: Puzzle[] = [
 ];

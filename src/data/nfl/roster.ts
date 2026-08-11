@@ -148,4 +148,7 @@ export const NFL_ROSTER: string[] = [
   "Terrell Suggs",
   "Mario Williams",
   "Tyrann Mathieu",
+  // ---- duplicate-screened, randomized and authored 2026-08-03 ----
+  "Antonio Brown",
+  "Odell Beckham Jr.",
 ];

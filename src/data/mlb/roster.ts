@@ -151,4 +151,6 @@ export const MLB_ROSTER: string[] = [
   "Jonathan Papelbon",
   "Francisco Rodríguez",
   "Huston Street",
+  // ---- duplicate-screened, randomized and authored 2026-08-03 ----
+  "Sammy Sosa",
 ];

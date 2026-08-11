@@ -42,22 +42,13 @@ const PUZZLES = {
   mlb: loadArray("src/data/mlb/puzzles.ts", "mlbPuzzles"),
 };
 
-// New S-tier names per sport: the authored batches plus already-authored but
-// never-scheduled puzzles being activated by this rebalance.
+// New names per sport being activated by this rebalance run; each one's tier
+// comes from player_tiers (already-scheduled names are skipped automatically).
+// Round 2 (B-C refill): the casual-household sprinkle.
 const NEW_NAMES = {
-  nba: [
-    ...JSON.parse(readFileSync("pipeline/out/nba-stier-config.json", "utf8")).players.map((p) => p.answer),
-    "Jim Jackson",
-  ],
-  mlb: [
-    ...JSON.parse(readFileSync("pipeline/out/mlb-stier-config.json", "utf8")).players
-      .map((n) => (n === "A.J. Burnett" ? "A. J. Burnett" : n === "B.J. Upton" ? "B. J. Upton" : n)),
-    "Nelson Cruz", "Curtis Granderson",
-  ],
-  nfl: [
-    ...JSON.parse(readFileSync("pipeline/out/nfl-stier-config.json", "utf8")).players,
-    "Marshawn Lynch", "Joe Flacco",
-  ],
+  nba: ["Dwight Howard", "Carmelo Anthony", "Dwyane Wade", "Dennis Rodman"],
+  mlb: ["Ichiro Suzuki", "Manny Ramírez", "Sammy Sosa", "José Canseco"],
+  nfl: ["Michael Vick", "Cam Newton", "Antonio Brown", "Odell Beckham Jr."],
 };
 
 const client = new pg.Client({ connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false } });
@@ -88,7 +79,7 @@ try {
       if (scheduledAnswers.has(norm(name))) continue;
       const p = byAnswer.get(norm(name));
       if (!p) throw new Error(`${sport}: no built puzzle for new name ${name}`);
-      newcomers.push(p);
+      newcomers.push({ puzzle: p, tier: tierOf(p.answer) === "?" ? "S" : tierOf(p.answer) });
     }
 
     const survivorsS = future.filter((r) => tierOf(r.answer) === "S");
@@ -97,12 +88,17 @@ try {
     const survivorsBK = future.filter((r) => tierOf(r.answer) === "B-K");
     const outliers = future.filter((r) => ["LEG", "GHOST", "?"].includes(tierOf(r.answer)));
 
-    const totalS = survivorsS.length + newcomers.length;
+    const newS = newcomers.filter((n) => n.tier === "S");
+    const newA = newcomers.filter((n) => n.tier === "A");
+    const newBC = newcomers.filter((n) => n.tier === "B-C");
+    const newBK = newcomers.filter((n) => n.tier === "B-K");
+    const totalS = survivorsS.length + newS.length;
+    const totalBC = survivorsBC.length + newBC.length;
     const tEst = Math.round(totalS / 0.8);
-    const keepA = Math.min(survivorsA.length, Math.round(tEst * 0.125));
-    const keepBK = Math.min(survivorsBK.length, Math.round(tEst * 0.0625));
-    const retire = [...survivorsA.slice(keepA), ...survivorsBK.slice(keepBK), ...outliers];
-    const T = totalS + keepA + keepBK + survivorsBC.length;
+    const keepA = Math.min(survivorsA.length + newA.length, Math.round(tEst * 0.10));
+    const keepBK = Math.min(survivorsBK.length + newBK.length, Math.round(tEst * 0.05));
+    const retire = [...survivorsA.slice(Math.max(0, keepA - newA.length)), ...survivorsBK.slice(Math.max(0, keepBK - newBK.length)), ...outliers];
+    const T = totalS + keepA + keepBK + totalBC;
 
     // Spread A and B-K days evenly through the run; S fills everything else.
     const slotTier = new Array(T).fill("S");
@@ -115,13 +111,19 @@ try {
     };
     if (keepBK) place(keepBK, "B-K");
     if (keepA) place(keepA, "A");
-    if (survivorsBC.length) place(survivorsBC.length, "B-C");
+    if (totalBC) place(totalBC, "B-C");
 
     const queues = {
-      S: [...survivorsS.map((r) => ({ kind: "old", row: r })), ...newcomers.map((p) => ({ kind: "new", puzzle: p }))],
-      A: survivorsA.slice(0, keepA).map((r) => ({ kind: "old", row: r })),
-      "B-K": survivorsBK.slice(0, keepBK).map((r) => ({ kind: "old", row: r })),
-      "B-C": survivorsBC.map((r) => ({ kind: "old", row: r })),
+      S: [...survivorsS.map((r) => ({ kind: "old", row: r })), ...newS.map((n) => ({ kind: "new", puzzle: n.puzzle }))],
+      A: [
+        ...survivorsA.slice(0, Math.max(0, keepA - newA.length)).map((r) => ({ kind: "old", row: r })),
+        ...newA.slice(0, keepA).map((n) => ({ kind: "new", puzzle: n.puzzle })),
+      ],
+      "B-K": [
+        ...survivorsBK.slice(0, Math.max(0, keepBK - newBK.length)).map((r) => ({ kind: "old", row: r })),
+        ...newBK.slice(0, keepBK).map((n) => ({ kind: "new", puzzle: n.puzzle })),
+      ],
+      "B-C": [...survivorsBC.map((r) => ({ kind: "old", row: r })), ...newBC.map((n) => ({ kind: "new", puzzle: n.puzzle }))],
     };
 
     const before = (await client.query(
@@ -175,7 +177,7 @@ try {
     );
     await client.query("update public.schedule_versions set version = version + 1, updated_at = now() where sport = $1", [sport]);
 
-    console.log(`${sport}: T=${T} (S ${totalS}, A ${keepA}, B-K ${keepBK}, B-C ${survivorsBC.length}); retired ${retire.length}; new inserts ${newcomers.length}; runway day ${cd + 1}..${cd + T}`);
+    console.log(`${sport}: T=${T} (S ${totalS}, A ${keepA}, B-K ${keepBK}, B-C ${totalBC}); retired ${retire.length}; new inserts ${newcomers.length}; runway day ${cd + 1}..${cd + T}`);
   }
   await client.query("commit");
 } catch (error) {

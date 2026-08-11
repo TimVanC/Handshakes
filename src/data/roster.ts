@@ -130,6 +130,11 @@ export const ROSTER: string[] = [
   "Tyreke Evans",
   "Corey Maggette",
   "Antoine Walker",
+  // ---- duplicate-screened, randomized and authored 2026-08-03 ----
+  "Dwight Howard",
+  "Carmelo Anthony",
+  "Dwyane Wade",
+  "Dennis Rodman",
 ];
 
 // rosterKey lives in its own module so the build-time aired-roster swap

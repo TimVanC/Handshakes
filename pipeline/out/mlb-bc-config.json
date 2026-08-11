@@ -1,0 +1,11 @@
+{
+  "startId": 77,
+  "outputBase": "mlb-batch-2026-08-bc",
+  "players": ["Ichiro Suzuki", "Manny Ramírez", "Sammy Sosa", "José Canseco"],
+  "positions": {
+    "Ichiro Suzuki": "RF",
+    "Manny Ramírez": "LF / DH",
+    "Sammy Sosa": "RF",
+    "José Canseco": "OF / DH"
+  }
+}
