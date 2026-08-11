@@ -176,7 +176,9 @@ details summary { cursor: pointer; color: var(--muted); font-size: 0.8rem; font-
 .card-meta { display: flex; align-items: center; gap: 0.35rem; overflow: hidden; }
 .card-meta .tier-pill { margin-left: 0; }
 .card-meta em { color: var(--muted); font-size: 0.58rem; font-style: normal; text-transform: capitalize; white-space: nowrap; }
-.move-buttons { display: grid; grid-template-rows: 1fr 1fr; border-left: 1px solid #ddd6c8; }
+.move-buttons { display: grid; grid-template-rows: 1fr 1fr 1fr; border-left: 1px solid #ddd6c8; }
+.move-buttons .delete-button { border-top: 1px solid #e3ddd0; font-size: 0.7rem; }
+.move-buttons .delete-button:hover:not(:disabled) { background: #f6e2de; color: #8c3327; }
 .move-buttons button { width: 2rem; border: 0; background: transparent; color: #776f62; font-weight: 800; cursor: pointer; }
 .move-buttons button:first-child { border-bottom: 1px solid #e3ddd0; }
 .move-buttons button:hover:not(:disabled) { background: #eee7da; color: var(--ink); }

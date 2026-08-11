@@ -220,6 +220,33 @@ export default function AdminApp({ session }: { session: Session }) {
     setNotice("Draft changes discarded.");
   };
 
+  const remove = async (row: ScheduleRow) => {
+    if (dirtySports.includes(row.sport)) {
+      setError(`Save or discard your ${SPORTS[row.sport].league} reorder before deleting.`);
+      return;
+    }
+    if (!window.confirm(`Delete ${row.answer} from the ${SPORTS[row.sport].league} schedule?\n\nThe puzzle moves to the retired pool (recoverable) and later days slide up one.`)) return;
+    setSaving(true);
+    setError("");
+    setNotice("");
+    const { error: deleteError } = await supabase.rpc("admin_delete_scheduled", {
+      p_sport: row.sport,
+      p_schedule_id: row.schedule_id,
+      p_expected_version: versions[row.sport],
+    });
+    if (deleteError) {
+      setError(
+        deleteError.code === "40001"
+          ? "The schedule changed in another tab. Reloaded the latest order; please try again."
+          : deleteError.message
+      );
+    } else {
+      setNotice(`Deleted ${row.answer} — moved to the retired pool.`);
+    }
+    await load();
+    setSaving(false);
+  };
+
   const save = async () => {
     if (dirtySports.length === 0) return;
     setSaving(true);
@@ -393,6 +420,7 @@ export default function AdminApp({ session }: { session: Session }) {
                   onDragOverList={(event) => dragOverList(sport, event)}
                   onDrop={(event) => drop(sport, event)}
                   onMove={(from, to) => move(sport, from, to)}
+                  onDelete={(row) => void remove(row)}
                   onOpen={setSelected}
                 />
               ))}
@@ -529,6 +557,7 @@ function SportColumn({
   onDragOverList,
   onDrop,
   onMove,
+  onDelete,
   onOpen,
 }: {
   sport: Sport;
@@ -544,6 +573,7 @@ function SportColumn({
   onDragOverList: (event: DragEvent) => void;
   onDrop: (event: DragEvent) => void;
   onMove: (from: number, to: number) => void;
+  onDelete: (row: ScheduleRow) => void;
   onOpen: (row: ScheduleRow) => void;
 }) {
   const daySlots = rows.map((row) => row.day).sort((a, b) => a - b);
@@ -593,6 +623,7 @@ function SportColumn({
             <div className="move-buttons" aria-label={`Move ${row.answer}`}>
               <button disabled={locked || index === 0} onClick={() => onMove(index, index - 1)} aria-label="Move one day earlier">↑</button>
               <button disabled={locked || index === rows.length - 1} onClick={() => onMove(index, index + 1)} aria-label="Move one day later">↓</button>
+              <button className="delete-button" onClick={() => onDelete(row)} aria-label={`Delete ${row.answer} from the schedule`} title="Delete (moves to the retired pool)">🗑</button>
             </div>
           </article>
         ))}
