@@ -1,0 +1,194 @@
+{
+  "startId": 86,
+  "outputBase": "nba-batch-2026-08-stier",
+  "players": [
+    {
+      "answer": "Drew Gooden",
+      "brId": "goodedr01"
+    },
+    {
+      "answer": "George Hill",
+      "brId": "hillge01"
+    },
+    {
+      "answer": "Jae Crowder",
+      "brId": "crowdja01"
+    },
+    {
+      "answer": "Wesley Matthews",
+      "brId": "matthwe02"
+    },
+    {
+      "answer": "Cory Joseph",
+      "brId": "josepco01"
+    },
+    {
+      "answer": "Alec Burks",
+      "brId": "burksal01"
+    },
+    {
+      "answer": "Kelly Olynyk",
+      "brId": "olynyke01"
+    },
+    {
+      "answer": "Kent Bazemore",
+      "brId": "bazemke01"
+    },
+    {
+      "answer": "Marco Belinelli",
+      "brId": "belinma01"
+    },
+    {
+      "answer": "Al-Farouq Aminu",
+      "brId": "aminual01"
+    },
+    {
+      "answer": "Josh Richardson",
+      "brId": "richajo01"
+    },
+    {
+      "answer": "Dennis Schröder",
+      "brId": "schrode01"
+    },
+    {
+      "answer": "Avery Bradley",
+      "brId": "bradlav01"
+    },
+    {
+      "answer": "Jeff Teague",
+      "brId": "teaguje01"
+    },
+    {
+      "answer": "Rodney Hood",
+      "brId": "hoodro01"
+    },
+    {
+      "answer": "Arron Afflalo",
+      "brId": "afflaar01"
+    },
+    {
+      "answer": "C.J. Miles",
+      "brId": "milescj01"
+    },
+    {
+      "answer": "Jerryd Bayless",
+      "brId": "bayleje01"
+    },
+    {
+      "answer": "Ramon Sessions",
+      "brId": "sessira01"
+    },
+    {
+      "answer": "John Salmons",
+      "brId": "salmojo01"
+    },
+    {
+      "answer": "Chucky Atkins",
+      "brId": "atkinch01"
+    },
+    {
+      "answer": "Tim Thomas",
+      "brId": "thomati01"
+    },
+    {
+      "answer": "Ricky Davis",
+      "brId": "davisri01"
+    },
+    {
+      "answer": "Flip Murray",
+      "brId": "murraro01"
+    },
+    {
+      "answer": "Mike James",
+      "brId": "jamesmi01"
+    },
+    {
+      "answer": "Anthony Johnson",
+      "brId": "johnsan02"
+    },
+    {
+      "answer": "Al Harrington",
+      "brId": "harrial01"
+    },
+    {
+      "answer": "Stephen Jackson",
+      "brId": "jacksst02"
+    },
+    {
+      "answer": "Caron Butler",
+      "brId": "butleca01"
+    },
+    {
+      "answer": "Josh Smith",
+      "brId": "smithjo03"
+    },
+    {
+      "answer": "David West",
+      "brId": "westda01"
+    },
+    {
+      "answer": "Luol Deng",
+      "brId": "denglu01"
+    },
+    {
+      "answer": "Monta Ellis",
+      "brId": "ellismo01"
+    },
+    {
+      "answer": "J.R. Smith",
+      "brId": "smithjr01"
+    },
+    {
+      "answer": "J.J. Redick",
+      "brId": "redicjj01"
+    },
+    {
+      "answer": "Tyson Chandler",
+      "brId": "chandty01"
+    },
+    {
+      "answer": "Boris Diaw",
+      "brId": "diawbo01"
+    },
+    {
+      "answer": "Shaun Livingston",
+      "brId": "livinsh01"
+    },
+    {
+      "answer": "Mo Williams",
+      "brId": "willima01"
+    },
+    {
+      "answer": "Rudy Gay",
+      "brId": "gayru01"
+    },
+    {
+      "answer": "Isaiah Thomas",
+      "brId": "thomais02"
+    },
+    {
+      "answer": "Goran Dragić",
+      "brId": "dragigo01"
+    },
+    {
+      "answer": "Kenyon Martin",
+      "brId": "martike01"
+    },
+    {
+      "answer": "Michael Beasley",
+      "brId": "beaslmi01"
+    },
+    {
+      "answer": "Tyreke Evans",
+      "brId": "evansty01"
+    },
+    {
+      "answer": "Corey Maggette",
+      "brId": "maggeco01"
+    },
+    {
+      "answer": "Antoine Walker",
+      "brId": "walkean02"
+    }
+  ]
+}

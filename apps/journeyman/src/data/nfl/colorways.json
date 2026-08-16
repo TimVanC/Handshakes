@@ -1,0 +1,2271 @@
+{
+ "_meta": {
+  "description": "NFL franchise colorways by era, post-1970 merger. For rendering generic era-accurate jerseys (no logos, no wordmarks). Years are SEASON years (1995 = the 1995 season). Generated from general knowledge — every entry has a confidence flag. VERIFY all 'low' entries against teamcolorcodes.com and Gridiron Uniform Database before launch; transition years may be off by a season.",
+  "fields": {
+   "key": "unique id: TRICODE_startyear",
+   "primary": "home jersey body color",
+   "secondary": "number/stripe color",
+   "trim": "accent/outline color",
+   "eraStyle": "renderer treatment: classic (pre-'78 chunky sleeve stripes), stripes ('78-'95 two-tone), nineties ('96-'11 piping), modern ('12+ color-blocked yoke)",
+   "tricode": "era-correct city code when it differs from the modern key (OAK Raiders, SD Chargers, STL Rams...)",
+   "confidence": "high | medium | low"
+  },
+  "relocations": "Franchises keyed by MODERN tricode. Historical identities (Oilers, St. Louis Cardinals/Rams, San Diego Chargers, Baltimore Colts, Oakland/LA Raiders...) are era entries under the modern key with identity + tricode."
+ },
+ "franchises": {
+  "ARI": [
+   {
+    "key": "ARI_1970",
+    "years": [
+     1970,
+     1987
+    ],
+    "identity": "St. Louis Cardinals (NFL)",
+    "tricode": "STL",
+    "primary": "#97233F",
+    "secondary": "#FFFFFF",
+    "trim": "#000000",
+    "eraStyle": "classic",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "ARI_1988",
+    "years": [
+     1988,
+     1993
+    ],
+    "identity": "Phoenix Cardinals",
+    "tricode": "PHX",
+    "primary": "#97233F",
+    "secondary": "#FFFFFF",
+    "trim": "#000000",
+    "eraStyle": "stripes",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "ARI_1994",
+    "years": [
+     1994,
+     2004
+    ],
+    "identity": "Arizona Cardinals",
+    "primary": "#97233F",
+    "secondary": "#FFFFFF",
+    "trim": "#000000",
+    "eraStyle": "nineties",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "teamcolorcodes.com: #97233F Cardinal Red exact; era 94 rename->05 redesign",
+    "verified_by": "TimVanC (AI reference comparison, owner-approved)",
+    "verified_on": "2026-07-28"
+   },
+   {
+    "key": "ARI_2005",
+    "years": [
+     2005,
+     2011
+    ],
+    "identity": "Arizona Cardinals",
+    "primary": "#97233F",
+    "secondary": "#FFFFFF",
+    "trim": "#000000",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "ARI_2012",
+    "years": [
+     2012,
+     2099
+    ],
+    "identity": "Arizona Cardinals",
+    "primary": "#97233F",
+    "secondary": "#FFFFFF",
+    "trim": "#000000",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   }
+  ],
+  "ATL": [
+   {
+    "key": "ATL_1970",
+    "years": [
+     1970,
+     1989
+    ],
+    "identity": "Atlanta Falcons",
+    "primary": "#A71930",
+    "secondary": "#FFFFFF",
+    "trim": "#000000",
+    "eraStyle": "classic",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "ATL_1990",
+    "years": [
+     1990,
+     2002
+    ],
+    "identity": "Atlanta Falcons",
+    "primary": "#000000",
+    "secondary": "#FFFFFF",
+    "trim": "#A71930",
+    "eraStyle": "stripes",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "black-jersey era 1990-2002; trim #A71930 official Falcons red",
+    "verified_by": "TimVanC (AI reference comparison, owner-approved)",
+    "verified_on": "2026-07-28"
+   },
+   {
+    "key": "ATL_2003",
+    "years": [
+     2003,
+     2011
+    ],
+    "identity": "Atlanta Falcons",
+    "primary": "#A71930",
+    "secondary": "#FFFFFF",
+    "trim": "#000000",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "ATL_2012",
+    "years": [
+     2012,
+     2019
+    ],
+    "identity": "Atlanta Falcons",
+    "primary": "#A71930",
+    "secondary": "#FFFFFF",
+    "trim": "#000000",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "ATL_2020",
+    "years": [
+     2020,
+     2099
+    ],
+    "identity": "Atlanta Falcons",
+    "primary": "#000000",
+    "secondary": "#FFFFFF",
+    "trim": "#A71930",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   }
+  ],
+  "BAL": [
+   {
+    "key": "BAL_1996",
+    "years": [
+     1996,
+     2011
+    ],
+    "identity": "Baltimore Ravens",
+    "primary": "#241773",
+    "secondary": "#FFFFFF",
+    "trim": "#9E7C0C",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "BAL_2012",
+    "years": [
+     2012,
+     2099
+    ],
+    "identity": "Baltimore Ravens",
+    "primary": "#241773",
+    "secondary": "#FFFFFF",
+    "trim": "#9E7C0C",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   }
+  ],
+  "BUF": [
+   {
+    "key": "BUF_1970",
+    "years": [
+     1970,
+     1983
+    ],
+    "identity": "Buffalo Bills",
+    "primary": "#00338D",
+    "secondary": "#FFFFFF",
+    "trim": "#C60C30",
+    "eraStyle": "classic",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "BUF_1984",
+    "years": [
+     1984,
+     2001
+    ],
+    "identity": "Buffalo Bills",
+    "primary": "#00338D",
+    "secondary": "#FFFFFF",
+    "trim": "#C60C30",
+    "eraStyle": "stripes",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "BUF_2002",
+    "years": [
+     2002,
+     2010
+    ],
+    "identity": "Buffalo Bills (dark navy era)",
+    "primary": "#0F2557",
+    "secondary": "#FFFFFF",
+    "trim": "#C60C30",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "BUF_2011",
+    "years": [
+     2011,
+     2011
+    ],
+    "identity": "Buffalo Bills",
+    "primary": "#00338D",
+    "secondary": "#FFFFFF",
+    "trim": "#C60C30",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "BUF_2012",
+    "years": [
+     2012,
+     2099
+    ],
+    "identity": "Buffalo Bills",
+    "primary": "#00338D",
+    "secondary": "#FFFFFF",
+    "trim": "#C60C30",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   }
+  ],
+  "CAR": [
+   {
+    "key": "CAR_1995",
+    "years": [
+     1995,
+     1995
+    ],
+    "identity": "Carolina Panthers",
+    "primary": "#000000",
+    "secondary": "#0085CA",
+    "trim": "#BFC0BF",
+    "eraStyle": "stripes",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "CAR_1996",
+    "years": [
+     1996,
+     2011
+    ],
+    "identity": "Carolina Panthers",
+    "primary": "#000000",
+    "secondary": "#0085CA",
+    "trim": "#BFC0BF",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "CAR_2012",
+    "years": [
+     2012,
+     2099
+    ],
+    "identity": "Carolina Panthers",
+    "primary": "#000000",
+    "secondary": "#0085CA",
+    "trim": "#BFC0BF",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   }
+  ],
+  "CHI": [
+   {
+    "key": "CHI_1970",
+    "years": [
+     1970,
+     1982
+    ],
+    "identity": "Chicago Bears",
+    "primary": "#0B162A",
+    "secondary": "#FFFFFF",
+    "trim": "#C83803",
+    "eraStyle": "classic",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "CHI_1983",
+    "years": [
+     1983,
+     1995
+    ],
+    "identity": "Chicago Bears",
+    "primary": "#0B162A",
+    "secondary": "#FFFFFF",
+    "trim": "#C83803",
+    "eraStyle": "stripes",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "CHI_1996",
+    "years": [
+     1996,
+     2011
+    ],
+    "identity": "Chicago Bears",
+    "primary": "#0B162A",
+    "secondary": "#FFFFFF",
+    "trim": "#C83803",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "CHI_2012",
+    "years": [
+     2012,
+     2099
+    ],
+    "identity": "Chicago Bears",
+    "primary": "#0B162A",
+    "secondary": "#FFFFFF",
+    "trim": "#C83803",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   }
+  ],
+  "CIN": [
+   {
+    "key": "CIN_1970",
+    "years": [
+     1970,
+     1980
+    ],
+    "identity": "Cincinnati Bengals (pre-stripes)",
+    "primary": "#000000",
+    "secondary": "#FFFFFF",
+    "trim": "#FB4F14",
+    "eraStyle": "classic",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "CIN_1981",
+    "years": [
+     1981,
+     2003
+    ],
+    "identity": "Cincinnati Bengals",
+    "primary": "#000000",
+    "secondary": "#FB4F14",
+    "trim": "#FFFFFF",
+    "eraStyle": "stripes",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "CIN_2004",
+    "years": [
+     2004,
+     2011
+    ],
+    "identity": "Cincinnati Bengals",
+    "primary": "#000000",
+    "secondary": "#FB4F14",
+    "trim": "#FFFFFF",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "CIN_2012",
+    "years": [
+     2012,
+     2020
+    ],
+    "identity": "Cincinnati Bengals",
+    "primary": "#000000",
+    "secondary": "#FB4F14",
+    "trim": "#FFFFFF",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "CIN_2021",
+    "years": [
+     2021,
+     2099
+    ],
+    "identity": "Cincinnati Bengals",
+    "primary": "#000000",
+    "secondary": "#FB4F14",
+    "trim": "#FFFFFF",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   }
+  ],
+  "CLE": [
+   {
+    "key": "CLE_1970",
+    "years": [
+     1970,
+     1995
+    ],
+    "identity": "Cleveland Browns",
+    "primary": "#311D00",
+    "secondary": "#FFFFFF",
+    "trim": "#FF3C00",
+    "eraStyle": "classic",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "CLE_1999",
+    "years": [
+     1999,
+     2011
+    ],
+    "identity": "Cleveland Browns",
+    "primary": "#311D00",
+    "secondary": "#FFFFFF",
+    "trim": "#FF3C00",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "CLE_2012",
+    "years": [
+     2012,
+     2014
+    ],
+    "identity": "Cleveland Browns",
+    "primary": "#311D00",
+    "secondary": "#FFFFFF",
+    "trim": "#FF3C00",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "CLE_2015",
+    "years": [
+     2015,
+     2019
+    ],
+    "identity": "Cleveland Browns (2015 rebrand)",
+    "primary": "#311D00",
+    "secondary": "#FF3C00",
+    "trim": "#FFFFFF",
+    "eraStyle": "modern",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "teamcolorcodes.com: official trio #311D00/#FF3C00/#FFFFFF verbatim; 2015 rebrand->2020",
+    "verified_by": "TimVanC (AI reference comparison, owner-approved)",
+    "verified_on": "2026-07-28"
+   },
+   {
+    "key": "CLE_2020",
+    "years": [
+     2020,
+     2099
+    ],
+    "identity": "Cleveland Browns",
+    "primary": "#311D00",
+    "secondary": "#FFFFFF",
+    "trim": "#FF3C00",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   }
+  ],
+  "DAL": [
+   {
+    "key": "DAL_1970",
+    "years": [
+     1970,
+     1995
+    ],
+    "identity": "Dallas Cowboys",
+    "primary": "#003594",
+    "secondary": "#FFFFFF",
+    "trim": "#869397",
+    "eraStyle": "classic",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "DAL_1996",
+    "years": [
+     1996,
+     2011
+    ],
+    "identity": "Dallas Cowboys",
+    "primary": "#003594",
+    "secondary": "#FFFFFF",
+    "trim": "#869397",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "DAL_2012",
+    "years": [
+     2012,
+     2099
+    ],
+    "identity": "Dallas Cowboys",
+    "primary": "#003594",
+    "secondary": "#FFFFFF",
+    "trim": "#869397",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   }
+  ],
+  "DEN": [
+   {
+    "key": "DEN_1970",
+    "years": [
+     1970,
+     1996
+    ],
+    "identity": "Denver Broncos (Orange Crush)",
+    "primary": "#FB4F14",
+    "secondary": "#FFFFFF",
+    "trim": "#002244",
+    "eraStyle": "stripes",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "DEN_1997",
+    "years": [
+     1997,
+     2011
+    ],
+    "identity": "Denver Broncos",
+    "primary": "#0A2343",
+    "secondary": "#FB4F14",
+    "trim": "#FFFFFF",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "DEN_2012",
+    "years": [
+     2012,
+     2099
+    ],
+    "identity": "Denver Broncos",
+    "primary": "#FB4F14",
+    "secondary": "#FFFFFF",
+    "trim": "#0A2343",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   }
+  ],
+  "DET": [
+   {
+    "key": "DET_1970",
+    "years": [
+     1970,
+     1997
+    ],
+    "identity": "Detroit Lions",
+    "primary": "#0076B6",
+    "secondary": "#FFFFFF",
+    "trim": "#B0B7BC",
+    "eraStyle": "classic",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "DET_1998",
+    "years": [
+     1998,
+     2011
+    ],
+    "identity": "Detroit Lions",
+    "primary": "#0076B6",
+    "secondary": "#FFFFFF",
+    "trim": "#000000",
+    "eraStyle": "nineties",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "DET_2012",
+    "years": [
+     2012,
+     2016
+    ],
+    "identity": "Detroit Lions",
+    "primary": "#0076B6",
+    "secondary": "#FFFFFF",
+    "trim": "#000000",
+    "eraStyle": "modern",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "DET_2017",
+    "years": [
+     2017,
+     2099
+    ],
+    "identity": "Detroit Lions",
+    "primary": "#0076B6",
+    "secondary": "#FFFFFF",
+    "trim": "#B0B7BC",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   }
+  ],
+  "GB": [
+   {
+    "key": "GB_1970",
+    "years": [
+     1970,
+     1996
+    ],
+    "identity": "Green Bay Packers",
+    "primary": "#203731",
+    "secondary": "#FFB612",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "GB_1997",
+    "years": [
+     1997,
+     2011
+    ],
+    "identity": "Green Bay Packers",
+    "primary": "#203731",
+    "secondary": "#FFB612",
+    "trim": "#FFFFFF",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "GB_2012",
+    "years": [
+     2012,
+     2099
+    ],
+    "identity": "Green Bay Packers",
+    "primary": "#203731",
+    "secondary": "#FFB612",
+    "trim": "#FFFFFF",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   }
+  ],
+  "HOU": [
+   {
+    "key": "HOU_2002",
+    "years": [
+     2002,
+     2011
+    ],
+    "identity": "Houston Texans",
+    "primary": "#03202F",
+    "secondary": "#FFFFFF",
+    "trim": "#A71930",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "HOU_2012",
+    "years": [
+     2012,
+     2099
+    ],
+    "identity": "Houston Texans",
+    "primary": "#03202F",
+    "secondary": "#FFFFFF",
+    "trim": "#A71930",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   }
+  ],
+  "IND": [
+   {
+    "key": "IND_1970",
+    "years": [
+     1970,
+     1983
+    ],
+    "identity": "Baltimore Colts",
+    "tricode": "BAL",
+    "primary": "#002C5F",
+    "secondary": "#FFFFFF",
+    "trim": "#A2AAAD",
+    "eraStyle": "classic",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "IND_1984",
+    "years": [
+     1984,
+     1995
+    ],
+    "identity": "Indianapolis Colts",
+    "primary": "#002C5F",
+    "secondary": "#FFFFFF",
+    "trim": "#A2AAAD",
+    "eraStyle": "stripes",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "IND_1996",
+    "years": [
+     1996,
+     2011
+    ],
+    "identity": "Indianapolis Colts",
+    "primary": "#002C5F",
+    "secondary": "#FFFFFF",
+    "trim": "#A2AAAD",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "IND_2012",
+    "years": [
+     2012,
+     2099
+    ],
+    "identity": "Indianapolis Colts",
+    "primary": "#002C5F",
+    "secondary": "#FFFFFF",
+    "trim": "#A2AAAD",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   }
+  ],
+  "JAX": [
+   {
+    "key": "JAX_1995",
+    "years": [
+     1995,
+     2012
+    ],
+    "identity": "Jacksonville Jaguars",
+    "primary": "#006778",
+    "secondary": "#FFFFFF",
+    "trim": "#D7A22A",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "JAX_2013",
+    "years": [
+     2013,
+     2017
+    ],
+    "identity": "Jacksonville Jaguars (two-tone era)",
+    "primary": "#000000",
+    "secondary": "#FFFFFF",
+    "trim": "#D7A22A",
+    "eraStyle": "modern",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "JAX_2018",
+    "years": [
+     2018,
+     2099
+    ],
+    "identity": "Jacksonville Jaguars",
+    "primary": "#006778",
+    "secondary": "#FFFFFF",
+    "trim": "#000000",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   }
+  ],
+  "KC": [
+   {
+    "key": "KC_1970",
+    "years": [
+     1970,
+     1977
+    ],
+    "identity": "Kansas City Chiefs",
+    "primary": "#E31837",
+    "secondary": "#FFFFFF",
+    "trim": "#FFB81C",
+    "eraStyle": "classic",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "KC_1978",
+    "years": [
+     1978,
+     1995
+    ],
+    "identity": "Kansas City Chiefs",
+    "primary": "#E31837",
+    "secondary": "#FFFFFF",
+    "trim": "#FFB81C",
+    "eraStyle": "stripes",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "KC_1996",
+    "years": [
+     1996,
+     2011
+    ],
+    "identity": "Kansas City Chiefs",
+    "primary": "#E31837",
+    "secondary": "#FFFFFF",
+    "trim": "#FFB81C",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "KC_2012",
+    "years": [
+     2012,
+     2099
+    ],
+    "identity": "Kansas City Chiefs",
+    "primary": "#E31837",
+    "secondary": "#FFFFFF",
+    "trim": "#FFB81C",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   }
+  ],
+  "LAC": [
+   {
+    "key": "LAC_1970",
+    "years": [
+     1970,
+     1973
+    ],
+    "identity": "San Diego Chargers (powder blue)",
+    "tricode": "SD",
+    "primary": "#7CB8E6",
+    "secondary": "#FFB81C",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "LAC_1974",
+    "years": [
+     1974,
+     1987
+    ],
+    "identity": "San Diego Chargers",
+    "tricode": "SD",
+    "primary": "#00338D",
+    "secondary": "#FFB81C",
+    "trim": "#FFFFFF",
+    "eraStyle": "stripes",
+    "confidence": "low",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "LAC_1988",
+    "years": [
+     1988,
+     1995
+    ],
+    "identity": "San Diego Chargers",
+    "tricode": "SD",
+    "primary": "#0A2342",
+    "secondary": "#FFB81C",
+    "trim": "#FFFFFF",
+    "eraStyle": "stripes",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "LAC_1996",
+    "years": [
+     1996,
+     2006
+    ],
+    "identity": "San Diego Chargers",
+    "tricode": "SD",
+    "primary": "#0A2342",
+    "secondary": "#FFB81C",
+    "trim": "#FFFFFF",
+    "eraStyle": "nineties",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "LAC_2007",
+    "years": [
+     2007,
+     2011
+    ],
+    "identity": "San Diego Chargers",
+    "tricode": "SD",
+    "primary": "#0A2342",
+    "secondary": "#FFB81C",
+    "trim": "#7CB8E6",
+    "eraStyle": "nineties",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "LAC_2012",
+    "years": [
+     2012,
+     2016
+    ],
+    "identity": "San Diego Chargers",
+    "tricode": "SD",
+    "primary": "#0A2342",
+    "secondary": "#FFB81C",
+    "trim": "#7CB8E6",
+    "eraStyle": "modern",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "LAC_2017",
+    "years": [
+     2017,
+     2019
+    ],
+    "identity": "Los Angeles Chargers",
+    "primary": "#0A2342",
+    "secondary": "#FFB81C",
+    "trim": "#7CB8E6",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "LAC_2020",
+    "years": [
+     2020,
+     2099
+    ],
+    "identity": "Los Angeles Chargers",
+    "primary": "#0080C6",
+    "secondary": "#FFC20E",
+    "trim": "#FFFFFF",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   }
+  ],
+  "LAR": [
+   {
+    "key": "LAR_1970",
+    "years": [
+     1970,
+     1994
+    ],
+    "identity": "Los Angeles Rams",
+    "tricode": "LA",
+    "primary": "#003594",
+    "secondary": "#FFD100",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "LAR_1995",
+    "years": [
+     1995,
+     1999
+    ],
+    "identity": "St. Louis Rams",
+    "tricode": "STL",
+    "primary": "#003594",
+    "secondary": "#FFD100",
+    "trim": "#FFFFFF",
+    "eraStyle": "nineties",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "LAR_2000",
+    "years": [
+     2000,
+     2011
+    ],
+    "identity": "St. Louis Rams (millennium blue & gold)",
+    "tricode": "STL",
+    "primary": "#002244",
+    "secondary": "#B3995D",
+    "trim": "#FFFFFF",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "LAR_2012",
+    "years": [
+     2012,
+     2015
+    ],
+    "identity": "St. Louis Rams (millennium blue & gold)",
+    "tricode": "STL",
+    "primary": "#002244",
+    "secondary": "#B3995D",
+    "trim": "#FFFFFF",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "LAR_2016",
+    "years": [
+     2016,
+     2019
+    ],
+    "identity": "Los Angeles Rams",
+    "primary": "#002244",
+    "secondary": "#FFFFFF",
+    "trim": "#B3995D",
+    "eraStyle": "modern",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "LAR_2020",
+    "years": [
+     2020,
+     2099
+    ],
+    "identity": "Los Angeles Rams",
+    "primary": "#003594",
+    "secondary": "#FFD100",
+    "trim": "#FFFFFF",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   }
+  ],
+  "LV": [
+   {
+    "key": "LV_1970",
+    "years": [
+     1970,
+     1981
+    ],
+    "identity": "Oakland Raiders",
+    "tricode": "OAK",
+    "primary": "#000000",
+    "secondary": "#A5ACAF",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "LV_1982",
+    "years": [
+     1982,
+     1994
+    ],
+    "identity": "Los Angeles Raiders",
+    "tricode": "LA",
+    "primary": "#000000",
+    "secondary": "#A5ACAF",
+    "trim": "#FFFFFF",
+    "eraStyle": "stripes",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "LV_1995",
+    "years": [
+     1995,
+     1995
+    ],
+    "identity": "Oakland Raiders",
+    "tricode": "OAK",
+    "primary": "#000000",
+    "secondary": "#A5ACAF",
+    "trim": "#FFFFFF",
+    "eraStyle": "stripes",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "LV_1996",
+    "years": [
+     1996,
+     2011
+    ],
+    "identity": "Oakland Raiders",
+    "tricode": "OAK",
+    "primary": "#000000",
+    "secondary": "#A5ACAF",
+    "trim": "#FFFFFF",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "LV_2012",
+    "years": [
+     2012,
+     2019
+    ],
+    "identity": "Oakland Raiders",
+    "tricode": "OAK",
+    "primary": "#000000",
+    "secondary": "#A5ACAF",
+    "trim": "#FFFFFF",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "LV_2020",
+    "years": [
+     2020,
+     2099
+    ],
+    "identity": "Las Vegas Raiders",
+    "primary": "#000000",
+    "secondary": "#A5ACAF",
+    "trim": "#FFFFFF",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   }
+  ],
+  "MIA": [
+   {
+    "key": "MIA_1970",
+    "years": [
+     1970,
+     1977
+    ],
+    "identity": "Miami Dolphins",
+    "primary": "#008E97",
+    "secondary": "#FFFFFF",
+    "trim": "#FC4C02",
+    "eraStyle": "classic",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "MIA_1978",
+    "years": [
+     1978,
+     1995
+    ],
+    "identity": "Miami Dolphins",
+    "primary": "#008E97",
+    "secondary": "#FFFFFF",
+    "trim": "#FC4C02",
+    "eraStyle": "stripes",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "MIA_1996",
+    "years": [
+     1996,
+     2011
+    ],
+    "identity": "Miami Dolphins",
+    "primary": "#008E97",
+    "secondary": "#FFFFFF",
+    "trim": "#FC4C02",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "MIA_2012",
+    "years": [
+     2012,
+     2012
+    ],
+    "identity": "Miami Dolphins",
+    "primary": "#008E97",
+    "secondary": "#FFFFFF",
+    "trim": "#FC4C02",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "MIA_2013",
+    "years": [
+     2013,
+     2099
+    ],
+    "identity": "Miami Dolphins",
+    "primary": "#008E97",
+    "secondary": "#FFFFFF",
+    "trim": "#FC4C02",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   }
+  ],
+  "MIN": [
+   {
+    "key": "MIN_1970",
+    "years": [
+     1970,
+     1995
+    ],
+    "identity": "Minnesota Vikings",
+    "primary": "#4F2683",
+    "secondary": "#FFFFFF",
+    "trim": "#FFC62F",
+    "eraStyle": "classic",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "MIN_1996",
+    "years": [
+     1996,
+     2011
+    ],
+    "identity": "Minnesota Vikings",
+    "primary": "#4F2683",
+    "secondary": "#FFFFFF",
+    "trim": "#FFC62F",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "MIN_2012",
+    "years": [
+     2012,
+     2012
+    ],
+    "identity": "Minnesota Vikings",
+    "primary": "#4F2683",
+    "secondary": "#FFFFFF",
+    "trim": "#FFC62F",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "MIN_2013",
+    "years": [
+     2013,
+     2099
+    ],
+    "identity": "Minnesota Vikings",
+    "primary": "#4F2683",
+    "secondary": "#FFC62F",
+    "trim": "#FFFFFF",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   }
+  ],
+  "NE": [
+   {
+    "key": "NE_1970",
+    "years": [
+     1970,
+     1992
+    ],
+    "identity": "New England Patriots (Pat Patriot)",
+    "primary": "#C8102E",
+    "secondary": "#FFFFFF",
+    "trim": "#0A2342",
+    "eraStyle": "classic",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "NE_1993",
+    "years": [
+     1993,
+     1999
+    ],
+    "identity": "New England Patriots (Bledsoe blue)",
+    "primary": "#00529B",
+    "secondary": "#FFFFFF",
+    "trim": "#C8102E",
+    "eraStyle": "stripes",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "NE_2000",
+    "years": [
+     2000,
+     2011
+    ],
+    "identity": "New England Patriots",
+    "primary": "#002244",
+    "secondary": "#FFFFFF",
+    "trim": "#C60C30",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "NE_2012",
+    "years": [
+     2012,
+     2099
+    ],
+    "identity": "New England Patriots",
+    "primary": "#002244",
+    "secondary": "#FFFFFF",
+    "trim": "#C60C30",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   }
+  ],
+  "NO": [
+   {
+    "key": "NO_1970",
+    "years": [
+     1970,
+     1995
+    ],
+    "identity": "New Orleans Saints",
+    "primary": "#000000",
+    "secondary": "#D3BC8D",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "NO_1996",
+    "years": [
+     1996,
+     2011
+    ],
+    "identity": "New Orleans Saints",
+    "primary": "#000000",
+    "secondary": "#D3BC8D",
+    "trim": "#FFFFFF",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "NO_2012",
+    "years": [
+     2012,
+     2099
+    ],
+    "identity": "New Orleans Saints",
+    "primary": "#000000",
+    "secondary": "#D3BC8D",
+    "trim": "#FFFFFF",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   }
+  ],
+  "NYG": [
+   {
+    "key": "NYG_1970",
+    "years": [
+     1970,
+     1999
+    ],
+    "identity": "New York Giants",
+    "primary": "#0B2265",
+    "secondary": "#FFFFFF",
+    "trim": "#A71930",
+    "eraStyle": "classic",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "NYG_2000",
+    "years": [
+     2000,
+     2011
+    ],
+    "identity": "New York Giants",
+    "primary": "#0B2265",
+    "secondary": "#FFFFFF",
+    "trim": "#A71930",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "NYG_2012",
+    "years": [
+     2012,
+     2099
+    ],
+    "identity": "New York Giants",
+    "primary": "#0B2265",
+    "secondary": "#FFFFFF",
+    "trim": "#A71930",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   }
+  ],
+  "NYJ": [
+   {
+    "key": "NYJ_1970",
+    "years": [
+     1970,
+     1977
+    ],
+    "identity": "New York Jets",
+    "primary": "#115740",
+    "secondary": "#FFFFFF",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "NYJ_1978",
+    "years": [
+     1978,
+     1997
+    ],
+    "identity": "New York Jets (Sack Exchange)",
+    "primary": "#115740",
+    "secondary": "#FFFFFF",
+    "trim": "#000000",
+    "eraStyle": "stripes",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "NYJ_1998",
+    "years": [
+     1998,
+     2011
+    ],
+    "identity": "New York Jets (hunter green)",
+    "primary": "#203731",
+    "secondary": "#FFFFFF",
+    "trim": "#000000",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "NYJ_2012",
+    "years": [
+     2012,
+     2018
+    ],
+    "identity": "New York Jets (hunter green)",
+    "primary": "#203731",
+    "secondary": "#FFFFFF",
+    "trim": "#000000",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "NYJ_2019",
+    "years": [
+     2019,
+     2099
+    ],
+    "identity": "New York Jets (Gotham green)",
+    "primary": "#125740",
+    "secondary": "#FFFFFF",
+    "trim": "#000000",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   }
+  ],
+  "PHI": [
+   {
+    "key": "PHI_1970",
+    "years": [
+     1970,
+     1995
+    ],
+    "identity": "Philadelphia Eagles (kelly green)",
+    "primary": "#008E5D",
+    "secondary": "#FFFFFF",
+    "trim": "#A2AAAD",
+    "eraStyle": "classic",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "PHI_1996",
+    "years": [
+     1996,
+     2011
+    ],
+    "identity": "Philadelphia Eagles (midnight green)",
+    "primary": "#004C54",
+    "secondary": "#FFFFFF",
+    "trim": "#A5ACAF",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "PHI_2012",
+    "years": [
+     2012,
+     2099
+    ],
+    "identity": "Philadelphia Eagles (midnight green)",
+    "primary": "#004C54",
+    "secondary": "#FFFFFF",
+    "trim": "#A5ACAF",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   }
+  ],
+  "PIT": [
+   {
+    "key": "PIT_1970",
+    "years": [
+     1970,
+     1996
+    ],
+    "identity": "Pittsburgh Steelers",
+    "primary": "#101820",
+    "secondary": "#FFB612",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "PIT_1997",
+    "years": [
+     1997,
+     2011
+    ],
+    "identity": "Pittsburgh Steelers",
+    "primary": "#101820",
+    "secondary": "#FFB612",
+    "trim": "#FFFFFF",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "PIT_2012",
+    "years": [
+     2012,
+     2099
+    ],
+    "identity": "Pittsburgh Steelers",
+    "primary": "#101820",
+    "secondary": "#FFB612",
+    "trim": "#FFFFFF",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   }
+  ],
+  "SEA": [
+   {
+    "key": "SEA_1976",
+    "years": [
+     1976,
+     2001
+    ],
+    "identity": "Seattle Seahawks",
+    "primary": "#00338D",
+    "secondary": "#FFFFFF",
+    "trim": "#69BE28",
+    "eraStyle": "stripes",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "SEA_2002",
+    "years": [
+     2002,
+     2011
+    ],
+    "identity": "Seattle Seahawks",
+    "primary": "#002244",
+    "secondary": "#FFFFFF",
+    "trim": "#69BE28",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "SEA_2012",
+    "years": [
+     2012,
+     2099
+    ],
+    "identity": "Seattle Seahawks",
+    "primary": "#002244",
+    "secondary": "#FFFFFF",
+    "trim": "#69BE28",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   }
+  ],
+  "SF": [
+   {
+    "key": "SF_1970",
+    "years": [
+     1970,
+     1995
+    ],
+    "identity": "San Francisco 49ers",
+    "primary": "#AA0000",
+    "secondary": "#FFFFFF",
+    "trim": "#B3995D",
+    "eraStyle": "classic",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "SF_1996",
+    "years": [
+     1996,
+     2008
+    ],
+    "identity": "San Francisco 49ers (shadow numbers)",
+    "primary": "#900028",
+    "secondary": "#FFFFFF",
+    "trim": "#B3995D",
+    "eraStyle": "nineties",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "SF_2009",
+    "years": [
+     2009,
+     2011
+    ],
+    "identity": "San Francisco 49ers",
+    "primary": "#AA0000",
+    "secondary": "#FFFFFF",
+    "trim": "#B3995D",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "SF_2012",
+    "years": [
+     2012,
+     2099
+    ],
+    "identity": "San Francisco 49ers",
+    "primary": "#AA0000",
+    "secondary": "#FFFFFF",
+    "trim": "#B3995D",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   }
+  ],
+  "TB": [
+   {
+    "key": "TB_1976",
+    "years": [
+     1976,
+     1996
+    ],
+    "identity": "Tampa Bay Buccaneers (creamsicle)",
+    "primary": "#FF7900",
+    "secondary": "#FFFFFF",
+    "trim": "#D50A0A",
+    "eraStyle": "stripes",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "TB_1997",
+    "years": [
+     1997,
+     2013
+    ],
+    "identity": "Tampa Bay Buccaneers",
+    "primary": "#D50A0A",
+    "secondary": "#FFFFFF",
+    "trim": "#34302B",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "TB_2014",
+    "years": [
+     2014,
+     2019
+    ],
+    "identity": "Tampa Bay Buccaneers (alarm-clock era)",
+    "primary": "#D50A0A",
+    "secondary": "#DEE6E7",
+    "trim": "#34302B",
+    "eraStyle": "modern",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "official #D50A0A red + #34302B pewter; chrome numbers; 2014-19 set",
+    "verified_by": "TimVanC (AI reference comparison, owner-approved)",
+    "verified_on": "2026-07-28"
+   },
+   {
+    "key": "TB_2020",
+    "years": [
+     2020,
+     2099
+    ],
+    "identity": "Tampa Bay Buccaneers",
+    "primary": "#D50A0A",
+    "secondary": "#FFFFFF",
+    "trim": "#34302B",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   }
+  ],
+  "TEN": [
+   {
+    "key": "TEN_1970",
+    "years": [
+     1970,
+     1996
+    ],
+    "identity": "Houston Oilers",
+    "tricode": "HOU",
+    "primary": "#4B92DB",
+    "secondary": "#FFFFFF",
+    "trim": "#C8102E",
+    "eraStyle": "classic",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "TEN_1997",
+    "years": [
+     1997,
+     1998
+    ],
+    "identity": "Tennessee Oilers",
+    "tricode": "TEN",
+    "primary": "#4B92DB",
+    "secondary": "#FFFFFF",
+    "trim": "#C8102E",
+    "eraStyle": "nineties",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "TEN_1999",
+    "years": [
+     1999,
+     2011
+    ],
+    "identity": "Tennessee Titans",
+    "primary": "#0C2340",
+    "secondary": "#FFFFFF",
+    "trim": "#4B92DB",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "TEN_2012",
+    "years": [
+     2012,
+     2017
+    ],
+    "identity": "Tennessee Titans",
+    "primary": "#0C2340",
+    "secondary": "#FFFFFF",
+    "trim": "#4B92DB",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "TEN_2018",
+    "years": [
+     2018,
+     2099
+    ],
+    "identity": "Tennessee Titans",
+    "primary": "#0C2340",
+    "secondary": "#FFFFFF",
+    "trim": "#4B92DB",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   }
+  ],
+  "WAS": [
+   {
+    "key": "WAS_1970",
+    "years": [
+     1970,
+     1977
+    ],
+    "identity": "Washington Redskins",
+    "primary": "#5A1414",
+    "secondary": "#FFFFFF",
+    "trim": "#FFB612",
+    "eraStyle": "classic",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "WAS_1978",
+    "years": [
+     1978,
+     1995
+    ],
+    "identity": "Washington Redskins",
+    "primary": "#5A1414",
+    "secondary": "#FFFFFF",
+    "trim": "#FFB612",
+    "eraStyle": "stripes",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "WAS_1996",
+    "years": [
+     1996,
+     2011
+    ],
+    "identity": "Washington Redskins",
+    "primary": "#5A1414",
+    "secondary": "#FFFFFF",
+    "trim": "#FFB612",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "WAS_2012",
+    "years": [
+     2012,
+     2019
+    ],
+    "identity": "Washington Redskins",
+    "primary": "#5A1414",
+    "secondary": "#FFFFFF",
+    "trim": "#FFB612",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, number, trim, stripe treatment, identity and construction era checked against the Gridiron Uniform Database team/year archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "WAS_2020",
+    "years": [
+     2020,
+     2021
+    ],
+    "identity": "Washington Football Team",
+    "primary": "#5A1414",
+    "secondary": "#FFB612",
+    "trim": "#FFFFFF",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "WAS_2022",
+    "years": [
+     2022,
+     2099
+    ],
+    "identity": "Washington Commanders",
+    "primary": "#5A1414",
+    "secondary": "#FFFFFF",
+    "trim": "#FFB612",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   }
+  ]
+ }
+}

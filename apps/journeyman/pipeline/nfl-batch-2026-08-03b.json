@@ -1,0 +1,78 @@
+{
+  "outputBase": "nfl-batch-2026-08-03b",
+  "startId": 43,
+  "firstSeason": 2002,
+  "sourceNames": {
+    "Donte Stallworth": "Donte' Stallworth"
+  },
+  "gsisIds": {
+    "Ronnie Brown": "00-0023437"
+  },
+  "bios": {
+    "Nate Washington": { "draftYear": 2005, "draftPick": "Undrafted", "college": "Tiffin" },
+    "Chester Taylor": { "college": "Toledo" },
+    "Ronnie Brown": { "college": "Auburn" },
+    "Jacob Tamme": { "draftYear": 2008 },
+    "Donte Stallworth": { "draftYear": 2002, "draftPick": "Round 1, #13", "college": "Tennessee" },
+    "Brandon Lloyd": { "college": "Illinois" },
+    "Willis McGahee": { "college": "Miami (FL)" },
+    "Michael Bush": { "college": "Louisville" }
+  },
+  "stintOverrides": {
+    "Nate Washington|PIT": { "startYear": 2005, "gpDelta": 2 }
+  },
+  "players": [
+    "Anthony Fasano",
+    "Nate Washington",
+    "Alfred Morris",
+    "Mike Tolbert",
+    "Harry Douglas",
+    "Eddie Royal",
+    "Chester Taylor",
+    "Justin Forsett",
+    "Jerricho Cotchery",
+    "Darren Sproles",
+    "Jermaine Gresham",
+    "Andre Roberts",
+    "Ronnie Brown",
+    "Jacob Tamme",
+    "Donte Stallworth",
+    "Tim Hightower",
+    "Brandon Lloyd",
+    "Willis McGahee",
+    "Chris Hogan",
+    "Michael Bush",
+    "Owen Daniels",
+    "Torrey Smith"
+  ],
+  "rushing": [
+    "Alfred Morris",
+    "Mike Tolbert",
+    "Chester Taylor",
+    "Justin Forsett",
+    "Darren Sproles",
+    "Ronnie Brown",
+    "Tim Hightower",
+    "Willis McGahee",
+    "Michael Bush"
+  ],
+  "positions": {
+    "Mike Tolbert": "FB / RB",
+    "Darren Sproles": "RB / KR"
+  },
+  "accolades": {
+    "Nate Washington": [["PIT", 2005, "champion"], ["PIT", 2008, "champion"]],
+    "Alfred Morris": [["WAS", 2013, "pro_bowl"], ["WAS", 2014, "pro_bowl"]],
+    "Mike Tolbert": [["CAR", 2013, "pro_bowl"], ["CAR", 2013, "all_pro"], ["CAR", 2015, "pro_bowl"], ["CAR", 2015, "all_pro"], ["CAR", 2016, "pro_bowl"]],
+    "Justin Forsett": [["BAL", 2014, "pro_bowl"]],
+    "Darren Sproles": [["PHI", 2014, "pro_bowl"], ["PHI", 2015, "pro_bowl"], ["PHI", 2016, "pro_bowl"], ["PHI", 2017, "champion"]],
+    "Jermaine Gresham": [["CIN", 2011, "pro_bowl"], ["CIN", 2012, "pro_bowl"]],
+    "Andre Roberts": [["NYJ", 2018, "pro_bowl"], ["NYJ", 2018, "all_pro"], ["BUF", 2019, "pro_bowl"], ["BUF", 2020, "pro_bowl"]],
+    "Ronnie Brown": [["MIA", 2008, "pro_bowl"]],
+    "Brandon Lloyd": [["DEN", 2010, "pro_bowl"], ["DEN", 2010, "receiving_title"]],
+    "Willis McGahee": [["BAL", 2007, "pro_bowl"], ["DEN", 2011, "pro_bowl"]],
+    "Chris Hogan": [["NE", 2016, "champion"], ["NE", 2018, "champion"]],
+    "Owen Daniels": [["HOU", 2008, "pro_bowl"], ["HOU", 2012, "pro_bowl"], ["DEN", 2015, "champion"]],
+    "Torrey Smith": [["BAL", 2012, "champion"], ["PHI", 2017, "champion"]]
+  }
+}

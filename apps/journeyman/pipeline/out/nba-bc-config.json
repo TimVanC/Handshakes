@@ -1,0 +1,10 @@
+{
+  "startId": 133,
+  "outputBase": "nba-batch-2026-08-bc",
+  "players": [
+    { "answer": "Dwight Howard", "brId": "howardw01" },
+    { "answer": "Carmelo Anthony", "brId": "anthoca01" },
+    { "answer": "Dwyane Wade", "brId": "wadedw01" },
+    { "answer": "Dennis Rodman", "brId": "rodmade01" }
+  ]
+}

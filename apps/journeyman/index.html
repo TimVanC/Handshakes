@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <!-- iOS Safari sometimes auto-zooms when an input takes focus and never
+         zooms back out; maximum-scale=1 disables exactly that focus zoom.
+         iOS has ignored maximum-scale for USER pinch-zoom since iOS 10, so
+         accessibility is unaffected there — but Android Chrome would honor
+         it and lock out pinch zoom entirely, hence the Apple-only sniff
+         (iPadOS reports itself as MacIntel-with-touch). -->
+    <script>
+      if (
+        /iPhone|iPad|iPod/.test(navigator.userAgent) ||
+        (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1)
+      ) {
+        document
+          .querySelector("meta[name=viewport]")
+          .setAttribute(
+            "content",
+            "width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1"
+          );
+      }
+    </script>
+    <meta name="theme-color" content="#ece5d4" />
+    <!-- "Guess the … player" phrasing matches the query cluster people
+         actually search ("guess the NBA player game"); og:title below keeps
+         the shorter share-card wording on purpose. -->
+    <title>JOURNEYMAN — Guess the NBA, NFL &amp; MLB Player | Daily Puzzles</title>
+    <meta
+      name="description"
+      content="A mystery journeyman's career, revealed one jersey at a time. Three daily games — NBA, NFL, and MLB. Guess the player in as few jerseys as possible."
+    />
+
+    <!-- Canonical + link previews. Crawlers (iMessage, Twitterbot) don't run
+         our JS, so everything they need lives statically here. og:image and
+         twitter:image MUST be absolute URLs to a raster PNG — SVG is not
+         reliably supported by either. Bump the ?v= when the image changes,
+         since iMessage caches previews hard by URL. -->
+    <link rel="canonical" href="https://journeymanjersey.com/" />
+
+    <meta property="og:type" content="website" />
+    <!-- No og:site_name: renderers (iMessage, LinkedIn) show it as a separate
+         label AND strip a matching brand prefix from the title, which was
+         eating the leading "JOURNEYMAN —". Dropping it lets the full title show. -->
+    <meta property="og:url" content="https://journeymanjersey.com/" />
+    <meta
+      property="og:title"
+      content="JOURNEYMAN — Daily NBA, NFL & MLB player puzzles"
+    />
+    <meta
+      property="og:description"
+      content="A mystery journeyman's career, revealed one jersey at a time. Guess the player in as few jerseys as possible — new NBA, NFL & MLB puzzles daily."
+    />
+    <meta property="og:image" content="https://journeymanjersey.com/og.png?v=2" />
+    <meta property="og:image:secure_url" content="https://journeymanjersey.com/og.png?v=2" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1672" />
+    <meta property="og:image:height" content="941" />
+    <meta
+      property="og:image:alt"
+      content="JOURNEYMAN — a daily career puzzle across NBA, NFL and MLB."
+    />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="JOURNEYMAN — Daily NBA, NFL & MLB player puzzles"
+    />
+    <meta
+      name="twitter:description"
+      content="A mystery journeyman's career, revealed one jersey at a time. Guess the player in as few jerseys as possible — new puzzles daily."
+    />
+    <meta name="twitter:image" content="https://journeymanjersey.com/og.png?v=2" />
+    <meta
+      name="twitter:image:alt"
+      content="JOURNEYMAN — a daily career puzzle across NBA, NFL and MLB."
+    />
+
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23b3855a' stroke='%231d1a13' stroke-width='1.5' stroke-linejoin='round'><path d='M7 3c0 2 .5 4.5-1.5 7L5 11v10h14V11l-.5-1C16.5 7.5 17 5 17 3l-2.5 1a6 6 0 0 1-5 0L7 3z'/></svg>"
+    />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Journeyman",
+      "alternateName": "Journeyman Jersey",
+      "url": "https://journeymanjersey.com/",
+      "applicationCategory": "GameApplication",
+      "genre": "Sports trivia",
+      "operatingSystem": "Web browser",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "description": "Daily NBA, NFL and MLB puzzles: a mystery journeyman's career is revealed one jersey at a time — guess the player in as few jerseys as possible."
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Archivo:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <!-- Static footer, outside #root: crawlers must see these internal links
+         without running JS, and React never touches this node. Colors are
+         hardcoded (not var()) so it renders correctly before the app CSS
+         loads. -->
+    <footer
+      style="
+        text-align: center;
+        padding: 30px 16px 22px;
+        font-size: 12px;
+        color: #6b6353;
+      "
+    >
+      More:
+      <a href="/games-like-immaculate-grid" style="color: #8c6239"
+        >Games like Immaculate Grid</a
+      >
+      &middot;
+      <a href="/poeltl-alternative" style="color: #8c6239"
+        >Poeltl alternatives</a
+      >
+    </footer>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

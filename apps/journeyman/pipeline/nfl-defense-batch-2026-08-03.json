@@ -1,0 +1,80 @@
+{
+  "outputBase": "nfl-defense-batch-2026-08-03",
+  "startId": 65,
+  "firstSeason": 2002,
+  "players": [
+    "Cullen Jenkins",
+    "Chris Clemons",
+    "Bernard Pollard",
+    "Shaun Phillips",
+    "Tracy Porter",
+    "Captain Munnerlyn",
+    "Ndamukong Suh",
+    "Cortland Finnegan",
+    "Mike Adams"
+  ],
+  "defensive": [
+    "Cullen Jenkins",
+    "Chris Clemons",
+    "Bernard Pollard",
+    "Shaun Phillips",
+    "Tracy Porter",
+    "Captain Munnerlyn",
+    "Ndamukong Suh",
+    "Cortland Finnegan",
+    "Mike Adams"
+  ],
+  "gsisIds": {
+    "Chris Clemons": "00-0021577",
+    "Mike Adams": "00-0022247"
+  },
+  "espnIds": {
+    "Cullen Jenkins": "5009",
+    "Chris Clemons": "4864",
+    "Bernard Pollard": "9640",
+    "Shaun Phillips": "5623",
+    "Tracy Porter": "11274",
+    "Captain Munnerlyn": "12703",
+    "Ndamukong Suh": "13234",
+    "Cortland Finnegan": "9801",
+    "Mike Adams": "5893"
+  },
+  "positions": {
+    "Cullen Jenkins": "DT / DE",
+    "Chris Clemons": "DE / OLB",
+    "Bernard Pollard": "S",
+    "Shaun Phillips": "OLB / DE",
+    "Tracy Porter": "CB",
+    "Captain Munnerlyn": "CB",
+    "Ndamukong Suh": "DT",
+    "Cortland Finnegan": "CB",
+    "Mike Adams": "S"
+  },
+  "bios": {
+    "Cullen Jenkins": { "draftYear": 2003, "draftPick": "Undrafted", "college": "Central Michigan" },
+    "Chris Clemons": { "draftYear": 2003, "draftPick": "Undrafted", "college": "Georgia" },
+    "Bernard Pollard": { "draftYear": 2006, "draftPick": "Round 2, #54", "college": "Purdue" },
+    "Shaun Phillips": { "draftYear": 2004, "draftPick": "Round 4, #98", "college": "Purdue" },
+    "Tracy Porter": { "draftYear": 2008, "draftPick": "Round 2, #40", "college": "Indiana" },
+    "Captain Munnerlyn": { "draftYear": 2009, "draftPick": "Round 7, #216", "college": "South Carolina" },
+    "Ndamukong Suh": { "draftYear": 2010, "draftPick": "Round 1, #2", "college": "Nebraska" },
+    "Cortland Finnegan": { "draftYear": 2006, "draftPick": "Round 7, #215", "college": "Samford" },
+    "Mike Adams": { "draftYear": 2004, "draftPick": "Undrafted", "college": "Delaware" }
+  },
+  "accolades": {
+    "Cullen Jenkins": [["GB", 2010, "champion"]],
+    "Chris Clemons": [["SEA", 2013, "champion"]],
+    "Bernard Pollard": [["BAL", 2012, "champion"]],
+    "Shaun Phillips": [["LAC", 2010, "pro_bowl"]],
+    "Tracy Porter": [["NO", 2009, "champion"]],
+    "Mike Adams": [["IND", 2014, "pro_bowl"], ["IND", 2015, "pro_bowl"]],
+    "Ndamukong Suh": [
+      ["DET", 2010, "pro_bowl"], ["DET", 2012, "pro_bowl"], ["DET", 2013, "pro_bowl"], ["DET", 2014, "pro_bowl"],
+      ["MIA", 2016, "pro_bowl"],
+      ["DET", 2010, "all_pro"], ["DET", 2013, "all_pro"], ["DET", 2014, "all_pro"],
+      ["DET", 2010, "droy"], ["TB", 2020, "champion"]
+    ],
+    "Cortland Finnegan": [["TEN", 2008, "pro_bowl"], ["TEN", 2008, "all_pro"]]
+  },
+  "offenseCountsBefore": [3, 6, 11, 16, 26, 27, 37, 40, 42]
+}

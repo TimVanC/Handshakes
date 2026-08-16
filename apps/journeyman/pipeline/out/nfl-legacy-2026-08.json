@@ -1,0 +1,857 @@
+{
+  "generatedAt": "2026-08-10",
+  "puzzles": [
+    {
+      "id": 79,
+      "answer": "Kurt Warner",
+      "stints": [
+        {
+          "franchise": "LAR",
+          "displayTeam": "St. Louis Rams",
+          "startYear": 1998,
+          "endYear": 2003,
+          "jerseyNumber": 13,
+          "statLine": [
+            {
+              "label": "GP",
+              "value": 53
+            },
+            {
+              "label": "Cmp%",
+              "value": "66.4"
+            },
+            {
+              "label": "Yds",
+              "value": 14447
+            },
+            {
+              "label": "TD",
+              "value": 102
+            },
+            {
+              "label": "INT",
+              "value": 65
+            }
+          ],
+          "accolades": [
+            {
+              "type": "champion",
+              "count": 1
+            },
+            {
+              "type": "sb_mvp",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "franchise": "NYG",
+          "displayTeam": "New York Giants",
+          "startYear": 2004,
+          "endYear": 2004,
+          "jerseyNumber": 13,
+          "statLine": [
+            {
+              "label": "GP",
+              "value": 10
+            },
+            {
+              "label": "Cmp%",
+              "value": "62.8"
+            },
+            {
+              "label": "Yds",
+              "value": 2054
+            },
+            {
+              "label": "TD",
+              "value": 6
+            },
+            {
+              "label": "INT",
+              "value": 4
+            }
+          ]
+        },
+        {
+          "franchise": "ARI",
+          "displayTeam": "Arizona Cardinals",
+          "startYear": 2005,
+          "endYear": 2009,
+          "jerseyNumber": 13,
+          "statLine": [
+            {
+              "label": "GP",
+              "value": 61
+            },
+            {
+              "label": "Cmp%",
+              "value": "65.1"
+            },
+            {
+              "label": "Yds",
+              "value": 15843
+            },
+            {
+              "label": "TD",
+              "value": 100
+            },
+            {
+              "label": "INT",
+              "value": 59
+            }
+          ]
+        }
+      ],
+      "revealOrder": [
+        1,
+        0,
+        2
+      ],
+      "accolades": [
+        "1× Super Bowl champion",
+        "1× Super Bowl MVP"
+      ],
+      "hints": {
+        "position": "QB",
+        "height": "6'2\"",
+        "draftYear": "1994",
+        "draftPick": "Undrafted",
+        "college": "Northern Iowa"
+      },
+      "checked": "ESPN career tables + PFR/Wikipedia stint audit, 2026-08-10"
+    },
+    {
+      "id": 80,
+      "answer": "Drew Bledsoe",
+      "stints": [
+        {
+          "franchise": "NE",
+          "displayTeam": "New England Patriots",
+          "startYear": 1993,
+          "endYear": 2001,
+          "jerseyNumber": 11,
+          "statLine": [
+            {
+              "label": "GP",
+              "value": 124
+            },
+            {
+              "label": "Cmp%",
+              "value": "56.3"
+            },
+            {
+              "label": "Yds",
+              "value": 29657
+            },
+            {
+              "label": "TD",
+              "value": 166
+            },
+            {
+              "label": "INT",
+              "value": 138
+            }
+          ],
+          "accolades": [
+            {
+              "type": "champion",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "franchise": "BUF",
+          "displayTeam": "Buffalo Bills",
+          "startYear": 2002,
+          "endYear": 2004,
+          "jerseyNumber": 11,
+          "statLine": [
+            {
+              "label": "GP",
+              "value": 48
+            },
+            {
+              "label": "Cmp%",
+              "value": "59.1"
+            },
+            {
+              "label": "Yds",
+              "value": 10151
+            },
+            {
+              "label": "TD",
+              "value": 55
+            },
+            {
+              "label": "INT",
+              "value": 43
+            }
+          ]
+        },
+        {
+          "franchise": "DAL",
+          "displayTeam": "Dallas Cowboys",
+          "startYear": 2005,
+          "endYear": 2006,
+          "jerseyNumber": 11,
+          "statLine": [
+            {
+              "label": "GP",
+              "value": 22
+            },
+            {
+              "label": "Cmp%",
+              "value": "58.4"
+            },
+            {
+              "label": "Yds",
+              "value": 4803
+            },
+            {
+              "label": "TD",
+              "value": 30
+            },
+            {
+              "label": "INT",
+              "value": 25
+            }
+          ]
+        }
+      ],
+      "revealOrder": [
+        2,
+        1,
+        0
+      ],
+      "accolades": [
+        "1× Super Bowl champion"
+      ],
+      "hints": {
+        "position": "QB",
+        "height": "6'5\"",
+        "draftYear": "1993",
+        "draftPick": "Round 1, #1",
+        "college": "Washington State"
+      },
+      "checked": "ESPN career tables + PFR/Wikipedia stint audit, 2026-08-10"
+    },
+    {
+      "id": 81,
+      "answer": "Randall Cunningham",
+      "stints": [
+        {
+          "franchise": "PHI",
+          "displayTeam": "Philadelphia Eagles",
+          "startYear": 1985,
+          "endYear": 1995,
+          "jerseyNumber": 12,
+          "statLine": [
+            {
+              "label": "GP",
+              "value": 122
+            },
+            {
+              "label": "Cmp%",
+              "value": "55.7"
+            },
+            {
+              "label": "Yds",
+              "value": 22877
+            },
+            {
+              "label": "TD",
+              "value": 150
+            },
+            {
+              "label": "INT",
+              "value": 105
+            }
+          ]
+        },
+        {
+          "franchise": "MIN",
+          "displayTeam": "Minnesota Vikings",
+          "startYear": 1997,
+          "endYear": 1999,
+          "jerseyNumber": 7,
+          "statLine": [
+            {
+              "label": "GP",
+              "value": 27
+            },
+            {
+              "label": "Cmp%",
+              "value": "59.9"
+            },
+            {
+              "label": "Yds",
+              "value": 5680
+            },
+            {
+              "label": "TD",
+              "value": 48
+            },
+            {
+              "label": "INT",
+              "value": 23
+            }
+          ]
+        },
+        {
+          "franchise": "DAL",
+          "displayTeam": "Dallas Cowboys",
+          "startYear": 2000,
+          "endYear": 2000,
+          "jerseyNumber": 7,
+          "statLine": [
+            {
+              "label": "GP",
+              "value": 6
+            },
+            {
+              "label": "Cmp%",
+              "value": "59.2"
+            },
+            {
+              "label": "Yds",
+              "value": 849
+            },
+            {
+              "label": "TD",
+              "value": 6
+            },
+            {
+              "label": "INT",
+              "value": 4
+            }
+          ]
+        },
+        {
+          "franchise": "BAL",
+          "displayTeam": "Baltimore Ravens",
+          "startYear": 2001,
+          "endYear": 2001,
+          "jerseyNumber": 7,
+          "statLine": [
+            {
+              "label": "GP",
+              "value": 6
+            },
+            {
+              "label": "Cmp%",
+              "value": "60.7"
+            },
+            {
+              "label": "Yds",
+              "value": 573
+            },
+            {
+              "label": "TD",
+              "value": 3
+            },
+            {
+              "label": "INT",
+              "value": 2
+            }
+          ]
+        }
+      ],
+      "revealOrder": [
+        3,
+        2,
+        1,
+        0
+      ],
+      "accolades": [],
+      "hints": {
+        "position": "QB",
+        "height": "6'4\"",
+        "draftYear": "1985",
+        "draftPick": "Round 2, #37",
+        "college": "UNLV"
+      },
+      "checked": "ESPN career tables + PFR/Wikipedia stint audit, 2026-08-10"
+    },
+    {
+      "id": 82,
+      "answer": "Jeff George",
+      "stints": [
+        {
+          "franchise": "IND",
+          "displayTeam": "Indianapolis Colts",
+          "startYear": 1990,
+          "endYear": 1993,
+          "jerseyNumber": 11,
+          "statLine": [
+            {
+              "label": "GP",
+              "value": 52
+            },
+            {
+              "label": "Cmp%",
+              "value": "57.0"
+            },
+            {
+              "label": "Yds",
+              "value": 9551
+            },
+            {
+              "label": "TD",
+              "value": 41
+            },
+            {
+              "label": "INT",
+              "value": 46
+            }
+          ]
+        },
+        {
+          "franchise": "ATL",
+          "displayTeam": "Atlanta Falcons",
+          "startYear": 1994,
+          "endYear": 1996,
+          "jerseyNumber": 3,
+          "statLine": [
+            {
+              "label": "GP",
+              "value": 35
+            },
+            {
+              "label": "Cmp%",
+              "value": "60.5"
+            },
+            {
+              "label": "Yds",
+              "value": 8575
+            },
+            {
+              "label": "TD",
+              "value": 50
+            },
+            {
+              "label": "INT",
+              "value": 32
+            }
+          ]
+        },
+        {
+          "franchise": "LV",
+          "displayTeam": "Oakland Raiders",
+          "startYear": 1997,
+          "endYear": 1998,
+          "jerseyNumber": 3,
+          "statLine": [
+            {
+              "label": "GP",
+              "value": 24
+            },
+            {
+              "label": "Cmp%",
+              "value": "55.5"
+            },
+            {
+              "label": "Yds",
+              "value": 5103
+            },
+            {
+              "label": "TD",
+              "value": 33
+            },
+            {
+              "label": "INT",
+              "value": 14
+            }
+          ]
+        },
+        {
+          "franchise": "MIN",
+          "displayTeam": "Minnesota Vikings",
+          "startYear": 1999,
+          "endYear": 1999,
+          "jerseyNumber": 7,
+          "statLine": [
+            {
+              "label": "GP",
+              "value": 12
+            },
+            {
+              "label": "Cmp%",
+              "value": "58.1"
+            },
+            {
+              "label": "Yds",
+              "value": 2816
+            },
+            {
+              "label": "TD",
+              "value": 23
+            },
+            {
+              "label": "INT",
+              "value": 12
+            }
+          ]
+        },
+        {
+          "franchise": "WAS",
+          "displayTeam": "Washington Redskins",
+          "startYear": 2000,
+          "endYear": 2001,
+          "jerseyNumber": 3,
+          "statLine": [
+            {
+              "label": "GP",
+              "value": 8
+            },
+            {
+              "label": "Cmp%",
+              "value": "57.6"
+            },
+            {
+              "label": "Yds",
+              "value": 1557
+            },
+            {
+              "label": "TD",
+              "value": 7
+            },
+            {
+              "label": "INT",
+              "value": 9
+            }
+          ]
+        }
+      ],
+      "revealOrder": [
+        4,
+        3,
+        2,
+        1,
+        0
+      ],
+      "accolades": [],
+      "hints": {
+        "position": "QB",
+        "height": "6'4\"",
+        "draftYear": "1990",
+        "draftPick": "Round 1, #1",
+        "college": "Illinois"
+      },
+      "checked": "ESPN career tables + PFR/Wikipedia stint audit, 2026-08-10"
+    },
+    {
+      "id": 83,
+      "answer": "Eddie George",
+      "stints": [
+        {
+          "franchise": "TEN",
+          "displayTeam": "Houston Oilers",
+          "startYear": 1996,
+          "endYear": 1996,
+          "jerseyNumber": 27,
+          "statLine": [
+            {
+              "label": "GP",
+              "value": 16
+            },
+            {
+              "label": "Att",
+              "value": 335
+            },
+            {
+              "label": "Rush Yds",
+              "value": 1368
+            },
+            {
+              "label": "YPC",
+              "value": "4.1"
+            },
+            {
+              "label": "TD",
+              "value": 8
+            }
+          ],
+          "accolades": [
+            {
+              "type": "roy",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "franchise": "TEN",
+          "displayTeam": "Tennessee Oilers",
+          "startYear": 1997,
+          "endYear": 1998,
+          "jerseyNumber": 27,
+          "statLine": [
+            {
+              "label": "GP",
+              "value": 32
+            },
+            {
+              "label": "Att",
+              "value": 705
+            },
+            {
+              "label": "Rush Yds",
+              "value": 2693
+            },
+            {
+              "label": "YPC",
+              "value": "3.8"
+            },
+            {
+              "label": "TD",
+              "value": 11
+            }
+          ]
+        },
+        {
+          "franchise": "TEN",
+          "displayTeam": "Tennessee Titans",
+          "startYear": 1999,
+          "endYear": 2003,
+          "jerseyNumber": 27,
+          "statLine": [
+            {
+              "label": "GP",
+              "value": 80
+            },
+            {
+              "label": "Att",
+              "value": 1693
+            },
+            {
+              "label": "Rush Yds",
+              "value": 5948
+            },
+            {
+              "label": "YPC",
+              "value": "3.5"
+            },
+            {
+              "label": "TD",
+              "value": 45
+            }
+          ]
+        },
+        {
+          "franchise": "DAL",
+          "displayTeam": "Dallas Cowboys",
+          "startYear": 2004,
+          "endYear": 2004,
+          "jerseyNumber": 27,
+          "statLine": [
+            {
+              "label": "GP",
+              "value": 13
+            },
+            {
+              "label": "Att",
+              "value": 132
+            },
+            {
+              "label": "Rush Yds",
+              "value": 432
+            },
+            {
+              "label": "YPC",
+              "value": "3.3"
+            },
+            {
+              "label": "TD",
+              "value": 4
+            }
+          ]
+        }
+      ],
+      "revealOrder": [
+        3,
+        0,
+        1,
+        2
+      ],
+      "accolades": [
+        "1× Rookie of the Year"
+      ],
+      "hints": {
+        "position": "RB",
+        "height": "6'3\"",
+        "draftYear": "1996",
+        "draftPick": "Round 1, #14",
+        "college": "Ohio State"
+      },
+      "checked": "ESPN career tables + PFR/Wikipedia stint audit, 2026-08-10"
+    },
+    {
+      "id": 84,
+      "answer": "Jake Plummer",
+      "stints": [
+        {
+          "franchise": "ARI",
+          "displayTeam": "Arizona Cardinals",
+          "startYear": 1997,
+          "endYear": 2002,
+          "jerseyNumber": 16,
+          "statLine": [
+            {
+              "label": "GP",
+              "value": 84
+            },
+            {
+              "label": "Cmp%",
+              "value": "55.9"
+            },
+            {
+              "label": "Yds",
+              "value": 17622
+            },
+            {
+              "label": "TD",
+              "value": 90
+            },
+            {
+              "label": "INT",
+              "value": 114
+            }
+          ]
+        },
+        {
+          "franchise": "DEN",
+          "displayTeam": "Denver Broncos",
+          "startYear": 2003,
+          "endYear": 2006,
+          "jerseyNumber": 16,
+          "statLine": [
+            {
+              "label": "GP",
+              "value": 59
+            },
+            {
+              "label": "Cmp%",
+              "value": "59.1"
+            },
+            {
+              "label": "Yds",
+              "value": 11631
+            },
+            {
+              "label": "TD",
+              "value": 71
+            },
+            {
+              "label": "INT",
+              "value": 47
+            }
+          ]
+        }
+      ],
+      "revealOrder": [
+        1,
+        0
+      ],
+      "accolades": [],
+      "hints": {
+        "position": "QB",
+        "height": "6'2\"",
+        "draftYear": "1997",
+        "draftPick": "Round 2, #42",
+        "college": "Arizona State"
+      },
+      "checked": "ESPN career tables + PFR/Wikipedia stint audit, 2026-08-10"
+    },
+    {
+      "id": 85,
+      "answer": "Adam Vinatieri",
+      "stints": [
+        {
+          "franchise": "NE",
+          "displayTeam": "New England Patriots",
+          "startYear": 1996,
+          "endYear": 2005,
+          "jerseyNumber": 4,
+          "statLine": [
+            {
+              "label": "GP",
+              "value": 160
+            },
+            {
+              "label": "FGM",
+              "value": 263
+            },
+            {
+              "label": "FGA",
+              "value": 321
+            },
+            {
+              "label": "FG%",
+              "value": "81.9"
+            },
+            {
+              "label": "Pts",
+              "value": 1156
+            }
+          ],
+          "accolades": [
+            {
+              "type": "champion",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "franchise": "IND",
+          "displayTeam": "Indianapolis Colts",
+          "startYear": 2006,
+          "endYear": 2019,
+          "jerseyNumber": 4,
+          "statLine": [
+            {
+              "label": "GP",
+              "value": 205
+            },
+            {
+              "label": "FGM",
+              "value": 336
+            },
+            {
+              "label": "FGA",
+              "value": 394
+            },
+            {
+              "label": "FG%",
+              "value": "85.3"
+            },
+            {
+              "label": "Pts",
+              "value": 1515
+            }
+          ],
+          "accolades": [
+            {
+              "type": "champion",
+              "count": 1
+            }
+          ]
+        }
+      ],
+      "revealOrder": [
+        0,
+        1
+      ],
+      "accolades": [
+        "4× Super Bowl champion"
+      ],
+      "hints": {
+        "position": "K",
+        "height": "6'0\"",
+        "draftYear": "1996",
+        "draftPick": "Undrafted",
+        "college": "South Dakota State"
+      },
+      "checked": "ESPN career tables + PFR/Wikipedia stint audit, 2026-08-10"
+    }
+  ]
+}

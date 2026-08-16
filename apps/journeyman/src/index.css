@@ -1,0 +1,1595 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   JOURNEYMAN design tokens — court-and-cardstock world (brief §8).
+   Off-white paper + hardwood tones; the jersey colorways are the only
+   saturated things on screen.
+------------------------------------------------------------------- */
+@theme {
+  --font-display: "Anton", "Arial Narrow", sans-serif;
+  --font-ui: "Archivo", "Helvetica Neue", Arial, sans-serif;
+
+  --color-paper: #ece5d4; /* page background: warm cardstock */
+  --color-paper-deep: #e2d9c3;
+  --color-card: #faf6ec; /* card face */
+  --color-ink: #1d1a13; /* near-black warm ink */
+  --color-ink-soft: #6b6353;
+  --color-line: #d3c8ae; /* rule lines */
+  --color-wood: #b3855a; /* hardwood */
+  --color-wood-deep: #8c6239;
+  --color-court: #96683f;
+}
+
+html {
+  background: var(--color-paper);
+  /* the page never legitimately scrolls sideways — clip (not hidden) also
+     forbids programmatic horizontal scrolling, e.g. scrollIntoView
+     inline:center yanking the board offscreen mid-reveal */
+  overflow-x: clip;
+}
+
+body {
+  font-family: var(--font-ui);
+  color: var(--color-ink);
+  /* faint paper grain over the whole page */
+  background-color: var(--color-paper);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.22 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+  -webkit-font-smoothing: antialiased;
+}
+
+/* half-court arc behind the header — a quiet nod to the floor */
+.court-arc {
+  position: fixed;
+  top: -340px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 560px;
+  height: 560px;
+  border: 2px solid color-mix(in srgb, var(--color-wood) 38%, transparent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* iOS Safari zooms the whole page in on any field it focuses whose
+   font-size is under 16px. Pin every control to a hard 16px (not rem —
+   that drifts if the root size changes) so tapping one never rescales
+   the view. */
+input,
+textarea,
+select {
+  font-size: 16px;
+}
+
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: 0.02em;
+}
+
+/* ------------------------------------------------------------------
+   Baseline header rule: double line like a court baseline
+------------------------------------------------------------------- */
+.baseline-rule {
+  border-bottom: 3px solid var(--color-ink);
+  box-shadow: 0 5px 0 -3px var(--color-wood);
+}
+
+/* ------------------------------------------------------------------
+   Jersey cards — trading-card spread
+------------------------------------------------------------------- */
+
+/* no rotation on text-bearing cards — rotated text rasterizes blurry.
+   The collector-scatter feel comes from small vertical nudges instead. */
+.jersey-card {
+  position: relative;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.4 0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E"),
+    linear-gradient(168deg, #fdfaf3 0%, var(--color-card) 55%, #f1ead9 100%);
+  border: 1px solid var(--color-line);
+  border-radius: 12px;
+  box-shadow:
+    0 1px 2px rgba(60, 45, 20, 0.18),
+    0 8px 18px -8px rgba(60, 45, 20, 0.35);
+  translate: 0 var(--nudge, 0px);
+  transition: box-shadow 180ms ease, translate 180ms ease;
+}
+
+@media (hover: hover) {
+  .jersey-card:hover {
+    translate: 0 calc(var(--nudge, 0px) - 4px);
+    box-shadow:
+      0 2px 3px rgba(60, 45, 20, 0.16),
+      0 16px 28px -10px rgba(60, 45, 20, 0.4);
+  }
+}
+
+/* foil shine sweep on hover */
+.jersey-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(
+    105deg,
+    transparent 38%,
+    rgba(255, 255, 255, 0.5) 46%,
+    rgba(196, 220, 255, 0.28) 52%,
+    transparent 60%
+  );
+  background-size: 260% 100%;
+  background-position: 115% 0;
+  opacity: 0;
+}
+
+@media (hover: hover) {
+  .jersey-card:hover::after {
+    opacity: 1;
+    transition: background-position 650ms ease;
+    background-position: -15% 0;
+  }
+}
+
+/* deal-from-the-deck arc for the newest card */
+@keyframes deal-in {
+  0% {
+    opacity: 0;
+    transform: translate(34px, -46px) rotate(7deg) scale(0.55);
+  }
+  55% {
+    opacity: 1;
+    transform: translate(-3px, 5px) rotate(-1.5deg) scale(1.04);
+  }
+  75% {
+    transform: translate(1px, -2px) rotate(0.5deg) scale(0.99);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+}
+
+.deal-in {
+  animation: deal-in 720ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* the just-dealt card glows for a beat — a new jersey slots into the
+   middle of the career spread, and with 5+ cards on the table it's easy
+   to lose which one just landed. A soft feathered gold halo (no hard
+   edge), held briefly, then gone. The keyframes carry the card's resting
+   shadow along so the glow layers on top of it instead of replacing it. */
+@keyframes just-dealt-glow {
+  0%,
+  45% {
+    box-shadow:
+      0 1px 2px rgba(60, 45, 20, 0.18),
+      0 8px 18px -8px rgba(60, 45, 20, 0.35),
+      0 0 18px 6px rgba(217, 165, 32, 0.55);
+  }
+  100% {
+    box-shadow:
+      0 1px 2px rgba(60, 45, 20, 0.18),
+      0 8px 18px -8px rgba(60, 45, 20, 0.35),
+      0 0 18px 6px rgba(217, 165, 32, 0);
+  }
+}
+
+.just-dealt {
+  animation: just-dealt-glow 2.6s ease-out both;
+}
+
+/* constant version of the halo for the flight leg (GhostCard) — same
+   shadow stack .just-dealt holds at its peak, so the handoff at landing
+   is invisible */
+.glow-gold {
+  box-shadow:
+    0 1px 2px rgba(60, 45, 20, 0.18),
+    0 8px 18px -8px rgba(60, 45, 20, 0.35),
+    0 0 18px 6px rgba(217, 165, 32, 0.55);
+}
+
+/* warm wash: alongside the halo, the just-dealt card's FACE is tinted
+   gold and fades back to plain cardstock in step with the glow. Painted
+   as an overlay (::before) because the card's paper background is an
+   opaque noise+gradient stack that can't cross-fade on its own. The deck's
+   face-up card and the ghost wear the constant version so the tint, like
+   the halo, is born at the flip and rides the flight. */
+.deck-card.is-face::before,
+.glow-gold::before,
+.just-dealt::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: rgba(217, 165, 32, 0.16);
+  /* tint the PAPER only — negative z drops the wash behind the jersey
+     art, year and stats, which need a stacking context on the card to
+     stop it from falling behind the card's own background too. The deck
+     face (z-index:3) and the ghost (inline z-index) already have one. */
+  z-index: -1;
+}
+
+.just-dealt {
+  isolation: isolate;
+}
+
+@keyframes just-dealt-wash {
+  0%,
+  45% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.just-dealt::before {
+  animation: just-dealt-wash 2.6s ease-out both;
+}
+
+/* tap-to-flip: a 2D squeeze (scaleX to 0, swap, scale back) driven by
+   WAAPI in JerseyCard. Deliberately NOT a 3D flip — perspective +
+   backface-visibility force cards into composited layers that mobile
+   GPUs rasterize blurry. At rest the cards are plain DOM = crisp text. */
+.card-flip {
+  position: relative;
+}
+
+.card-back {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+/* season-by-season mini table on the card back */
+.season-grid {
+  display: grid;
+  /* fixed columns so every row lines up; playoffs takes the rest */
+  grid-template-columns: 1.45rem 1.7rem 1fr;
+  column-gap: 0.2rem;
+  align-items: baseline;
+  white-space: nowrap;
+  font-size: 0.53rem;
+  line-height: 1.55;
+  padding: 2px 0;
+  font-variant-numeric: tabular-nums;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.season-grid:last-child {
+  border-bottom: none;
+}
+
+.season-head {
+  font-size: 0.46rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--color-ink-soft);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.card-back::-webkit-scrollbar {
+  display: none;
+}
+
+/* face-down deck card (the reveal button) */
+.deck-card {
+  position: relative;
+  z-index: 3; /* new jerseys slide out from UNDER the deck */
+  background:
+    repeating-linear-gradient(
+      -45deg,
+      var(--color-wood-deep) 0 3px,
+      transparent 3px 11px
+    ),
+    linear-gradient(168deg, var(--color-wood) 0%, var(--color-court) 100%);
+  border: 1px solid var(--color-wood-deep);
+  border-radius: 12px;
+  color: #f7efdd;
+  box-shadow:
+    /* stacked-deck edges */
+    3px 4px 0 -1px var(--color-court),
+    6px 8px 0 -2px color-mix(in srgb, var(--color-court) 70%, black),
+    0 10px 20px -8px rgba(60, 45, 20, 0.5);
+  transition: translate 160ms ease, box-shadow 160ms ease;
+  translate: 0 var(--nudge, 0px);
+}
+
+.deck-card:hover:not(:disabled),
+.deck-card:focus-visible {
+  translate: 0 calc(var(--nudge, 0px) - 4px);
+}
+
+.deck-card:active:not(:disabled) {
+  translate: 0 var(--nudge, 0px);
+}
+
+/* mid-reveal: the deck's top card is face-up — paper card face on top of
+   the wood stack (the stacked-deck edge shadows stay: it's still on the
+   deck until it slides off to its slot) */
+.deck-card.is-face {
+  background: linear-gradient(168deg, #fdfaf3 0%, var(--color-card) 55%, #f1ead9 100%);
+  border-color: var(--color-line);
+  color: var(--color-ink);
+  /* the gold halo is born WITH the flip (the deck's box-shadow transition
+     eases it in) — the ghost carries it through the flight and the landed
+     card's .just-dealt fade takes over, one continuous glow end to end */
+  box-shadow:
+    3px 4px 0 -1px var(--color-court),
+    6px 8px 0 -2px color-mix(in srgb, var(--color-court) 70%, black),
+    0 10px 20px -8px rgba(60, 45, 20, 0.5),
+    0 0 18px 6px rgba(217, 165, 32, 0.55);
+}
+
+/* ------------------------------------------------------------------
+   Buttons, chips, inputs
+------------------------------------------------------------------- */
+.btn {
+  font-family: var(--font-ui);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  border-radius: 8px;
+  padding: 0.7rem 1rem;
+  border: 2px solid var(--color-ink);
+  background: var(--color-card);
+  color: var(--color-ink);
+  box-shadow: 0 2px 0 var(--color-ink);
+  transition: translate 100ms ease, box-shadow 100ms ease;
+  cursor: pointer;
+}
+
+/* compact variant — e.g. the header-row Share on the result card */
+.btn-sm {
+  font-size: 0.62rem;
+  padding: 0.32rem 0.7rem;
+  border-radius: 7px;
+}
+
+.btn:hover:not(:disabled) {
+  translate: 0 -1px;
+  box-shadow: 0 3px 0 var(--color-ink);
+}
+
+.btn:active:not(:disabled) {
+  translate: 0 2px;
+  box-shadow: 0 0 0 var(--color-ink);
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: var(--color-ink);
+  color: var(--color-card);
+  box-shadow: 0 2px 0 var(--color-wood-deep);
+}
+
+.btn-primary:hover:not(:disabled) {
+  box-shadow: 0 3px 0 var(--color-wood-deep);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: 1.5px solid var(--color-ink);
+  background: var(--color-card);
+  border-radius: 999px;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+/* selected league in the sport switcher */
+.chip-active {
+  background: var(--color-ink);
+  color: var(--color-card);
+}
+
+.chip-locked {
+  border-style: dashed;
+  border-color: var(--color-ink-soft);
+  color: var(--color-ink-soft);
+  background: transparent;
+}
+
+.chip-miss {
+  border-color: #c04a3e;
+  color: #9c2f26;
+  background: #f6e0da;
+  /* skinny strike so a wrong name reads as crossed-out at a glance */
+  text-decoration: line-through;
+  text-decoration-color: #c04a3e;
+  text-decoration-thickness: 1px;
+}
+
+/* newly revealed hint / chip pops in */
+@keyframes chip-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.chip-in {
+  animation: chip-in 380ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* turn the whole spread over at once — icon-only round button sitting on the
+   counter line above the cards */
+.flip-all {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* comfortably past the 44px tap target once the line-height around it is
+     counted; the visible circle stays small so it reads as a quiet control */
+  padding: 0.3rem;
+  border: 1.5px solid var(--color-ink-soft);
+  border-radius: 999px;
+  color: var(--color-ink);
+  background: var(--color-card);
+  cursor: pointer;
+  transition: background 120ms ease, color 120ms ease, border-color 120ms ease;
+}
+
+.flip-all:hover,
+.flip-all[aria-pressed="true"] {
+  background: var(--color-ink);
+  border-color: var(--color-ink);
+  color: var(--color-card);
+}
+
+
+/* while the guess input is focused on a touch screen, App pins the dock
+   with an explicit `top` glued to the visual viewport's bottom edge (just
+   above the keyboard) — this transition is what makes it GLIDE up there
+   instead of teleporting. `top` is only ever a length while that mode is
+   active, so the transition has real endpoints to animate between. */
+/* combobox */
+/* the guess box is type="search" purely to keep iOS AutoFill away — undo
+   every scrap of WebKit's native search-field chrome so it still looks like
+   our plain bordered input (the combobox has its own clearing behavior) */
+.combo-input {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.combo-input::-webkit-search-decoration,
+.combo-input::-webkit-search-cancel-button,
+.combo-input::-webkit-search-results-button,
+.combo-input::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  appearance: none;
+  display: none;
+}
+
+.combo-input {
+  width: 100%;
+  font-family: var(--font-ui);
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.72rem 0.9rem;
+  border: 2px solid var(--color-ink);
+  border-radius: 8px;
+  background: var(--color-card);
+  color: var(--color-ink);
+}
+
+.combo-input::placeholder {
+  color: var(--color-ink-soft);
+}
+
+.combo-list {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: var(--color-card);
+  border: 2px solid var(--color-ink);
+  border-radius: 10px;
+  box-shadow: 0 -8px 24px -10px rgba(60, 45, 20, 0.45);
+  overflow: hidden;
+  z-index: 40;
+}
+
+.combo-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  width: 100%;
+  text-align: left;
+  padding: 0.6rem 0.9rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.combo-option[aria-selected="true"] {
+  background: var(--color-ink);
+  color: var(--color-card);
+}
+
+.combo-option .years {
+  font-size: 0.75rem;
+  font-weight: 500;
+  opacity: 0.65;
+}
+
+/* visible focus everywhere (quality floor, brief §8) */
+:focus-visible {
+  outline: 3px solid var(--color-wood-deep);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* modal */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(29, 26, 19, 0.55);
+  z-index: 50;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0;
+}
+
+@media (min-width: 640px) {
+  .modal-backdrop {
+    align-items: center;
+    padding: 1.5rem;
+  }
+}
+
+.modal-panel {
+  background:
+    linear-gradient(168deg, #fdfaf3 0%, var(--color-card) 60%, #f1ead9 100%);
+  border: 2px solid var(--color-ink);
+  border-radius: 16px 16px 0 0;
+  width: 100%;
+  max-width: 27rem;
+  max-height: 88dvh;
+  overflow-y: auto;
+  box-shadow: 0 -12px 40px rgba(29, 26, 19, 0.4);
+}
+
+@media (min-width: 640px) {
+  .modal-panel {
+    border-radius: 16px;
+    box-shadow: 0 24px 60px -12px rgba(29, 26, 19, 0.55);
+  }
+
+  /* a one-question panel (the give-up confirm) — full-width bottom sheet on
+     phones like every modal, but no wider than its question on desktop */
+  .modal-panel-sm {
+    max-width: 21rem;
+  }
+}
+
+@keyframes modal-in {
+  from {
+    opacity: 0.4;
+    transform: translateY(85%);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes backdrop-in {
+  from {
+    background-color: rgba(29, 26, 19, 0);
+  }
+  to {
+    background-color: rgba(29, 26, 19, 0.55);
+  }
+}
+
+.modal-backdrop {
+  animation: backdrop-in 300ms ease both;
+}
+
+.modal-panel {
+  animation: modal-in 460ms cubic-bezier(0.22, 1, 0.36, 1) 80ms both;
+}
+
+@media (min-width: 640px) {
+  @keyframes modal-in {
+    from {
+      opacity: 0;
+      transform: translateY(36px) scale(0.98);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+/* card spread: 2-up grid on mobile (rows grow as jerseys are revealed),
+   centered wrap on desktop */
+.card-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  /* row gap absorbs the collector-scatter nudges (±5px each way) so
+     stacked rows — deck included — never touch */
+  gap: 0.9rem 0.5rem;
+  padding: 0.9rem 0.6rem 1.3rem;
+  max-width: 26rem;
+  margin-inline: auto;
+}
+
+/* a lone card on the last row sits in the middle column, not stranded */
+.card-row > *:last-child:nth-child(3n + 1) {
+  grid-column: 2;
+}
+
+/* Small phones (375px and under) only have ~113px per card at the default
+   gutters. Tightening the outer padding and the column gap buys each card
+   back a few px, which is the difference between the stat row breathing
+   and looking crammed. */
+@media (max-width: 400px) {
+  .card-row {
+    gap: 0.8rem 0.3rem;
+    padding: 0.8rem 0.3rem 1.2rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .card-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.9rem;
+    padding: 1.2rem 1rem 1.6rem;
+    max-width: 56rem;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Test-mode puzzle picker (dev only)
+------------------------------------------------------------------- */
+.test-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  padding: 0.4rem 0.75rem;
+  border-bottom: 1px dashed var(--color-wood);
+  background: color-mix(in srgb, var(--color-wood) 12%, transparent);
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.test-bar-tag {
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--color-wood-deep);
+  margin-right: 0.25rem;
+}
+
+.test-bar-slot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.6rem;
+  padding: 0.15rem 0.4rem;
+  border: 1.5px solid var(--color-ink);
+  border-radius: 6px;
+  background: var(--color-card);
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  text-decoration: none;
+}
+
+.test-bar-slot.is-active {
+  background: var(--color-ink);
+  color: var(--color-card);
+}
+
+/* ------------------------------------------------------------------
+   Player File — hint ladder strip pinned above the spread
+------------------------------------------------------------------- */
+.player-file {
+  margin: 0.7rem auto 0;
+  max-width: 26rem;
+  background:
+    linear-gradient(168deg, #fdfaf3 0%, var(--color-card) 55%, #f1ead9 100%);
+  border: 1px solid var(--color-line);
+  border-radius: 10px;
+  box-shadow:
+    0 1px 2px rgba(60, 45, 20, 0.16),
+    0 6px 14px -8px rgba(60, 45, 20, 0.3);
+  padding: 0.45rem 0.6rem 0.55rem;
+  margin-inline: 0.9rem;
+}
+
+@media (min-width: 480px) {
+  .player-file {
+    margin-inline: auto;
+  }
+}
+
+.player-file-title {
+  font-size: 0.58rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--color-ink-soft);
+  text-align: center;
+}
+
+.player-file-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.25rem 1.1rem;
+  margin-top: 0.3rem;
+}
+
+.player-file-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.05rem;
+  min-width: 3.2rem;
+}
+
+.hint-label {
+  font-size: 0.52rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-ink-soft);
+}
+
+.hint-value {
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.2;
+  max-width: 12rem;
+}
+
+/* one short coded fact ("R / R") — never split it across lines, even when the
+   label beside it wraps */
+.hint-value-atomic {
+  white-space: nowrap;
+}
+
+.hint-locked {
+  opacity: 0.5;
+}
+
+/* vertical Player Profile card filling leftover grid columns */
+.profile-cell {
+  background:
+    linear-gradient(168deg, #fdfaf3 0%, var(--color-card) 55%, #f1ead9 100%);
+  border: 1px solid var(--color-line);
+  border-radius: 12px;
+  box-shadow:
+    0 1px 2px rgba(60, 45, 20, 0.16),
+    0 6px 14px -8px rgba(60, 45, 20, 0.3);
+  padding: 0.5rem 0.6rem 0.45rem;
+  align-self: start;
+}
+
+.profile-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.4rem;
+  border-bottom: 1px solid var(--color-line);
+  padding: 0.26rem 0;
+}
+
+.profile-row:last-child {
+  border-bottom: none;
+}
+
+.profile-row .hint-value {
+  text-align: right;
+}
+
+
+/* ------------------------------------------------------------------
+   Start screen
+------------------------------------------------------------------- */
+.start-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 45;
+  display: flex;
+  justify-content: center;
+  /* NO align-items: center — a flex-centered overlay clips both ends the
+     moment content outgrows the viewport, and Chrome's mobile toolbars leave
+     less height than Safari's. The child carries margin-block auto instead:
+     centered when it fits, scrollable from the top when it doesn't. */
+  overflow-y: auto;
+  background-color: var(--color-paper);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.22 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---- home hero: three journeyman cards fanned out, gently floating ---- */
+.hero-fan {
+  position: relative;
+  width: 100%;
+  height: 122px;
+  margin-bottom: 0;
+}
+
+/* each card sits in a slot that holds its static place in the fan; the card
+   inside floats independently, so the bob never fights the fan angle */
+.hero-slot {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform-origin: bottom center;
+}
+.hero-slot-center {
+  transform: translateX(-50%) translateY(-7px) rotate(0deg);
+  z-index: 3;
+}
+.hero-slot-left {
+  transform: translateX(-50%) translate(-56px, 8px) rotate(-13deg);
+  z-index: 1;
+}
+.hero-slot-right {
+  transform: translateX(-50%) translate(56px, 8px) rotate(13deg);
+  z-index: 2;
+}
+
+.hero-card {
+  width: 82px;
+  padding: 5px 5px 7px;
+  background:
+    linear-gradient(168deg, #fdfaf3 0%, var(--color-card) 55%, #f1ead9 100%);
+  border: 1px solid var(--color-line);
+  border-radius: 10px;
+  box-shadow:
+    0 1px 2px rgba(60, 45, 20, 0.18),
+    0 10px 22px -8px rgba(60, 45, 20, 0.42);
+  animation: hero-float 4.8s ease-in-out infinite;
+}
+/* stagger the float so the three don't bob in lockstep */
+.hero-slot-left .hero-card {
+  animation-delay: -1.6s;
+}
+.hero-slot-right .hero-card {
+  animation-delay: -3.1s;
+}
+
+.hero-card-year {
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 0.55rem;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  margin-bottom: 3px;
+  color: var(--color-ink);
+}
+.hero-card svg {
+  display: block;
+  margin: 0 auto;
+}
+
+@keyframes hero-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-6px) rotate(1.4deg);
+  }
+}
+
+/* ---- home screen hamburger drawer ---- */
+.menu-scrim {
+  position: fixed;
+  inset: 0;
+  /* above .start-screen (45), same layer the modals it opens use (50) —
+     safe because picking an item closes the drawer first */
+  z-index: 50;
+  background: rgba(29, 26, 19, 0.55);
+  animation: backdrop-in 240ms ease both;
+}
+
+.menu-drawer {
+  position: absolute;
+  inset-block: 0;
+  right: 0;
+  width: 15rem;
+  max-width: 82vw;
+  display: flex;
+  flex-direction: column;
+  background:
+    linear-gradient(196deg, #fdfaf3 0%, var(--color-card) 60%, #f1ead9 100%);
+  border-left: 2px solid var(--color-ink);
+  box-shadow: -18px 0 48px -14px rgba(29, 26, 19, 0.5);
+  animation: drawer-in 300ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  /* the panel takes focus on open; it's a container, not a control */
+  outline: none;
+}
+
+@keyframes drawer-in {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: none;
+  }
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  width: 100%;
+  padding: 0.7rem 0.75rem;
+  border-radius: 9px;
+  font-family: var(--font-ui);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--color-ink);
+  text-align: left;
+  cursor: pointer;
+  transition: background 120ms ease;
+}
+
+.menu-item:hover,
+.menu-item:focus-visible {
+  background: rgba(60, 45, 20, 0.09);
+}
+
+/* the stats shortcut on the result card — the one cool accent in a warm
+   palette, so it reads as a different kind of action than Share */
+.btn-stats {
+  background: #2f5d8a;
+  border-color: #1f3f60;
+  color: var(--color-card);
+}
+.btn-stats:hover:not(:disabled) {
+  background: #26527b;
+}
+
+/* home hub: one tappable card per league */
+.home-card {
+  cursor: pointer;
+  border: 2px solid var(--color-ink);
+  border-radius: 12px;
+  background: var(--color-card);
+  box-shadow: 0 2px 0 0 var(--color-wood);
+  transition: transform 140ms ease, box-shadow 140ms ease;
+}
+.home-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 0 0 var(--color-wood);
+}
+.home-card:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 0 0 var(--color-wood);
+}
+/* the UI face, not the condensed display one — "Recap" in Anton reads
+   squished and over-heavy at button size */
+.home-card-cta {
+  font-family: var(--font-ui);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  font-size: 0.8rem;
+  padding: 0.4rem 0.95rem;
+  border-radius: 999px;
+  background: var(--color-ink);
+  color: var(--color-card);
+  white-space: nowrap;
+}
+
+/* ------------------------------------------------------------------
+   Win / lose theatrics
+------------------------------------------------------------------- */
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  15%,
+  45%,
+  75% {
+    transform: translateX(-7px);
+  }
+  30%,
+  60%,
+  90% {
+    transform: translateX(7px);
+  }
+}
+
+.shake {
+  animation: shake 550ms ease-in-out 1;
+}
+
+.confetti {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 60;
+  overflow: hidden;
+}
+
+.confetti i {
+  position: absolute;
+  top: -3vh;
+  width: 8px;
+  height: 13px;
+  border-radius: 2px;
+  opacity: 0.95;
+  animation: confetti-fall 2.4s cubic-bezier(0.3, 0.1, 0.6, 1) forwards;
+}
+
+/* easter-egg glyph pieces (crowns, unibrows...) instead of paper bits */
+.confetti i.shape {
+  background: none;
+  width: auto;
+  height: auto;
+  line-height: 0;
+}
+
+@keyframes confetti-fall {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--drift, 0px), 108vh) rotate(var(--spin, 540deg));
+    opacity: 0.7;
+  }
+}
+
+.result-ticket {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  border: 2px dashed var(--color-wood);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--color-wood) 10%, transparent);
+  padding: 0.55rem 0.8rem;
+}
+
+/* Account conversion surfaces: show the value before asking for an account. */
+.account-home-card {
+  border: 2px solid var(--color-ink);
+  border-radius: 12px;
+  background:
+    linear-gradient(145deg, color-mix(in srgb, var(--color-wood) 18%, var(--color-card)), var(--color-card));
+  box-shadow: 0 3px 0 var(--color-wood);
+  padding: 0.7rem 0.8rem;
+}
+
+.account-prompt-backdrop {
+  z-index: 55;
+  /* warm spotlight behind the panel so the prompt reads as a "moment", not
+     just another dark-dimmed modal */
+  background:
+    radial-gradient(
+      125% 85% at 50% 38%,
+      rgba(179, 133, 90, 0.34) 0%,
+      rgba(150, 104, 63, 0.14) 34%,
+      transparent 64%
+    ),
+    rgba(29, 26, 19, 0.72);
+}
+
+.account-prompt-panel {
+  max-width: 23rem;
+  position: relative;
+  /* wood ring + warm halo lifts the card off the spotlight */
+  box-shadow:
+    0 -12px 40px rgba(29, 26, 19, 0.4),
+    0 0 0 1px rgba(179, 133, 90, 0.55),
+    0 0 46px -4px rgba(179, 133, 90, 0.5);
+}
+
+.account-prompt-close {
+  transform: translateY(0.35rem);
+}
+
+/* a bright accent bar across the very top — the eye-catch cue */
+.account-prompt-panel::before {
+  content: "";
+  position: sticky;
+  top: 0;
+  display: block;
+  height: 4px;
+  margin: -1px -1px 0; /* cover the ink border's rounded top edge */
+  background: linear-gradient(
+    90deg,
+    var(--color-wood) 0%,
+    var(--color-court) 50%,
+    var(--color-wood) 100%
+  );
+  z-index: 2;
+}
+
+@media (min-width: 640px) {
+  .account-prompt-panel {
+    box-shadow:
+      0 24px 60px -12px rgba(29, 26, 19, 0.55),
+      0 0 0 1px rgba(179, 133, 90, 0.55),
+      0 0 56px -2px rgba(179, 133, 90, 0.5);
+  }
+}
+
+/* the hero CTA — warm gradient, a slow pulse glow, and a periodic shine
+   sweep so it keeps drawing the eye without a click */
+.account-cta {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(150deg, var(--color-wood) 0%, var(--color-court) 100%);
+  color: #fff7ea;
+  text-shadow: 0 1px 1px rgba(29, 26, 19, 0.35);
+  border-color: var(--color-ink);
+  animation: cta-glow 2.6s ease-in-out infinite;
+}
+.account-cta::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    105deg,
+    transparent 42%,
+    rgba(255, 255, 255, 0.5) 50%,
+    transparent 58%
+  );
+  background-size: 250% 100%;
+  background-position: 165% 0;
+  animation: cta-shine 3.2s ease-in-out infinite;
+}
+@keyframes cta-glow {
+  0%,
+  100% {
+    box-shadow: 0 2px 0 var(--color-wood-deep), 0 0 0 0 rgba(179, 133, 90, 0);
+  }
+  50% {
+    box-shadow: 0 2px 0 var(--color-wood-deep), 0 0 22px 2px rgba(179, 133, 90, 0.62);
+  }
+}
+@keyframes cta-shine {
+  0% {
+    background-position: 165% 0;
+  }
+  55%,
+  100% {
+    background-position: -75% 0;
+  }
+}
+
+.account-home-card {
+  color: var(--color-ink);
+  cursor: pointer;
+  transition: transform 140ms ease, box-shadow 140ms ease;
+}
+
+.account-home-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 0 var(--color-wood);
+}
+
+.account-save-eyebrow {
+  color: var(--color-wood-deep);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.account-save-badge {
+  border: 1.5px solid var(--color-wood-deep);
+  border-radius: 999px;
+  color: var(--color-wood-deep);
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  padding: 0.2rem 0.45rem;
+}
+
+.account-locker-preview {
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--color-line);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--color-paper) 55%, white);
+  padding: 0.75rem;
+}
+
+.account-preview-stage {
+  height: 16.3rem;
+  overflow: hidden;
+  border-radius: 10px;
+  perspective: 900px;
+  isolation: isolate;
+}
+
+.account-preview-carousel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 720ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.account-preview-carousel.is-archive {
+  transform: rotateY(180deg);
+}
+
+.account-preview-face {
+  opacity: 0;
+  visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.account-locker-preview {
+  opacity: 1;
+  visibility: visible;
+}
+
+.account-preview-carousel.is-archive .account-locker-preview {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.account-preview-archive {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border: 1px solid var(--color-line);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--color-paper) 55%, white);
+  padding: 0.75rem;
+  transform: rotateY(180deg);
+  opacity: 0;
+  visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.account-preview-carousel.is-archive .account-preview-archive {
+  opacity: 1;
+  visibility: visible;
+}
+
+.account-preview-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.3rem;
+}
+
+.account-preview-tabs span {
+  border: 1px solid var(--color-ink);
+  border-radius: 999px;
+  padding: 0.25rem 0.1rem;
+  font-size: 0.55rem;
+  font-weight: 800;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.account-preview-tabs .is-active {
+  background: var(--color-ink);
+  color: var(--color-card);
+}
+
+.account-preview-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-block: 1px solid var(--color-line);
+  padding-block: 0.55rem;
+}
+
+.account-preview-metrics span {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+  min-width: 0;
+}
+
+.account-preview-metrics strong {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+.account-preview-metrics small {
+  color: var(--color-ink-soft);
+  font-size: 0.48rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.account-preview-heading {
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.account-preview-bar-row {
+  display: grid;
+  grid-template-columns: 2.2rem 1fr;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.58rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.account-preview-bar-track {
+  position: relative;
+  height: 0.78rem;
+  overflow: hidden;
+  border-radius: 3px;
+  background: color-mix(in srgb, var(--color-line) 55%, transparent);
+}
+
+.account-preview-bar-fill {
+  position: absolute;
+  inset: 0;
+  background: #9a693b;
+  transform: scaleX(var(--preview-fill));
+  transform-origin: left;
+}
+
+.account-locker-preview.is-stats-active .account-preview-bar-fill {
+  animation: preview-bar-fill 900ms cubic-bezier(0.22, 1, 0.36, 1) 160ms both;
+}
+
+.account-preview-bar-fill.is-dnf {
+  background: #706958;
+}
+
+.account-preview-bar-track b {
+  position: absolute;
+  inset: 0.08rem 0.25rem auto auto;
+  z-index: 1;
+  color: var(--color-ink);
+  font-size: 0.55rem;
+}
+
+@keyframes preview-bar-fill {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(var(--preview-fill)); }
+}
+
+.account-archive-view {
+  position: absolute;
+  inset: 0.75rem;
+  opacity: 0;
+  transform: translateY(8px) scale(0.98);
+  transition: opacity 420ms ease, transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+.account-archive-view.is-active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.account-archive-month {
+  margin-top: -1.1rem;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.account-calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 0.18rem;
+  text-align: center;
+}
+
+.account-calendar-grid > b {
+  color: var(--color-ink-soft);
+  font-size: 0.48rem;
+}
+
+.account-calendar-grid > span {
+  display: grid;
+  place-items: center;
+  min-height: 1.25rem;
+  border-radius: 999px;
+  color: var(--color-ink-soft);
+  font-size: 0.57rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.account-calendar-grid > span.is-future {
+  opacity: 0.32;
+}
+
+.account-calendar-grid > span.is-all-won {
+  background: #2e7d43;
+  color: var(--color-card);
+  font-weight: 800;
+}
+
+.account-calendar-grid > span.is-mixed {
+  background: #d97a2b;
+  color: var(--color-card);
+  font-weight: 800;
+}
+
+.account-calendar-grid > span.is-partial {
+  background: #e3b23c;
+  color: var(--color-ink);
+  font-weight: 800;
+}
+
+.account-calendar-grid > span.is-all-lost {
+  background: #b3362a;
+  color: var(--color-card);
+  font-weight: 800;
+}
+
+.account-calendar-grid > span.is-today {
+  outline: 1.5px solid var(--color-ink);
+}
+
+.account-calendar-grid > span.is-selected {
+  outline: 2px solid var(--color-ink);
+}
+
+.account-preview-archive.is-calendar-active .account-calendar-grid > span.is-selected {
+  animation: archive-day-pulse 850ms ease 650ms 2;
+}
+
+.account-calendar-key {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.2rem;
+  color: var(--color-ink-soft);
+  font-size: 0.46rem;
+}
+
+.account-calendar-key span {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.account-calendar-key i {
+  width: 0.38rem;
+  height: 0.38rem;
+  flex: 0 0 auto;
+  border-radius: 50%;
+}
+
+.account-calendar-key .is-all-won { background: #2e7d43; }
+.account-calendar-key .is-partial { background: #e3b23c; }
+.account-calendar-key .is-all-lost { background: #b3362a; }
+
+.account-archive-league {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 2.55rem;
+  border: 1.5px dashed color-mix(in srgb, var(--color-wood) 55%, transparent);
+  border-radius: 9px;
+  padding: 0.4rem 0.55rem;
+  color: var(--color-ink-soft);
+}
+
+.account-archive-league.is-playable {
+  border-style: solid;
+  border-color: var(--color-ink);
+  color: var(--color-ink);
+  box-shadow: 0 2px 0 var(--color-wood);
+}
+
+.account-archive-league span {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+}
+
+.account-archive-league strong {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  line-height: 1;
+}
+
+.account-archive-league small {
+  margin-top: 0.2rem;
+  font-size: 0.52rem;
+}
+
+.account-archive-league > b {
+  border-radius: 999px;
+  background: var(--color-ink);
+  color: var(--color-card);
+  font-size: 0.55rem;
+  padding: 0.35rem 0.7rem;
+}
+
+.account-preview-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.account-preview-dots button {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 999px;
+  background: var(--color-line);
+  cursor: pointer;
+  transition: width 220ms ease, background 220ms ease;
+}
+
+.account-preview-dots button.is-active {
+  width: 1.15rem;
+  background: var(--color-ink);
+}
+
+@keyframes archive-day-pulse {
+  50% { transform: scale(1.15); }
+}
+
+/* ------------------------------------------------------------------
+   Reduced motion: kill the theatrics, keep the game
+------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .deal-in,
+  .modal-panel,
+  .modal-backdrop,
+  .menu-scrim,
+  .menu-drawer,
+  .chip-in,
+  .shake,
+  .hero-card,
+  .account-cta,
+  .confetti i {
+    animation: none;
+  }
+  .account-cta::after {
+    display: none;
+  }
+  .account-locker-preview.is-stats-active .account-preview-bar-fill {
+    animation: none;
+  }
+  .account-preview-carousel,
+  .account-archive-view,
+  .account-preview-dots button {
+    transition: none;
+  }
+  .account-preview-archive.is-calendar-active .account-calendar-grid > span.is-selected {
+    animation: none;
+  }
+  .jersey-card,
+  .deck-card,
+  .card-flip,
+  .btn {
+    transition: none;
+  }
+  .jersey-card::after {
+    display: none;
+  }
+}

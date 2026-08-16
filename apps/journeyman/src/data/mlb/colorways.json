@@ -1,0 +1,2693 @@
+{
+ "_meta": {
+  "description": "MLB franchise colorways by era, 1969+ complete; pre-1969 eras exist only where an authored puzzle needs them (Ruth/Foxx/Jethroe/Irvin set, incl. Negro League clubs CLB/NWE/IND — colors for those are documented-best-guess, confidence low). For rendering generic era-accurate jerseys (no logos, no wordmarks). Years are SEASON years. Generated from general knowledge — every entry has a confidence flag. VERIFY all 'low' entries against Dressed to the Nines (Hall of Fame uniform database) before launch; transition years may be off by a season.",
+  "fields": {
+   "key": "unique id: TRICODE_startyear",
+   "primary": "jersey body color (home white/cream — or the pullover-era body color)",
+   "secondary": "raglan sleeve + accent color",
+   "trim": "piping/button/outline accent",
+   "eraStyle": "renderer treatment: flannel (pre-'72), pullover ('72-'86 sansabelt, no buttons), buttoned ('87-'05), modern ('06+)",
+   "pattern": "optional 'pinstripe' on the body",
+   "tricode": "era-correct city code when it differs from the modern key (MON Expos, FLA Marlins, CAL Angels...)",
+   "confidence": "high | medium | low"
+  }
+ },
+ "franchises": {
+  "ARI": [
+   {
+    "key": "ARI_1998",
+    "years": [
+     1998,
+     2005
+    ],
+    "identity": "Arizona Diamondbacks (purple & teal)",
+    "primary": "#FFFFFF",
+    "secondary": "#24135F",
+    "trim": "#3EC7B1",
+    "eraStyle": "buttoned",
+    "pattern": "pinstripe",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "ARI_2006",
+    "years": [
+     2006,
+     2006
+    ],
+    "identity": "Arizona Diamondbacks (purple & teal)",
+    "primary": "#FFFFFF",
+    "secondary": "#24135F",
+    "trim": "#3EC7B1",
+    "eraStyle": "modern",
+    "pattern": "pinstripe",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "ARI_2007",
+    "years": [
+     2007,
+     2015
+    ],
+    "identity": "Arizona Diamondbacks (Sedona red)",
+    "primary": "#FFFFFF",
+    "secondary": "#A71930",
+    "trim": "#000000",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "ARI_2016",
+    "years": [
+     2016,
+     2099
+    ],
+    "identity": "Arizona Diamondbacks",
+    "primary": "#FFFFFF",
+    "secondary": "#A71930",
+    "trim": "#30CED8",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   }
+  ],
+  "ATL": [
+   {
+    "key": "ATL_1912",
+    "years": [
+     1912,
+     1952
+    ],
+    "identity": "Boston Braves",
+    "tricode": "BSN",
+    "primary": "#FFFFFF",
+    "secondary": "#13274F",
+    "trim": "#CE1141",
+    "eraStyle": "flannel",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "ATL_1969",
+    "years": [
+     1969,
+     1971
+    ],
+    "identity": "Atlanta Braves",
+    "primary": "#FFFFFF",
+    "secondary": "#13274F",
+    "trim": "#CE1141",
+    "eraStyle": "flannel",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "ATL_1972",
+    "years": [
+     1972,
+     1986
+    ],
+    "identity": "Atlanta Braves (feather era)",
+    "primary": "#FFFFFF",
+    "secondary": "#0057B8",
+    "trim": "#CE1141",
+    "eraStyle": "pullover",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "ATL_1987",
+    "years": [
+     1987,
+     2005
+    ],
+    "identity": "Atlanta Braves",
+    "primary": "#FFFFFF",
+    "secondary": "#13274F",
+    "trim": "#CE1141",
+    "eraStyle": "buttoned",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "ATL_2006",
+    "years": [
+     2006,
+     2099
+    ],
+    "identity": "Atlanta Braves",
+    "primary": "#FFFFFF",
+    "secondary": "#13274F",
+    "trim": "#CE1141",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   }
+  ],
+  "BAL": [
+   {
+    "key": "BAL_1969",
+    "years": [
+     1969,
+     1971
+    ],
+    "identity": "Baltimore Orioles",
+    "primary": "#FFFFFF",
+    "secondary": "#DF4601",
+    "trim": "#000000",
+    "eraStyle": "flannel",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "BAL_1972",
+    "years": [
+     1972,
+     1988
+    ],
+    "identity": "Baltimore Orioles (pullover era)",
+    "primary": "#FF8C42",
+    "secondary": "#000000",
+    "trim": "#FFFFFF",
+    "eraStyle": "pullover",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "BAL_1989",
+    "years": [
+     1989,
+     2005
+    ],
+    "identity": "Baltimore Orioles",
+    "primary": "#FFFFFF",
+    "secondary": "#000000",
+    "trim": "#DF4601",
+    "eraStyle": "buttoned",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "BAL_2006",
+    "years": [
+     2006,
+     2008
+    ],
+    "identity": "Baltimore Orioles",
+    "primary": "#FFFFFF",
+    "secondary": "#000000",
+    "trim": "#DF4601",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "BAL_2009",
+    "years": [
+     2009,
+     2099
+    ],
+    "identity": "Baltimore Orioles",
+    "primary": "#FFFFFF",
+    "secondary": "#DF4601",
+    "trim": "#000000",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   }
+  ],
+  "BOS": [
+   {
+    "key": "BOS_1912",
+    "years": [
+     1912,
+     1968
+    ],
+    "identity": "Boston Red Sox",
+    "primary": "#FFFFFF",
+    "secondary": "#BD3039",
+    "trim": "#0C2340",
+    "eraStyle": "flannel",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "BOS_1969",
+    "years": [
+     1969,
+     1971
+    ],
+    "identity": "Boston Red Sox",
+    "primary": "#FFFFFF",
+    "secondary": "#BD3039",
+    "trim": "#0C2340",
+    "eraStyle": "flannel",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "BOS_1972",
+    "years": [
+     1972,
+     1986
+    ],
+    "identity": "Boston Red Sox",
+    "primary": "#FFFFFF",
+    "secondary": "#BD3039",
+    "trim": "#0C2340",
+    "eraStyle": "pullover",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "BOS_1987",
+    "years": [
+     1987,
+     2005
+    ],
+    "identity": "Boston Red Sox",
+    "primary": "#FFFFFF",
+    "secondary": "#BD3039",
+    "trim": "#0C2340",
+    "eraStyle": "buttoned",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "BOS_2006",
+    "years": [
+     2006,
+     2099
+    ],
+    "identity": "Boston Red Sox",
+    "primary": "#FFFFFF",
+    "secondary": "#BD3039",
+    "trim": "#0C2340",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   }
+  ],
+  "CHC": [
+   {
+    "key": "CHC_1926",
+    "years": [
+     1926,
+     1968
+    ],
+    "identity": "Chicago Cubs",
+    "primary": "#FFFFFF",
+    "secondary": "#0E3386",
+    "trim": "#CC3433",
+    "eraStyle": "flannel",
+    "pattern": "pinstripe",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "CHC_1969",
+    "years": [
+     1969,
+     1971
+    ],
+    "identity": "Chicago Cubs",
+    "primary": "#FFFFFF",
+    "secondary": "#0E3386",
+    "trim": "#CC3433",
+    "eraStyle": "flannel",
+    "pattern": "pinstripe",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "CHC_1972",
+    "years": [
+     1972,
+     1989
+    ],
+    "identity": "Chicago Cubs",
+    "primary": "#FFFFFF",
+    "secondary": "#0E3386",
+    "trim": "#CC3433",
+    "eraStyle": "pullover",
+    "pattern": "pinstripe",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "CHC_1990",
+    "years": [
+     1990,
+     2005
+    ],
+    "identity": "Chicago Cubs",
+    "primary": "#FFFFFF",
+    "secondary": "#0E3386",
+    "trim": "#CC3433",
+    "eraStyle": "buttoned",
+    "pattern": "pinstripe",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "CHC_2006",
+    "years": [
+     2006,
+     2099
+    ],
+    "identity": "Chicago Cubs",
+    "primary": "#FFFFFF",
+    "secondary": "#0E3386",
+    "trim": "#CC3433",
+    "eraStyle": "modern",
+    "pattern": "pinstripe",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   }
+  ],
+  "CHW": [
+   {
+    "key": "CHW_1969",
+    "years": [
+     1969,
+     1970
+    ],
+    "identity": "Chicago White Sox",
+    "primary": "#FFFFFF",
+    "secondary": "#0C2340",
+    "trim": "#C8102E",
+    "eraStyle": "flannel",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "CHW_1971",
+    "years": [
+     1971,
+     1975
+    ],
+    "identity": "Chicago White Sox (red era)",
+    "primary": "#FFFFFF",
+    "secondary": "#C8102E",
+    "trim": "#0C2340",
+    "eraStyle": "flannel",
+    "pattern": "pinstripe",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "CHW_1976",
+    "years": [
+     1976,
+     1986
+    ],
+    "identity": "Chicago White Sox (leisure collar)",
+    "primary": "#FFFFFF",
+    "secondary": "#0C2340",
+    "trim": "#0C2340",
+    "eraStyle": "pullover",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "CHW_1987",
+    "years": [
+     1987,
+     1990
+    ],
+    "identity": "Chicago White Sox",
+    "primary": "#FFFFFF",
+    "secondary": "#0C2340",
+    "trim": "#C8102E",
+    "eraStyle": "buttoned",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "CHW_1991",
+    "years": [
+     1991,
+     2005
+    ],
+    "identity": "Chicago White Sox",
+    "primary": "#FFFFFF",
+    "secondary": "#27251F",
+    "trim": "#C4CED4",
+    "eraStyle": "buttoned",
+    "pattern": "pinstripe",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "CHW_2006",
+    "years": [
+     2006,
+     2099
+    ],
+    "identity": "Chicago White Sox",
+    "primary": "#FFFFFF",
+    "secondary": "#27251F",
+    "trim": "#C4CED4",
+    "eraStyle": "modern",
+    "pattern": "pinstripe",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   }
+  ],
+  "CIN": [
+   {
+    "key": "CIN_1969",
+    "years": [
+     1969,
+     1971
+    ],
+    "identity": "Cincinnati Reds",
+    "primary": "#FFFFFF",
+    "secondary": "#C6011F",
+    "trim": "#000000",
+    "eraStyle": "flannel",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "CIN_1972",
+    "years": [
+     1972,
+     1992
+    ],
+    "identity": "Cincinnati Reds (Big Red Machine)",
+    "primary": "#FFFFFF",
+    "secondary": "#C6011F",
+    "trim": "#FFFFFF",
+    "eraStyle": "pullover",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "CIN_1993",
+    "years": [
+     1993,
+     2005
+    ],
+    "identity": "Cincinnati Reds",
+    "primary": "#FFFFFF",
+    "secondary": "#C6011F",
+    "trim": "#000000",
+    "eraStyle": "buttoned",
+    "pattern": "pinstripe",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "CIN_2006",
+    "years": [
+     2006,
+     2099
+    ],
+    "identity": "Cincinnati Reds",
+    "primary": "#FFFFFF",
+    "secondary": "#C6011F",
+    "trim": "#000000",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   }
+  ],
+  "CLE": [
+   {
+    "key": "CLE_1969",
+    "years": [
+     1969,
+     1974
+    ],
+    "identity": "Cleveland Indians",
+    "primary": "#FFFFFF",
+    "secondary": "#0C2340",
+    "trim": "#E31937",
+    "eraStyle": "flannel",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "CLE_1975",
+    "years": [
+     1975,
+     1977
+    ],
+    "identity": "Cleveland Indians (all-red era)",
+    "primary": "#E31937",
+    "secondary": "#0C2340",
+    "trim": "#FFFFFF",
+    "eraStyle": "pullover",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "CLE_1978",
+    "years": [
+     1978,
+     1993
+    ],
+    "identity": "Cleveland Indians",
+    "primary": "#FFFFFF",
+    "secondary": "#E31937",
+    "trim": "#0C2340",
+    "eraStyle": "pullover",
+    "confidence": "low",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "CLE_1994",
+    "years": [
+     1994,
+     2005
+    ],
+    "identity": "Cleveland Indians",
+    "primary": "#FFFFFF",
+    "secondary": "#0C2340",
+    "trim": "#E31937",
+    "eraStyle": "buttoned",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "CLE_2006",
+    "years": [
+     2006,
+     2011
+    ],
+    "identity": "Cleveland Indians",
+    "primary": "#FFFFFF",
+    "secondary": "#0C2340",
+    "trim": "#E31937",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "CLE_2012",
+    "years": [
+     2012,
+     2021
+    ],
+    "identity": "Cleveland Indians",
+    "primary": "#FFFFFF",
+    "secondary": "#0C2340",
+    "trim": "#E31937",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "CLE_2022",
+    "years": [
+     2022,
+     2099
+    ],
+    "identity": "Cleveland Guardians",
+    "primary": "#FFFFFF",
+    "secondary": "#0C2340",
+    "trim": "#E50022",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   }
+  ],
+  "COL": [
+   {
+    "key": "COL_1993",
+    "years": [
+     1993,
+     2005
+    ],
+    "identity": "Colorado Rockies",
+    "primary": "#FFFFFF",
+    "secondary": "#333366",
+    "trim": "#000000",
+    "eraStyle": "buttoned",
+    "pattern": "pinstripe",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "COL_2006",
+    "years": [
+     2006,
+     2016
+    ],
+    "identity": "Colorado Rockies",
+    "primary": "#FFFFFF",
+    "secondary": "#333366",
+    "trim": "#000000",
+    "eraStyle": "modern",
+    "pattern": "pinstripe",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "COL_2017",
+    "years": [
+     2017,
+     2099
+    ],
+    "identity": "Colorado Rockies",
+    "primary": "#FFFFFF",
+    "secondary": "#333366",
+    "trim": "#C4CED4",
+    "eraStyle": "modern",
+    "pattern": "pinstripe",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   }
+  ],
+  "DET": [
+   {
+    "key": "DET_1969",
+    "years": [
+     1969,
+     1971
+    ],
+    "identity": "Detroit Tigers",
+    "primary": "#FFFFFF",
+    "secondary": "#0C2340",
+    "trim": "#FA4616",
+    "eraStyle": "flannel",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "DET_1972",
+    "years": [
+     1972,
+     1983
+    ],
+    "identity": "Detroit Tigers",
+    "primary": "#FFFFFF",
+    "secondary": "#0C2340",
+    "trim": "#FA4616",
+    "eraStyle": "pullover",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "DET_1984",
+    "years": [
+     1984,
+     1986
+    ],
+    "identity": "Detroit Tigers",
+    "primary": "#FFFFFF",
+    "secondary": "#0C2340",
+    "trim": "#FA4616",
+    "eraStyle": "pullover",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "DET_1987",
+    "years": [
+     1987,
+     2005
+    ],
+    "identity": "Detroit Tigers",
+    "primary": "#FFFFFF",
+    "secondary": "#0C2340",
+    "trim": "#FA4616",
+    "eraStyle": "buttoned",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "DET_2006",
+    "years": [
+     2006,
+     2099
+    ],
+    "identity": "Detroit Tigers",
+    "primary": "#FFFFFF",
+    "secondary": "#0C2340",
+    "trim": "#FA4616",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   }
+  ],
+  "HOU": [
+   {
+    "key": "HOU_1969",
+    "years": [
+     1969,
+     1974
+    ],
+    "identity": "Houston Astros (shooting star)",
+    "primary": "#FFFFFF",
+    "secondary": "#002D62",
+    "trim": "#EB6E1F",
+    "eraStyle": "flannel",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "HOU_1975",
+    "years": [
+     1975,
+     1986
+    ],
+    "identity": "Houston Astros (tequila sunrise)",
+    "primary": "#FDBB30",
+    "secondary": "#E86100",
+    "trim": "#002D62",
+    "eraStyle": "pullover",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "HOU_1987",
+    "years": [
+     1987,
+     1993
+    ],
+    "identity": "Houston Astros (rainbow shoulder)",
+    "primary": "#FFFFFF",
+    "secondary": "#E86100",
+    "trim": "#002D62",
+    "eraStyle": "buttoned",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "HOU_1994",
+    "years": [
+     1994,
+     1999
+    ],
+    "identity": "Houston Astros (navy & gold)",
+    "primary": "#FFFFFF",
+    "secondary": "#002D62",
+    "trim": "#B49759",
+    "eraStyle": "buttoned",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline. Trim corrected during audit.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "HOU_2000",
+    "years": [
+     2000,
+     2005
+    ],
+    "identity": "Houston Astros (brick era)",
+    "primary": "#FFFFFF",
+    "secondary": "#9B2743",
+    "trim": "#000000",
+    "eraStyle": "buttoned",
+    "pattern": "pinstripe",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "HOU_2006",
+    "years": [
+     2006,
+     2012
+    ],
+    "identity": "Houston Astros (brick era)",
+    "primary": "#FFFFFF",
+    "secondary": "#9B2743",
+    "trim": "#000000",
+    "eraStyle": "modern",
+    "pattern": "pinstripe",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "HOU_2013",
+    "years": [
+     2013,
+     2099
+    ],
+    "identity": "Houston Astros",
+    "primary": "#FFFFFF",
+    "secondary": "#002D62",
+    "trim": "#EB6E1F",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   }
+  ],
+  "KC": [
+   {
+    "key": "KC_1969",
+    "years": [
+     1969,
+     1972
+    ],
+    "identity": "Kansas City Royals",
+    "primary": "#FFFFFF",
+    "secondary": "#004687",
+    "trim": "#004687",
+    "eraStyle": "flannel",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "KC_1973",
+    "years": [
+     1973,
+     1991
+    ],
+    "identity": "Kansas City Royals",
+    "primary": "#FFFFFF",
+    "secondary": "#004687",
+    "trim": "#7BB2DD",
+    "eraStyle": "pullover",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "KC_1992",
+    "years": [
+     1992,
+     2005
+    ],
+    "identity": "Kansas City Royals",
+    "primary": "#FFFFFF",
+    "secondary": "#004687",
+    "trim": "#BD9B60",
+    "eraStyle": "buttoned",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "KC_2006",
+    "years": [
+     2006,
+     2099
+    ],
+    "identity": "Kansas City Royals",
+    "primary": "#FFFFFF",
+    "secondary": "#004687",
+    "trim": "#BD9B60",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   }
+  ],
+  "LAA": [
+   {
+    "key": "LAA_1969",
+    "years": [
+     1969,
+     1996
+    ],
+    "identity": "California Angels",
+    "tricode": "CAL",
+    "primary": "#FFFFFF",
+    "secondary": "#003263",
+    "trim": "#BA0021",
+    "eraStyle": "flannel",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "LAA_1997",
+    "years": [
+     1997,
+     2001
+    ],
+    "identity": "Anaheim Angels (periwinkle era)",
+    "tricode": "ANA",
+    "primary": "#FFFFFF",
+    "secondary": "#003263",
+    "trim": "#93B1D7",
+    "eraStyle": "buttoned",
+    "pattern": "pinstripe",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "LAA_2002",
+    "years": [
+     2002,
+     2004
+    ],
+    "identity": "Anaheim Angels",
+    "tricode": "ANA",
+    "primary": "#FFFFFF",
+    "secondary": "#BA0021",
+    "trim": "#003263",
+    "eraStyle": "buttoned",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "LAA_2005",
+    "years": [
+     2005,
+     2005
+    ],
+    "identity": "Los Angeles Angels",
+    "primary": "#FFFFFF",
+    "secondary": "#BA0021",
+    "trim": "#003263",
+    "eraStyle": "buttoned",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "LAA_2006",
+    "years": [
+     2006,
+     2099
+    ],
+    "identity": "Los Angeles Angels",
+    "primary": "#FFFFFF",
+    "secondary": "#BA0021",
+    "trim": "#003263",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   }
+  ],
+  "LAD": [
+   {
+    "key": "LAD_1969",
+    "years": [
+     1969,
+     1971
+    ],
+    "identity": "Los Angeles Dodgers",
+    "primary": "#FFFFFF",
+    "secondary": "#005A9C",
+    "trim": "#EF3E42",
+    "eraStyle": "flannel",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "LAD_1972",
+    "years": [
+     1972,
+     1986
+    ],
+    "identity": "Los Angeles Dodgers",
+    "primary": "#FFFFFF",
+    "secondary": "#005A9C",
+    "trim": "#EF3E42",
+    "eraStyle": "pullover",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "LAD_1987",
+    "years": [
+     1987,
+     2005
+    ],
+    "identity": "Los Angeles Dodgers",
+    "primary": "#FFFFFF",
+    "secondary": "#005A9C",
+    "trim": "#EF3E42",
+    "eraStyle": "buttoned",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "LAD_2006",
+    "years": [
+     2006,
+     2006
+    ],
+    "identity": "Los Angeles Dodgers",
+    "primary": "#FFFFFF",
+    "secondary": "#005A9C",
+    "trim": "#EF3E42",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "LAD_2007",
+    "years": [
+     2007,
+     2099
+    ],
+    "identity": "Los Angeles Dodgers",
+    "primary": "#FFFFFF",
+    "secondary": "#005A9C",
+    "trim": "#EF3E42",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   }
+  ],
+  "MIA": [
+   {
+    "key": "MIA_1993",
+    "years": [
+     1993,
+     2005
+    ],
+    "identity": "Florida Marlins",
+    "tricode": "FLA",
+    "primary": "#FFFFFF",
+    "secondary": "#00A3AD",
+    "trim": "#000000",
+    "eraStyle": "buttoned",
+    "pattern": "pinstripe",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "MIA_2006",
+    "years": [
+     2006,
+     2011
+    ],
+    "identity": "Florida Marlins",
+    "tricode": "FLA",
+    "primary": "#FFFFFF",
+    "secondary": "#00A3AD",
+    "trim": "#000000",
+    "eraStyle": "modern",
+    "pattern": "pinstripe",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "MIA_2012",
+    "years": [
+     2012,
+     2018
+    ],
+    "identity": "Miami Marlins",
+    "primary": "#FFFFFF",
+    "secondary": "#F9423A",
+    "trim": "#0077C8",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "MIA_2019",
+    "years": [
+     2019,
+     2099
+    ],
+    "identity": "Miami Marlins",
+    "primary": "#FFFFFF",
+    "secondary": "#000000",
+    "trim": "#00A3E0",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline. Trim corrected during audit.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   }
+  ],
+  "MIL": [
+   {
+    "key": "MIL_1970",
+    "years": [
+     1970,
+     1977
+    ],
+    "identity": "Milwaukee Brewers",
+    "primary": "#FFFFFF",
+    "secondary": "#0A2351",
+    "trim": "#FFC52F",
+    "eraStyle": "pullover",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "MIL_1978",
+    "years": [
+     1978,
+     1993
+    ],
+    "identity": "Milwaukee Brewers (ball-in-glove)",
+    "primary": "#FFFFFF",
+    "secondary": "#0A2351",
+    "trim": "#FFC52F",
+    "eraStyle": "pullover",
+    "pattern": "pinstripe",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "MIL_1994",
+    "years": [
+     1994,
+     1999
+    ],
+    "identity": "Milwaukee Brewers",
+    "primary": "#FFFFFF",
+    "secondary": "#0A2351",
+    "trim": "#00534C",
+    "eraStyle": "buttoned",
+    "pattern": "pinstripe",
+    "confidence": "low",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "MIL_2000",
+    "years": [
+     2000,
+     2005
+    ],
+    "identity": "Milwaukee Brewers",
+    "primary": "#FFFFFF",
+    "secondary": "#12284B",
+    "trim": "#B6922E",
+    "eraStyle": "buttoned",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "MIL_2006",
+    "years": [
+     2006,
+     2099
+    ],
+    "identity": "Milwaukee Brewers",
+    "primary": "#FFFFFF",
+    "secondary": "#12284B",
+    "trim": "#B6922E",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   }
+  ],
+  "MIN": [
+   {
+    "key": "MIN_1969",
+    "years": [
+     1969,
+     1971
+    ],
+    "identity": "Minnesota Twins",
+    "primary": "#FFFFFF",
+    "secondary": "#002B5C",
+    "trim": "#D31145",
+    "eraStyle": "flannel",
+    "pattern": "pinstripe",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "MIN_1972",
+    "years": [
+     1972,
+     1986
+    ],
+    "identity": "Minnesota Twins",
+    "primary": "#FFFFFF",
+    "secondary": "#002B5C",
+    "trim": "#D31145",
+    "eraStyle": "pullover",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "MIN_1987",
+    "years": [
+     1987,
+     2005
+    ],
+    "identity": "Minnesota Twins",
+    "primary": "#FFFFFF",
+    "secondary": "#002B5C",
+    "trim": "#D31145",
+    "eraStyle": "buttoned",
+    "pattern": "pinstripe",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "MIN_2006",
+    "years": [
+     2006,
+     2009
+    ],
+    "identity": "Minnesota Twins",
+    "primary": "#FFFFFF",
+    "secondary": "#002B5C",
+    "trim": "#D31145",
+    "eraStyle": "modern",
+    "pattern": "pinstripe",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "MIN_2010",
+    "years": [
+     2010,
+     2099
+    ],
+    "identity": "Minnesota Twins",
+    "primary": "#FFFFFF",
+    "secondary": "#002B5C",
+    "trim": "#D31145",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   }
+  ],
+  "NYM": [
+   {
+    "key": "NYM_1969",
+    "years": [
+     1969,
+     1977
+    ],
+    "identity": "New York Mets",
+    "primary": "#FFFFFF",
+    "secondary": "#002D72",
+    "trim": "#FF5910",
+    "eraStyle": "flannel",
+    "pattern": "pinstripe",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "NYM_1978",
+    "years": [
+     1978,
+     1992
+    ],
+    "identity": "New York Mets (racing stripe)",
+    "primary": "#FFFFFF",
+    "secondary": "#002D72",
+    "trim": "#FF5910",
+    "eraStyle": "pullover",
+    "pattern": "pinstripe",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "NYM_1993",
+    "years": [
+     1993,
+     1997
+    ],
+    "identity": "New York Mets",
+    "primary": "#FFFFFF",
+    "secondary": "#002D72",
+    "trim": "#FF5910",
+    "eraStyle": "buttoned",
+    "pattern": "pinstripe",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "NYM_1998",
+    "years": [
+     1998,
+     2005
+    ],
+    "identity": "New York Mets (black era)",
+    "primary": "#FFFFFF",
+    "secondary": "#000000",
+    "trim": "#002D72",
+    "eraStyle": "buttoned",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "NYM_2006",
+    "years": [
+     2006,
+     2011
+    ],
+    "identity": "New York Mets (black era)",
+    "primary": "#FFFFFF",
+    "secondary": "#000000",
+    "trim": "#002D72",
+    "eraStyle": "modern",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "NYM_2012",
+    "years": [
+     2012,
+     2099
+    ],
+    "identity": "New York Mets",
+    "primary": "#FFFFFF",
+    "secondary": "#002D72",
+    "trim": "#FF5910",
+    "eraStyle": "modern",
+    "pattern": "pinstripe",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   }
+  ],
+  "NYY": [
+   {
+    "key": "NYY_1913",
+    "years": [
+     1913,
+     1968
+    ],
+    "identity": "New York Yankees",
+    "primary": "#FFFFFF",
+    "secondary": "#132448",
+    "trim": "#C4CED3",
+    "eraStyle": "flannel",
+    "pattern": "pinstripe",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "NYY_1969",
+    "years": [
+     1969,
+     1972
+    ],
+    "identity": "New York Yankees",
+    "primary": "#FFFFFF",
+    "secondary": "#132448",
+    "trim": "#C4CED3",
+    "eraStyle": "flannel",
+    "pattern": "pinstripe",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "NYY_1973",
+    "years": [
+     1973,
+     2005
+    ],
+    "identity": "New York Yankees",
+    "primary": "#FFFFFF",
+    "secondary": "#132448",
+    "trim": "#C4CED3",
+    "eraStyle": "buttoned",
+    "pattern": "pinstripe",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "NYY_2006",
+    "years": [
+     2006,
+     2099
+    ],
+    "identity": "New York Yankees",
+    "primary": "#FFFFFF",
+    "secondary": "#132448",
+    "trim": "#C4CED3",
+    "eraStyle": "modern",
+    "pattern": "pinstripe",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   }
+  ],
+  "OAK": [
+   {
+    "key": "OAK_1901",
+    "years": [
+     1901,
+     1954
+    ],
+    "identity": "Philadelphia Athletics",
+    "tricode": "PHA",
+    "primary": "#FFFFFF",
+    "secondary": "#003087",
+    "trim": "#A2AAAD",
+    "eraStyle": "flannel",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "OAK_1969",
+    "years": [
+     1969,
+     1971
+    ],
+    "identity": "Oakland Athletics",
+    "primary": "#FFFFFF",
+    "secondary": "#003831",
+    "trim": "#EFB21E",
+    "eraStyle": "flannel",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "OAK_1972",
+    "years": [
+     1972,
+     1980
+    ],
+    "identity": "Oakland Athletics (Swingin' A's)",
+    "primary": "#EFB21E",
+    "secondary": "#003831",
+    "trim": "#FFFFFF",
+    "eraStyle": "pullover",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "OAK_1981",
+    "years": [
+     1981,
+     1986
+    ],
+    "identity": "Oakland Athletics",
+    "primary": "#FFFFFF",
+    "secondary": "#003831",
+    "trim": "#EFB21E",
+    "eraStyle": "pullover",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "OAK_1987",
+    "years": [
+     1987,
+     2005
+    ],
+    "identity": "Oakland Athletics",
+    "primary": "#FFFFFF",
+    "secondary": "#003831",
+    "trim": "#EFB21E",
+    "eraStyle": "buttoned",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "OAK_2006",
+    "years": [
+     2006,
+     2099
+    ],
+    "identity": "Oakland Athletics",
+    "primary": "#FFFFFF",
+    "secondary": "#003831",
+    "trim": "#EFB21E",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   }
+  ],
+  "PHI": [
+   {
+    "key": "PHI_1938",
+    "years": [
+     1938,
+     1949
+    ],
+    "identity": "Philadelphia Phillies",
+    "primary": "#FFFFFF",
+    "secondary": "#284898",
+    "trim": "#E81828",
+    "eraStyle": "flannel",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "PHI_1969",
+    "years": [
+     1969,
+     1971
+    ],
+    "identity": "Philadelphia Phillies",
+    "primary": "#FFFFFF",
+    "secondary": "#6F263D",
+    "trim": "#6F263D",
+    "eraStyle": "flannel",
+    "pattern": "pinstripe",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "PHI_1972",
+    "years": [
+     1972,
+     1991
+    ],
+    "identity": "Philadelphia Phillies (burgundy era)",
+    "primary": "#FFFFFF",
+    "secondary": "#6F263D",
+    "trim": "#6F263D",
+    "eraStyle": "pullover",
+    "pattern": "pinstripe",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "PHI_1992",
+    "years": [
+     1992,
+     2005
+    ],
+    "identity": "Philadelphia Phillies",
+    "primary": "#FFFFFF",
+    "secondary": "#E81828",
+    "trim": "#002D72",
+    "eraStyle": "buttoned",
+    "pattern": "pinstripe",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "PHI_2006",
+    "years": [
+     2006,
+     2018
+    ],
+    "identity": "Philadelphia Phillies",
+    "primary": "#FFFFFF",
+    "secondary": "#E81828",
+    "trim": "#002D72",
+    "eraStyle": "modern",
+    "pattern": "pinstripe",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "PHI_2019",
+    "years": [
+     2019,
+     2099
+    ],
+    "identity": "Philadelphia Phillies",
+    "primary": "#FFFFFF",
+    "secondary": "#E81828",
+    "trim": "#002D72",
+    "eraStyle": "modern",
+    "pattern": "pinstripe",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   }
+  ],
+  "PIT": [
+   {
+    "key": "PIT_1948",
+    "years": [
+     1948,
+     1968
+    ],
+    "identity": "Pittsburgh Pirates",
+    "primary": "#FFFFFF",
+    "secondary": "#27251F",
+    "trim": "#FDB827",
+    "eraStyle": "flannel",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "PIT_1969",
+    "years": [
+     1969,
+     1976
+    ],
+    "identity": "Pittsburgh Pirates",
+    "primary": "#FFFFFF",
+    "secondary": "#27251F",
+    "trim": "#FDB827",
+    "eraStyle": "flannel",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "PIT_1977",
+    "years": [
+     1977,
+     1984
+    ],
+    "identity": "Pittsburgh Pirates (bumblebee era)",
+    "primary": "#FDB827",
+    "secondary": "#27251F",
+    "trim": "#FFFFFF",
+    "eraStyle": "pullover",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "PIT_1985",
+    "years": [
+     1985,
+     1996
+    ],
+    "identity": "Pittsburgh Pirates",
+    "primary": "#FFFFFF",
+    "secondary": "#27251F",
+    "trim": "#FDB827",
+    "eraStyle": "pullover",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "PIT_1997",
+    "years": [
+     1997,
+     2005
+    ],
+    "identity": "Pittsburgh Pirates",
+    "primary": "#FFFFFF",
+    "secondary": "#27251F",
+    "trim": "#FDB827",
+    "eraStyle": "buttoned",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "PIT_2006",
+    "years": [
+     2006,
+     2099
+    ],
+    "identity": "Pittsburgh Pirates",
+    "primary": "#FFFFFF",
+    "secondary": "#27251F",
+    "trim": "#FDB827",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   }
+  ],
+  "SD": [
+   {
+    "key": "SD_1969",
+    "years": [
+     1969,
+     1971
+    ],
+    "identity": "San Diego Padres",
+    "primary": "#FFFFFF",
+    "secondary": "#2F241D",
+    "trim": "#FFC425",
+    "eraStyle": "flannel",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "SD_1972",
+    "years": [
+     1972,
+     1984
+    ],
+    "identity": "San Diego Padres (brown & gold)",
+    "primary": "#FFC425",
+    "secondary": "#2F241D",
+    "trim": "#FFFFFF",
+    "eraStyle": "pullover",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "SD_1985",
+    "years": [
+     1985,
+     1990
+    ],
+    "identity": "San Diego Padres",
+    "primary": "#FFFFFF",
+    "secondary": "#2F241D",
+    "trim": "#D2691E",
+    "eraStyle": "buttoned",
+    "pattern": "pinstripe",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "SD_1991",
+    "years": [
+     1991,
+     2003
+    ],
+    "identity": "San Diego Padres",
+    "primary": "#FFFFFF",
+    "secondary": "#002D62",
+    "trim": "#D2691E",
+    "eraStyle": "buttoned",
+    "pattern": "pinstripe",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "SD_2004",
+    "years": [
+     2004,
+     2005
+    ],
+    "identity": "San Diego Padres",
+    "primary": "#FFFFFF",
+    "secondary": "#002D62",
+    "trim": "#A0AAB2",
+    "eraStyle": "buttoned",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "SD_2006",
+    "years": [
+     2006,
+     2019
+    ],
+    "identity": "San Diego Padres",
+    "primary": "#FFFFFF",
+    "secondary": "#002D62",
+    "trim": "#A0AAB2",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "SD_2020",
+    "years": [
+     2020,
+     2099
+    ],
+    "identity": "San Diego Padres",
+    "primary": "#FFFFFF",
+    "secondary": "#2F241D",
+    "trim": "#FFC425",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   }
+  ],
+  "SEA": [
+   {
+    "key": "SEA_1977",
+    "years": [
+     1977,
+     1986
+    ],
+    "identity": "Seattle Mariners (trident era)",
+    "primary": "#FFFFFF",
+    "secondary": "#00338D",
+    "trim": "#FFC52F",
+    "eraStyle": "pullover",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "SEA_1987",
+    "years": [
+     1987,
+     1992
+    ],
+    "identity": "Seattle Mariners",
+    "primary": "#FFFFFF",
+    "secondary": "#00338D",
+    "trim": "#FFC52F",
+    "eraStyle": "buttoned",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "SEA_1993",
+    "years": [
+     1993,
+     2005
+    ],
+    "identity": "Seattle Mariners",
+    "primary": "#FFFFFF",
+    "secondary": "#0C2C56",
+    "trim": "#005C5C",
+    "eraStyle": "buttoned",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "SEA_2006",
+    "years": [
+     2006,
+     2099
+    ],
+    "identity": "Seattle Mariners",
+    "primary": "#FFFFFF",
+    "secondary": "#0C2C56",
+    "trim": "#005C5C",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   }
+  ],
+  "SF": [
+   {
+    "key": "SF_1901",
+    "years": [
+     1901,
+     1957
+    ],
+    "identity": "New York Giants",
+    "tricode": "NYG",
+    "primary": "#FFFFFF",
+    "secondary": "#27251F",
+    "trim": "#FD5A1E",
+    "eraStyle": "flannel",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "SF_1969",
+    "years": [
+     1969,
+     1976
+    ],
+    "identity": "San Francisco Giants",
+    "primary": "#FFFFFF",
+    "secondary": "#FD5A1E",
+    "trim": "#27251F",
+    "eraStyle": "flannel",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "SF_1977",
+    "years": [
+     1977,
+     1982
+    ],
+    "identity": "San Francisco Giants",
+    "primary": "#FFFFFF",
+    "secondary": "#FD5A1E",
+    "trim": "#27251F",
+    "eraStyle": "pullover",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "SF_1983",
+    "years": [
+     1983,
+     1986
+    ],
+    "identity": "San Francisco Giants",
+    "primary": "#FFFFFF",
+    "secondary": "#27251F",
+    "trim": "#FD5A1E",
+    "eraStyle": "pullover",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "SF_1987",
+    "years": [
+     1987,
+     1999
+    ],
+    "identity": "San Francisco Giants",
+    "primary": "#FFFFFF",
+    "secondary": "#27251F",
+    "trim": "#FD5A1E",
+    "eraStyle": "buttoned",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "SF_2000",
+    "years": [
+     2000,
+     2005
+    ],
+    "identity": "San Francisco Giants",
+    "primary": "#FAF0E6",
+    "secondary": "#27251F",
+    "trim": "#FD5A1E",
+    "eraStyle": "buttoned",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "SF_2006",
+    "years": [
+     2006,
+     2099
+    ],
+    "identity": "San Francisco Giants",
+    "primary": "#FAF0E6",
+    "secondary": "#27251F",
+    "trim": "#FD5A1E",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   }
+  ],
+  "STL": [
+   {
+    "key": "STL_1969",
+    "years": [
+     1969,
+     1972
+    ],
+    "identity": "St. Louis Cardinals",
+    "primary": "#FFFFFF",
+    "secondary": "#C41E3A",
+    "trim": "#0C2340",
+    "eraStyle": "flannel",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "STL_1973",
+    "years": [
+     1973,
+     1984
+    ],
+    "identity": "St. Louis Cardinals",
+    "primary": "#FFFFFF",
+    "secondary": "#C41E3A",
+    "trim": "#0C2340",
+    "eraStyle": "pullover",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "STL_1985",
+    "years": [
+     1985,
+     1986
+    ],
+    "identity": "St. Louis Cardinals",
+    "primary": "#FFFFFF",
+    "secondary": "#C41E3A",
+    "trim": "#0C2340",
+    "eraStyle": "pullover",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "STL_1987",
+    "years": [
+     1987,
+     2005
+    ],
+    "identity": "St. Louis Cardinals",
+    "primary": "#FFFFFF",
+    "secondary": "#C41E3A",
+    "trim": "#0C2340",
+    "eraStyle": "buttoned",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "STL_2006",
+    "years": [
+     2006,
+     2099
+    ],
+    "identity": "St. Louis Cardinals",
+    "primary": "#FFFFFF",
+    "secondary": "#C41E3A",
+    "trim": "#0C2340",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   }
+  ],
+  "TB": [
+   {
+    "key": "TB_1998",
+    "years": [
+     1998,
+     2000
+    ],
+    "identity": "Tampa Bay Devil Rays (rainbow era)",
+    "primary": "#FFFFFF",
+    "secondary": "#612D82",
+    "trim": "#00A9E0",
+    "eraStyle": "buttoned",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "TB_2001",
+    "years": [
+     2001,
+     2005
+    ],
+    "identity": "Tampa Bay Devil Rays (green era)",
+    "primary": "#FFFFFF",
+    "secondary": "#00483A",
+    "trim": "#000000",
+    "eraStyle": "buttoned",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "TB_2006",
+    "years": [
+     2006,
+     2007
+    ],
+    "identity": "Tampa Bay Devil Rays (green era)",
+    "primary": "#FFFFFF",
+    "secondary": "#00483A",
+    "trim": "#000000",
+    "eraStyle": "modern",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "TB_2008",
+    "years": [
+     2008,
+     2099
+    ],
+    "identity": "Tampa Bay Rays",
+    "primary": "#FFFFFF",
+    "secondary": "#092C5C",
+    "trim": "#8FBCE6",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   }
+  ],
+  "TEX": [
+   {
+    "key": "TEX_1972",
+    "years": [
+     1972,
+     1982
+    ],
+    "identity": "Texas Rangers",
+    "primary": "#FFFFFF",
+    "secondary": "#003278",
+    "trim": "#C0111F",
+    "eraStyle": "pullover",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "TEX_1983",
+    "years": [
+     1983,
+     1986
+    ],
+    "identity": "Texas Rangers",
+    "primary": "#FFFFFF",
+    "secondary": "#003278",
+    "trim": "#C0111F",
+    "eraStyle": "pullover",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "TEX_1987",
+    "years": [
+     1987,
+     1993
+    ],
+    "identity": "Texas Rangers",
+    "primary": "#FFFFFF",
+    "secondary": "#003278",
+    "trim": "#C0111F",
+    "eraStyle": "buttoned",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "TEX_1994",
+    "years": [
+     1994,
+     2000
+    ],
+    "identity": "Texas Rangers",
+    "primary": "#FFFFFF",
+    "secondary": "#C0111F",
+    "trim": "#003278",
+    "eraStyle": "buttoned",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "TEX_2001",
+    "years": [
+     2001,
+     2005
+    ],
+    "identity": "Texas Rangers",
+    "primary": "#FFFFFF",
+    "secondary": "#003278",
+    "trim": "#C0111F",
+    "eraStyle": "buttoned",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "TEX_2006",
+    "years": [
+     2006,
+     2099
+    ],
+    "identity": "Texas Rangers",
+    "primary": "#FFFFFF",
+    "secondary": "#003278",
+    "trim": "#C0111F",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   }
+  ],
+  "TOR": [
+   {
+    "key": "TOR_1977",
+    "years": [
+     1977,
+     1996
+    ],
+    "identity": "Toronto Blue Jays",
+    "primary": "#FFFFFF",
+    "secondary": "#134A8E",
+    "trim": "#E8291C",
+    "eraStyle": "pullover",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "TOR_1997",
+    "years": [
+     1997,
+     2003
+    ],
+    "identity": "Toronto Blue Jays",
+    "primary": "#FFFFFF",
+    "secondary": "#134A8E",
+    "trim": "#001742",
+    "eraStyle": "buttoned",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "TOR_2004",
+    "years": [
+     2004,
+     2005
+    ],
+    "identity": "Toronto Blue Jays (black & graphite era)",
+    "primary": "#FFFFFF",
+    "secondary": "#1D2D5C",
+    "trim": "#000000",
+    "eraStyle": "buttoned",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "TOR_2006",
+    "years": [
+     2006,
+     2011
+    ],
+    "identity": "Toronto Blue Jays (black & graphite era)",
+    "primary": "#FFFFFF",
+    "secondary": "#1D2D5C",
+    "trim": "#000000",
+    "eraStyle": "modern",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "TOR_2012",
+    "years": [
+     2012,
+     2099
+    ],
+    "identity": "Toronto Blue Jays",
+    "primary": "#FFFFFF",
+    "secondary": "#134A8E",
+    "trim": "#1D2D5C",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   }
+  ],
+  "WSH": [
+   {
+    "key": "WSH_1969",
+    "years": [
+     1969,
+     1991
+    ],
+    "identity": "Montreal Expos",
+    "tricode": "MON",
+    "primary": "#FFFFFF",
+    "secondary": "#003087",
+    "trim": "#E4002B",
+    "eraStyle": "pullover",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "WSH_1992",
+    "years": [
+     1992,
+     2004
+    ],
+    "identity": "Montreal Expos",
+    "tricode": "MON",
+    "primary": "#FFFFFF",
+    "secondary": "#003087",
+    "trim": "#E4002B",
+    "eraStyle": "buttoned",
+    "pattern": "pinstripe",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "WSH_2005",
+    "years": [
+     2005,
+     2005
+    ],
+    "identity": "Washington Nationals",
+    "primary": "#FFFFFF",
+    "secondary": "#AB0003",
+    "trim": "#14225A",
+    "eraStyle": "buttoned",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   },
+   {
+    "key": "WSH_2006",
+    "years": [
+     2006,
+     2099
+    ],
+    "identity": "Washington Nationals",
+    "primary": "#FFFFFF",
+    "secondary": "#AB0003",
+    "trim": "#14225A",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Body, accent, trim, pattern and construction era checked against National Baseball Hall of Fame Dressed to the Nines uniform database and MLBCollectors team-by-team/year uniform archive.",
+    "verified_by": "Codex source audit (owner-requested)",
+    "verified_on": "2026-08-03"
+   }
+  ],
+  "CLB": [
+   {
+    "key": "CLB_1942",
+    "years": [
+     1942,
+     1950
+    ],
+    "identity": "Cleveland Buckeyes",
+    "tricode": "CLB",
+    "primary": "#FFFFFF",
+    "secondary": "#1B2A4A",
+    "trim": "#B22222",
+    "eraStyle": "flannel",
+    "confidence": "low",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   }
+  ],
+  "NWE": [
+   {
+    "key": "NWE_1936",
+    "years": [
+     1936,
+     1948
+    ],
+    "identity": "Newark Eagles",
+    "tricode": "NWE",
+    "primary": "#FFFFFF",
+    "secondary": "#14213D",
+    "trim": "#C1121F",
+    "eraStyle": "flannel",
+    "confidence": "low",
+    "status": "unverified",
+    "source_note": ""
+   }
+  ],
+  "IND": [
+   {
+    "key": "IND_1931",
+    "years": [
+     1931,
+     1940
+    ],
+    "identity": "Indianapolis ABCs",
+    "tricode": "ABC",
+    "primary": "#F8F6EF",
+    "secondary": "#22304A",
+    "trim": "#8B0000",
+    "eraStyle": "flannel",
+    "confidence": "low",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   }
+  ]
+ }
+}

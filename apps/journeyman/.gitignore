@@ -1,0 +1,20 @@
+node_modules/
+dist/
+dist-admin/
+.admin-dev.*.log
+*.local
+.DS_Store
+
+# build-time aired-only data modules (pipeline/trim-unaired.mjs)
+src/data/generated/
+
+# playercards render temp bundle
+scripts/.render.mjs
+pipeline/.cache/
+pipeline/out/
+.env
+.vercel
+.env*
+
+# TypeScript incremental build cache
+*.tsbuildinfo

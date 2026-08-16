@@ -1,0 +1,38 @@
+{
+  "outputBase": "nba-batch-2026-08-04-final",
+  "startId": 81,
+  "players": [
+    {
+      "answer": "Raja Bell", "brId": "bellra01", "espnId": 49,
+      "hints": { "position": "SG", "height": "6'5\"", "draftYear": "1999", "draftPick": "Undrafted", "college": "Florida International" },
+      "summaryAccolades": ["1× All-Defensive First Team", "1× All-Defensive Second Team"],
+      "stintAccolades": [{ "franchise": "PHX", "startYear": 2005, "endYear": 2008, "type": "all_defensive", "count": 2 }],
+      "jerseyHistory": [{ "franchise": "PHI", "start": 2000, "end": 2000, "number": 19 }, { "franchise": "PHI", "start": 2001, "end": 2001, "number": 11 }, { "franchise": "DAL", "start": 2002, "end": 2002, "number": 11 }, { "franchise": "UTA", "start": 2003, "end": 2004, "number": 19 }, { "franchise": "PHX", "start": 2005, "end": 2008, "number": 19 }, { "franchise": "CHA", "start": 2008, "end": 2009, "number": 19 }, { "franchise": "GSW", "start": 2009, "end": 2009, "number": 18 }, { "franchise": "UTA", "start": 2010, "end": 2011, "number": 19 }]
+    },
+    {
+      "answer": "Jarrett Jack", "brId": "jackja01", "espnId": 2768,
+      "hints": { "position": "PG/SG", "height": "6'3\"", "draftYear": "2005", "draftPick": "Round 1, #22", "college": "Georgia Tech" },
+      "jerseyHistory": [{ "franchise": "POR", "start": 2005, "end": 2007, "number": 1 }, { "franchise": "IND", "start": 2008, "end": 2008, "number": 1 }, { "franchise": "TOR", "start": 2009, "end": 2010, "number": 1 }, { "franchise": "NOP", "start": 2010, "end": 2011, "number": 2 }, { "franchise": "GSW", "start": 2012, "end": 2012, "number": 2 }, { "franchise": "CLE", "start": 2013, "end": 2013, "number": 1 }, { "franchise": "BKN", "start": 2014, "end": 2014, "number": 0 }, { "franchise": "BKN", "start": 2015, "end": 2015, "number": 2 }, { "franchise": "NOP", "start": 2016, "end": 2016, "number": 1 }, { "franchise": "NYK", "start": 2017, "end": 2017, "number": 55 }]
+    },
+    {
+      "answer": "Vladimir Radmanović", "brId": "radmavl01", "espnId": 1016,
+      "hints": { "position": "PF/SF", "height": "6'10\"", "draftYear": "2001", "draftPick": "Round 1, #12", "college": "FMP Železnik (Serbia)" },
+      "summaryAccolades": ["1× All-Rookie Second Team"],
+      "stintAccolades": [{ "franchise": "OKC", "startYear": 2001, "endYear": 2005, "type": "all_rookie", "count": 1 }],
+      "jerseyHistory": [{ "franchise": "OKC", "start": 2001, "end": 2005, "number": 77 }, { "franchise": "LAC", "start": 2005, "end": 2005, "number": 7 }, { "franchise": "LAL", "start": 2006, "end": 2008, "number": 10 }, { "franchise": "CHA", "start": 2008, "end": 2009, "number": 10 }, { "franchise": "GSW", "start": 2009, "end": 2010, "number": 77 }, { "franchise": "ATL", "start": 2011, "end": 2011, "number": 77 }, { "franchise": "CHI", "start": 2012, "end": 2012, "number": 77 }]
+    },
+    {
+      "answer": "Nate Robinson", "brId": "robinna01", "espnId": 2782,
+      "hints": { "position": "PG", "height": "5'9\"", "draftYear": "2005", "draftPick": "Round 1, #21", "college": "Washington" },
+      "summaryAccolades": ["3× Slam Dunk Contest champion"],
+      "stintAccolades": [{ "franchise": "NYK", "startYear": 2005, "endYear": 2008, "type": "dunk_champion", "count": 2 }, { "franchise": "NYK", "startYear": 2009, "endYear": 2009, "type": "dunk_champion", "count": 1 }],
+      "jerseyHistory": [{ "franchise": "NYK", "start": 2005, "end": 2008, "number": 4 }, { "franchise": "NYK", "start": 2009, "end": 2009, "number": 2 }, { "franchise": "BOS", "start": 2009, "end": 2010, "number": 4 }, { "franchise": "OKC", "start": 2010, "end": 2010, "number": 3 }, { "franchise": "GSW", "start": 2011, "end": 2011, "number": 2 }, { "franchise": "CHI", "start": 2012, "end": 2012, "number": 2 }, { "franchise": "DEN", "start": 2013, "end": 2013, "number": 10 }, { "franchise": "DEN", "start": 2014, "end": 2014, "number": 5 }, { "franchise": "LAC", "start": 2014, "end": 2014, "number": 8 }, { "franchise": "NOP", "start": 2015, "end": 2015, "number": 2 }]
+    },
+    {
+      "answer": "Matt Bonner", "brId": "bonnema01", "espnId": 1996,
+      "hints": { "position": "PF/C", "height": "6'10\"", "draftYear": "2003", "draftPick": "Round 2, #45", "college": "Florida" },
+      "jerseyHistory": [{ "franchise": "TOR", "start": 2004, "end": 2005, "number": 16 }, { "franchise": "SAS", "start": 2006, "end": 2015, "number": 15 }],
+      "awards": [{ "franchise": "SAS", "year": 2006, "type": "champion" }, { "franchise": "SAS", "year": 2013, "type": "champion" }]
+    }
+  ]
+}

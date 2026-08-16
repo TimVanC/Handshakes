@@ -1,0 +1,167 @@
+{
+  "_meta": {
+    "description": "NBA franchise colorways by era, post-1976 merger. For rendering generic era-accurate jerseys (no logos, no wordmarks). Years are season START years (e.g. 1995 = the 1995-96 season). Generated from general knowledge — every entry has a confidence flag. VERIFY all 'low' entries against teamcolorcodes.com and Basketball-Reference season pages before launch; transition years may be off by a season.",
+    "fields": {
+      "key": "unique id: TRICODE_startyear",
+      "primary": "main jersey body color (road jersey base)",
+      "secondary": "secondary/accent color",
+      "trim": "trim/outline color",
+      "eraStyle": "silhouette hint for renderer: classic (short/tight 70s-80s), nineties (looser, bold trim), baggy (2000s), modern (2010s+ minimal)",
+      "confidence": "high | medium | low"
+    },
+    "relocations": "Franchises keyed by MODERN tricode. Historical identities (SEA, NJN, VAN, NOH, KC Kings, San Diego Clippers, Washington Bullets, Charlotte original Hornets) are separate era entries under the modern franchise with a 'identity' label so the renderer can note era city if you ever want it."
+  },
+  "franchises": {
+    "ATL": [
+      { "key": "ATL_1976", "years": [1976, 1994], "identity": "Atlanta Hawks", "primary": "#DF1E36", "secondary": "#FFC423", "trim": "#FFFFFF", "eraStyle": "classic", "confidence": "high" },
+      { "key": "ATL_1995", "years": [1995, 1998], "identity": "Atlanta Hawks", "primary": "#DF1E36", "secondary": "#000000", "trim": "#FFC423", "eraStyle": "nineties", "confidence": "medium" },
+      { "key": "ATL_1999", "years": [1999, 2006], "identity": "Atlanta Hawks", "primary": "#E03A3E", "secondary": "#002B5C", "trim": "#C4CED4", "eraStyle": "baggy", "confidence": "medium" },
+      { "key": "ATL_2007", "years": [2007, 2014], "identity": "Atlanta Hawks", "primary": "#002B5C", "secondary": "#E03A3E", "trim": "#FFFFFF", "eraStyle": "baggy", "confidence": "medium" },
+      { "key": "ATL_2015", "years": [2015, 2019], "identity": "Atlanta Hawks", "primary": "#E03A3E", "secondary": "#C1D32F", "trim": "#000000", "eraStyle": "modern", "confidence": "high" },
+      { "key": "ATL_2020", "years": [2020, 2099], "identity": "Atlanta Hawks", "primary": "#E03A3E", "secondary": "#C29A55", "trim": "#000000", "eraStyle": "modern", "confidence": "high" }
+    ],
+    "BOS": [
+      { "key": "BOS_1976", "years": [1976, 2099], "identity": "Boston Celtics", "primary": "#007A33", "secondary": "#FFFFFF", "trim": "#BA9653", "eraStyle": "classic", "confidence": "high" }
+    ],
+    "BKN": [
+      { "key": "BKN_1977", "years": [1977, 1989], "identity": "New Jersey Nets", "primary": "#CE1141", "secondary": "#002A60", "trim": "#FFFFFF", "eraStyle": "classic", "confidence": "medium" },
+      { "key": "BKN_1990", "years": [1990, 1996], "identity": "New Jersey Nets", "primary": "#002A60", "secondary": "#CE1141", "trim": "#C4CED4", "eraStyle": "nineties", "confidence": "medium" },
+      { "key": "BKN_1997", "years": [1997, 2011], "identity": "New Jersey Nets", "primary": "#002A60", "secondary": "#C4CED4", "trim": "#CE1141", "eraStyle": "baggy", "confidence": "medium" },
+      { "key": "BKN_2012", "years": [2012, 2099], "identity": "Brooklyn Nets", "primary": "#000000", "secondary": "#FFFFFF", "trim": "#707271", "eraStyle": "modern", "confidence": "high" }
+    ],
+    "CHA": [
+      { "key": "CHA_1988", "years": [1988, 2001], "identity": "Charlotte Hornets (original)", "primary": "#00788C", "secondary": "#1D1160", "trim": "#FFFFFF", "eraStyle": "nineties", "confidence": "high" },
+      { "key": "CHA_2004", "years": [2004, 2013], "identity": "Charlotte Bobcats", "primary": "#E35205", "secondary": "#14213D", "trim": "#C4CED4", "eraStyle": "baggy", "confidence": "medium" },
+      { "key": "CHA_2014", "years": [2014, 2099], "identity": "Charlotte Hornets", "primary": "#00788C", "secondary": "#1D1160", "trim": "#A1A1A4", "eraStyle": "modern", "confidence": "high" }
+    ],
+    "CHI": [
+      { "key": "CHI_1976", "years": [1976, 2099], "identity": "Chicago Bulls", "primary": "#CE1141", "secondary": "#000000", "trim": "#FFFFFF", "eraStyle": "classic", "confidence": "high" }
+    ],
+    "CLE": [
+      { "key": "CLE_1976", "years": [1976, 1982], "identity": "Cleveland Cavaliers", "primary": "#860038", "secondary": "#FDBB30", "trim": "#FFFFFF", "eraStyle": "classic", "confidence": "medium" },
+      { "key": "CLE_1983", "years": [1983, 1993], "identity": "Cleveland Cavaliers", "primary": "#F58426", "secondary": "#0047AB", "trim": "#FFFFFF", "eraStyle": "classic", "confidence": "low" },
+      { "key": "CLE_1994", "years": [1994, 2002], "identity": "Cleveland Cavaliers", "primary": "#006BB6", "secondary": "#000000", "trim": "#F58426", "eraStyle": "nineties", "confidence": "medium" },
+      { "key": "CLE_2003", "years": [2003, 2099], "identity": "Cleveland Cavaliers", "primary": "#860038", "secondary": "#FDBB30", "trim": "#041E42", "eraStyle": "baggy", "confidence": "high" }
+    ],
+    "DAL": [
+      { "key": "DAL_1980", "years": [1980, 2000], "identity": "Dallas Mavericks", "primary": "#0064B1", "secondary": "#00843D", "trim": "#FFFFFF", "eraStyle": "classic", "confidence": "medium" },
+      { "key": "DAL_2001", "years": [2001, 2099], "identity": "Dallas Mavericks", "primary": "#00538C", "secondary": "#002B5E", "trim": "#B8C4CA", "eraStyle": "baggy", "confidence": "high" }
+    ],
+    "DEN": [
+      { "key": "DEN_1976", "years": [1976, 1980], "identity": "Denver Nuggets", "primary": "#0E4B8C", "secondary": "#FDB927", "trim": "#CE1141", "eraStyle": "classic", "confidence": "low" },
+      { "key": "DEN_1981", "years": [1981, 1992], "identity": "Denver Nuggets (rainbow skyline)", "primary": "#FFFFFF", "secondary": "#418FDE", "trim": "#FDB927", "eraStyle": "classic", "confidence": "medium" },
+      { "key": "DEN_1993", "years": [1993, 2002], "identity": "Denver Nuggets", "primary": "#0E2240", "secondary": "#B49759", "trim": "#8B2131", "eraStyle": "nineties", "confidence": "low" },
+      { "key": "DEN_2003", "years": [2003, 2017], "identity": "Denver Nuggets", "primary": "#418FDE", "secondary": "#FDB927", "trim": "#0E2240", "eraStyle": "baggy", "confidence": "high" },
+      { "key": "DEN_2018", "years": [2018, 2099], "identity": "Denver Nuggets", "primary": "#0E2240", "secondary": "#FEC524", "trim": "#8B2131", "eraStyle": "modern", "confidence": "high" }
+    ],
+    "DET": [
+      { "key": "DET_1976", "years": [1976, 1995], "identity": "Detroit Pistons", "primary": "#C8102E", "secondary": "#1D42BA", "trim": "#FFFFFF", "eraStyle": "classic", "confidence": "high" },
+      { "key": "DET_1996", "years": [1996, 2000], "identity": "Detroit Pistons (teal era)", "primary": "#006272", "secondary": "#8B2331", "trim": "#FDBB30", "eraStyle": "nineties", "confidence": "medium" },
+      { "key": "DET_2001", "years": [2001, 2099], "identity": "Detroit Pistons", "primary": "#C8102E", "secondary": "#1D42BA", "trim": "#BEC0C2", "eraStyle": "baggy", "confidence": "high" }
+    ],
+    "GSW": [
+      { "key": "GSW_1976", "years": [1976, 1996], "identity": "Golden State Warriors", "primary": "#FFC72C", "secondary": "#1D428A", "trim": "#FFFFFF", "eraStyle": "classic", "confidence": "medium" },
+      { "key": "GSW_1997", "years": [1997, 2009], "identity": "Golden State Warriors", "primary": "#04529C", "secondary": "#FFA400", "trim": "#BE3A34", "eraStyle": "baggy", "confidence": "medium" },
+      { "key": "GSW_2010", "years": [2010, 2099], "identity": "Golden State Warriors", "primary": "#1D428A", "secondary": "#FFC72C", "trim": "#FFFFFF", "eraStyle": "modern", "confidence": "high" }
+    ],
+    "HOU": [
+      { "key": "HOU_1976", "years": [1976, 1994], "identity": "Houston Rockets", "primary": "#CE1141", "secondary": "#FDB927", "trim": "#FFFFFF", "eraStyle": "classic", "confidence": "medium" },
+      { "key": "HOU_1995", "years": [1995, 2002], "identity": "Houston Rockets (pinstripe)", "primary": "#002D62", "secondary": "#CE1141", "trim": "#C4CED4", "eraStyle": "nineties", "confidence": "medium" },
+      { "key": "HOU_2003", "years": [2003, 2099], "identity": "Houston Rockets", "primary": "#CE1141", "secondary": "#000000", "trim": "#C4CED4", "eraStyle": "baggy", "confidence": "high" }
+    ],
+    "IND": [
+      { "key": "IND_1976", "years": [1976, 1989], "identity": "Indiana Pacers", "primary": "#002D62", "secondary": "#FDBB30", "trim": "#FFFFFF", "eraStyle": "classic", "confidence": "high" },
+      { "key": "IND_1990", "years": [1990, 2004], "identity": "Indiana Pacers (pinstripe)", "primary": "#002D62", "secondary": "#FDBB30", "trim": "#FFFFFF", "eraStyle": "nineties", "confidence": "medium" },
+      { "key": "IND_2005", "years": [2005, 2099], "identity": "Indiana Pacers", "primary": "#002D62", "secondary": "#FDBB30", "trim": "#BEC0C2", "eraStyle": "modern", "confidence": "high" }
+    ],
+    "LAC": [
+      { "key": "LAC_1976", "years": [1976, 1977], "identity": "Buffalo Braves", "primary": "#FF8200", "secondary": "#0F4D92", "trim": "#FFFFFF", "eraStyle": "classic", "confidence": "low" },
+      { "key": "LAC_1978", "years": [1978, 1983], "identity": "San Diego Clippers", "primary": "#0F4D92", "secondary": "#FF8200", "trim": "#FFFFFF", "eraStyle": "classic", "confidence": "low" },
+      { "key": "LAC_1984", "years": [1984, 2014], "identity": "Los Angeles Clippers", "primary": "#C8102E", "secondary": "#1D428A", "trim": "#FFFFFF", "eraStyle": "classic", "confidence": "medium" },
+      { "key": "LAC_2015", "years": [2015, 2023], "identity": "Los Angeles Clippers", "primary": "#C8102E", "secondary": "#1D428A", "trim": "#BEC0C2", "eraStyle": "modern", "confidence": "high" },
+      { "key": "LAC_2024", "years": [2024, 2099], "identity": "Los Angeles Clippers", "primary": "#0C2340", "secondary": "#C8102E", "trim": "#C4CED4", "eraStyle": "modern", "confidence": "low" }
+    ],
+    "LAL": [
+      { "key": "LAL_1976", "years": [1976, 2099], "identity": "Los Angeles Lakers", "primary": "#552583", "secondary": "#FDB927", "trim": "#FFFFFF", "eraStyle": "classic", "confidence": "high" }
+    ],
+    "MEM": [
+      { "key": "MEM_1995", "years": [1995, 2000], "identity": "Vancouver Grizzlies", "primary": "#00A28D", "secondary": "#7F5FA6", "trim": "#E43C40", "eraStyle": "nineties", "confidence": "medium" },
+      { "key": "MEM_2001", "years": [2001, 2003], "identity": "Memphis Grizzlies", "primary": "#00A28D", "secondary": "#0C2340", "trim": "#E43C40", "eraStyle": "baggy", "confidence": "low" },
+      { "key": "MEM_2004", "years": [2004, 2099], "identity": "Memphis Grizzlies", "primary": "#5D76A9", "secondary": "#12173F", "trim": "#F5B112", "eraStyle": "baggy", "confidence": "high" }
+    ],
+    "MIA": [
+      { "key": "MIA_1988", "years": [1988, 2099], "identity": "Miami Heat", "primary": "#98002E", "secondary": "#000000", "trim": "#F9A01B", "eraStyle": "nineties", "confidence": "high" }
+    ],
+    "MIL": [
+      { "key": "MIL_1976", "years": [1976, 1992], "identity": "Milwaukee Bucks", "primary": "#00471B", "secondary": "#AC1A2F", "trim": "#FFFFFF", "eraStyle": "classic", "confidence": "medium" },
+      { "key": "MIL_1993", "years": [1993, 2005], "identity": "Milwaukee Bucks (purple era)", "primary": "#613D93", "secondary": "#00471B", "trim": "#C4CED4", "eraStyle": "nineties", "confidence": "medium" },
+      { "key": "MIL_2006", "years": [2006, 2014], "identity": "Milwaukee Bucks", "primary": "#AC1A2F", "secondary": "#00471B", "trim": "#C4CED4", "eraStyle": "baggy", "confidence": "medium" },
+      { "key": "MIL_2015", "years": [2015, 2099], "identity": "Milwaukee Bucks", "primary": "#00471B", "secondary": "#EEE1C6", "trim": "#0077C0", "eraStyle": "modern", "confidence": "high" }
+    ],
+    "MIN": [
+      { "key": "MIN_1989", "years": [1989, 1995], "identity": "Minnesota Timberwolves", "primary": "#266092", "secondary": "#0C2340", "trim": "#78BE20", "eraStyle": "nineties", "confidence": "medium" },
+      { "key": "MIN_1996", "years": [1996, 2007], "identity": "Minnesota Timberwolves (trees)", "primary": "#0C2340", "secondary": "#236192", "trim": "#78BE20", "eraStyle": "baggy", "confidence": "medium" },
+      { "key": "MIN_2008", "years": [2008, 2016], "identity": "Minnesota Timberwolves", "primary": "#0C2340", "secondary": "#236192", "trim": "#C4CED4", "eraStyle": "baggy", "confidence": "medium" },
+      { "key": "MIN_2017", "years": [2017, 2099], "identity": "Minnesota Timberwolves", "primary": "#0C2340", "secondary": "#236192", "trim": "#78BE20", "eraStyle": "modern", "confidence": "high" }
+    ],
+    "NOP": [
+      { "key": "NOP_2002", "years": [2002, 2012], "identity": "New Orleans Hornets", "primary": "#00788C", "secondary": "#1D1160", "trim": "#FFC72C", "eraStyle": "baggy", "confidence": "medium" },
+      { "key": "NOP_2013", "years": [2013, 2099], "identity": "New Orleans Pelicans", "primary": "#0C2340", "secondary": "#85714D", "trim": "#C8102E", "eraStyle": "modern", "confidence": "high" }
+    ],
+    "NYK": [
+      { "key": "NYK_1976", "years": [1976, 2099], "identity": "New York Knicks", "primary": "#006BB6", "secondary": "#F58426", "trim": "#FFFFFF", "eraStyle": "classic", "confidence": "high" }
+    ],
+    "OKC": [
+      { "key": "OKC_1976", "years": [1976, 1994], "identity": "Seattle SuperSonics", "primary": "#00653A", "secondary": "#FFC200", "trim": "#FFFFFF", "eraStyle": "classic", "confidence": "high" },
+      { "key": "OKC_1995", "years": [1995, 2000], "identity": "Seattle SuperSonics", "primary": "#00563F", "secondary": "#D32F41", "trim": "#FFC200", "eraStyle": "nineties", "confidence": "low" },
+      { "key": "OKC_2001", "years": [2001, 2007], "identity": "Seattle SuperSonics", "primary": "#00653A", "secondary": "#FFC200", "trim": "#FFFFFF", "eraStyle": "baggy", "confidence": "medium" },
+      { "key": "OKC_2008", "years": [2008, 2099], "identity": "Oklahoma City Thunder", "primary": "#007AC1", "secondary": "#EF3B24", "trim": "#002D62", "eraStyle": "modern", "confidence": "high" }
+    ],
+    "ORL": [
+      { "key": "ORL_1989", "years": [1989, 2099], "identity": "Orlando Magic (pinstripe)", "primary": "#0077C0", "secondary": "#000000", "trim": "#C4CED4", "eraStyle": "nineties", "confidence": "high" }
+    ],
+    "PHI": [
+      { "key": "PHI_1976", "years": [1976, 1996], "identity": "Philadelphia 76ers", "primary": "#006BB6", "secondary": "#ED174C", "trim": "#FFFFFF", "eraStyle": "classic", "confidence": "high" },
+      { "key": "PHI_1997", "years": [1997, 2008], "identity": "Philadelphia 76ers (black/gold era)", "primary": "#000000", "secondary": "#ED174C", "trim": "#C4CED4", "eraStyle": "baggy", "confidence": "medium" },
+      { "key": "PHI_2009", "years": [2009, 2099], "identity": "Philadelphia 76ers", "primary": "#006BB6", "secondary": "#ED174C", "trim": "#002B5C", "eraStyle": "modern", "confidence": "high" }
+    ],
+    "PHX": [
+      { "key": "PHX_1976", "years": [1976, 1991], "identity": "Phoenix Suns", "primary": "#422B72", "secondary": "#E56020", "trim": "#FFFFFF", "eraStyle": "classic", "confidence": "medium" },
+      { "key": "PHX_1992", "years": [1992, 1999], "identity": "Phoenix Suns (streaking sun)", "primary": "#5F259F", "secondary": "#E56020", "trim": "#000000", "eraStyle": "nineties", "confidence": "medium" },
+      { "key": "PHX_2000", "years": [2000, 2012], "identity": "Phoenix Suns", "primary": "#5F259F", "secondary": "#E56020", "trim": "#63727A", "eraStyle": "baggy", "confidence": "medium" },
+      { "key": "PHX_2013", "years": [2013, 2099], "identity": "Phoenix Suns", "primary": "#1D1160", "secondary": "#E56020", "trim": "#000000", "eraStyle": "modern", "confidence": "high" }
+    ],
+    "POR": [
+      { "key": "POR_1976", "years": [1976, 2099], "identity": "Portland Trail Blazers", "primary": "#E03A3E", "secondary": "#000000", "trim": "#FFFFFF", "eraStyle": "classic", "confidence": "high" }
+    ],
+    "SAC": [
+      { "key": "SAC_1976", "years": [1976, 1984], "identity": "Kansas City Kings", "primary": "#C8102E", "secondary": "#1D428A", "trim": "#FFFFFF", "eraStyle": "classic", "confidence": "medium" },
+      { "key": "SAC_1985", "years": [1985, 1993], "identity": "Sacramento Kings", "primary": "#C8102E", "secondary": "#1D428A", "trim": "#FFFFFF", "eraStyle": "classic", "confidence": "medium" },
+      { "key": "SAC_1994", "years": [1994, 2015], "identity": "Sacramento Kings", "primary": "#5A2D81", "secondary": "#000000", "trim": "#63727A", "eraStyle": "nineties", "confidence": "high" },
+      { "key": "SAC_2016", "years": [2016, 2099], "identity": "Sacramento Kings", "primary": "#5A2D81", "secondary": "#63727A", "trim": "#FFFFFF", "eraStyle": "modern", "confidence": "high" }
+    ],
+    "SAS": [
+      { "key": "SAS_1976", "years": [1976, 1988], "identity": "San Antonio Spurs", "primary": "#000000", "secondary": "#C4CED4", "trim": "#FFFFFF", "eraStyle": "classic", "confidence": "high" },
+      { "key": "SAS_1989", "years": [1989, 2001], "identity": "San Antonio Spurs (fiesta trim era)", "primary": "#000000", "secondary": "#C4CED4", "trim": "#E56020", "eraStyle": "nineties", "confidence": "medium" },
+      { "key": "SAS_2002", "years": [2002, 2099], "identity": "San Antonio Spurs", "primary": "#000000", "secondary": "#C4CED4", "trim": "#FFFFFF", "eraStyle": "baggy", "confidence": "high" }
+    ],
+    "TOR": [
+      { "key": "TOR_1995", "years": [1995, 2005], "identity": "Toronto Raptors (dino era)", "primary": "#753BBD", "secondary": "#CE1141", "trim": "#000000", "eraStyle": "nineties", "confidence": "high" },
+      { "key": "TOR_2006", "years": [2006, 2014], "identity": "Toronto Raptors", "primary": "#CE1141", "secondary": "#000000", "trim": "#C4CED4", "eraStyle": "baggy", "confidence": "medium" },
+      { "key": "TOR_2015", "years": [2015, 2099], "identity": "Toronto Raptors", "primary": "#CE1141", "secondary": "#000000", "trim": "#A1A1A4", "eraStyle": "modern", "confidence": "high" }
+    ],
+    "UTA": [
+      { "key": "UTA_1976", "years": [1976, 1978], "identity": "New Orleans Jazz", "primary": "#4C2C69", "secondary": "#00843D", "trim": "#FDB927", "eraStyle": "classic", "confidence": "medium" },
+      { "key": "UTA_1979", "years": [1979, 1995], "identity": "Utah Jazz", "primary": "#4C2C69", "secondary": "#00843D", "trim": "#FDB927", "eraStyle": "classic", "confidence": "medium" },
+      { "key": "UTA_1996", "years": [1996, 2003], "identity": "Utah Jazz (mountains)", "primary": "#79288A", "secondary": "#4C6CB4", "trim": "#B49759", "eraStyle": "nineties", "confidence": "low" },
+      { "key": "UTA_2004", "years": [2004, 2009], "identity": "Utah Jazz", "primary": "#002B5C", "secondary": "#7FC9E8", "trim": "#4C2C69", "eraStyle": "baggy", "confidence": "low" },
+      { "key": "UTA_2010", "years": [2010, 2021], "identity": "Utah Jazz", "primary": "#002B5C", "secondary": "#F9A01B", "trim": "#00471B", "eraStyle": "modern", "confidence": "medium" },
+      { "key": "UTA_2022", "years": [2022, 2099], "identity": "Utah Jazz", "primary": "#000000", "secondary": "#FFF21F", "trim": "#FFFFFF", "eraStyle": "modern", "confidence": "low" }
+    ],
+    "WAS": [
+      { "key": "WAS_1976", "years": [1976, 1996], "identity": "Washington Bullets", "primary": "#C8102E", "secondary": "#002B5C", "trim": "#FFFFFF", "eraStyle": "classic", "confidence": "high" },
+      { "key": "WAS_1997", "years": [1997, 2010], "identity": "Washington Wizards (blue/bronze)", "primary": "#00265B", "secondary": "#BB9754", "trim": "#000000", "eraStyle": "baggy", "confidence": "medium" },
+      { "key": "WAS_2011", "years": [2011, 2099], "identity": "Washington Wizards", "primary": "#002B5C", "secondary": "#E31837", "trim": "#C4CED4", "eraStyle": "modern", "confidence": "high" }
+    ]
+  }
+}

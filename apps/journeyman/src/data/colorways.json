@@ -1,0 +1,2249 @@
+{
+ "_meta": {
+  "description": "NBA franchise colorways by era, post-1976 merger. For rendering generic era-accurate jerseys (no logos, no wordmarks). Years are season START years (e.g. 1995 = the 1995-96 season). Generated from general knowledge — every entry has a confidence flag. VERIFY all 'low' entries against teamcolorcodes.com and Basketball-Reference season pages before launch; transition years may be off by a season.",
+  "fields": {
+   "key": "unique id: TRICODE_startyear",
+   "primary": "main jersey body color (road jersey base)",
+   "secondary": "secondary/accent color",
+   "trim": "trim/outline color",
+   "eraStyle": "silhouette hint for renderer: classic (short/tight 70s-80s), nineties (looser, bold trim), baggy (2000s), modern (2010s+ minimal)",
+   "confidence": "high | medium | low"
+  },
+  "relocations": "Franchises keyed by MODERN tricode. Historical identities (SEA, NJN, VAN, NOH, KC Kings, San Diego Clippers, Washington Bullets, Charlotte original Hornets) are separate era entries under the modern franchise with a 'identity' label so the renderer can note era city if you ever want it.",
+  "aba": "ABA seasons (1967-1975 start years) are included so pre-merger careers render. Surviving franchises carry their ABA years under the modern key (IND/BKN/DEN/SAS); defunct clubs get their own keys (OAK, WSC, VIR, KEN, UTS, SPI, CAR, MMP, PIT, FLA, SDA, ANA, MNM, NOB, HSM). Colours are from the Wikipedia team infoboxes; VERIFY against bballjerseys.com/aba-* before launch — the ABA is the least reliable data in this file."
+ },
+ "franchises": {
+  "ATL": [
+   {
+    "key": "ATL_1976",
+    "years": [
+     1976,
+     1994
+    ],
+    "identity": "Atlanta Hawks",
+    "primary": "#DF1E36",
+    "secondary": "#FFC423",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "ATL_1995",
+    "years": [
+     1995,
+     1998
+    ],
+    "identity": "Atlanta Hawks",
+    "primary": "#DF1E36",
+    "secondary": "#000000",
+    "trim": "#FFC423",
+    "eraStyle": "nineties",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "95 red/black/yellow set, replaced 99",
+    "verified_by": "TimVanC (AI reference comparison, owner-approved)",
+    "verified_on": "2026-07-28"
+   },
+   {
+    "key": "ATL_1999",
+    "years": [
+     1999,
+     2006
+    ],
+    "identity": "Atlanta Hawks",
+    "primary": "#E03A3E",
+    "secondary": "#002B5C",
+    "trim": "#C4CED4",
+    "eraStyle": "baggy",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "red/navy/silver official Hawks hexes; 99->07",
+    "verified_by": "TimVanC (AI reference comparison, owner-approved)",
+    "verified_on": "2026-07-28"
+   },
+   {
+    "key": "ATL_2007",
+    "years": [
+     2007,
+     2014
+    ],
+    "identity": "Atlanta Hawks",
+    "primary": "#002B5C",
+    "secondary": "#E03A3E",
+    "trim": "#FFFFFF",
+    "eraStyle": "baggy",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "navy-primary 07->15 rebrand",
+    "verified_by": "TimVanC (AI reference comparison, owner-approved)",
+    "verified_on": "2026-07-28"
+   },
+   {
+    "key": "ATL_2015",
+    "years": [
+     2015,
+     2019
+    ],
+    "identity": "Atlanta Hawks",
+    "primary": "#E03A3E",
+    "secondary": "#C1D32F",
+    "trim": "#000000",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "ATL_2020",
+    "years": [
+     2020,
+     2099
+    ],
+    "identity": "Atlanta Hawks",
+    "primary": "#E03A3E",
+    "secondary": "#C29A55",
+    "trim": "#000000",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   }
+  ],
+  "BOS": [
+   {
+    "key": "BOS_1976",
+    "years": [
+     1976,
+     2099
+    ],
+    "identity": "Boston Celtics",
+    "primary": "#007A33",
+    "secondary": "#FFFFFF",
+    "trim": "#BA9653",
+    "eraStyle": "classic",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   }
+  ],
+  "BKN": [
+   {
+    "key": "BKN_ABA_1967",
+    "years": [
+     1967,
+     1967
+    ],
+    "identity": "New Jersey Americans",
+    "tricode": "NJA",
+    "primary": "#D50032",
+    "secondary": "#FFFFFF",
+    "trim": "#0032A0",
+    "eraStyle": "classic",
+    "confidence": "low",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "BKN_ABA_1968",
+    "years": [
+     1968,
+     1975
+    ],
+    "identity": "New York Nets (ABA)",
+    "tricode": "NYA",
+    "primary": "#D50032",
+    "secondary": "#FFFFFF",
+    "trim": "#0032A0",
+    "eraStyle": "classic",
+    "confidence": "low",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "BKN_1977",
+    "years": [
+     1977,
+     1989
+    ],
+    "identity": "New Jersey Nets",
+    "primary": "#CE1141",
+    "secondary": "#002A60",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "BKN_1990",
+    "years": [
+     1990,
+     1996
+    ],
+    "identity": "New Jersey Nets",
+    "primary": "#0057B8",
+    "secondary": "#FFFFFF",
+    "trim": "#CE1141",
+    "eraStyle": "nineties",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "BKN_1997",
+    "years": [
+     1997,
+     2011
+    ],
+    "identity": "New Jersey Nets",
+    "primary": "#002A60",
+    "secondary": "#C4CED4",
+    "trim": "#CE1141",
+    "eraStyle": "baggy",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "navy/silver/red 97->2012 Brooklyn",
+    "verified_by": "TimVanC (AI reference comparison, owner-approved)",
+    "verified_on": "2026-07-28"
+   },
+   {
+    "key": "BKN_2012",
+    "years": [
+     2012,
+     2099
+    ],
+    "identity": "Brooklyn Nets",
+    "primary": "#000000",
+    "secondary": "#FFFFFF",
+    "trim": "#707271",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   }
+  ],
+  "CHA": [
+   {
+    "key": "CHA_1988",
+    "years": [
+     1988,
+     2001
+    ],
+    "identity": "Charlotte Hornets (original)",
+    "primary": "#00788C",
+    "secondary": "#1D1160",
+    "trim": "#FFFFFF",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "CHA_2004",
+    "years": [
+     2004,
+     2011
+    ],
+    "identity": "Charlotte Bobcats",
+    "primary": "#E35205",
+    "secondary": "#FFFFFF",
+    "trim": "#1B365D",
+    "eraStyle": "baggy",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Charlotte's official 2004 unveiling specifies an orange road body with white, Bobcats Blue, black and silver details; https://www.nba.com/hornets/news/uniforms_release_040821.html"
+   },
+   {
+    "key": "CHA_2012",
+    "years": [
+     2012,
+     2013
+    ],
+    "identity": "Charlotte Bobcats (navy/light-blue era)",
+    "primary": "#14213D",
+    "secondary": "#FFFFFF",
+    "trim": "#1BA1E2",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Charlotte's official 2012 unveiling specifies a blue road jersey with white numbers and light-blue trim; https://www.nba.com/hornets/charlotte-bobcats-unveil-new-uniforms-and-color-scheme"
+   },
+   {
+    "key": "CHA_2014",
+    "years": [
+     2014,
+     2099
+    ],
+    "identity": "Charlotte Hornets",
+    "primary": "#00788C",
+    "secondary": "#1D1160",
+    "trim": "#A1A1A4",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   }
+  ],
+  "CHI": [
+   {
+    "key": "CHI_1976",
+    "years": [
+     1976,
+     2099
+    ],
+    "identity": "Chicago Bulls",
+    "primary": "#CE1141",
+    "secondary": "#000000",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   }
+  ],
+  "CLE": [
+   {
+    "key": "CLE_1976",
+    "years": [
+     1976,
+     1982
+    ],
+    "identity": "Cleveland Cavaliers",
+    "primary": "#860038",
+    "secondary": "#FDBB30",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "CLE_1983",
+    "years": [
+     1983,
+     1986
+    ],
+    "identity": "Cleveland Cavaliers",
+    "primary": "#F58426",
+    "secondary": "#0047AB",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "low",
+    "status": "probable",
+    "source_note": "2026-07-28: era truncated at 86 (blue roads from 87); verify"
+   },
+   {
+    "key": "CLE_1987",
+    "years": [
+     1987,
+     1993
+    ],
+    "identity": "Cleveland Cavaliers",
+    "primary": "#0047AB",
+    "secondary": "#F58426",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "low",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "CLE_1994",
+    "years": [
+     1994,
+     2002
+    ],
+    "identity": "Cleveland Cavaliers",
+    "primary": "#000000",
+    "secondary": "#FFFFFF",
+    "trim": "#55C2FF",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Cavaliers official uniform history: 1994-2003 road set used a black body, white numbers/lettering, powder-blue treatment and orange outlines; https://www.nba.com/cavaliers/history/uniform-logo-history"
+   },
+   {
+    "key": "CLE_2003",
+    "years": [
+     2003,
+     2099
+    ],
+    "identity": "Cleveland Cavaliers",
+    "primary": "#860038",
+    "secondary": "#FDBB30",
+    "trim": "#041E42",
+    "eraStyle": "baggy",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   }
+  ],
+  "DAL": [
+   {
+    "key": "DAL_1980",
+    "years": [
+     1980,
+     2000
+    ],
+    "identity": "Dallas Mavericks",
+    "primary": "#0064B1",
+    "secondary": "#FFFFFF",
+    "trim": "#00843D",
+    "eraStyle": "classic",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "DAL_2001",
+    "years": [
+     2001,
+     2099
+    ],
+    "identity": "Dallas Mavericks",
+    "primary": "#00538C",
+    "secondary": "#002B5E",
+    "trim": "#B8C4CA",
+    "eraStyle": "baggy",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   }
+  ],
+  "DEN": [
+   {
+    "key": "DEN_ABA_1967",
+    "years": [
+     1967,
+     1973
+    ],
+    "identity": "Denver Rockets",
+    "tricode": "DEN",
+    "primary": "#0E2240",
+    "secondary": "#FEC524",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "low",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "DEN_ABA_1974",
+    "years": [
+     1974,
+     1975
+    ],
+    "identity": "Denver Nuggets (ABA)",
+    "tricode": "DEN",
+    "primary": "#0E2240",
+    "secondary": "#FEC524",
+    "trim": "#8B2131",
+    "eraStyle": "classic",
+    "confidence": "low",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "DEN_1976",
+    "years": [
+     1976,
+     1980
+    ],
+    "identity": "Denver Nuggets",
+    "primary": "#0E4B8C",
+    "secondary": "#FDB927",
+    "trim": "#CE1141",
+    "eraStyle": "classic",
+    "confidence": "low",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "DEN_1981",
+    "years": [
+     1981,
+     1992
+    ],
+    "identity": "Denver Nuggets (rainbow skyline)",
+    "primary": "#FFFFFF",
+    "secondary": "#418FDE",
+    "trim": "#FDB927",
+    "eraStyle": "classic",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "DEN_1993",
+    "years": [
+     1993,
+     2002
+    ],
+    "identity": "Denver Nuggets",
+    "primary": "#0E2240",
+    "secondary": "#B49759",
+    "trim": "#8B2131",
+    "eraStyle": "nineties",
+    "confidence": "low",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "DEN_2003",
+    "years": [
+     2003,
+     2017
+    ],
+    "identity": "Denver Nuggets",
+    "primary": "#418FDE",
+    "secondary": "#FDB927",
+    "trim": "#0E2240",
+    "eraStyle": "baggy",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "DEN_2018",
+    "years": [
+     2018,
+     2099
+    ],
+    "identity": "Denver Nuggets",
+    "primary": "#0E2240",
+    "secondary": "#FEC524",
+    "trim": "#8B2131",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   }
+  ],
+  "DET": [
+   {
+    "key": "DET_1976",
+    "years": [
+     1976,
+     1995
+    ],
+    "identity": "Detroit Pistons",
+    "primary": "#C8102E",
+    "secondary": "#1D42BA",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "DET_1996",
+    "years": [
+     1996,
+     2000
+    ],
+    "identity": "Detroit Pistons (teal era)",
+    "primary": "#006272",
+    "secondary": "#FFFFFF",
+    "trim": "#8B2331",
+    "eraStyle": "nineties",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "DET_2001",
+    "years": [
+     2001,
+     2099
+    ],
+    "identity": "Detroit Pistons",
+    "primary": "#C8102E",
+    "secondary": "#1D42BA",
+    "trim": "#BEC0C2",
+    "eraStyle": "baggy",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   }
+  ],
+  "GSW": [
+   {
+    "key": "GSW_1962",
+    "years": [
+     1962,
+     1970
+    ],
+    "identity": "San Francisco Warriors",
+    "primary": "#1D428A",
+    "secondary": "#FFC72C",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "low",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "GSW_1976",
+    "years": [
+     1971,
+     1996
+    ],
+    "identity": "Golden State Warriors",
+    "primary": "#FFC72C",
+    "secondary": "#1D428A",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "70s gold body/royal (key-vs-years quirk noted)",
+    "verified_by": "TimVanC (AI reference comparison, owner-approved)",
+    "verified_on": "2026-07-28"
+   },
+   {
+    "key": "GSW_1997",
+    "years": [
+     1997,
+     2009
+    ],
+    "identity": "Golden State Warriors",
+    "primary": "#04529C",
+    "secondary": "#FFFFFF",
+    "trim": "#FFA400",
+    "eraStyle": "baggy",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "NBA uniform history identifies the 1997-2010 We Believe set's deep-blue and orange identity; white lettering is confirmed by the dated Basketball-Reference uniform rendering; https://www.nba.com/news/jersey-day-2025-new-age-tradition"
+   },
+   {
+    "key": "GSW_2010",
+    "years": [
+     2010,
+     2099
+    ],
+    "identity": "Golden State Warriors",
+    "primary": "#1D428A",
+    "secondary": "#FFC72C",
+    "trim": "#FFFFFF",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   }
+  ],
+  "HOU": [
+   {
+    "key": "HOU_1976",
+    "years": [
+     1976,
+     1994
+    ],
+    "identity": "Houston Rockets",
+    "primary": "#CE1141",
+    "secondary": "#FDB927",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "red/gold 76->95 pinstripe rebrand",
+    "verified_by": "TimVanC (AI reference comparison, owner-approved)",
+    "verified_on": "2026-07-28"
+   },
+   {
+    "key": "HOU_1995",
+    "years": [
+     1995,
+     2002
+    ],
+    "identity": "Houston Rockets (pinstripe)",
+    "primary": "#002D62",
+    "secondary": "#CE1141",
+    "trim": "#C4CED4",
+    "eraStyle": "nineties",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "HOU_2003",
+    "years": [
+     2003,
+     2099
+    ],
+    "identity": "Houston Rockets",
+    "primary": "#CE1141",
+    "secondary": "#000000",
+    "trim": "#C4CED4",
+    "eraStyle": "baggy",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   }
+  ],
+  "IND": [
+   {
+    "key": "IND_ABA_1967",
+    "years": [
+     1967,
+     1975
+    ],
+    "identity": "Indiana Pacers (ABA)",
+    "tricode": "IND",
+    "primary": "#0C2340",
+    "secondary": "#FFD520",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "IND_1976",
+    "years": [
+     1976,
+     1989
+    ],
+    "identity": "Indiana Pacers",
+    "primary": "#002D62",
+    "secondary": "#FDBB30",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "IND_1990",
+    "years": [
+     1990,
+     1996
+    ],
+    "identity": "Indiana Pacers (Flo Jo)",
+    "primary": "#002D62",
+    "secondary": "#FFFFFF",
+    "trim": "#FDBB30",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Pacers official jersey timeline dates the Flo Jo set to 1990-91 through 1996-97; https://www.nba.com/pacers/gallery/pacers-jerseys-through-years"
+   },
+   {
+    "key": "IND_1997",
+    "years": [
+     1997,
+     2004
+    ],
+    "identity": "Indiana Pacers (pinstripe)",
+    "primary": "#002D62",
+    "secondary": "#FFFFFF",
+    "trim": "#FDBB30",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Pacers official jersey timeline dates the blue/white/gold pinstripe set to 1997-98 through 2004-05; https://www.nba.com/pacers/gallery/pacers-jerseys-through-years"
+   },
+   {
+    "key": "IND_2005",
+    "years": [
+     2005,
+     2099
+    ],
+    "identity": "Indiana Pacers",
+    "primary": "#002D62",
+    "secondary": "#FDBB30",
+    "trim": "#BEC0C2",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   }
+  ],
+  "LAC": [
+   {
+    "key": "LAC_1976",
+    "years": [
+     1976,
+     1977
+    ],
+    "identity": "Buffalo Braves",
+    "primary": "#FF8200",
+    "secondary": "#0F4D92",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "low",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "LAC_1978",
+    "years": [
+     1978,
+     1983
+    ],
+    "identity": "San Diego Clippers",
+    "primary": "#0F4D92",
+    "secondary": "#FF8200",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "low",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "LAC_1984",
+    "years": [
+     1984,
+     2014
+    ],
+    "identity": "Los Angeles Clippers",
+    "primary": "#C8102E",
+    "secondary": "#1D428A",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "classic red/royal, stable",
+    "verified_by": "TimVanC (AI reference comparison, owner-approved)",
+    "verified_on": "2026-07-28"
+   },
+   {
+    "key": "LAC_2015",
+    "years": [
+     2015,
+     2023
+    ],
+    "identity": "Los Angeles Clippers",
+    "primary": "#C8102E",
+    "secondary": "#1D428A",
+    "trim": "#BEC0C2",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "LAC_2024",
+    "years": [
+     2024,
+     2099
+    ],
+    "identity": "Los Angeles Clippers",
+    "primary": "#0C2340",
+    "secondary": "#C8102E",
+    "trim": "#C4CED4",
+    "eraStyle": "modern",
+    "confidence": "low",
+    "status": "unverified",
+    "source_note": ""
+   }
+  ],
+  "LAL": [
+   {
+    "key": "LAL_1976",
+    "years": [
+     1976,
+     2099
+    ],
+    "identity": "Los Angeles Lakers",
+    "primary": "#552583",
+    "secondary": "#FDB927",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   }
+  ],
+  "MEM": [
+   {
+    "key": "MEM_1995",
+    "years": [
+     1995,
+     2000
+    ],
+    "identity": "Vancouver Grizzlies",
+    "primary": "#00A28D",
+    "secondary": "#E43C40",
+    "trim": "#FFFFFF",
+    "eraStyle": "nineties",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "MEM_2001",
+    "years": [
+     2001,
+     2003
+    ],
+    "identity": "Memphis Grizzlies",
+    "primary": "#00A28D",
+    "secondary": "#0C2340",
+    "trim": "#E43C40",
+    "eraStyle": "baggy",
+    "confidence": "low",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "MEM_2004",
+    "years": [
+     2004,
+     2099
+    ],
+    "identity": "Memphis Grizzlies",
+    "primary": "#5D76A9",
+    "secondary": "#12173F",
+    "trim": "#F5B112",
+    "eraStyle": "baggy",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   }
+  ],
+  "MIA": [
+   {
+    "key": "MIA_1988",
+    "years": [
+     1988,
+     2099
+    ],
+    "identity": "Miami Heat",
+    "primary": "#98002E",
+    "secondary": "#000000",
+    "trim": "#F9A01B",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   }
+  ],
+  "MIL": [
+   {
+    "key": "MIL_1976",
+    "years": [
+     1976,
+     1992
+    ],
+    "identity": "Milwaukee Bucks",
+    "primary": "#00471B",
+    "secondary": "#AC1A2F",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "MIL_1993",
+    "years": [
+     1993,
+     2005
+    ],
+    "identity": "Milwaukee Bucks (purple era)",
+    "primary": "#613D93",
+    "secondary": "#00471B",
+    "trim": "#C4CED4",
+    "eraStyle": "nineties",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "purple era 1993->2006 return to green",
+    "verified_by": "TimVanC (AI reference comparison, owner-approved)",
+    "verified_on": "2026-07-28"
+   },
+   {
+    "key": "MIL_2006",
+    "years": [
+     2006,
+     2014
+    ],
+    "identity": "Milwaukee Bucks",
+    "primary": "#AC1A2F",
+    "secondary": "#FFFFFF",
+    "trim": "#00471B",
+    "eraStyle": "baggy",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Bucks official jersey history identifies the 2006-15 road look and the era's red, green and silver palette; dated uniform imagery confirms white road numbers with green trim; https://www.nba.com/bucks/features/boeder-bucks-jersey-rankings"
+   },
+   {
+    "key": "MIL_2015",
+    "years": [
+     2015,
+     2099
+    ],
+    "identity": "Milwaukee Bucks",
+    "primary": "#00471B",
+    "secondary": "#EEE1C6",
+    "trim": "#0077C0",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   }
+  ],
+  "MIN": [
+   {
+    "key": "MIN_1989",
+    "years": [
+     1989,
+     1995
+    ],
+    "identity": "Minnesota Timberwolves",
+    "primary": "#266092",
+    "secondary": "#0C2340",
+    "trim": "#78BE20",
+    "eraStyle": "nineties",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "MIN_1996",
+    "years": [
+     1996,
+     2007
+    ],
+    "identity": "Minnesota Timberwolves (trees)",
+    "primary": "#0C2340",
+    "secondary": "#FFFFFF",
+    "trim": "#78BE20",
+    "eraStyle": "baggy",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Timberwolves official history dates the tree-lined midnight-blue, white and green identity to the 1996-97 redesign; https://www.nba.com/timberwolves/history"
+   },
+   {
+    "key": "MIN_2008",
+    "years": [
+     2008,
+     2016
+    ],
+    "identity": "Minnesota Timberwolves",
+    "primary": "#0C2340",
+    "secondary": "#FFFFFF",
+    "trim": "#C4CED4",
+    "eraStyle": "baggy",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Minnesota's official 2008 unveiling documents the slate-blue road body, white identity accents, and 2008-09 launch; https://www.nba.com/timberwolves/news/wolves_unveil_new_uniforms_080818.html"
+   },
+   {
+    "key": "MIN_2017",
+    "years": [
+     2017,
+     2099
+    ],
+    "identity": "Minnesota Timberwolves",
+    "primary": "#0C2340",
+    "secondary": "#236192",
+    "trim": "#78BE20",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   }
+  ],
+  "NOP": [
+   {
+    "key": "NOP_2002",
+    "years": [
+     2002,
+     2012
+    ],
+    "identity": "New Orleans Hornets",
+    "primary": "#00788C",
+    "secondary": "#FFFFFF",
+    "trim": "#1D1160",
+    "eraStyle": "baggy",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "NOP_2013",
+    "years": [
+     2013,
+     2099
+    ],
+    "identity": "New Orleans Pelicans",
+    "primary": "#0C2340",
+    "secondary": "#85714D",
+    "trim": "#C8102E",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   }
+  ],
+  "NYK": [
+   {
+    "key": "NYK_1976",
+    "years": [
+     1976,
+     2099
+    ],
+    "identity": "New York Knicks",
+    "primary": "#006BB6",
+    "secondary": "#F58426",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   }
+  ],
+  "OKC": [
+   {
+    "key": "OKC_1976",
+    "years": [
+     1976,
+     1994
+    ],
+    "identity": "Seattle SuperSonics",
+    "primary": "#00653A",
+    "secondary": "#FFC200",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "OKC_1995",
+    "years": [
+     1995,
+     2000
+    ],
+    "identity": "Seattle SuperSonics",
+    "primary": "#00563F",
+    "secondary": "#D32F41",
+    "trim": "#FFC200",
+    "eraStyle": "nineties",
+    "confidence": "low",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "OKC_2001",
+    "years": [
+     2001,
+     2007
+    ],
+    "identity": "Seattle SuperSonics",
+    "primary": "#00653A",
+    "secondary": "#FFFFFF",
+    "trim": "#FFC200",
+    "eraStyle": "baggy",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "OKC_2008",
+    "years": [
+     2008,
+     2099
+    ],
+    "identity": "Oklahoma City Thunder",
+    "primary": "#007AC1",
+    "secondary": "#EF3B24",
+    "trim": "#002D62",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   }
+  ],
+  "ORL": [
+   {
+    "key": "ORL_1989",
+    "years": [
+     1989,
+     2099
+    ],
+    "identity": "Orlando Magic (pinstripe)",
+    "primary": "#0077C0",
+    "secondary": "#000000",
+    "trim": "#C4CED4",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   }
+  ],
+  "PHI": [
+   {
+    "key": "PHI_1976",
+    "years": [
+     1976,
+     1996
+    ],
+    "identity": "Philadelphia 76ers",
+    "primary": "#006BB6",
+    "secondary": "#ED174C",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "PHI_1997",
+    "years": [
+     1997,
+     2008
+    ],
+    "identity": "Philadelphia 76ers (black/gold era)",
+    "primary": "#000000",
+    "secondary": "#FFFFFF",
+    "trim": "#ED174C",
+    "eraStyle": "baggy",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Philadelphia's official uniform history documents the 1997-2009 black road set with white numbers trimmed in red and red/gold uniform trim; https://www.nba.com/sixers/history/76ers-jerseys"
+   },
+   {
+    "key": "PHI_2009",
+    "years": [
+     2009,
+     2099
+    ],
+    "identity": "Philadelphia 76ers",
+    "primary": "#006BB6",
+    "secondary": "#ED174C",
+    "trim": "#002B5C",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   }
+  ],
+  "PHX": [
+   {
+    "key": "PHX_1976",
+    "years": [
+     1976,
+     1991
+    ],
+    "identity": "Phoenix Suns",
+    "primary": "#422B72",
+    "secondary": "#E56020",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "PHX_1992",
+    "years": [
+     1992,
+     1999
+    ],
+    "identity": "Phoenix Suns (streaking sun)",
+    "primary": "#5F259F",
+    "secondary": "#E56020",
+    "trim": "#000000",
+    "eraStyle": "nineties",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "streaking-sun purple/orange 92-93 intro",
+    "verified_by": "TimVanC (AI reference comparison, owner-approved)",
+    "verified_on": "2026-07-28"
+   },
+   {
+    "key": "PHX_2000",
+    "years": [
+     2000,
+     2012
+    ],
+    "identity": "Phoenix Suns",
+    "primary": "#5F259F",
+    "secondary": "#E56020",
+    "trim": "#63727A",
+    "eraStyle": "baggy",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "official purple 5F259F/orange; 00->13",
+    "verified_by": "TimVanC (AI reference comparison, owner-approved)",
+    "verified_on": "2026-07-28"
+   },
+   {
+    "key": "PHX_2013",
+    "years": [
+     2013,
+     2099
+    ],
+    "identity": "Phoenix Suns",
+    "primary": "#1D1160",
+    "secondary": "#E56020",
+    "trim": "#000000",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   }
+  ],
+  "POR": [
+   {
+    "key": "POR_1976",
+    "years": [
+     1976,
+     1990
+    ],
+    "identity": "Portland Trail Blazers",
+    "primary": "#E03A3E",
+    "secondary": "#000000",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "POR_1991",
+    "years": [
+     1991,
+     2099
+    ],
+    "identity": "Portland Trail Blazers",
+    "primary": "#000000",
+    "secondary": "#E03A3E",
+    "trim": "#C4CED4",
+    "eraStyle": "nineties",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "black/red/silver stable to present",
+    "verified_by": "TimVanC (AI reference comparison, owner-approved)",
+    "verified_on": "2026-07-28"
+   }
+  ],
+  "SAC": [
+   {
+    "key": "SAC_1976",
+    "years": [
+     1976,
+     1984
+    ],
+    "identity": "Kansas City Kings",
+    "primary": "#C8102E",
+    "secondary": "#1D428A",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "SAC_1985",
+    "years": [
+     1985,
+     1993
+    ],
+    "identity": "Sacramento Kings",
+    "primary": "#C8102E",
+    "secondary": "#1D428A",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "SAC_1994",
+    "years": [
+     1994,
+     2015
+    ],
+    "identity": "Sacramento Kings",
+    "primary": "#5A2D81",
+    "secondary": "#000000",
+    "trim": "#63727A",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "SAC_2016",
+    "years": [
+     2016,
+     2099
+    ],
+    "identity": "Sacramento Kings",
+    "primary": "#5A2D81",
+    "secondary": "#63727A",
+    "trim": "#FFFFFF",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   }
+  ],
+  "SAS": [
+   {
+    "key": "SAS_ABA_1967",
+    "years": [
+     1967,
+     1972
+    ],
+    "identity": "Dallas Chaparrals",
+    "tricode": "DAL",
+    "primary": "#D50032",
+    "secondary": "#FFFFFF",
+    "trim": "#0032A0",
+    "eraStyle": "classic",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "SAS_ABA_1973",
+    "years": [
+     1973,
+     1975
+    ],
+    "identity": "San Antonio Spurs (ABA)",
+    "tricode": "SAS",
+    "primary": "#000000",
+    "secondary": "#C4CED4",
+    "trim": "#D50032",
+    "eraStyle": "classic",
+    "confidence": "low",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "SAS_1976",
+    "years": [
+     1976,
+     1988
+    ],
+    "identity": "San Antonio Spurs",
+    "primary": "#000000",
+    "secondary": "#C4CED4",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "high",
+    "status": "probable",
+    "source_note": ""
+   },
+   {
+    "key": "SAS_1989",
+    "years": [
+     1989,
+     2001
+    ],
+    "identity": "San Antonio Spurs (fiesta trim era)",
+    "primary": "#000000",
+    "secondary": "#C4CED4",
+    "trim": "#E56020",
+    "eraStyle": "nineties",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "black/silver, fiesta-trim logo era 89-2002",
+    "verified_by": "TimVanC (AI reference comparison, owner-approved)",
+    "verified_on": "2026-07-28"
+   },
+   {
+    "key": "SAS_2002",
+    "years": [
+     2002,
+     2099
+    ],
+    "identity": "San Antonio Spurs",
+    "primary": "#000000",
+    "secondary": "#C4CED4",
+    "trim": "#FFFFFF",
+    "eraStyle": "baggy",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   }
+  ],
+  "TOR": [
+   {
+    "key": "TOR_1995",
+    "years": [
+     1995,
+     2005
+    ],
+    "identity": "Toronto Raptors (dino era)",
+    "primary": "#753BBD",
+    "secondary": "#CE1141",
+    "trim": "#000000",
+    "eraStyle": "nineties",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "TOR_2006",
+    "years": [
+     2006,
+     2014
+    ],
+    "identity": "Toronto Raptors",
+    "primary": "#CE1141",
+    "secondary": "#000000",
+    "trim": "#C4CED4",
+    "eraStyle": "baggy",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "purple dropped for red in 06",
+    "verified_by": "TimVanC (AI reference comparison, owner-approved)",
+    "verified_on": "2026-07-28"
+   },
+   {
+    "key": "TOR_2015",
+    "years": [
+     2015,
+     2099
+    ],
+    "identity": "Toronto Raptors",
+    "primary": "#CE1141",
+    "secondary": "#000000",
+    "trim": "#A1A1A4",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   }
+  ],
+  "UTA": [
+   {
+    "key": "UTA_1976",
+    "years": [
+     1976,
+     1978
+    ],
+    "identity": "New Orleans Jazz",
+    "primary": "#4C2C69",
+    "secondary": "#00843D",
+    "trim": "#FDB927",
+    "eraStyle": "classic",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "UTA_1979",
+    "years": [
+     1979,
+     1995
+    ],
+    "identity": "Utah Jazz",
+    "primary": "#4C2C69",
+    "secondary": "#00843D",
+    "trim": "#FDB927",
+    "eraStyle": "classic",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "UTA_1996",
+    "years": [
+     1996,
+     2003
+    ],
+    "identity": "Utah Jazz (mountains)",
+    "primary": "#79288A",
+    "secondary": "#4C6CB4",
+    "trim": "#B49759",
+    "eraStyle": "nineties",
+    "confidence": "low",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "UTA_2004",
+    "years": [
+     2004,
+     2009
+    ],
+    "identity": "Utah Jazz",
+    "primary": "#002B5C",
+    "secondary": "#7FC9E8",
+    "trim": "#4C2C69",
+    "eraStyle": "baggy",
+    "confidence": "low",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "UTA_2010",
+    "years": [
+     2010,
+     2021
+    ],
+    "identity": "Utah Jazz",
+    "primary": "#002B5C",
+    "secondary": "#F9A01B",
+    "trim": "#00471B",
+    "eraStyle": "modern",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "UTA_2022",
+    "years": [
+     2022,
+     2099
+    ],
+    "identity": "Utah Jazz",
+    "primary": "#000000",
+    "secondary": "#FFF21F",
+    "trim": "#FFFFFF",
+    "eraStyle": "modern",
+    "confidence": "low",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   }
+  ],
+  "WAS": [
+   {
+    "key": "WAS_1976",
+    "years": [
+     1976,
+     1996
+    ],
+    "identity": "Washington Bullets",
+    "primary": "#C8102E",
+    "secondary": "#002B5C",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   },
+   {
+    "key": "WAS_1997",
+    "years": [
+     1997,
+     2010
+    ],
+    "identity": "Washington Wizards (blue/bronze)",
+    "primary": "#00265B",
+    "secondary": "#FFFFFF",
+    "trim": "#BB9754",
+    "eraStyle": "baggy",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Wizards official jersey timeline dates the blue road colorway and blue/black/bronze/white rebrand to 1997; https://www.nba.com/wizards/jersey-timeline"
+   },
+   {
+    "key": "WAS_2011",
+    "years": [
+     2011,
+     2099
+    ],
+    "identity": "Washington Wizards",
+    "primary": "#002B5C",
+    "secondary": "#E31837",
+    "trim": "#C4CED4",
+    "eraStyle": "modern",
+    "confidence": "high",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   }
+  ],
+  "OAK": [
+   {
+    "key": "OAK_1967",
+    "years": [
+     1967,
+     1968
+    ],
+    "identity": "Oakland Oaks",
+    "tricode": "OAK",
+    "primary": "#228B22",
+    "secondary": "#FFD700",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "low",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   }
+  ],
+  "WSC": [
+   {
+    "key": "WSC_1969",
+    "years": [
+     1969,
+     1969
+    ],
+    "identity": "Washington Caps",
+    "tricode": "WSC",
+    "primary": "#228B22",
+    "secondary": "#FFD700",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "medium",
+    "status": "verified",
+    "source_note": "Identity, era range, and primary/secondary/trim cross-checked against documented franchise color history and relocation/rebrand timeline.",
+    "verified_by": "Claude era-palette audit (owner-requested)",
+    "verified_on": "2026-08-11"
+   }
+  ],
+  "VIR": [
+   {
+    "key": "VIR_1970",
+    "years": [
+     1970,
+     1973
+    ],
+    "identity": "Virginia Squires",
+    "tricode": "VIR",
+    "primary": "#053CA4",
+    "secondary": "#D50032",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "VIR_1974",
+    "years": [
+     1974,
+     1974
+    ],
+    "identity": "Virginia Squires (orange & brown)",
+    "tricode": "VIR",
+    "primary": "#FC8100",
+    "secondary": "#382E2C",
+    "trim": "#D40332",
+    "eraStyle": "classic",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "VIR_1975",
+    "years": [
+     1975,
+     1975
+    ],
+    "identity": "Virginia Squires (blue & orange)",
+    "tricode": "VIR",
+    "primary": "#00339F",
+    "secondary": "#FA4517",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   }
+  ],
+  "KEN": [
+   {
+    "key": "KEN_1967",
+    "years": [
+     1967,
+     1969
+    ],
+    "identity": "Kentucky Colonels (chartreuse)",
+    "tricode": "KEN",
+    "primary": "#009A44",
+    "secondary": "#FFFFFF",
+    "trim": "#000000",
+    "eraStyle": "classic",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "KEN_1970",
+    "years": [
+     1970,
+     1973
+    ],
+    "identity": "Kentucky Colonels",
+    "tricode": "KEN",
+    "primary": "#012F6B",
+    "secondary": "#FFFFFF",
+    "trim": "#CC3433",
+    "eraStyle": "classic",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "KEN_1974",
+    "years": [
+     1974,
+     1975
+    ],
+    "identity": "Kentucky Colonels",
+    "tricode": "KEN",
+    "primary": "#0E3386",
+    "secondary": "#CC3433",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   }
+  ],
+  "UTS": [
+   {
+    "key": "UTS_1970",
+    "years": [
+     1970,
+     1974
+    ],
+    "identity": "Utah Stars",
+    "tricode": "UTS",
+    "primary": "#1034A6",
+    "secondary": "#D0103A",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   }
+  ],
+  "SPI": [
+   {
+    "key": "SPI_1974",
+    "years": [
+     1974,
+     1975
+    ],
+    "identity": "Spirits of St. Louis",
+    "tricode": "SPI",
+    "primary": "#BE3A34",
+    "secondary": "#FFFFFF",
+    "trim": "#000000",
+    "eraStyle": "classic",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   }
+  ],
+  "CAR": [
+   {
+    "key": "CAR_1969",
+    "years": [
+     1969,
+     1970
+    ],
+    "identity": "Carolina Cougars",
+    "tricode": "CAR",
+    "primary": "#7BAFD4",
+    "secondary": "#DC143C",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "CAR_1971",
+    "years": [
+     1971,
+     1972
+    ],
+    "identity": "Carolina Cougars (green)",
+    "tricode": "CAR",
+    "primary": "#005F30",
+    "secondary": "#1560BD",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "CAR_1973",
+    "years": [
+     1973,
+     1973
+    ],
+    "identity": "Carolina Cougars (blue)",
+    "tricode": "CAR",
+    "primary": "#012F6B",
+    "secondary": "#009744",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   }
+  ],
+  "MMP": [
+   {
+    "key": "MMP_1970",
+    "years": [
+     1970,
+     1971
+    ],
+    "identity": "Memphis Pros",
+    "tricode": "MEM",
+    "primary": "#041E42",
+    "secondary": "#D50032",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "MMP_1972",
+    "years": [
+     1972,
+     1973
+    ],
+    "identity": "Memphis Tams",
+    "tricode": "MEM",
+    "primary": "#FFC62C",
+    "secondary": "#007A33",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "MMP_1974",
+    "years": [
+     1974,
+     1974
+    ],
+    "identity": "Memphis Sounds",
+    "tricode": "MEM",
+    "primary": "#D50032",
+    "secondary": "#FFFFFF",
+    "trim": "#041E42",
+    "eraStyle": "classic",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   }
+  ],
+  "PIT": [
+   {
+    "key": "PIT_1967",
+    "years": [
+     1967,
+     1969
+    ],
+    "identity": "Pittsburgh Pipers",
+    "tricode": "PIT",
+    "primary": "#0047AB",
+    "secondary": "#F87217",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "PIT_1970",
+    "years": [
+     1970,
+     1971
+    ],
+    "identity": "Pittsburgh Condors",
+    "tricode": "PIT",
+    "primary": "#CA0E2E",
+    "secondary": "#C89A69",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   }
+  ],
+  "FLA": [
+   {
+    "key": "FLA_1968",
+    "years": [
+     1968,
+     1969
+    ],
+    "identity": "Miami Floridians",
+    "tricode": "MIA",
+    "primary": "#E35205",
+    "secondary": "#1777CD",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "FLA_1970",
+    "years": [
+     1970,
+     1971
+    ],
+    "identity": "The Floridians",
+    "tricode": "FLA",
+    "primary": "#000000",
+    "secondary": "#FF0090",
+    "trim": "#FF8C00",
+    "eraStyle": "classic",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   }
+  ],
+  "SDA": [
+   {
+    "key": "SDA_1972",
+    "years": [
+     1972,
+     1974
+    ],
+    "identity": "San Diego Conquistadors",
+    "tricode": "SDA",
+    "primary": "#FFC62C",
+    "secondary": "#C60B1C",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "SDA_1975",
+    "years": [
+     1975,
+     1975
+    ],
+    "identity": "San Diego Sails",
+    "tricode": "SDA",
+    "primary": "#FFFFFF",
+    "secondary": "#003EA4",
+    "trim": "#038444",
+    "eraStyle": "classic",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   }
+  ],
+  "ANA": [
+   {
+    "key": "ANA_1967",
+    "years": [
+     1967,
+     1967
+    ],
+    "identity": "Anaheim Amigos",
+    "tricode": "ANA",
+    "primary": "#000000",
+    "secondary": "#F87217",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "low",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "ANA_1968",
+    "years": [
+     1968,
+     1969
+    ],
+    "identity": "Los Angeles Stars",
+    "tricode": "LAS",
+    "primary": "#CF0630",
+    "secondary": "#428FDF",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   }
+  ],
+  "MNM": [
+   {
+    "key": "MNM_1967",
+    "years": [
+     1967,
+     1967
+    ],
+    "identity": "Minnesota Muskies",
+    "tricode": "MNM",
+    "primary": "#1034A6",
+    "secondary": "#D4AF37",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   },
+   {
+    "key": "MNM_1968",
+    "years": [
+     1968,
+     1968
+    ],
+    "identity": "Minnesota Pipers",
+    "tricode": "MNP",
+    "primary": "#0047AB",
+    "secondary": "#F87217",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "low",
+    "status": "unverified",
+    "source_note": ""
+   }
+  ],
+  "NOB": [
+   {
+    "key": "NOB_1967",
+    "years": [
+     1967,
+     1969
+    ],
+    "identity": "New Orleans Buccaneers",
+    "tricode": "NOB",
+    "primary": "#000080",
+    "secondary": "#ED1C24",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   }
+  ],
+  "HSM": [
+   {
+    "key": "HSM_1967",
+    "years": [
+     1967,
+     1968
+    ],
+    "identity": "Houston Mavericks",
+    "tricode": "HSM",
+    "primary": "#003DA5",
+    "secondary": "#FFC72C",
+    "trim": "#FFFFFF",
+    "eraStyle": "classic",
+    "confidence": "medium",
+    "status": "unverified",
+    "source_note": ""
+   }
+  ]
+ }
+}
