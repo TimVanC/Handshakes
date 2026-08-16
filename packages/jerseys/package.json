@@ -1,0 +1,17 @@
+{
+  "name": "@handshakes/jerseys",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./colorways": "./src/colorways.ts",
+    "./JerseyRenderer": "./src/JerseyRenderer.tsx",
+    "./FootballJerseyRenderer": "./src/FootballJerseyRenderer.tsx",
+    "./BaseballBackJerseyRenderer": "./src/BaseballBackJerseyRenderer.tsx",
+    "./data/*": "./data/*"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0"
+  }
+}

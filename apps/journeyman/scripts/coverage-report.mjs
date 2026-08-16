@@ -28,9 +28,9 @@ const lum = (hex) => { const h = hex.replace("#", ""); const [r, g, b] = [0, 2, 
 const contrast = (a, b) => (Math.max(lum(a), lum(b)) + 0.05) / (Math.min(lum(a), lum(b)) + 0.05);
 
 const CFG = {
-  nba: ["src/data/puzzles.ts", "puzzles", "src/data/colorways.json"],
-  nfl: ["src/data/nfl/puzzles.ts", "nflPuzzles", "src/data/nfl/colorways.json"],
-  mlb: ["src/data/mlb/puzzles.ts", "mlbPuzzles", "src/data/mlb/colorways.json"],
+  nba: ["src/data/puzzles.ts", "puzzles", "../../packages/jerseys/data/nba/colorways.json"],
+  nfl: ["src/data/nfl/puzzles.ts", "nflPuzzles", "../../packages/jerseys/data/nfl/colorways.json"],
+  mlb: ["src/data/mlb/puzzles.ts", "mlbPuzzles", "../../packages/jerseys/data/mlb/colorways.json"],
 };
 const HORIZON = 30;
 let md = `# Colorway coverage — next ${HORIZON} days per sport (${todayET})\n\nOrdered by first day needed. The Session 6 scheduler hard-gates on status=verified.\n`;

@@ -40,7 +40,7 @@ const SPORTS = {
   nba: {
     active: loadArray("src/data/puzzles.ts", "puzzles"),
     bench: [],
-    cw: JSON.parse(readFileSync("src/data/colorways.json", "utf8")).franchises,
+    cw: JSON.parse(readFileSync("../../packages/jerseys/data/nba/colorways.json", "utf8")).franchises,
     seasons: JSON.parse(readFileSync("src/data/teamSeasons.json", "utf8")),
     accolades: new Set(["all_star","champion","mvp","fmvp","dpoy","sixth_man","roy","all_nba","all_defensive","all_rookie","dunk_champion","olympic_gold"]),
     nbaStats: true,
@@ -49,14 +49,14 @@ const SPORTS = {
   nfl: {
     active: loadArray("src/data/nfl/puzzles.ts", "nflPuzzles"),
     bench: loadArray("src/data/nfl/puzzles.ts", "nflBenchedPuzzles", true),
-    cw: JSON.parse(readFileSync("src/data/nfl/colorways.json", "utf8")).franchises,
+    cw: JSON.parse(readFileSync("../../packages/jerseys/data/nfl/colorways.json", "utf8")).franchises,
     seasons: JSON.parse(readFileSync("src/data/nfl/teamSeasons.json", "utf8")),
     accolades: new Set(["pro_bowl","champion","mvp","sb_mvp","all_pro","roy","droy","opoy","comeback","rushing_title","receiving_title","olympic_gold"]),
   },
   mlb: {
     active: loadArray("src/data/mlb/puzzles.ts", "mlbPuzzles"),
     bench: loadArray("src/data/mlb/puzzles.ts", "mlbBenchedPuzzles", true),
-    cw: JSON.parse(readFileSync("src/data/mlb/colorways.json", "utf8")).franchises,
+    cw: JSON.parse(readFileSync("../../packages/jerseys/data/mlb/colorways.json", "utf8")).franchises,
     seasons: JSON.parse(readFileSync("src/data/mlb/teamSeasons.json", "utf8")),
     accolades: new Set(["all_star","champion","mvp","ws_mvp","cy_young","roy","gold_glove","silver_slugger","batting_title","reliever_award","olympic_gold"]),
   },

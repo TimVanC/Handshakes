@@ -33,9 +33,9 @@ const MLB_SAMPLES = [
    urgency. Marking `verified` stays a JSON edit — deliberately not a
    button, so verification always lands in git. Dev/preview only, like
    the rest of this sheet. */
-import nbaCw from "../data/colorways.json";
-import nflCw from "../data/nfl/colorways.json";
-import mlbCw from "../data/mlb/colorways.json";
+import nbaCw from "@handshakes/jerseys/data/nba/colorways.json";
+import nflCw from "@handshakes/jerseys/data/nfl/colorways.json";
+import mlbCw from "@handshakes/jerseys/data/mlb/colorways.json";
 import { eraTricode } from "../sports/nba";
 import type { ColorwayEra } from "../game/colorways";
 

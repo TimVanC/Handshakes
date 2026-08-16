@@ -1,5 +1,5 @@
 import JerseyRenderer, { type EraStyle } from "../components/JerseyRenderer";
-import colorwaysJson from "../data/colorways.json";
+import colorwaysJson from "@handshakes/jerseys/data/nba/colorways.json";
 import teamSeasonsJson from "../data/teamSeasons.json";
 import { puzzles } from "../data/puzzles";
 import { ROSTER } from "../data/roster";

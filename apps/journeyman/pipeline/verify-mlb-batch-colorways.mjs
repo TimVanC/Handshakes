@@ -5,7 +5,7 @@ import fs from "node:fs";
 const batchPath = process.argv[2];
 if (!batchPath) throw new Error("usage: node pipeline/verify-mlb-batch-colorways.mjs batch.json");
 const batch = JSON.parse(fs.readFileSync(batchPath, "utf8"));
-const colorwayPath = "src/data/mlb/colorways.json";
+const colorwayPath = "../../packages/jerseys/data/mlb/colorways.json";
 const db = JSON.parse(fs.readFileSync(colorwayPath, "utf8"));
 const touched = new Set();
 for (const puzzle of batch.puzzles) for (const stint of puzzle.stints) {

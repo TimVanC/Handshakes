@@ -1,5 +1,5 @@
 import FootballJerseyRenderer, { type FootballEraStyle } from "../components/FootballJerseyRenderer";
-import colorwaysJson from "../data/nfl/colorways.json";
+import colorwaysJson from "@handshakes/jerseys/data/nfl/colorways.json";
 import teamSeasonsJson from "../data/nfl/teamSeasons.json";
 import { nflPuzzles } from "../data/nfl/puzzles";
 import { NFL_ROSTER } from "../data/nfl/roster";

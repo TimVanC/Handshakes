@@ -19,9 +19,9 @@ import BaseballBackJerseyRenderer, {
   type BaseballEraStyle,
 } from "../src/components/BaseballBackJerseyRenderer";
 import { resolveColorway, type ColorwayDB } from "../src/game/colorways";
-import nbaColors from "../src/data/colorways.json";
-import nflColors from "../src/data/nfl/colorways.json";
-import mlbColors from "../src/data/mlb/colorways.json";
+import nbaColors from "@handshakes/jerseys/data/nba/colorways.json";
+import nflColors from "@handshakes/jerseys/data/nfl/colorways.json";
+import mlbColors from "@handshakes/jerseys/data/mlb/colorways.json";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const outDir = join(here, "../design/jerseys/game");

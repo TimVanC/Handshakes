@@ -30,9 +30,9 @@ const HINT_KEYS = {
   mlb: ["position", "batsThrows", "height", "debutYear", "born"],
 };
 const SPORTS = {
-  nba: { puzzles: ["src/data/puzzles.ts", "puzzles"], colorways: "src/data/colorways.json", seasons: "src/data/teamSeasons.json", index: "src/data/playerIndex.json", statCells: false },
-  nfl: { puzzles: ["src/data/nfl/puzzles.ts", "nflPuzzles"], colorways: "src/data/nfl/colorways.json", seasons: "src/data/nfl/teamSeasons.json", index: "src/data/nfl/playerIndex.json", statCells: true },
-  mlb: { puzzles: ["src/data/mlb/puzzles.ts", "mlbPuzzles"], colorways: "src/data/mlb/colorways.json", seasons: "src/data/mlb/teamSeasons.json", index: "src/data/mlb/playerIndex.json", statCells: true },
+  nba: { puzzles: ["src/data/puzzles.ts", "puzzles"], colorways: "../../packages/jerseys/data/nba/colorways.json", seasons: "src/data/teamSeasons.json", index: "src/data/playerIndex.json", statCells: false },
+  nfl: { puzzles: ["src/data/nfl/puzzles.ts", "nflPuzzles"], colorways: "../../packages/jerseys/data/nfl/colorways.json", seasons: "src/data/nfl/teamSeasons.json", index: "src/data/nfl/playerIndex.json", statCells: true },
+  mlb: { puzzles: ["src/data/mlb/puzzles.ts", "mlbPuzzles"], colorways: "../../packages/jerseys/data/mlb/colorways.json", seasons: "src/data/mlb/teamSeasons.json", index: "src/data/mlb/playerIndex.json", statCells: true },
 };
 
 const norm = (s) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[.'’]/g, "").toLowerCase().trim();

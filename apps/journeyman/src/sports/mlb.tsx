@@ -1,7 +1,7 @@
 import BaseballBackJerseyRenderer, {
   type BaseballEraStyle,
 } from "../components/BaseballBackJerseyRenderer";
-import colorwaysJson from "../data/mlb/colorways.json";
+import colorwaysJson from "@handshakes/jerseys/data/mlb/colorways.json";
 import teamSeasonsJson from "../data/mlb/teamSeasons.json";
 import { mlbPuzzles } from "../data/mlb/puzzles";
 import { MLB_ROSTER } from "../data/mlb/roster";

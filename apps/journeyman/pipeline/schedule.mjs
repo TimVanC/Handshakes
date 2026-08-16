@@ -38,9 +38,9 @@ function loadArray(path, name) {
   return Function(`return (${src.slice(open, e + 1)});`)();
 }
 const CFG = {
-  nba: { puzzles: loadArray("src/data/puzzles.ts", "puzzles"), cw: JSON.parse(readFileSync("src/data/colorways.json", "utf8")).franchises, roster: [...readFileSync("src/data/roster.ts", "utf8").matchAll(/^\s+"([^"]+)",/gm)].map((m) => m[1]) },
-  nfl: { puzzles: loadArray("src/data/nfl/puzzles.ts", "nflPuzzles"), cw: JSON.parse(readFileSync("src/data/nfl/colorways.json", "utf8")).franchises, roster: [...readFileSync("src/data/nfl/roster.ts", "utf8").matchAll(/^\s+"([^"]+)",/gm)].map((m) => m[1]) },
-  mlb: { puzzles: loadArray("src/data/mlb/puzzles.ts", "mlbPuzzles"), cw: JSON.parse(readFileSync("src/data/mlb/colorways.json", "utf8")).franchises, roster: [...readFileSync("src/data/mlb/roster.ts", "utf8").matchAll(/^\s+"([^"]+)",/gm)].map((m) => m[1]) },
+  nba: { puzzles: loadArray("src/data/puzzles.ts", "puzzles"), cw: JSON.parse(readFileSync("../../packages/jerseys/data/nba/colorways.json", "utf8")).franchises, roster: [...readFileSync("src/data/roster.ts", "utf8").matchAll(/^\s+"([^"]+)",/gm)].map((m) => m[1]) },
+  nfl: { puzzles: loadArray("src/data/nfl/puzzles.ts", "nflPuzzles"), cw: JSON.parse(readFileSync("../../packages/jerseys/data/nfl/colorways.json", "utf8")).franchises, roster: [...readFileSync("src/data/nfl/roster.ts", "utf8").matchAll(/^\s+"([^"]+)",/gm)].map((m) => m[1]) },
+  mlb: { puzzles: loadArray("src/data/mlb/puzzles.ts", "mlbPuzzles"), cw: JSON.parse(readFileSync("../../packages/jerseys/data/mlb/colorways.json", "utf8")).franchises, roster: [...readFileSync("src/data/mlb/roster.ts", "utf8").matchAll(/^\s+"([^"]+)",/gm)].map((m) => m[1]) },
 };
 
 let schedSql = "", pqSql = "insert into public.priority_queue (sport, position, player_name) values\n";
