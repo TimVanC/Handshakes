@@ -1,0 +1,9 @@
+node_modules/
+dist/
+dist-admin/
+.vercel/
+.env
+.env.local
+*.log
+.DS_Store
+scripts/.render.mjs

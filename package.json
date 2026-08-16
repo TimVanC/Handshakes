@@ -1,0 +1,17 @@
+{
+  "name": "handshakes-monorepo",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:handshakes": "npm run dev --workspace apps/handshakes",
+    "dev:journeyman": "npm run dev --workspace apps/journeyman",
+    "build:handshakes": "npm run build --workspace apps/handshakes",
+    "build:journeyman": "npm run build --workspace apps/journeyman",
+    "test": "npm run test --workspaces --if-present"
+  }
+}
