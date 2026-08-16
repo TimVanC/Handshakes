@@ -1,0 +1,695 @@
+@import "tailwindcss";
+
+/* Sibling palette to Journeyman — same cardstock-and-hardwood family so the
+   two read as one label, but the layout below shares nothing with it. */
+@theme {
+  --font-display: "Anton", "Arial Narrow", sans-serif;
+  --font-ui: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-block: "Archivo Black", "Arial Black", sans-serif;
+  --color-paper: #ece5d4;
+  --color-paper-deep: #e2d9c3;
+  --color-card: #faf6ec;
+  --color-ink: #1d1a13;
+  --color-ink-soft: #6b6353;
+  --color-line: #d3c8ae;
+  --color-wood: #b3855a;
+  --color-wood-deep: #8c6239;
+  --color-court: #96683f;
+  --color-go: #2e6b45;
+}
+
+html {
+  background: var(--color-paper);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-ui);
+  color: var(--color-ink);
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.4 0 0 0 0 0.36 0 0 0 0 0.28 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E"),
+    var(--color-paper);
+  -webkit-tap-highlight-color: transparent;
+}
+
+#root {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- header ---------- */
+
+.hs-header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.6rem 1rem;
+  background: color-mix(in srgb, var(--color-paper) 88%, transparent);
+  backdrop-filter: blur(6px);
+  border-bottom: 2px solid var(--color-ink);
+}
+
+.hs-wordmark {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  line-height: 1;
+  display: flex;
+  align-items: baseline;
+  gap: 0.45rem;
+}
+
+.hs-wordmark .day {
+  font-family: var(--font-ui);
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--color-ink-soft);
+}
+
+.hs-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.hs-iconbtn {
+  border: 2px solid var(--color-ink);
+  background: var(--color-card);
+  border-radius: 0.6rem;
+  font-family: var(--font-ui);
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 0.35rem 0.55rem;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 var(--color-ink);
+}
+
+.hs-iconbtn:active {
+  translate: 1px 1px;
+  box-shadow: 1px 1px 0 var(--color-ink);
+}
+
+/* ---------- par strip ---------- */
+
+.hs-parstrip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 0.55rem 1rem 0.35rem;
+  font-weight: 700;
+}
+
+.hs-par {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  letter-spacing: 0.06em;
+  background: var(--color-ink);
+  color: var(--color-card);
+  padding: 0.1rem 0.6rem;
+  border-radius: 0.4rem;
+}
+
+.hs-count {
+  font-size: 0.95rem;
+  color: var(--color-ink-soft);
+}
+
+.hs-count strong {
+  color: var(--color-ink);
+  font-size: 1.15rem;
+}
+
+/* ---------- the chain ---------- */
+
+.hs-board {
+  flex: 1;
+  width: 100%;
+  max-width: 34rem;
+  margin: 0 auto;
+  padding: 0.25rem 1rem 9.5rem; /* room for the sticky dock */
+}
+
+.hs-chain {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* the rail: a rope down the left gutter that every node hangs from */
+.hs-chain::before {
+  content: "";
+  position: absolute;
+  left: 1.1rem;
+  top: 1.5rem;
+  bottom: 1.5rem;
+  width: 4px;
+  border-radius: 2px;
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--color-wood-deep) 0 10px,
+    var(--color-wood) 10px 20px
+  );
+  opacity: 0.55;
+}
+
+.hs-node {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin: 0.2rem 0;
+  padding: 0.55rem 0.7rem 0.55rem 2.2rem;
+  background: var(--color-card);
+  border: 2px solid var(--color-ink);
+  border-radius: 0.8rem;
+  box-shadow: 3px 3px 0 color-mix(in srgb, var(--color-ink) 75%, transparent);
+  animation: node-in 220ms ease-out;
+}
+
+.hs-node::before {
+  /* knot tying the card to the rail */
+  content: "";
+  position: absolute;
+  left: 0.78rem;
+  top: 50%;
+  translate: 0 -50%;
+  width: 0.85rem;
+  height: 0.85rem;
+  border-radius: 50%;
+  background: var(--color-wood-deep);
+  border: 2px solid var(--color-ink);
+}
+
+.hs-node.is-endpoint {
+  border-width: 3px;
+  box-shadow: 4px 4px 0 var(--color-ink);
+}
+
+.hs-node .who {
+  flex: 1;
+  min-width: 0;
+}
+
+.hs-node .name {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.hs-node .years {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-ink-soft);
+}
+
+.hs-node .role {
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-court);
+}
+
+.hs-undo {
+  border: 2px solid var(--color-ink);
+  background: var(--color-paper-deep);
+  border-radius: 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+}
+
+/* a formed link: the jersey hangs off the rail between two nodes */
+.hs-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.15rem 0 0.15rem 2.6rem;
+  animation: node-in 260ms ease-out;
+}
+
+.hs-link .shake {
+  font-size: 1rem;
+}
+
+.hs-link .team {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--color-ink-soft);
+  line-height: 1.15;
+}
+
+.hs-link .jersey-slot {
+  filter: drop-shadow(2px 2px 0 color-mix(in srgb, var(--color-ink) 45%, transparent));
+}
+
+/* the open middle while the two ends haven't met */
+.hs-gap {
+  position: relative;
+  margin: 0.4rem 0;
+  padding: 0.8rem 0.5rem 0.8rem 2.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.hs-gap::before {
+  content: "";
+  position: absolute;
+  left: 1.1rem;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  border-radius: 2px;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0 7px,
+    var(--color-ink-soft) 7px 14px
+  );
+  opacity: 0.5;
+}
+
+.hs-gap .ask {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+}
+
+.hs-hintrow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.hs-hintbtn {
+  border: 2px solid var(--color-ink);
+  background: var(--color-card);
+  border-radius: 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.3rem 0.55rem;
+  cursor: pointer;
+}
+
+.hs-hintbtn .cost {
+  color: var(--color-court);
+  font-weight: 800;
+}
+
+.hs-hint-note {
+  font-size: 0.78rem;
+  color: var(--color-ink-soft);
+  font-weight: 600;
+}
+
+/* career strip — the back of the basketball card; free, always */
+.hs-careerstrip {
+  display: flex;
+  gap: 0.3rem;
+  overflow-x: auto;
+  padding: 0.3rem 0 0.1rem;
+  scrollbar-width: none;
+}
+
+.hs-careerstrip::-webkit-scrollbar {
+  display: none;
+}
+
+.hs-chip {
+  flex: 0 0 auto;
+  border: 1.5px solid var(--color-ink);
+  background: var(--color-paper-deep);
+  border-radius: 0.45rem;
+  font-size: 0.66rem;
+  font-weight: 800;
+  padding: 0.18rem 0.4rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.hs-chip:hover {
+  background: var(--color-line);
+}
+
+/* ---------- input dock ---------- */
+
+.hs-dock {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 40;
+  padding: 0.6rem 1rem calc(0.75rem + env(safe-area-inset-bottom));
+  background: color-mix(in srgb, var(--color-paper) 92%, transparent);
+  backdrop-filter: blur(8px);
+  border-top: 2px solid var(--color-ink);
+}
+
+.hs-dock-inner {
+  max-width: 34rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.hs-endtoggle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.4rem;
+}
+
+.hs-endbtn {
+  border: 2px solid var(--color-ink);
+  border-radius: 0.6rem;
+  background: var(--color-paper-deep);
+  padding: 0.35rem 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: left;
+  line-height: 1.2;
+  color: var(--color-ink-soft);
+}
+
+.hs-endbtn strong {
+  display: block;
+  color: var(--color-ink);
+  font-size: 0.82rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hs-endbtn.active {
+  background: var(--color-ink);
+  color: var(--color-line);
+}
+
+.hs-endbtn.active strong {
+  color: var(--color-card);
+}
+
+.hs-combo {
+  position: relative;
+}
+
+.hs-input {
+  width: 100%;
+  box-sizing: border-box;
+  font-family: var(--font-ui);
+  font-size: 16px; /* iOS: never zoom */
+  font-weight: 600;
+  padding: 0.65rem 0.8rem;
+  border: 2.5px solid var(--color-ink);
+  border-radius: 0.7rem;
+  background: var(--color-card);
+  color: var(--color-ink);
+  outline: none;
+}
+
+.hs-input:focus {
+  box-shadow: 3px 3px 0 var(--color-ink);
+}
+
+.hs-options {
+  position: absolute;
+  bottom: calc(100% + 0.4rem);
+  left: 0;
+  right: 0;
+  background: var(--color-card);
+  border: 2px solid var(--color-ink);
+  border-radius: 0.7rem;
+  box-shadow: 4px 4px 0 color-mix(in srgb, var(--color-ink) 70%, transparent);
+  overflow: hidden;
+  max-height: 40dvh;
+  overflow-y: auto;
+}
+
+.hs-option {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.6rem;
+  padding: 0.55rem 0.8rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.hs-option[aria-selected="true"],
+.hs-option:hover {
+  background: var(--color-paper-deep);
+}
+
+.hs-option .yrs {
+  color: var(--color-ink-soft);
+  font-size: 0.75rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.hs-reject {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #8c2f2f;
+  animation: reject-in 180ms ease-out;
+}
+
+/* ---------- modals ---------- */
+
+.hs-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: color-mix(in srgb, var(--color-ink) 45%, transparent);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+@media (min-width: 640px) {
+  .hs-backdrop {
+    align-items: center;
+  }
+}
+
+.hs-sheet {
+  width: 100%;
+  max-width: 30rem;
+  max-height: 86dvh;
+  overflow-y: auto;
+  background: var(--color-card);
+  border: 3px solid var(--color-ink);
+  border-radius: 1rem 1rem 0 0;
+  padding: 1rem 1.1rem 1.4rem;
+  animation: sheet-in 240ms ease-out;
+}
+
+@media (min-width: 640px) {
+  .hs-sheet {
+    border-radius: 1rem;
+    box-shadow: 6px 6px 0 var(--color-ink);
+  }
+}
+
+.hs-sheet h2 {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 1.3rem;
+  margin: 0 0 0.6rem;
+}
+
+.hs-sheet p,
+.hs-sheet li {
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.hs-rosterlist {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.35rem;
+  margin-top: 0.6rem;
+}
+
+.hs-rosterlist button {
+  border: 1.5px solid var(--color-ink);
+  border-radius: 0.5rem;
+  background: var(--color-paper-deep);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.4rem 0.5rem;
+  cursor: pointer;
+  text-align: left;
+}
+
+.hs-rosterlist button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.hs-btn {
+  border: 2.5px solid var(--color-ink);
+  border-radius: 0.7rem;
+  background: var(--color-ink);
+  color: var(--color-card);
+  font-family: var(--font-ui);
+  font-weight: 800;
+  font-size: 0.95rem;
+  padding: 0.6rem 1.1rem;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 color-mix(in srgb, var(--color-ink) 60%, transparent);
+}
+
+.hs-btn.secondary {
+  background: var(--color-card);
+  color: var(--color-ink);
+}
+
+.hs-btn:active {
+  translate: 1px 1px;
+}
+
+/* ---------- result ---------- */
+
+.hs-result-label {
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin: 0.2rem 0;
+}
+
+.hs-result-tally {
+  font-size: 1.05rem;
+  margin-bottom: 0.4rem;
+  word-break: break-all;
+}
+
+.hs-streakline {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-ink-soft);
+  margin-bottom: 0.8rem;
+}
+
+/* ---------- the collision ---------- */
+
+@keyframes clasp-left {
+  0% {
+    translate: -22px 0;
+    opacity: 0;
+  }
+  60% {
+    translate: 4px 0;
+    opacity: 1;
+  }
+  100% {
+    translate: 0 0;
+  }
+}
+
+@keyframes clasp-pop {
+  0% {
+    scale: 0.2;
+    rotate: -14deg;
+    opacity: 0;
+  }
+  55% {
+    scale: 1.18;
+    rotate: 5deg;
+    opacity: 1;
+  }
+  100% {
+    scale: 1;
+    rotate: 0deg;
+  }
+}
+
+@keyframes chain-settle {
+  0% {
+    translate: 0 -3px;
+  }
+  50% {
+    translate: 0 2px;
+  }
+  100% {
+    translate: 0 0;
+  }
+}
+
+.hs-closing {
+  animation: clasp-pop 620ms cubic-bezier(0.2, 1.4, 0.4, 1);
+}
+
+.hs-chain.just-closed {
+  animation: chain-settle 480ms ease-out 500ms;
+}
+
+.hs-chain.just-closed .hs-link:not(.hs-closing-row) .jersey-slot {
+  animation: clasp-left 420ms ease-out backwards;
+}
+
+@keyframes node-in {
+  from {
+    translate: 0 8px;
+    opacity: 0;
+  }
+  to {
+    translate: 0 0;
+    opacity: 1;
+  }
+}
+
+@keyframes reject-in {
+  from {
+    translate: -4px 0;
+  }
+  to {
+    translate: 0 0;
+  }
+}
+
+@keyframes sheet-in {
+  from {
+    translate: 0 24px;
+    opacity: 0;
+  }
+  to {
+    translate: 0 0;
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hs-node,
+  .hs-link,
+  .hs-sheet,
+  .hs-closing,
+  .hs-chain.just-closed,
+  .hs-chain.just-closed .hs-link .jersey-slot {
+    animation: none !important;
+  }
+}
+
+/* desktop: the chain reads left-to-right */
+@media (min-width: 900px) {
+  .hs-board {
+    max-width: 60rem;
+  }
+}

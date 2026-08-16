@@ -7,3 +7,5 @@ dist-admin/
 *.log
 .DS_Store
 scripts/.render.mjs
+
+.generate.mjs

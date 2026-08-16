@@ -32,6 +32,9 @@ export interface JerseyProps {
   secondary: string;
   trim: string;
   number: number | null; // null → render "?" (unknown number)
+  /** literal chest text overriding `number` — lets a caller stamp a season
+   *  year ('05) when the dataset has no per-player jersey numbers */
+  numberText?: string;
   eraStyle: EraStyle;
   size?: number; // rendered width in px; height = (H/W) * size
   /** era tricode stamped above the number once the stint is "spent" */
@@ -57,6 +60,7 @@ export default function JerseyRenderer({
   secondary,
   trim,
   number,
+  numberText,
   eraStyle,
   size = 160,
   label = null,
@@ -64,7 +68,7 @@ export default function JerseyRenderer({
   const uid = useId();
   const e = ERA[eraStyle];
   // unknown number → big double "?" reading like a mystery jersey number
-  const numText = number === null ? "??" : String(number);
+  const numText = numberText ?? (number === null ? "??" : String(number));
   const numFontSize = number === null ? 92 : numText.length > 1 ? 60 : 70;
   // two-letter codes (NJ, SEA…) get extra size — they have the room
   const labelFontSize = (label?.length ?? 3) <= 2 ? 52 : 44;
