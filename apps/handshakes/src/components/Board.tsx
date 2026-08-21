@@ -1,12 +1,14 @@
 import { useMemo, useState } from "react";
 import type { GameData } from "../data/gameData";
-import { head as chainHead, type EndKey, type HsGameState, type PlacementResult } from "../game/engine";
+import { type EndKey, type HsGameState, type PlacementResult } from "../game/engine";
+import { careerStints, stintLabel, type Stint } from "../game/stints";
 import type { DailyPuzzle } from "../data/puzzles";
+import HandshakeIcon from "./HandshakeIcon";
 import LinkJersey from "./LinkJersey";
 import RosterSheet from "./RosterSheet";
 
 interface RosterRequest {
-  teamSeasonId: string;
+  stint: Stint;
   end: EndKey;
 }
 
@@ -21,7 +23,6 @@ export default function Board({
   onUndo,
   onPayRoster,
   onFranchiseHint,
-  onShowSolution,
   onOpenResult,
 }: {
   data: GameData;
@@ -30,70 +31,70 @@ export default function Board({
   justClosed: boolean;
   onPlace(end: EndKey, playerId: string): PlacementResult;
   onUndo(end: EndKey): void;
-  onPayRoster(teamSeasonId: string): void;
+  onPayRoster(stintKey: string): void;
   onFranchiseHint(): void;
-  onShowSolution(): void;
   onOpenResult(): void;
 }) {
   const [rosterReq, setRosterReq] = useState<RosterRequest | null>(null);
-  const [confirmingSolution, setConfirmingSolution] = useState(false);
 
   const playing = state.status === "playing";
-  const startHead = chainHead(state, "start");
-  const targetHead = chainHead(state, "target");
-  const franchiseName = useMemo(() => {
-    const names = new Map(data.dataset.franchises.map((f) => [f.id, f.name]));
-    return (tsId: string) => {
-      const ts = data.graph.teamSeasons.get(tsId);
-      return ts ? (names.get(ts.franchise_id) ?? ts.display_name) : tsId;
-    };
-  }, [data]);
-
+  const franchiseNames = useMemo(
+    () => new Map(data.dataset.franchises.map((f) => [f.id, f.name])),
+    [data]
+  );
+  const franchiseName = (tsId: string) => {
+    const ts = data.graph.teamSeasons.get(tsId);
+    return ts ? (franchiseNames.get(ts.franchise_id) ?? ts.display_name) : tsId;
+  };
   const player = (id: string) => data.graph.players.get(id);
 
-  const careerChips = (playerId: string, end: EndKey) => {
-    const career = data.graph.careers.get(playerId) ?? [];
+  /** The back of the card: every stint, free to read. Picking one opens the
+   *  roster reveal (that's the paid step). */
+  const stintPicker = (playerId: string, end: EndKey) => {
+    const stints = careerStints(data.graph, franchiseNames, playerId);
+    const selectId = `stints-${end}`;
     return (
-      <div className="hs-careerstrip" aria-label="Career team seasons — tap to peek at a roster">
-        {career.map((tsId) => {
-          const ts = data.graph.teamSeasons.get(tsId)!;
-          const revealed = state.revealedRosters.includes(tsId);
-          return (
-            <button
-              key={tsId}
-              type="button"
-              className="hs-chip"
-              title={ts.display_name}
-              onClick={() => setRosterReq({ teamSeasonId: tsId, end })}
-            >
-              {tsId.split("-")[0]} '{String(ts.season % 100).padStart(2, "0")}
-              {revealed ? " 👀" : ""}
-            </button>
-          );
-        })}
+      <div className="hs-stintpick">
+        <label htmlFor={selectId}>Teams</label>
+        <select
+          id={selectId}
+          className="hs-select"
+          value=""
+          onChange={(e) => {
+            const s = stints.find((st) => st.key === e.target.value);
+            if (s) setRosterReq({ stint: s, end });
+          }}
+        >
+          <option value="">Peek at a roster…</option>
+          {stints.map((s) => (
+            <option key={s.key} value={s.key}>
+              {stintLabel(s)}
+              {state.revealedRosters.includes(s.key) ? " ✓ seen" : ""}
+            </option>
+          ))}
+        </select>
       </div>
     );
   };
 
-  const node = (playerId: string, opts: { role?: string; end?: EndKey; isHead?: boolean }) => {
+  const node = (playerId: string, opts: { role?: string; end: EndKey; isHead: boolean }) => {
     const p = player(playerId);
     if (!p) return null;
-    const from = p.first_season - 1;
     return (
       <div className={`hs-node ${opts.role ? "is-endpoint" : ""}`}>
         <div className="who">
           {opts.role && <div className="role">{opts.role}</div>}
           <div className="name">{p.full_name}</div>
           <div className="years">
-            {from}–{p.last_season} · {p.career_games} games
+            {p.first_season - 1}–{p.last_season} · {p.career_games} games
           </div>
-          {playing && opts.isHead && opts.end && careerChips(playerId, opts.end)}
+          {playing && opts.isHead && stintPicker(playerId, opts.end)}
         </div>
-        {playing && opts.isHead && !opts.role && opts.end && (
+        {playing && opts.isHead && !opts.role && (
           <button
             type="button"
             className="hs-undo"
-            onClick={() => onUndo(opts.end!)}
+            onClick={() => onUndo(opts.end)}
             aria-label={`Remove ${p.full_name} — refunds the handshake`}
           >
             UNDO
@@ -105,7 +106,9 @@ export default function Board({
 
   const linkRow = (tsId: string, closing = false) => (
     <div className={`hs-link ${closing ? "hs-closing-row" : ""}`}>
-      <span className={`shake ${closing ? "hs-closing" : ""}`}>🤝</span>
+      <span className={`shake ${closing ? "hs-closing" : ""}`}>
+        <HandshakeIcon size={18} title="handshake" />
+      </span>
       <span className={closing ? "hs-closing" : undefined}>
         <LinkJersey data={data} teamSeasonId={tsId} />
       </span>
@@ -151,37 +154,11 @@ export default function Board({
                 onClick={onFranchiseHint}
                 disabled={state.franchiseHintsUsed >= puzzle.canonical_links.length}
               >
-                Route hint <span className="cost">+1 🤝</span>
+                Route hint{" "}
+                <span className="cost">
+                  +1 <HandshakeIcon size={14} />
+                </span>
               </button>
-              {!confirmingSolution ? (
-                <button
-                  type="button"
-                  className="hs-hintbtn"
-                  onClick={() => setConfirmingSolution(true)}
-                >
-                  Show solution <span className="cost">ends the run</span>
-                </button>
-              ) : (
-                <>
-                  <button
-                    type="button"
-                    className="hs-hintbtn"
-                    onClick={() => {
-                      setConfirmingSolution(false);
-                      onShowSolution();
-                    }}
-                  >
-                    Really show it — day counts as played, not solved
-                  </button>
-                  <button
-                    type="button"
-                    className="hs-hintbtn"
-                    onClick={() => setConfirmingSolution(false)}
-                  >
-                    Keep playing
-                  </button>
-                </>
-              )}
             </div>
           </div>
         ) : (
@@ -215,19 +192,19 @@ export default function Board({
         <RosterSheet
           data={data}
           state={state}
-          teamSeasonId={rosterReq.teamSeasonId}
+          stint={rosterReq.stint}
           end={rosterReq.end}
-          paid={state.revealedRosters.includes(rosterReq.teamSeasonId)}
-          onPay={() => onPayRoster(rosterReq.teamSeasonId)}
+          paid={state.revealedRosters.includes(rosterReq.stint.key)}
+          onPay={() => onPayRoster(rosterReq.stint.key)}
           onPlace={onPlace}
           onClose={() => setRosterReq(null)}
         />
       )}
       {playing && (
         <p className="hs-hint-note" style={{ marginTop: "0.8rem" }}>
-          Tap a team-year chip on {player(startHead)?.full_name} or{" "}
-          {player(targetHead)?.full_name} to peek at that roster (+1 🤝 the first
-          time). Career strips are always free.
+          Each end's team list is free. Peeking at a roster costs +1{" "}
+          <HandshakeIcon size={14} /> the first time; anyone you place from it is free.
+          Wrong guesses and undo never cost anything.
         </p>
       )}
     </div>

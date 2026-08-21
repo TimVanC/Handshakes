@@ -1,7 +1,7 @@
 import { useCallback, useMemo, useRef, useState } from "react";
 import { createStorage, type Profile } from "@handshakes/ui/storage";
 import type { GameData } from "../data/gameData";
-import { LAUNCH_DATE, puzzleForDay, type DailyPuzzle } from "../data/puzzles";
+import { LAUNCH_DATE, examplePuzzle, puzzleForDay, type DailyPuzzle } from "../data/puzzles";
 import {
   giveUp as engineGiveUp,
   handshakeCount,
@@ -15,8 +15,16 @@ import {
   type PlacementResult,
 } from "./engine";
 
+/** Which puzzle this session is playing. Only "live" touches streaks. */
+export type Slot =
+  | { kind: "live" }
+  | { kind: "test"; n: number }      // ?p=N — dev only, real puzzle N
+  | { kind: "example"; n: number };  // ?x=N — curated demo, demo hosts only
+
 export interface GameApi {
-  day: number;
+  slot: Slot;
+  /** "#142", "Example 3", "Test 7" */
+  dayLabel: string;
   puzzle: DailyPuzzle;
   state: HsGameState;
   handshakes: number;
@@ -25,32 +33,28 @@ export interface GameApi {
   justClosed: boolean;
   tryPlace(end: EndKey, playerId: string): PlacementResult;
   undo(end: EndKey): void;
-  payRosterReveal(teamSeasonId: string): void;
+  payRosterReveal(stintKey: string): void;
   payFranchiseHint(): void;
   showSolution(): void;
 }
 
-export function useGame(data: GameData): GameApi {
+export function useGame(data: GameData, slot: Slot): GameApi {
   const storage = useMemo(
     () => createStorage<HsGameState>(data.sport.storagePrefix, LAUNCH_DATE),
     [data.sport.storagePrefix]
   );
 
-  // ?p=N — dev/test slot: real puzzle N, quarantined save, no streak writes
-  const testDay = useMemo(() => {
-    const raw = new URLSearchParams(location.search).get("p");
-    const n = raw ? Number(raw) : NaN;
-    return Number.isInteger(n) && n > 0 && import.meta.env.DEV ? n : null;
-  }, []);
-
   const liveDay = storage.currentDayNumber();
-  const puzzleDay = testDay ?? liveDay;
-  const saveDay = testDay ? 9000 + testDay : liveDay;
-  const puzzle = puzzleForDay(puzzleDay);
+  const puzzle =
+    slot.kind === "example" ? examplePuzzle(slot.n) : puzzleForDay(slot.kind === "test" ? slot.n : liveDay);
+  // quarantined save slots for anything that isn't today's puzzle
+  const saveDay = slot.kind === "live" ? liveDay : slot.kind === "test" ? 9000 + slot.n : 9100 + slot.n;
+  const dayLabel =
+    slot.kind === "live" ? `#${liveDay}` : slot.kind === "test" ? `Test ${slot.n}` : `Example ${slot.n}`;
 
   const [state, setState] = useState<HsGameState>(() => {
     const saved = storage.loadGameState(saveDay);
-    // a regenerated table can change the day's endpoints; stale saves reset
+    // a regenerated table can change a day's endpoints; stale saves reset
     if (saved && saved.startId === puzzle.start_id && saved.targetId === puzzle.target_id) {
       return saved;
     }
@@ -65,7 +69,7 @@ export function useGame(data: GameData): GameApi {
       setState((prev) => {
         if (next === prev) return prev;
         storage.saveGameState(next);
-        if (prev.status === "playing" && next.status !== "playing" && !testDay) {
+        if (prev.status === "playing" && next.status !== "playing" && slot.kind === "live") {
           const hs = handshakeCount(next);
           const result = next.status === "solved" ? hs : "DNF";
           const updated = storage.recordResult(saveDay, result);
@@ -75,7 +79,7 @@ export function useGame(data: GameData): GameApi {
         return next;
       });
     },
-    [storage, saveDay, testDay]
+    [storage, saveDay, slot.kind]
   );
 
   const tryPlace = useCallback(
@@ -95,7 +99,8 @@ export function useGame(data: GameData): GameApi {
   );
 
   return {
-    day: puzzleDay,
+    slot,
+    dayLabel,
     puzzle,
     state,
     handshakes: handshakeCount(state),
@@ -103,7 +108,7 @@ export function useGame(data: GameData): GameApi {
     justClosed,
     tryPlace,
     undo: (end) => commit(engineUndo(state, end)),
-    payRosterReveal: (tsId) => commit(revealRoster(state, tsId)),
+    payRosterReveal: (key) => commit(revealRoster(state, key)),
     payFranchiseHint: () => commit(useFranchiseHint(state, puzzle.canonical_links.length)),
     showSolution: () => commit(engineGiveUp(state)),
   };

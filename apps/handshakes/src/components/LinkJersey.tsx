@@ -40,7 +40,7 @@ export default function LinkJersey({
         secondary={c.secondary}
         trim={c.trim}
         number={null}
-        numberText={`'${String(ts.season % 100).padStart(2, "0")}`}
+        numberText=""
         eraStyle={(era?.eraStyle as EraStyle) ?? FALLBACK.eraStyle}
         label={tricode}
         size={size}

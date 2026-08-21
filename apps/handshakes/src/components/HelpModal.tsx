@@ -48,13 +48,14 @@ export default function HelpModal({ onClose }: { onClose(): void }) {
         <h2>Stuck?</h2>
         <ul>
           <li>
-            Every placed player shows their <strong>career strip</strong> — tap
-            a team-year to peek at that roster (first look costs +1 🤝).
+            Each end of the chain lists the player's <strong>teams</strong> for
+            free — pick one to peek at everyone who played there during that
+            stint (first look costs +1 handshake).
           </li>
-          <li>A route hint reveals one franchise on an optimal path (+1 🤝).</li>
+          <li>A route hint reveals one franchise on an optimal path (+1 handshake).</li>
           <li>
-            Showing the solution is free, ends the run, and keeps your played
-            streak honest — the day counts as played, not solved.
+            The white flag in the header shows the solution. It's free and ends
+            the run — the day counts as played, not solved.
           </li>
         </ul>
         <button type="button" className="hs-btn" onClick={onClose}>

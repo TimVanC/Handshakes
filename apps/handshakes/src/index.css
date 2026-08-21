@@ -693,3 +693,131 @@ body {
     max-width: 60rem;
   }
 }
+
+/* ---------- round 2: icons, stints, header flag, examples bar ---------- */
+
+.hs-wordmark svg {
+  width: 1.35rem;
+  height: 1.35rem;
+}
+
+.hs-parstrip {
+  flex-direction: column;
+  gap: 0.15rem;
+  padding-bottom: 0.5rem;
+}
+
+.hs-parstrip .row {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.hs-parstrip .sub {
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--color-ink-soft);
+}
+
+.hs-count .over {
+  color: var(--color-court);
+  font-weight: 800;
+  margin-left: 0.25rem;
+}
+
+/* result sheet rows don't hang from a rail — no knots, no gutter */
+.hs-node.plain {
+  padding-left: 0.8rem;
+}
+
+.hs-node.plain::before {
+  display: none;
+}
+
+.hs-link.plain {
+  padding-left: 0.5rem;
+}
+
+.hs-link .shake,
+.hs-tally-icons {
+  color: var(--color-ink-soft);
+}
+
+.hs-tally-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem;
+  margin: 0.2rem 0 0.4rem;
+  color: var(--color-ink);
+}
+
+/* stint picker on each head — the back of the card, always free to read */
+.hs-stintpick {
+  margin-top: 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--color-ink-soft);
+}
+
+.hs-select {
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--color-ink);
+  background: var(--color-paper-deep);
+  border: 1.5px solid var(--color-ink);
+  border-radius: 0.5rem;
+  padding: 0.3rem 0.5rem;
+  max-width: 100%;
+}
+
+.hs-stints {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 0.4rem;
+}
+
+.hs-iconbtn.flag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.hs-iconbtn.flag svg {
+  color: var(--color-ink);
+}
+
+/* demo bar — never shown on a custom domain */
+.hs-examples {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.45rem 1rem;
+  background: var(--color-ink);
+  color: var(--color-line);
+  font-size: 0.72rem;
+  font-weight: 700;
+  overflow-x: auto;
+}
+
+.hs-examples a {
+  color: var(--color-card);
+  text-decoration: none;
+  border: 1.5px solid var(--color-line);
+  border-radius: 0.45rem;
+  padding: 0.2rem 0.55rem;
+  white-space: nowrap;
+}
+
+.hs-examples a.active {
+  background: var(--color-card);
+  color: var(--color-ink);
+}
+
+.hs-flame {
+  color: #c2410c;
+}

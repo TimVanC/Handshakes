@@ -1,4 +1,5 @@
 import table from "./puzzles.nba.json";
+import exampleTable from "./examples.nba.json";
 
 export interface DailyPuzzle {
   day: number;
@@ -26,4 +27,11 @@ export const LAST_DAY = Math.max(...byDay.keys());
 export function puzzleForDay(day: number): DailyPuzzle {
   const wrapped = ((day - 1) % LAST_DAY) + 1;
   return byDay.get(wrapped)!;
+}
+
+/** Curated demo puzzles (1-based). Out-of-range wraps. */
+export const EXAMPLES = exampleTable.examples as DailyPuzzle[];
+
+export function examplePuzzle(n: number): DailyPuzzle {
+  return EXAMPLES[((n - 1) % EXAMPLES.length + EXAMPLES.length) % EXAMPLES.length];
 }

@@ -9,7 +9,8 @@
   },
   "scripts": {
     "test": "vitest run",
-    "generate": "esbuild scripts/generate.ts --bundle --platform=node --format=esm --outfile=scripts/.generate.mjs && node scripts/.generate.mjs"
+    "generate": "esbuild scripts/generate.ts --bundle --platform=node --format=esm --outfile=scripts/.generate.mjs && node scripts/.generate.mjs",
+    "examples": "esbuild scripts/examples.ts --bundle --platform=node --format=esm --outfile=scripts/.examples.mjs && node scripts/.examples.mjs"
   },
   "devDependencies": {
     "esbuild": "^0.25.0",

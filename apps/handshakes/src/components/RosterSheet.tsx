@@ -1,14 +1,16 @@
 import { useEffect } from "react";
 import type { GameData } from "../data/gameData";
 import type { EndKey, HsGameState, PlacementResult } from "../game/engine";
+import { stintRoster, type Stint } from "../game/stints";
+import HandshakeIcon from "./HandshakeIcon";
 
-/** Roster reveal — the direct anti-blank tool. The price is on the button,
- *  never a surprise: first look at a roster costs +1 handshake, and placing
- *  someone straight off the revealed list is a normal (free) placement. */
+/** Roster reveal by stint — everyone who played for that team during the
+ *  player's run there. The price is on the button, never a surprise: the
+ *  first look costs +1 handshake; placing someone off the list is free. */
 export default function RosterSheet({
   data,
   state,
-  teamSeasonId,
+  stint,
   end,
   paid,
   onPay,
@@ -17,7 +19,7 @@ export default function RosterSheet({
 }: {
   data: GameData;
   state: HsGameState;
-  teamSeasonId: string;
+  stint: Stint;
   end: EndKey;
   paid: boolean;
   onPay(): void;
@@ -30,12 +32,15 @@ export default function RosterSheet({
     return () => window.removeEventListener("keydown", onKey);
   }, [onClose]);
 
-  const ts = data.graph.teamSeasons.get(teamSeasonId);
-  if (!ts) return null;
-  const roster = (data.graph.rosters.get(teamSeasonId) ?? [])
+  const roster = stintRoster(data.graph, stint)
     .map((id) => data.graph.players.get(id)!)
     .sort((a, b) => b.career_games - a.career_games);
   const inChain = new Set([...state.fromStart, ...state.fromTarget]);
+  const seasons = stint.teamSeasonIds.length;
+  const years =
+    stint.firstSeason === stint.lastSeason
+      ? `${stint.firstSeason - 1}-${String(stint.firstSeason).slice(2)}`
+      : `${stint.firstSeason - 1}–${stint.lastSeason}`;
 
   return (
     <div className="hs-backdrop" onClick={onClose}>
@@ -43,19 +48,22 @@ export default function RosterSheet({
         className="hs-sheet"
         role="dialog"
         aria-modal="true"
-        aria-label={`${ts.display_name} roster`}
+        aria-label={`${stint.franchiseName} ${years} roster`}
         onClick={(e) => e.stopPropagation()}
       >
-        <h2>{ts.display_name}</h2>
+        <h2>
+          {stint.franchiseName} <span style={{ color: "var(--color-ink-soft)" }}>{years}</span>
+        </h2>
         {!paid ? (
           <>
             <p>
-              See everyone who played a game for this team that season?
-              Placing a player from the list afterward is free.
+              See everyone who played a regular-season game for them across{" "}
+              {seasons === 1 ? "that season" : `those ${seasons} seasons`}? Placing a
+              player from the list afterward is free.
             </p>
-            <div style={{ display: "flex", gap: "0.5rem", marginTop: "0.6rem" }}>
+            <div style={{ display: "flex", gap: "0.5rem", marginTop: "0.6rem", flexWrap: "wrap" }}>
               <button type="button" className="hs-btn" onClick={onPay}>
-                Reveal roster — costs +1 🤝
+                Reveal roster · +1 <HandshakeIcon size={16} />
               </button>
               <button type="button" className="hs-btn secondary" onClick={onClose}>
                 Never mind
@@ -64,7 +72,10 @@ export default function RosterSheet({
           </>
         ) : (
           <>
-            <p>Tap a player to add them to the {end === "start" ? "top" : "bottom"} chain.</p>
+            <p>
+              {roster.length} players. Tap one to add them to the{" "}
+              {end === "start" ? "top" : "bottom"} chain.
+            </p>
             <div className="hs-rosterlist">
               {roster.map((p) => (
                 <button

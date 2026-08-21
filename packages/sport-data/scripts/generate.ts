@@ -32,6 +32,9 @@ const HUB_COUNT = 50;
 const PAR_MIN = 3;
 const PAR_MAX = 4;
 const NOTABILITY_MIN = 88; // endpoints must read as household-ish names
+const STAR_NOTABILITY = 97; // every puzzle starts or ends on a genuine big name
+const MODERN_SEASON = 2012; // and most of those big names should be ones a 2026 fan watched
+const MODERN_STAR_SHARE = 0.65;
 const CAREER_GAMES_MIN = 350;
 const DAYS = 366;
 const POOL_TARGET = 430; // headroom over DAYS for the scheduler's tier pools
@@ -102,7 +105,12 @@ function main() {
       p.career_games >= CAREER_GAMES_MIN &&
       graph.adjacency.has(p.id)
   );
-  console.log(`eligible endpoints: ${eligible.length} (hubs excluded from routes: ${hubs.size})`);
+  const stars = eligible.filter((p) => p.notability >= STAR_NOTABILITY);
+  const modernStars = stars.filter((p) => p.last_season >= MODERN_SEASON);
+  console.log(
+    `eligible endpoints: ${eligible.length}, stars: ${stars.length} (${modernStars.length} modern); ` +
+      `hubs excluded from routes: ${hubs.size}`
+  );
 
   const pool: GeneratedPuzzle[] = [];
   const seenPairs = new Set<string>();
@@ -110,7 +118,10 @@ function main() {
 
   while (pool.length < POOL_TARGET && stats.sampled < 200_000) {
     stats.sampled++;
-    const a = eligible[Math.floor(rand() * eligible.length)];
+    // one end is always a star — modern more often than not — the other is
+    // anyone recognizable, so chains read "big name ↔ guy you half remember"
+    const starPool = rand() < MODERN_STAR_SHARE && modernStars.length ? modernStars : stars;
+    const a = starPool[Math.floor(rand() * starPool.length)];
     const b = eligible[Math.floor(rand() * eligible.length)];
     if (a.id === b.id) continue;
     const pairKey = a.id < b.id ? `${a.id}|${b.id}` : `${b.id}|${a.id}`;

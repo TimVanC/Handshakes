@@ -9,3 +9,4 @@ dist-admin/
 scripts/.render.mjs
 
 .generate.mjs
+.examples.mjs
