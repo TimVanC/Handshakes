@@ -44,9 +44,12 @@ preseason, playoffs-only, and dressed-but-never-played don't.
 
 ## Deployment
 
-- **Handshakes**: new Vercel project, root directory `apps/handshakes`,
-  build `npm run build`, SPA rewrite ships in its `vercel.json`. Domain
-  (`handshakes.game` preferred) still needs purchasing.
+- **Handshakes**: Vercel project `handshakes` (team "Tim's projects",
+  `prj_GcfA9uhuPEP5aDEunKYMpYykAWJY`), linked to github.com/TimVanC/Handshakes
+  with root directory `apps/handshakes`. Production deploys on every push to
+  `main`: https://handshakes-rho.vercel.app/hoops. Preview URLs sit behind
+  Vercel Authentication. Custom domain (`handshakes.game` preferred) still
+  needs purchasing and attaching.
 - **Journeyman cutover**: the original standalone repo at `../journeyman` is
   still what Vercel deploys. Once this monorepo is pushed, point the existing
   Vercel project's root directory at `apps/journeyman` here and retire the
